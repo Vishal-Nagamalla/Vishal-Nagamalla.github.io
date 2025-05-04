@@ -108,6 +108,57 @@
         .nav-link.active::after {
             width: 100%;
         }
+
+        /* Enhanced Carousel Styles */
+        .carousel-container {
+            position: relative;
+            overflow: hidden;
+            padding: 2rem 0;
+        }
+
+        .carousel-track {
+            display: flex;
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            padding: 0 1rem;
+        }
+
+        .carousel-slide {
+            flex: 0 0 calc(33.333% - 2rem);
+            margin: 0 1rem;
+            opacity: 0.5;
+            transform: scale(0.9);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 1;
+            filter: brightness(0.7);
+        }
+
+        .carousel-slide.active {
+            opacity: 1;
+            transform: scale(1);
+            filter: brightness(1);
+            z-index: 3;
+            position: relative;
+        }
+
+        .carousel-slide.prev,
+        .carousel-slide.next {
+            opacity: 0.7;
+            transform: scale(0.95);
+            z-index: 2;
+            filter: brightness(0.9);
+        }
+
+        @media (max-width: 1024px) {
+            .carousel-slide {
+                flex: 0 0 calc(50% - 2rem);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .carousel-slide {
+                flex: 0 0 calc(100% - 2rem);
+            }
+        }
     </style>
 </head>
 <body class="bg-black text-white font-sans min-h-screen">
@@ -168,7 +219,7 @@
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10 text-center fade-in">
                 <h1 class="text-4xl md:text-6xl font-bold mb-4 slide-up">
                     <span class="text-white">Hi, I'm </span>
-                    <span class="text-darkgreen typewriter">Vishal Nagamalla</span>
+                    <span class="text-darkgreen">Vishal Nagamalla</span>
                 </h1>
                 <h2 class="text-xl md:text-2xl mb-8 text-gray-300 slide-up" style="animation-delay: 0.2s;">AI/ML & Robotics Researcher | CS + DS @ Rutgers University</h2>
                 <div class="flex justify-center space-x-4 slide-up" style="animation-delay: 0.4s;">
@@ -205,9 +256,6 @@
                         <h3 class="text-2xl font-semibold mb-4 text-darkgreen">Who am I?</h3>
                         <p class="text-gray-300 mb-6 leading-relaxed">
                             Hello! I'm Vishal Nagamalla, a sophomore at Rutgers University, passionate about Computer Science, AI/ML, Robotics, Engineering, Entrepreneurship, and everything in between. I've always had a unique ability to think outside the box and approach problems creatively, and I genuinely believe AI and Robotics are the future, and I'm excited to be part of shaping it.
-                        </p>
-                        <p class="text-gray-300 mb-6 leading-relaxed">
-                            As a hardworking and innovative individual, I thrive on tackling new challenges and am always eager to learn and grow. I'm actively seeking internships with open arms to any project that comes my way.
                         </p>
                         
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
@@ -453,158 +501,164 @@
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <h2 class="text-3xl font-bold text-center mb-12 text-darkgreen">My Projects</h2>
                 
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="carousel-container relative overflow-hidden py-8">
+                  <div class="carousel-track flex transition-transform duration-500 ease-in-out">
                     <!-- HoloBrain -->
-                    <div class="project-card bg-darkgreen bg-opacity-10 rounded-lg overflow-hidden border border-accentgreen border-opacity-20 hover:border-opacity-50 transition-all duration-300">
+                    <div class="carousel-slide min-w-full md:min-w-[50%] lg:min-w-[33.33%] px-4 transition-all duration-500">
+                      <div class="project-card bg-darkgreen bg-opacity-10 rounded-lg overflow-hidden border border-accentgreen border-opacity-20 hover:border-opacity-50 transition-all duration-300">
                         <div class="h-48 overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" 
-                                 alt="HoloBrain" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                          <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-4.0.3..." alt="HoloBrain" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
                         </div>
                         <div class="p-6">
-                            <div class="flex justify-between items-start mb-2">
-                                <h3 class="text-xl font-semibold text-white">HoloBrain</h3>
-                                <span class="bg-accentgreen text-black text-xs px-2 py-1 rounded">ML/CV</span>
-                            </div>
-                            <p class="text-gray-400 mb-4">Interactive 3D MRI Analysis with Gesture-Controlled Hologram for medical diagnostics.</p>
-                            <div class="flex flex-wrap gap-2 mb-4">
-                                <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">PyTorch</span>
-                                <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">OpenCV</span>
-                                <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">Unity</span>
-                                <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">C#</span>
-                            </div>
-                            <div class="flex space-x-3">
-                                <a href="https://devpost.com/software/holobrain" target="_blank" class="text-accentgreen hover:text-white">
-                                    <i class="fas fa-external-link-alt"></i>
-                                </a>
-                            </div>
+                          <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-semibold text-white">HoloBrain</h3>
+                            <span class="bg-accentgreen text-black text-xs px-2 py-1 rounded">ML/CV</span>
+                          </div>
+                          <p class="text-gray-400 mb-4">Interactive 3D MRI Analysis with Gesture-Controlled Hologram for medical diagnostics.</p>
+                          <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">PyTorch</span>
+                            <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">OpenCV</span>
+                            <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">Unity</span>
+                            <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">C#</span>
+                          </div>
+                          <div class="flex space-x-3">
+                            <a href="https://devpost.com/software/holobrain" target="_blank" class="text-accentgreen hover:text-white">
+                              <i class="fas fa-external-link-alt"></i>
+                            </a>
+                          </div>
                         </div>
+                      </div>
                     </div>
-                    
                     <!-- Handwriting Recognition -->
-                    <div class="project-card bg-darkgreen bg-opacity-10 rounded-lg overflow-hidden border border-accentgreen border-opacity-20 hover:border-opacity-50 transition-all duration-300">
+                    <div class="carousel-slide min-w-full md:min-w-[50%] lg:min-w-[33.33%] px-4 transition-all duration-500">
+                      <div class="project-card bg-darkgreen bg-opacity-10 rounded-lg overflow-hidden border border-accentgreen border-opacity-20 hover:border-opacity-50 transition-all duration-300">
                         <div class="h-48 overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1546074177-ffdda98d214f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80" 
-                                 alt="Handwriting Recognition" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                          <img src="https://images.unsplash.com/photo-1546074177-ffdda98d214f?ixlib=rb-4.0.3..." alt="Handwriting Recognition" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
                         </div>
                         <div class="p-6">
-                            <div class="flex justify-between items-start mb-2">
-                                <h3 class="text-xl font-semibold text-white">Handwriting Recognition</h3>
-                                <span class="bg-accentgreen text-black text-xs px-2 py-1 rounded">ML</span>
-                            </div>
-                            <p class="text-gray-400 mb-4">CNN model for recognizing handwritten letters using EMNIST dataset with 92% accuracy.</p>
-                            <div class="flex flex-wrap gap-2 mb-4">
-                                <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">PyTorch</span>
-                                <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">CNN</span>
-                                <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">Python</span>
-                            </div>
-                            <div class="flex space-x-3">
-                                <a href="https://github.com/Vishal-Nagamalla" target="_blank" class="text-accentgreen hover:text-white">
-                                    <i class="fab fa-github"></i>
-                                </a>
-                            </div>
+                          <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-semibold text-white">Handwriting Recognition</h3>
+                            <span class="bg-accentgreen text-black text-xs px-2 py-1 rounded">ML</span>
+                          </div>
+                          <p class="text-gray-400 mb-4">CNN model for recognizing handwritten letters using EMNIST dataset with 92% accuracy.</p>
+                          <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">PyTorch</span>
+                            <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">CNN</span>
+                            <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">Python</span>
+                          </div>
+                          <div class="flex space-x-3">
+                            <a href="https://github.com/Vishal-Nagamalla" target="_blank" class="text-accentgreen hover:text-white">
+                              <i class="fab fa-github"></i>
+                            </a>
+                          </div>
                         </div>
+                      </div>
                     </div>
-                    
                     <!-- Restaurant Website -->
-                    <div class="project-card bg-darkgreen bg-opacity-10 rounded-lg overflow-hidden border border-accentgreen border-opacity-20 hover:border-opacity-50 transition-all duration-300">
+                    <div class="carousel-slide min-w-full md:min-w-[50%] lg:min-w-[33.33%] px-4 transition-all duration-500">
+                      <div class="project-card bg-darkgreen bg-opacity-10 rounded-lg overflow-hidden border border-accentgreen border-opacity-20 hover:border-opacity-50 transition-all duration-300">
                         <div class="h-48 overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80" 
-                                 alt="Restaurant Website" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                          <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?..." alt="Restaurant Website" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
                         </div>
                         <div class="p-6">
-                            <div class="flex justify-between items-start mb-2">
-                                <h3 class="text-xl font-semibold text-white">Indian Cuisine Restaurant</h3>
-                                <span class="bg-accentgreen text-black text-xs px-2 py-1 rounded">Web Dev</span>
-                            </div>
-                            <p class="text-gray-400 mb-4">Full-stack website with interactive features, SQL database, and content management.</p>
-                            <div class="flex flex-wrap gap-2 mb-4">
-                                <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">ASP.NET</span>
-                                <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">SQL</span>
-                                <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">JavaScript</span>
-                                <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">Bootstrap</span>
-                            </div>
-                            <div class="flex space-x-3">
-                                <a href="https://github.com/Vishal-Nagamalla" target="_blank" class="text-accentgreen hover:text-white">
-                                    <i class="fab fa-github"></i>
-                                </a>
-                            </div>
+                          <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-semibold text-white">Indian Cuisine Restaurant</h3>
+                            <span class="bg-accentgreen text-black text-xs px-2 py-1 rounded">Web Dev</span>
+                          </div>
+                          <p class="text-gray-400 mb-4">Full-stack website with interactive features, SQL database, and content management.</p>
+                          <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">ASP.NET</span>
+                            <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">SQL</span>
+                            <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">JavaScript</span>
+                            <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">Bootstrap</span>
+                          </div>
+                          <div class="flex space-x-3">
+                            <a href="https://github.com/Vishal-Nagamalla" target="_blank" class="text-accentgreen hover:text-white">
+                              <i class="fab fa-github"></i>
+                            </a>
+                          </div>
                         </div>
+                      </div>
                     </div>
-                    
                     <!-- Digit Recognition -->
-                    <div class="project-card bg-darkgreen bg-opacity-10 rounded-lg overflow-hidden border border-accentgreen border-opacity-20 hover:border-opacity-50 transition-all duration-300">
+                    <div class="carousel-slide min-w-full md:min-w-[50%] lg:min-w-[33.33%] px-4 transition-all duration-500">
+                      <div class="project-card bg-darkgreen bg-opacity-10 rounded-lg overflow-hidden border border-accentgreen border-opacity-20 hover:border-opacity-50 transition-all duration-300">
                         <div class="h-48 overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" 
-                                 alt="Digit Recognition" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                          <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?..." alt="Digit Recognition" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
                         </div>
                         <div class="p-6">
-                            <div class="flex justify-between items-start mb-2">
-                                <h3 class="text-xl font-semibold text-white">Digit Recognition</h3>
-                                <span class="bg-accentgreen text-black text-xs px-2 py-1 rounded">ML</span>
-                            </div>
-                            <p class="text-gray-400 mb-4">CNN and Vision Transformer models for MNIST digit recognition with 98% accuracy.</p>
-                            <div class="flex flex-wrap gap-2 mb-4">
-                                <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">PyTorch</span>
-                                <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">CNN</span>
-                                <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">VIT</span>
-                            </div>
-                            <div class="flex space-x-3">
-                                <a href="https://github.com/Vishal-Nagamalla" target="_blank" class="text-accentgreen hover:text-white">
-                                    <i class="fab fa-github"></i>
-                                </a>
-                            </div>
+                          <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-semibold text-white">Digit Recognition</h3>
+                            <span class="bg-accentgreen text-black text-xs px-2 py-1 rounded">ML</span>
+                          </div>
+                          <p class="text-gray-400 mb-4">CNN and Vision Transformer models for MNIST digit recognition with 98% accuracy.</p>
+                          <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">PyTorch</span>
+                            <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">CNN</span>
+                            <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">VIT</span>
+                          </div>
+                          <div class="flex space-x-3">
+                            <a href="https://github.com/Vishal-Nagamalla" target="_blank" class="text-accentgreen hover:text-white">
+                              <i class="fab fa-github"></i>
+                            </a>
+                          </div>
                         </div>
+                      </div>
                     </div>
-                    
                     <!-- Robotics -->
-                    <div class="project-card bg-darkgreen bg-opacity-10 rounded-lg overflow-hidden border border-accentgreen border-opacity-20 hover:border-opacity-50 transition-all duration-300">
+                    <div class="carousel-slide min-w-full md:min-w-[50%] lg:min-w-[33.33%] px-4 transition-all duration-500">
+                      <div class="project-card bg-darkgreen bg-opacity-10 rounded-lg overflow-hidden border border-accentgreen border-opacity-20 hover:border-opacity-50 transition-all duration-300">
                         <div class="h-48 overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1581094271901-8022df4466f9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" 
-                                 alt="Robotics" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                          <img src="https://images.unsplash.com/photo-1581094271901-8022df4466f9?..." alt="Robotics" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
                         </div>
                         <div class="p-6">
-                            <div class="flex justify-between items-start mb-2">
-                                <h3 class="text-xl font-semibold text-white">VEX Robotics</h3>
-                                <span class="bg-accentgreen text-black text-xs px-2 py-1 rounded">Robotics</span>
-                            </div>
-                            <p class="text-gray-400 mb-4">Autonomous and driver-controlled robotics systems for competitive environments.</p>
-                            <div class="flex flex-wrap gap-2 mb-4">
-                                <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">C++</span>
-                                <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">PID</span>
-                                <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">Sensors</span>
-                            </div>
-                            <div class="flex space-x-3">
-                                <a href="https://github.com/Vishal-Nagamalla" target="_blank" class="text-accentgreen hover:text-white">
-                                    <i class="fab fa-github"></i>
-                                </a>
-                            </div>
+                          <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-semibold text-white">VEX Robotics</h3>
+                            <span class="bg-accentgreen text-black text-xs px-2 py-1 rounded">Robotics</span>
+                          </div>
+                          <p class="text-gray-400 mb-4">Autonomous and driver-controlled robotics systems for competitive environments.</p>
+                          <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">C++</span>
+                            <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">PID</span>
+                            <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">Sensors</span>
+                          </div>
+                          <div class="flex space-x-3">
+                            <a href="https://github.com/Vishal-Nagamalla" target="_blank" class="text-accentgreen hover:text-white">
+                              <i class="fab fa-github"></i>
+                            </a>
+                          </div>
                         </div>
+                      </div>
                     </div>
-                    
                     <!-- Data Processing -->
-                    <div class="project-card bg-darkgreen bg-opacity-10 rounded-lg overflow-hidden border border-accentgreen border-opacity-20 hover:border-opacity-50 transition-all duration-300">
+                    <div class="carousel-slide min-w-full md:min-w-[50%] lg:min-w-[33.33%] px-4 transition-all duration-500">
+                      <div class="project-card bg-darkgreen bg-opacity-10 rounded-lg overflow-hidden border border-accentgreen border-opacity-20 hover:border-opacity-50 transition-all duration-300">
                         <div class="h-48 overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" 
-                                 alt="Data Processing" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                          <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?..." alt="Data Processing" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
                         </div>
                         <div class="p-6">
-                            <div class="flex justify-between items-start mb-2">
-                                <h3 class="text-xl font-semibold text-white">Data Processing</h3>
-                                <span class="bg-accentgreen text-black text-xs px-2 py-1 rounded">Data</span>
-                            </div>
-                            <p class="text-gray-400 mb-4">Automated data cleaning and processing pipelines with Python and Excel.</p>
-                            <div class="flex flex-wrap gap-2 mb-4">
-                                <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">Python</span>
-                                <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">Pandas</span>
-                                <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">Excel</span>
-                            </div>
-                            <div class="flex space-x-3">
-                                <a href="https://github.com/Vishal-Nagamalla" target="_blank" class="text-accentgreen hover:text-white">
-                                    <i class="fab fa-github"></i>
-                                </a>
-                            </div>
+                          <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-semibold text-white">Data Processing</h3>
+                            <span class="bg-accentgreen text-black text-xs px-2 py-1 rounded">Data</span>
+                          </div>
+                          <p class="text-gray-400 mb-4">Automated data cleaning and processing pipelines with Python and Excel.</p>
+                          <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">Python</span>
+                            <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">Pandas</span>
+                            <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">Excel</span>
+                          </div>
+                          <div class="flex space-x-3">
+                            <a href="https://github.com/Vishal-Nagamalla" target="_blank" class="text-accentgreen hover:text-white">
+                              <i class="fab fa-github"></i>
+                            </a>
+                          </div>
                         </div>
+                      </div>
                     </div>
+                  </div>
+                  <!-- Navigation buttons -->
+                  <button class="carousel-prev absolute left-4 top-1/2 -translate-y-1/2 bg-darkgreen hover:bg-accentgreen text-white p-3 rounded-full shadow-lg">←</button>
+                  <button class="carousel-next absolute right-4 top-1/2 -translate-y-1/2 bg-darkgreen hover:bg-accentgreen text-white p-3 rounded-full shadow-lg">→</button>
                 </div>
                 
                 <div class="mt-12 text-center">
@@ -1057,6 +1111,118 @@
 
         window.addEventListener('scroll', animateOnScroll);
         window.addEventListener('load', animateOnScroll);
+
+        // Enhanced Carousel Logic
+        const track = document.querySelector('.carousel-track');
+        const slides = Array.from(document.querySelectorAll('.carousel-slide'));
+        const prevButton = document.querySelector('.carousel-prev');
+        const nextButton = document.querySelector('.carousel-next');
+        let currentIndex = 0;
+
+        // Clone first and last slides for infinite effect
+        const cloneFirst = slides[0].cloneNode(true);
+        const cloneLast = slides[slides.length - 1].cloneNode(true);
+        track.appendChild(cloneFirst);
+        track.insertBefore(cloneLast, track.firstChild);
+        const allSlides = Array.from(document.querySelectorAll('.carousel-slide'));
+
+        function updateCarousel(direction) {
+            const container = document.querySelector('.carousel-container');
+            const containerWidth = container.offsetWidth;
+            const activeSlide = allSlides[currentIndex];
+            const slideWidth = activeSlide.offsetWidth;
+            const gap = 32; // Total margin (1rem = 16px * 2)
+
+            // Calculate translateX to center the active slide
+            const translateXValue = currentIndex * (slideWidth + gap) - 
+                                   (containerWidth - slideWidth) / 2;
+            
+            track.style.transform = `translateX(-${translateXValue}px)`;
+
+            // Handle infinite loop seamlessly
+            if (currentIndex === allSlides.length - 1) {
+                setTimeout(() => {
+                    track.style.transition = 'none';
+                    currentIndex = 1;
+                    const newTranslate = currentIndex * (slideWidth + gap) - 
+                                     (containerWidth - slideWidth) / 2;
+                    track.style.transform = `translateX(-${newTranslate}px)`;
+                    void track.offsetWidth; // Trigger reflow
+                    track.style.transition = 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
+                }, 500);
+            } else if (currentIndex === 0) {
+                setTimeout(() => {
+                    track.style.transition = 'none';
+                    currentIndex = allSlides.length - 2;
+                    const newTranslate = currentIndex * (slideWidth + gap) - 
+                                     (containerWidth - slideWidth) / 2;
+                    track.style.transform = `translateX(-${newTranslate}px)`;
+                    void track.offsetWidth; // Trigger reflow
+                    track.style.transition = 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
+                }, 500);
+            }
+
+            // Update slide classes
+            allSlides.forEach((slide, index) => {
+                slide.classList.remove('active', 'prev', 'next');
+                
+                if (index === currentIndex) {
+                    slide.classList.add('active');
+                } else {
+                    const prevIndex = (currentIndex - 1 + allSlides.length) % allSlides.length;
+                    const nextIndex = (currentIndex + 1) % allSlides.length;
+                    
+                    if (index === prevIndex) slide.classList.add('prev');
+                    if (index === nextIndex) slide.classList.add('next');
+                }
+            });
+        }
+
+        // Navigation handlers
+        prevButton.addEventListener('click', () => {
+            currentIndex--;
+            updateCarousel('prev');
+        });
+
+        nextButton.addEventListener('click', () => {
+            currentIndex++;
+            updateCarousel('next');
+        });
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') {
+                currentIndex--;
+                updateCarousel('prev');
+            } else if (e.key === 'ArrowRight') {
+                currentIndex++;
+                updateCarousel('next');
+            }
+        });
+
+        // Touch swipe handling
+        let touchStartX = 0;
+        track.addEventListener('touchstart', e => {
+            touchStartX = e.touches[0].clientX;
+        }, { passive: true });
+
+        track.addEventListener('touchend', e => {
+            const touchEndX = e.changedTouches[0].clientX;
+            const deltaX = touchStartX - touchEndX;
+            
+            if (Math.abs(deltaX) > 50) {
+                if (deltaX > 0) {
+                    currentIndex++;
+                } else {
+                    currentIndex--;
+                }
+                updateCarousel();
+            }
+        }, { passive: true });
+
+        // Initialize carousel
+        currentIndex = 1; // Start at first real slide
+        updateCarousel();
     </script>
 </body>
 </html>
