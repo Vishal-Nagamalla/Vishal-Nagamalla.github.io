@@ -46,15 +46,41 @@
     .nav-link:hover::after{width:100%}
     .nav-link.active::after{width:0}  /* no fixed underline */
 
-    /* Carousel */
-    .carousel-container{position:relative;overflow:hidden;padding:2rem 0}
-    .carousel-track{display:flex;transition:transform .5s cubic-bezier(.4,0,.2,1);padding:0 1rem}
-    .carousel-slide{flex:0 0 calc(33.333% - 2rem);margin:0 1rem;opacity:.5;transform:scale(.9);
-                    transition:all .5s cubic-bezier(.4,0,.2,1);z-index:1;filter:brightness(.7)}
-    .carousel-slide.active{opacity:1;transform:scale(1);filter:brightness(1);z-index:3}
-    .carousel-slide.prev,.carousel-slide.next{opacity:.7;transform:scale(.95);z-index:2;filter:brightness(.9)}
-    @media(max-width:1024px){.carousel-slide{flex:0 0 calc(50% - 2rem)}}
-    @media(max-width:768px) {.carousel-slide{flex:0 0 calc(100% - 2rem)}}
+    /* Updated Carousel Styles */
+    .carousel-container {
+          position: relative;
+          overflow: hidden;
+          padding: 2rem 0;
+        }
+        .carousel-track {
+          display: flex;
+          transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+          padding: 0 1rem;
+        }
+        .carousel-slide {
+          flex: 0 0 calc(33.333% - 2rem);
+          margin: 0 1rem;
+          opacity: 0.5;
+          transform: scale(0.9);
+          transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+          filter: brightness(0.7);
+          z-index: 1;
+        }
+        .carousel-slide.active {
+          opacity: 1;
+          transform: scale(1);
+          filter: brightness(1);
+          z-index: 3;
+        }
+        .carousel-slide.prev,
+        .carousel-slide.next {
+          opacity: 0.7;
+          transform: scale(0.95);
+          filter: brightness(0.8);
+          z-index: 2;
+        }
+        @media(max-width:1024px){.carousel-slide{flex:0 0 calc(50% - 2rem)}}
+        @media(max-width:768px) {.carousel-slide{flex:0 0 calc(100% - 2rem)}}
 
     /* Display contact dropdown on hover of the parent group */
     .group:hover #contact-menu{
@@ -435,51 +461,99 @@
       });
     })();
 
-    /* Carousel logic (unchanged) */
-    const track=document.querySelector('.carousel-track');
-    const slides=Array.from(document.querySelectorAll('.carousel-slide'));
-    const prev=document.querySelector('.carousel-prev');
-    const next=document.querySelector('.carousel-next');
-    let currentIndex=0;
-    const cloneFirst=slides[0].cloneNode(true);
-    const cloneLast =slides[slides.length-1].cloneNode(true);
-    track.appendChild(cloneFirst);
-    track.insertBefore(cloneLast,track.firstChild);
-    const allSlides=Array.from(document.querySelectorAll('.carousel-slide'));
+    /* Corrected Infinite Carousel */
+    const carousel = () => {
+      const track = document.querySelector('.carousel-track');
+      const slides = Array.from(document.querySelectorAll('.carousel-slide'));
+      const prevBtn = document.querySelector('.carousel-prev');
+      const nextBtn = document.querySelector('.carousel-next');
+      let isAnimating = false;
 
-    function updateCarousel(){
-      const containerWidth=document.querySelector('.carousel-container').offsetWidth;
-      const slideWidth    =allSlides[currentIndex].offsetWidth;
-      const gap=32;
-      const translate=currentIndex*(slideWidth+gap)-(containerWidth-slideWidth)/2;
-      track.style.transform=`translateX(-${translate}px)`;
+      // Get slide width with margins
+      const getSlideWidth = () => {
+        const slide = slides[0];
+        const style = window.getComputedStyle(slide);
+        return slide.offsetWidth + 
+               parseFloat(style.marginLeft) + 
+               parseFloat(style.marginRight);
+      };
 
-      if(currentIndex===allSlides.length-1){
-        setTimeout(()=>{track.style.transition='none';currentIndex=1;updateCarousel();
-                        void track.offsetWidth;track.style.transition='transform .5s cubic-bezier(.4,0,.2,1)';},500);
-      }else if(currentIndex===0){
-        setTimeout(()=>{track.style.transition='none';currentIndex=allSlides.length-2;updateCarousel();
-                        void track.offsetWidth;track.style.transition='transform .5s cubic-bezier(.4,0,.2,1)';},500);
-      }
+      // Update active classes with center highlight
+      const updateActive = () => {
+        slides.forEach((slide, index) => {
+          slide.classList.remove('active', 'prev', 'next');
+          if (index === 1) {
+            slide.classList.add('active');
+          } else if (index === 0) {
+            slide.classList.add('prev');
+          } else if (index === 2) {
+            slide.classList.add('next');
+          }
+        });
+      };
 
-      allSlides.forEach(s=>s.classList.remove('active','prev','next'));
-      allSlides[currentIndex].classList.add('active');
-      allSlides[(currentIndex-1+allSlides.length)%allSlides.length].classList.add('prev');
-      allSlides[(currentIndex+1)%allSlides.length].classList.add('next');
-    }
-    prev.addEventListener('click',()=>{currentIndex--;updateCarousel();});
-    next.addEventListener('click',()=>{currentIndex++;updateCarousel();});
-    document.addEventListener('keydown',e=>{
-      if(e.key==='ArrowLeft'){currentIndex--;updateCarousel();}
-      else if(e.key==='ArrowRight'){currentIndex++;updateCarousel();}
-    });
-    let touchStartX=0;
-    track.addEventListener('touchstart',e=>{touchStartX=e.touches[0].clientX;},{passive:true});
-    track.addEventListener('touchend',e=>{
-      const dx=touchStartX-e.changedTouches[0].clientX;
-      if(Math.abs(dx)>50){dx>0?currentIndex++:currentIndex--;updateCarousel();}
-    },{passive:true});
-    currentIndex=1;updateCarousel();
+      // Animate movement
+      const animate = (direction) => {
+        if (isAnimating) return;
+        isAnimating = true;
+
+        const slideWidth = getSlideWidth();
+        track.style.transition = 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
+        
+        if (direction === 'next') {
+          track.style.transform = `translateX(-${slideWidth}px)`;
+          setTimeout(() => {
+            track.style.transition = 'none';
+            const movedSlide = slides.shift();
+            track.appendChild(movedSlide);
+            slides.push(movedSlide);
+            track.style.transform = 'translateX(0)';
+            isAnimating = false;
+            updateActive();
+          }, 500);
+        } else {
+          track.style.transform = `translateX(${slideWidth}px)`;
+          setTimeout(() => {
+            track.style.transition = 'none';
+            const movedSlide = slides.pop();
+            track.insertBefore(movedSlide, track.firstElementChild);
+            slides.unshift(movedSlide);
+            track.style.transform = 'translateX(0)';
+            isAnimating = false;
+            updateActive();
+          }, 500);
+        }
+      };
+
+      // Event handlers
+      nextBtn.addEventListener('click', () => animate('next'));
+      prevBtn.addEventListener('click', () => animate('prev'));
+
+      // Touch/swipe support
+      let touchStartX = 0;
+      track.addEventListener('touchstart', e => {
+        touchStartX = e.touches[0].clientX;
+      }, { passive: true });
+
+      track.addEventListener('touchend', e => {
+        const delta = touchStartX - e.changedTouches[0].clientX;
+        if (Math.abs(delta) > 50) {
+          delta > 0 ? animate('next') : animate('prev');
+        }
+      }, { passive: true });
+
+      // Keyboard support
+      document.addEventListener('keydown', e => {
+        if (e.key === 'ArrowLeft') animate('prev');
+        if (e.key === 'ArrowRight') animate('next');
+      });
+
+      // Initial setup
+      updateActive();
+    };
+
+    // Initialize when DOM loads
+    document.addEventListener('DOMContentLoaded', carousel);
   </script>
 </body>
 </html>
