@@ -1,1228 +1,259 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vishal Nagamalla | AI/ML & Robotics Researcher</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        darkgreen: '#1a2e1a',
-                        lightgreen: '#2d4d2d',
-                        accentgreen: '#3a5c3a',
-                    }
-                }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vishal Nagamalla | Home</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+  <!-- Tailwind & Font‑Awesome -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { poppins: ['Poppins', 'sans-serif'] },
+          colors: {
+            darkgreen : '#1a2e1a',
+            lightgreen: '#2d4d2d',
+            accentgreen:'#3a5c3a',
+          },
+          keyframes: {
+            shimmer: {
+              '0%':  {backgroundPosition: '-700px 0'},
+              '100%':{backgroundPosition:  '700px 0'}
             }
+          },
+          animation: {
+            shimmer: 'shimmer 4s linear infinite'
+          }
         }
-    </script>
-    <style>
-        /* Custom scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #111;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #3a5c3a;
-            border-radius: 4px;
-        }
-        
-        /* Animation classes */
-        .fade-in {
-            animation: fadeIn 1s ease-in-out;
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        
-        .slide-up {
-            animation: slideUp 0.8s ease-out;
-        }
-        
-        @keyframes slideUp {
-            from { 
-                opacity: 0;
-                transform: translateY(50px);
-            }
-            to { 
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        /* Typewriter effect */
-        .typewriter {
-            overflow: hidden;
-            border-right: .15em solid #3a5c3a;
-            white-space: nowrap;
-            margin: 0 auto;
-            letter-spacing: .15em;
-            animation: 
-                typing 3.5s steps(40, end),
-                blink-caret .75s step-end infinite;
-        }
-        
-        @keyframes typing {
-            from { width: 0 }
-            to { width: 100% }
-        }
-        
-        @keyframes blink-caret {
-            from, to { border-color: transparent }
-            50% { border-color: #3a5c3a; }
-        }
-        
-        /* Project card hover effect */
-        .project-card {
-            transition: all 0.3s ease;
-        }
-        
-        .project-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
-        }
-        
-        /* Active section indicator */
-        .nav-link {
-            position: relative;
-        }
-        
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -5px;
-            left: 0;
-            background-color: #3a5c3a;
-            transition: width 0.3s ease;
-        }
-        
-        .nav-link.active::after {
-            width: 100%;
-        }
+      }
+    }
+  </script>
 
-        /* Enhanced Carousel Styles */
-        .carousel-container {
-            position: relative;
-            overflow: hidden;
-            padding: 2rem 0;
-        }
+  <style>
+    /* Scrollbar */
+    ::-webkit-scrollbar{width:8px}
+    ::-webkit-scrollbar-track{background:#111}
+    ::-webkit-scrollbar-thumb{background:#3a5c3a;border-radius:4px}
 
-        .carousel-track {
-            display: flex;
-            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-            padding: 0 1rem;
-        }
+    /* Nav underline */
+    .nav-link{position:relative}
+    .nav-link::after{content:'';position:absolute;width:0;height:2px;bottom:-5px;left:0;background:#3a5c3a;transition:width .3s}
+    /* underline grows on hover */
+    .nav-link:hover::after{
+      width:100%;
+    }
+    .nav-link.active::after{width:0}
 
-        .carousel-slide {
-            flex: 0 0 calc(33.333% - 2rem);
-            margin: 0 1rem;
-            opacity: 0.5;
-            transform: scale(0.9);
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-            z-index: 1;
-            filter: brightness(0.7);
-        }
+    /* typing cursor */
+    .type-cursor::after{content:'|';margin-left:4px;animation:blink .8s infinite}
+    @keyframes blink{0%,50%{opacity:1}51%,100%{opacity:0}}
 
-        .carousel-slide.active {
-            opacity: 1;
-            transform: scale(1);
-            filter: brightness(1);
-            z-index: 3;
-            position: relative;
-        }
+    /* fade‑up helper */
+    .fade-up{opacity:0;transform:translateY(40px);animation:fadeUp .8s forwards}
+    @keyframes fadeUp{to{opacity:1;transform:translateY(0)}}
 
-        .carousel-slide.prev,
-        .carousel-slide.next {
-            opacity: 0.7;
-            transform: scale(0.95);
-            z-index: 2;
-            filter: brightness(0.9);
-        }
-
-        @media (max-width: 1024px) {
-            .carousel-slide {
-                flex: 0 0 calc(50% - 2rem);
-            }
-        }
-
-        @media (max-width: 768px) {
-            .carousel-slide {
-                flex: 0 0 calc(100% - 2rem);
-            }
-        }
-    </style>
+    /* show desktop contact dropdown on hover of parent */
+    .group:hover #contact-menu{
+      opacity:1 !important;
+      visibility:visible !important;
+      transform:scale(100%) !important;
+    }
+  </style>
 </head>
-<body class="bg-black text-white font-sans min-h-screen">
-    <!-- Loading Screen -->
-    <div id="loading-screen" class="fixed inset-0 bg-black z-50 flex flex-col items-center justify-center">
-        <div class="animate-spin rounded-full h-20 w-20 border-t-2 border-b-2 border-darkgreen mb-4"></div>
-        <p class="text-darkgreen text-xl">Loading Portfolio...</p>
+<body class="bg-black text-white font-poppins min-h-screen">
+
+  <!-- ───── NAV ───── -->
+  <nav class="fixed w-full bg-black bg-opacity-90 z-40 shadow-lg">
+    <div class="max-w-7xl mx-auto px-4 flex items-center justify-between h-16">
+      <span class="text-xl font-extrabold text-darkgreen">VN</span>
+      <div class="space-x-8 hidden md:flex">
+        <a href="index.html"        class="nav-link px-3 py-2">Home</a>
+        <a href="professional.html" class="nav-link       px-3 py-2">Professional</a>
+        <!-- Contact dropdown -->
+        <div class="relative group">
+          <button class="nav-link px-3 py-2 flex items-center gap-1">
+            Contact 
+          </button>
+          <div id="contact-menu"
+               class="absolute right-0 mt-2 bg-darkgreen text-white rounded-lg shadow-lg border border-accentgreen opacity-0 invisible transform scale-95 origin-top-right transition-all duration-150 z-50 flex flex-row items-center gap-4 px-4 py-3">
+            <a href="mailto:Vishal.Nagamalla@gmail.com" target="_blank"
+               class="w-10 h-10 flex items-center justify-center rounded-md text-white hover:bg-accentgreen">
+              <i class="fas fa-envelope text-lg"></i>
+            </a>
+            <a href="https://github.com/Vishal-Nagamalla" target="_blank"
+               class="w-10 h-10 flex items-center justify-center rounded-md text-white hover:bg-accentgreen">
+              <i class="fab fa-github text-lg"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/vishalnag" target="_blank"
+               class="w-10 h-10 flex items-center justify-center rounded-md text-white hover:bg-accentgreen">
+              <i class="fab fa-linkedin text-lg"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      <!-- hamburger (mobile only) -->
+      <button id="mobile-nav-toggle"
+              class="md:hidden text-white text-2xl focus:outline-none">
+        <i class="fas fa-bars"></i>
+      </button>
     </div>
+  </nav>
+</nav>
 
-    <!-- Navigation -->
-    <nav class="fixed w-full bg-black bg-opacity-90 z-40 shadow-lg">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-16">
-                <div class="flex items-center">
-                    <span class="text-xl font-bold text-darkgreen">VN</span>
-                </div>
-                <div class="hidden md:block">
-                    <div class="ml-10 flex items-baseline space-x-8">
-                        <a href="#home" class="nav-link text-white hover:text-darkgreen px-3 py-2 rounded-md text-sm font-medium active">Home</a>
-                        <a href="#about" class="nav-link text-white hover:text-darkgreen px-3 py-2 rounded-md text-sm font-medium">About</a>
-                        <a href="#skills" class="nav-link text-white hover:text-darkgreen px-3 py-2 rounded-md text-sm font-medium">Skills</a>
-                        <a href="#projects" class="nav-link text-white hover:text-darkgreen px-3 py-2 rounded-md text-sm font-medium">Projects</a>
-                        <a href="#experience" class="nav-link text-white hover:text-darkgreen px-3 py-2 rounded-md text-sm font-medium">Experience</a>
-                        <a href="#contact" class="nav-link text-white hover:text-darkgreen px-3 py-2 rounded-md text-sm font-medium">Contact</a>
-                    </div>
-                </div>
-                <div class="-mr-2 flex md:hidden">
-                    <button id="mobile-menu-button" class="text-white hover:text-darkgreen inline-flex items-center justify-center p-2 rounded-md focus:outline-none">
-                        <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                        </svg>
-                    </button>
-                </div>
-            </div>
+<!-- mobile nav panel -->
+<div id="mobile-nav"
+     class="fixed top-16 right-0 w-60 bg-black bg-opacity-95 border-l border-accentgreen
+            transform translate-x-full transition-transform duration-200 z-40 md:hidden">
+  <a href="index.html"        class="block px-6 py-4 nav-link border-b border-gray-800">Home</a>
+  <a href="professional.html" class="block px-6 py-4 nav-link border-b border-gray-800">Professional</a>
+  <button id="mobile-contact"
+          class="w-full text-left px-6 py-4 flex items-center gap-3 border-b border-gray-800">
+    Contact <i class="fas fa-chevron-down ml-auto"></i>
+  </button>
+  <div id="mobile-contact-links" class="pl-10 pb-4 space-y-3 hidden">
+    <a href="mailto:Vishal.Nagamalla@gmail.com" class="block">Email</a>
+    <a href="https://github.com/Vishal-Nagamalla" target="_blank" class="block">GitHub</a>
+    <a href="https://www.linkedin.com/in/vishalnag" target="_blank"  class="block">LinkedIn</a>
+  </div>
+</div>
+
+  <!-- ───── MAIN ───── -->
+  <main class="pt-20">
+
+    <!-- Hero -->
+    <section class="min-h-[95vh] flex flex-col lg:flex-row items-center lg:items-start pt-32 lg:pt-40
+                bg-gradient-to-b from-black to-darkgreen">
+      <div class="max-w-[1300px] mx-auto flex flex-col lg:flex-row items-center justify-center gap-10 lg:gap-20 w-full px-6">
+        <!-- text -->
+        <div class="space-y-10 text-center md:text-left fade-up flex-1">
+          <h1 class="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold leading-tight whitespace-nowrap
+                     bg-gradient-to-r from-white via-accentgreen to-white
+                     bg-[length:400%_100%] bg-clip-text text-transparent animate-shimmer">
+            Hi, I'm&nbsp;Vishal
+          </h1>
+          <p id="role-line"
+             class="text-xl sm:text-2xl md:text-3xl lg:text-4xl text-gray-200 type-cursor">
+          </p>
         </div>
-        
-        <!-- Mobile menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-black bg-opacity-95">
-            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                <a href="#home" class="nav-link text-white block px-3 py-2 rounded-md text-base font-medium">Home</a>
-                <a href="#about" class="nav-link text-white block px-3 py-2 rounded-md text-base font-medium">About</a>
-                <a href="#skills" class="nav-link text-white block px-3 py-2 rounded-md text-base font-medium">Skills</a>
-                <a href="#projects" class="nav-link text-white block px-3 py-2 rounded-md text-base font-medium">Projects</a>
-                <a href="#experience" class="nav-link text-white block px-3 py-2 rounded-md text-base font-medium">Experience</a>
-                <a href="#contact" class="nav-link text-white block px-3 py-2 rounded-md text-base font-medium">Contact</a>
-            </div>
+
+        <!-- portrait -->
+        <div class="flex justify-center md:justify-end fade-up" style="animation-delay:.05s">
+          <img src="portrait.jpg"
+               alt="Vishal portrait"
+               class="w-72 sm:w-96 md:w-[22rem] lg:w-[26rem] xl:w-[28rem] aspect-square rounded-2xl object-cover shadow-[0_10px_40px_rgba(0,0,0,0.5)]">
         </div>
-    </nav>
+      </div>
+    </section>
 
-    <!-- Main Content -->
-    <main>
-        <!-- Hero Section -->
-        <section id="home" class="min-h-screen flex items-center justify-center bg-gradient-to-b from-black to-darkgreen relative overflow-hidden">
-            <div class="absolute inset-0 opacity-20">
-                <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]"></div>
-            </div>
-            
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10 text-center fade-in">
-                <h1 class="text-4xl md:text-6xl font-bold mb-4 slide-up">
-                    <span class="text-white">Hi, I'm </span>
-                    <span class="text-darkgreen">Vishal Nagamalla</span>
-                </h1>
-                <h2 class="text-xl md:text-2xl mb-8 text-gray-300 slide-up" style="animation-delay: 0.2s;">AI/ML & Robotics Researcher | CS + DS @ Rutgers University</h2>
-                <div class="flex justify-center space-x-4 slide-up" style="animation-delay: 0.4s;">
-                    <a href="#projects" class="bg-darkgreen hover:bg-accentgreen text-white px-6 py-3 rounded-md font-medium transition duration-300">View My Work</a>
-                    <a href="#contact" class="border border-darkgreen hover:bg-darkgreen text-white px-6 py-3 rounded-md font-medium transition duration-300">Contact Me</a>
-                </div>
-                <div class="mt-12 slide-up" style="animation-delay: 0.6s;">
-                    <a href="#about" class="text-gray-400 hover:text-white animate-bounce">
-                        <i class="fas fa-chevron-down text-2xl"></i>
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <!-- About Section -->
-        <section id="about" class="py-20 bg-black">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <h2 class="text-3xl font-bold text-center mb-12 text-darkgreen">About Me</h2>
-                
-                <div class="flex flex-col md:flex-row items-center gap-12">
-                    <div class="w-full md:w-1/3 flex justify-center">
-                        <div class="relative">
-                            <div class="w-64 h-64 bg-darkgreen rounded-full overflow-hidden border-4 border-accentgreen">
-                                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80" 
-                                     alt="Profile" class="w-full h-full object-cover">
-                            </div>
-                            <div class="absolute -bottom-3 -right-3 bg-accentgreen text-white px-4 py-2 rounded-full">
-                                <span class="font-bold">CS + DS Student</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="w-full md:w-2/3">
-                        <h3 class="text-2xl font-semibold mb-4 text-darkgreen">Who am I?</h3>
-                        <p class="text-gray-300 mb-6 leading-relaxed">
-                            Hello! I'm Vishal Nagamalla, a sophomore at Rutgers University, passionate about Computer Science, AI/ML, Robotics, Engineering, Entrepreneurship, and everything in between. I've always had a unique ability to think outside the box and approach problems creatively, and I genuinely believe AI and Robotics are the future, and I'm excited to be part of shaping it.
-                        </p>
-                        
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-                            <div class="flex items-start">
-                                <div class="mr-4 mt-1 text-darkgreen">
-                                    <i class="fas fa-graduation-cap text-xl"></i>
-                                </div>
-                                <div>
-                                    <h4 class="font-semibold text-white">Education</h4>
-                                    <p class="text-gray-400">B.S. in Computer Science and Data Science</p>
-                                    <p class="text-gray-400">Rutgers University, 2024-2027 (Expected)</p>
-                                    <p class="text-gray-400">GPA: 4.0</p>
-                                </div>
-                            </div>
-                            <div class="flex items-start">
-                                <div class="mr-4 mt-1 text-darkgreen">
-                                    <i class="fas fa-code text-xl"></i>
-                                </div>
-                                <div>
-                                    <h4 class="font-semibold text-white">Specialization</h4>
-                                    <p class="text-gray-400">AI & Machine Learning</p>
-                                    <p class="text-gray-400">Robotics & Computer Vision</p>
-                                </div>
-                            </div>
-                            <div class="flex items-start">
-                                <div class="mr-4 mt-1 text-darkgreen">
-                                    <i class="fas fa-map-marker-alt text-xl"></i>
-                                </div>
-                                <div>
-                                    <h4 class="font-semibold text-white">Location</h4>
-                                    <p class="text-gray-400">New Brunswick, NJ</p>
-                                    <p class="text-gray-400">Open to Remote Work</p>
-                                </div>
-                            </div>
-                            <div class="flex items-start">
-                                <div class="mr-4 mt-1 text-darkgreen">
-                                    <i class="fas fa-heart text-xl"></i>
-                                </div>
-                                <div>
-                                    <h4 class="font-semibold text-white">Interests</h4>
-                                    <p class="text-gray-400">Robotics Competitions</p>
-                                    <p class="text-gray-400">AI Research</p>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="flex flex-wrap gap-4">
-                            <a href="#" class="bg-darkgreen hover:bg-accentgreen text-white px-6 py-2 rounded-md font-medium transition duration-300 flex items-center">
-                                <i class="fas fa-download mr-2"></i> Download CV
-                            </a>
-                            <a href="#contact" class="border border-darkgreen hover:bg-darkgreen text-white px-6 py-2 rounded-md font-medium transition duration-300">
-                                Hire Me
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Skills Section -->
-        <section id="skills" class="py-20 bg-darkgreen">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <h2 class="text-3xl font-bold text-center mb-12 text-white">My Skills</h2>
-                
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-                    <div>
-                        <h3 class="text-xl font-semibold mb-6 text-white">Technical Skills</h3>
-                        
-                        <div class="space-y-6">
-                            <div>
-                                <div class="flex justify-between mb-1">
-                                    <span class="text-white">Python</span>
-                                    <span class="text-white">95%</span>
-                                </div>
-                                <div class="w-full bg-black rounded-full h-2">
-                                    <div class="bg-accentgreen h-2 rounded-full" style="width: 95%"></div>
-                                </div>
-                            </div>
-                            
-                            <div>
-                                <div class="flex justify-between mb-1">
-                                    <span class="text-white">Java</span>
-                                    <span class="text-white">90%</span>
-                                </div>
-                                <div class="w-full bg-black rounded-full h-2">
-                                    <div class="bg-accentgreen h-2 rounded-full" style="width: 90%"></div>
-                                </div>
-                            </div>
-                            
-                            <div>
-                                <div class="flex justify-between mb-1">
-                                    <span class="text-white">C#</span>
-                                    <span class="text-white">85%</span>
-                                </div>
-                                <div class="w-full bg-black rounded-full h-2">
-                                    <div class="bg-accentgreen h-2 rounded-full" style="width: 85%"></div>
-                                </div>
-                            </div>
-                            
-                            <div>
-                                <div class="flex justify-between mb-1">
-                                    <span class="text-white">JavaScript</span>
-                                    <span class="text-white">85%</span>
-                                </div>
-                                <div class="w-full bg-black rounded-full h-2">
-                                    <div class="bg-accentgreen h-2 rounded-full" style="width: 85%"></div>
-                                </div>
-                            </div>
-                            
-                            <div>
-                                <div class="flex justify-between mb-1">
-                                    <span class="text-white">C/C++</span>
-                                    <span class="text-white">80%</span>
-                                </div>
-                                <div class="w-full bg-black rounded-full h-2">
-                                    <div class="bg-accentgreen h-2 rounded-full" style="width: 80%"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div>
-                        <h3 class="text-xl font-semibold mb-6 text-white">Professional Skills</h3>
-                        
-                        <div class="grid grid-cols-2 gap-4">
-                            <div class="bg-black bg-opacity-30 p-4 rounded-lg border border-accentgreen border-opacity-20">
-                                <div class="text-accentgreen mb-2">
-                                    <i class="fas fa-robot text-2xl"></i>
-                                </div>
-                                <h4 class="text-white font-medium mb-1">Robotics Engineering</h4>
-                                <p class="text-gray-300 text-sm">Autonomous systems and competitive robotics</p>
-                            </div>
-                            
-                            <div class="bg-black bg-opacity-30 p-4 rounded-lg border border-accentgreen border-opacity-20">
-                                <div class="text-accentgreen mb-2">
-                                    <i class="fas fa-brain text-2xl"></i>
-                                </div>
-                                <h4 class="text-white font-medium mb-1">AI/ML Research</h4>
-                                <p class="text-gray-300 text-sm">CNN, Computer Vision, Neural Networks</p>
-                            </div>
-                            
-                            <div class="bg-black bg-opacity-30 p-4 rounded-lg border border-accentgreen border-opacity-20">
-                                <div class="text-accentgreen mb-2">
-                                    <i class="fas fa-users text-2xl"></i>
-                                </div>
-                                <h4 class="text-white font-medium mb-1">Team Leadership</h4>
-                                <p class="text-gray-300 text-sm">Engineering lead for robotics teams</p>
-                            </div>
-                            
-                            <div class="bg-black bg-opacity-30 p-4 rounded-lg border border-accentgreen border-opacity-20">
-                                <div class="text-accentgreen mb-2">
-                                    <i class="fas fa-project-diagram text-2xl"></i>
-                                </div>
-                                <h4 class="text-white font-medium mb-1">Full-Stack Dev</h4>
-                                <p class="text-gray-300 text-sm">Front-end and back-end development</p>
-                            </div>
-                            
-                            <div class="bg-black bg-opacity-30 p-4 rounded-lg border border-accentgreen border-opacity-20">
-                                <div class="text-accentgreen mb-2">
-                                    <i class="fas fa-database text-2xl"></i>
-                                </div>
-                                <h4 class="text-white font-medium mb-1">Data Science</h4>
-                                <p class="text-gray-300 text-sm">Data analysis and visualization</p>
-                            </div>
-                            
-                            <div class="bg-black bg-opacity-30 p-4 rounded-lg border border-accentgreen border-opacity-20">
-                                <div class="text-accentgreen mb-2">
-                                    <i class="fas fa-lightbulb text-2xl"></i>
-                                </div>
-                                <h4 class="text-white font-medium mb-1">Creative Problem Solving</h4>
-                                <p class="text-gray-300 text-sm">Innovative solutions to complex problems</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="mt-16">
-                    <h3 class="text-xl font-semibold mb-6 text-white text-center">Technologies & Tools</h3>
-                    
-                    <div class="flex flex-wrap justify-center gap-6">
-                        <div class="flex flex-col items-center">
-                            <div class="w-16 h-16 bg-black rounded-full flex items-center justify-center mb-2">
-                                <i class="fab fa-python text-3xl text-accentgreen"></i>
-                            </div>
-                            <span class="text-white text-sm">Python</span>
-                        </div>
-                        
-                        <div class="flex flex-col items-center">
-                            <div class="w-16 h-16 bg-black rounded-full flex items-center justify-center mb-2">
-                                <i class="fas fa-robot text-3xl text-accentgreen"></i>
-                            </div>
-                            <span class="text-white text-sm">PyTorch</span>
-                        </div>
-                        
-                        <div class="flex flex-col items-center">
-                            <div class="w-16 h-16 bg-black rounded-full flex items-center justify-center mb-2">
-                                <i class="fas fa-eye text-3xl text-accentgreen"></i>
-                            </div>
-                            <span class="text-white text-sm">OpenCV</span>
-                        </div>
-                        
-                        <div class="flex flex-col items-center">
-                            <div class="w-16 h-16 bg-black rounded-full flex items-center justify-center mb-2">
-                                <i class="fab fa-java text-3xl text-accentgreen"></i>
-                            </div>
-                            <span class="text-white text-sm">Java</span>
-                        </div>
-                        
-                        <div class="flex flex-col items-center">
-                            <div class="w-16 h-16 bg-black rounded-full flex items-center justify-center mb-2">
-                                <i class="fab fa-js text-3xl text-accentgreen"></i>
-                            </div>
-                            <span class="text-white text-sm">JavaScript</span>
-                        </div>
-                        
-                        <div class="flex flex-col items-center">
-                            <div class="w-16 h-16 bg-black rounded-full flex items-center justify-center mb-2">
-                                <i class="fab fa-react text-3xl text-accentgreen"></i>
-                            </div>
-                            <span class="text-white text-sm">React</span>
-                        </div>
-                        
-                        <div class="flex flex-col items-center">
-                            <div class="w-16 h-16 bg-black rounded-full flex items-center justify-center mb-2">
-                                <i class="fas fa-database text-3xl text-accentgreen"></i>
-                            </div>
-                            <span class="text-white text-sm">SQL</span>
-                        </div>
-                        
-                        <div class="flex flex-col items-center">
-                            <div class="w-16 h-16 bg-black rounded-full flex items-center justify-center mb-2">
-                                <i class="fab fa-git-alt text-3xl text-accentgreen"></i>
-                            </div>
-                            <span class="text-white text-sm">Git</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Projects Section -->
-        <section id="projects" class="py-20 bg-black">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <h2 class="text-3xl font-bold text-center mb-12 text-darkgreen">My Projects</h2>
-                
-                <div class="carousel-container relative overflow-hidden py-8">
-                  <div class="carousel-track flex transition-transform duration-500 ease-in-out">
-                    <!-- HoloBrain -->
-                    <div class="carousel-slide min-w-full md:min-w-[50%] lg:min-w-[33.33%] px-4 transition-all duration-500">
-                      <div class="project-card bg-darkgreen bg-opacity-10 rounded-lg overflow-hidden border border-accentgreen border-opacity-20 hover:border-opacity-50 transition-all duration-300">
-                        <div class="h-48 overflow-hidden">
-                          <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-4.0.3..." alt="HoloBrain" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
-                        </div>
-                        <div class="p-6">
-                          <div class="flex justify-between items-start mb-2">
-                            <h3 class="text-xl font-semibold text-white">HoloBrain</h3>
-                            <span class="bg-accentgreen text-black text-xs px-2 py-1 rounded">ML/CV</span>
-                          </div>
-                          <p class="text-gray-400 mb-4">Interactive 3D MRI Analysis with Gesture-Controlled Hologram for medical diagnostics.</p>
-                          <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">PyTorch</span>
-                            <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">OpenCV</span>
-                            <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">Unity</span>
-                            <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">C#</span>
-                          </div>
-                          <div class="flex space-x-3">
-                            <a href="https://devpost.com/software/holobrain" target="_blank" class="text-accentgreen hover:text-white">
-                              <i class="fas fa-external-link-alt"></i>
-                            </a>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <!-- Handwriting Recognition -->
-                    <div class="carousel-slide min-w-full md:min-w-[50%] lg:min-w-[33.33%] px-4 transition-all duration-500">
-                      <div class="project-card bg-darkgreen bg-opacity-10 rounded-lg overflow-hidden border border-accentgreen border-opacity-20 hover:border-opacity-50 transition-all duration-300">
-                        <div class="h-48 overflow-hidden">
-                          <img src="https://images.unsplash.com/photo-1546074177-ffdda98d214f?ixlib=rb-4.0.3..." alt="Handwriting Recognition" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
-                        </div>
-                        <div class="p-6">
-                          <div class="flex justify-between items-start mb-2">
-                            <h3 class="text-xl font-semibold text-white">Handwriting Recognition</h3>
-                            <span class="bg-accentgreen text-black text-xs px-2 py-1 rounded">ML</span>
-                          </div>
-                          <p class="text-gray-400 mb-4">CNN model for recognizing handwritten letters using EMNIST dataset with 92% accuracy.</p>
-                          <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">PyTorch</span>
-                            <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">CNN</span>
-                            <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">Python</span>
-                          </div>
-                          <div class="flex space-x-3">
-                            <a href="https://github.com/Vishal-Nagamalla" target="_blank" class="text-accentgreen hover:text-white">
-                              <i class="fab fa-github"></i>
-                            </a>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <!-- Restaurant Website -->
-                    <div class="carousel-slide min-w-full md:min-w-[50%] lg:min-w-[33.33%] px-4 transition-all duration-500">
-                      <div class="project-card bg-darkgreen bg-opacity-10 rounded-lg overflow-hidden border border-accentgreen border-opacity-20 hover:border-opacity-50 transition-all duration-300">
-                        <div class="h-48 overflow-hidden">
-                          <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?..." alt="Restaurant Website" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
-                        </div>
-                        <div class="p-6">
-                          <div class="flex justify-between items-start mb-2">
-                            <h3 class="text-xl font-semibold text-white">Indian Cuisine Restaurant</h3>
-                            <span class="bg-accentgreen text-black text-xs px-2 py-1 rounded">Web Dev</span>
-                          </div>
-                          <p class="text-gray-400 mb-4">Full-stack website with interactive features, SQL database, and content management.</p>
-                          <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">ASP.NET</span>
-                            <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">SQL</span>
-                            <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">JavaScript</span>
-                            <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">Bootstrap</span>
-                          </div>
-                          <div class="flex space-x-3">
-                            <a href="https://github.com/Vishal-Nagamalla" target="_blank" class="text-accentgreen hover:text-white">
-                              <i class="fab fa-github"></i>
-                            </a>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <!-- Digit Recognition -->
-                    <div class="carousel-slide min-w-full md:min-w-[50%] lg:min-w-[33.33%] px-4 transition-all duration-500">
-                      <div class="project-card bg-darkgreen bg-opacity-10 rounded-lg overflow-hidden border border-accentgreen border-opacity-20 hover:border-opacity-50 transition-all duration-300">
-                        <div class="h-48 overflow-hidden">
-                          <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?..." alt="Digit Recognition" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
-                        </div>
-                        <div class="p-6">
-                          <div class="flex justify-between items-start mb-2">
-                            <h3 class="text-xl font-semibold text-white">Digit Recognition</h3>
-                            <span class="bg-accentgreen text-black text-xs px-2 py-1 rounded">ML</span>
-                          </div>
-                          <p class="text-gray-400 mb-4">CNN and Vision Transformer models for MNIST digit recognition with 98% accuracy.</p>
-                          <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">PyTorch</span>
-                            <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">CNN</span>
-                            <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">VIT</span>
-                          </div>
-                          <div class="flex space-x-3">
-                            <a href="https://github.com/Vishal-Nagamalla" target="_blank" class="text-accentgreen hover:text-white">
-                              <i class="fab fa-github"></i>
-                            </a>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <!-- Robotics -->
-                    <div class="carousel-slide min-w-full md:min-w-[50%] lg:min-w-[33.33%] px-4 transition-all duration-500">
-                      <div class="project-card bg-darkgreen bg-opacity-10 rounded-lg overflow-hidden border border-accentgreen border-opacity-20 hover:border-opacity-50 transition-all duration-300">
-                        <div class="h-48 overflow-hidden">
-                          <img src="https://images.unsplash.com/photo-1581094271901-8022df4466f9?..." alt="Robotics" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
-                        </div>
-                        <div class="p-6">
-                          <div class="flex justify-between items-start mb-2">
-                            <h3 class="text-xl font-semibold text-white">VEX Robotics</h3>
-                            <span class="bg-accentgreen text-black text-xs px-2 py-1 rounded">Robotics</span>
-                          </div>
-                          <p class="text-gray-400 mb-4">Autonomous and driver-controlled robotics systems for competitive environments.</p>
-                          <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">C++</span>
-                            <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">PID</span>
-                            <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">Sensors</span>
-                          </div>
-                          <div class="flex space-x-3">
-                            <a href="https://github.com/Vishal-Nagamalla" target="_blank" class="text-accentgreen hover:text-white">
-                              <i class="fab fa-github"></i>
-                            </a>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <!-- Data Processing -->
-                    <div class="carousel-slide min-w-full md:min-w-[50%] lg:min-w-[33.33%] px-4 transition-all duration-500">
-                      <div class="project-card bg-darkgreen bg-opacity-10 rounded-lg overflow-hidden border border-accentgreen border-opacity-20 hover:border-opacity-50 transition-all duration-300">
-                        <div class="h-48 overflow-hidden">
-                          <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?..." alt="Data Processing" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
-                        </div>
-                        <div class="p-6">
-                          <div class="flex justify-between items-start mb-2">
-                            <h3 class="text-xl font-semibold text-white">Data Processing</h3>
-                            <span class="bg-accentgreen text-black text-xs px-2 py-1 rounded">Data</span>
-                          </div>
-                          <p class="text-gray-400 mb-4">Automated data cleaning and processing pipelines with Python and Excel.</p>
-                          <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">Python</span>
-                            <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">Pandas</span>
-                            <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">Excel</span>
-                          </div>
-                          <div class="flex space-x-3">
-                            <a href="https://github.com/Vishal-Nagamalla" target="_blank" class="text-accentgreen hover:text-white">
-                              <i class="fab fa-github"></i>
-                            </a>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <!-- Navigation buttons -->
-                  <button class="carousel-prev absolute left-4 top-1/2 -translate-y-1/2 bg-darkgreen hover:bg-accentgreen text-white p-3 rounded-full shadow-lg">←</button>
-                  <button class="carousel-next absolute right-4 top-1/2 -translate-y-1/2 bg-darkgreen hover:bg-accentgreen text-white p-3 rounded-full shadow-lg">→</button>
-                </div>
-                
-                <div class="mt-12 text-center">
-                    <a href="https://github.com/Vishal-Nagamalla" target="_blank" class="inline-flex items-center border border-darkgreen hover:bg-darkgreen text-white px-6 py-3 rounded-md font-medium transition duration-300">
-                        View All Projects <i class="fas fa-arrow-right ml-2"></i>
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <!-- Experience Section -->
-        <section id="experience" class="py-20 bg-darkgreen">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <h2 class="text-3xl font-bold text-center mb-12 text-white">Experience & Education</h2>
-                
-                <div class="relative">
-                    <!-- Timeline line -->
-                    <div class="hidden md:block absolute left-1/2 top-0 bottom-0 w-1 bg-accentgreen transform -translate-x-1/2"></div>
-                    
-                    <!-- Timeline items -->
-                    <div class="space-y-8 md:space-y-16">
-                        <!-- Research Fellowship -->
-                        <div class="relative flex flex-col md:flex-row items-center">
-                            <div class="hidden md:block w-1/2 pr-8 text-right">
-                                <div class="relative">
-                                    <h3 class="text-xl font-semibold text-white">Undergraduate Research Fellow</h3>
-                                    <p class="text-accentgreen">Rutgers University | Apr 2025 - Present</p>
-                                    <p class="text-gray-300 mt-2">
-                                        Selected for competitive research fellowship within the Physical AI Lab focusing on AI and robotics.
-                                    </p>
-                                </div>
-                            </div>
-                            
-                            <div class="hidden md:flex items-center justify-center w-16 h-16 rounded-full bg-accentgreen text-black z-10 mx-auto">
-                                <i class="fas fa-flask text-2xl"></i>
-                            </div>
-                            
-                            <div class="w-full md:w-1/2 pl-8 md:mt-0">
-                                <div class="md:hidden mb-4">
-                                    <h3 class="text-xl font-semibold text-white">Undergraduate Research Fellow</h3>
-                                    <p class="text-accentgreen">Rutgers University | Apr 2025 - Present</p>
-                                    <p class="text-gray-300 mt-2">
-                                        Selected for competitive research fellowship within the Physical AI Lab focusing on AI and robotics.
-                                    </p>
-                                </div>
-                                <div class="bg-black bg-opacity-30 p-6 rounded-lg border border-accentgreen border-opacity-20">
-                                    <h4 class="font-medium text-white mb-2">Key Responsibilities:</h4>
-                                    <ul class="list-disc list-inside text-gray-300 space-y-1">
-                                        <li>Engage in interdisciplinary AI and robotics research</li>
-                                        <li>Contribute to ongoing projects in Physical AI Lab</li>
-                                        <li>Collaborate with research team on innovative solutions</li>
-                                        <li>Present findings and progress reports</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Atyeti -->
-                        <div class="relative flex flex-col md:flex-row items-center">
-                            <div class="w-full md:w-1/2 pr-8 md:mt-0">
-                                <div class="md:hidden mb-4">
-                                    <h3 class="text-xl font-semibold text-white">AI/ML & Data Engineering Intern</h3>
-                                    <p class="text-accentgreen">Atyeti Inc. | May 2024 - Sep 2024</p>
-                                    <p class="text-gray-300 mt-2">
-                                        Developed ML models and implemented data processing solutions.
-                                    </p>
-                                </div>
-                                <div class="bg-black bg-opacity-30 p-6 rounded-lg border border-accentgreen border-opacity-20">
-                                    <h4 class="font-medium text-white mb-2">Key Achievements:</h4>
-                                    <ul class="list-disc list-inside text-gray-300 space-y-1">
-                                        <li>Implemented CNN and Vision Transformer models for digit recognition (98% accuracy)</li>
-                                        <li>Developed automated data cleaning pipelines saving 18 man-hours per project</li>
-                                        <li>Created data validation techniques ensuring 97.25% analysis accuracy</li>
-                                        <li>Presented structured updates and participated in scrum meetings</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            
-                            <div class="hidden md:flex items-center justify-center w-16 h-16 rounded-full bg-accentgreen text-black z-10 mx-auto">
-                                <i class="fas fa-briefcase text-2xl"></i>
-                            </div>
-                            
-                            <div class="hidden md:block w-1/2 pl-8">
-                                <div class="relative">
-                                    <h3 class="text-xl font-semibold text-white">AI/ML & Data Engineering Intern</h3>
-                                    <p class="text-accentgreen">Atyeti Inc. | May 2024 - Sep 2024</p>
-                                    <p class="text-gray-300 mt-2">
-                                        Developed ML models and implemented data processing solutions.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Rutgers Robotics -->
-                        <div class="relative flex flex-col md:flex-row items-center">
-                            <div class="hidden md:block w-1/2 pr-8 text-right">
-                                <div class="relative">
-                                    <h3 class="text-xl font-semibold text-white">Engineering Lead & Software Engineer</h3>
-                                    <p class="text-accentgreen">Rutgers VEXU Robotics | Sep 2024 - Present</p>
-                                    <p class="text-gray-300 mt-2">
-                                        Lead engineering and software development for competitive robotics team.
-                                    </p>
-                                </div>
-                            </div>
-                            
-                            <div class="hidden md:flex items-center justify-center w-16 h-16 rounded-full bg-accentgreen text-black z-10 mx-auto">
-                                <i class="fas fa-robot text-2xl"></i>
-                            </div>
-                            
-                            <div class="w-full md:w-1/2 pl-8 md:mt-0">
-                                <div class="md:hidden mb-4">
-                                    <h3 class="text-xl font-semibold text-white">Engineering Lead & Software Engineer</h3>
-                                    <p class="text-accentgreen">Rutgers VEXU Robotics | Sep 2024 - Present</p>
-                                    <p class="text-gray-300 mt-2">
-                                        Lead engineering and software development for competitive robotics team.
-                                    </p>
-                                </div>
-                                <div class="bg-black bg-opacity-30 p-6 rounded-lg border border-accentgreen border-opacity-20">
-                                    <h4 class="font-medium text-white mb-2">Key Responsibilities:</h4>
-                                    <ul class="list-disc list-inside text-gray-300 space-y-1">
-                                        <li>Develop autonomous and driver-controlled code using C++</li>
-                                        <li>Optimize sensor-based navigation and motion planning</li>
-                                        <li>Lead mechanical design and engineering process</li>
-                                        <li>Facilitate team collaboration for competition performance</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Team Tranquil -->
-                        <div class="relative flex flex-col md:flex-row items-center">
-                            <div class="w-full md:w-1/2 pr-8 md:mt-0">
-                                <div class="md:hidden mb-4">
-                                    <h3 class="text-xl font-semibold text-white">Full-Stack Web Dev Intern</h3>
-                                    <p class="text-accentgreen">Team Tranquil Inc. | Jul 2023 - Dec 2023</p>
-                                    <p class="text-gray-300 mt-2">
-                                        Developed full-stack web applications for business solutions.
-                                    </p>
-                                </div>
-                                <div class="bg-black bg-opacity-30 p-6 rounded-lg border border-accentgreen border-opacity-20">
-                                    <h4 class="font-medium text-white mb-2">Key Achievements:</h4>
-                                    <ul class="list-disc list-inside text-gray-300 space-y-1">
-                                        <li>Developed restaurant website with interactive features and SQL database</li>
-                                        <li>Redesigned SQL-based image management system improving productivity by 50%</li>
-                                        <li>Engineered 100+ lines of JavaScript for enhanced UI interactivity</li>
-                                        <li>Optimized SQL queries improving performance by 33%</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            
-                            <div class="hidden md:flex items-center justify-center w-16 h-16 rounded-full bg-accentgreen text-black z-10 mx-auto">
-                                <i class="fas fa-laptop-code text-2xl"></i>
-                            </div>
-                            
-                            <div class="hidden md:block w-1/2 pl-8">
-                                <div class="relative">
-                                    <h3 class="text-xl font-semibold text-white">Full-Stack Web Dev Intern</h3>
-                                    <p class="text-accentgreen">Team Tranquil Inc. | Jul 2023 - Dec 2023</p>
-                                    <p class="text-gray-300 mt-2">
-                                        Developed full-stack web applications for business solutions.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Education -->
-                        <div class="relative flex flex-col md:flex-row items-center">
-                            <div class="hidden md:block w-1/2 pr-8 text-right">
-                                <div class="relative">
-                                    <h3 class="text-xl font-semibold text-white">B.S. Computer Science & Data Science</h3>
-                                    <p class="text-accentgreen">Rutgers University | 2024-2027 (Expected)</p>
-                                    <p class="text-gray-300 mt-2">
-                                        GPA: 4.0 | Specializing in AI/ML and Robotics
-                                    </p>
-                                </div>
-                            </div>
-                            
-                            <div class="hidden md:flex items-center justify-center w-16 h-16 rounded-full bg-accentgreen text-black z-10 mx-auto">
-                                <i class="fas fa-graduation-cap text-2xl"></i>
-                            </div>
-                            
-                            <div class="w-full md:w-1/2 pl-8 md:mt-0">
-                                <div class="md:hidden mb-4">
-                                    <h3 class="text-xl font-semibold text-white">B.S. Computer Science & Data Science</h3>
-                                    <p class="text-accentgreen">Rutgers University | 2024-2027 (Expected)</p>
-                                    <p class="text-gray-300 mt-2">
-                                        GPA: 4.0 | Specializing in AI/ML and Robotics
-                                    </p>
-                                </div>
-                                <div class="bg-black bg-opacity-30 p-6 rounded-lg border border-accentgreen border-opacity-20">
-                                    <h4 class="font-medium text-white mb-2">Activities & Societies:</h4>
-                                    <ul class="list-disc list-inside text-gray-300 space-y-1">
-                                        <li>Physical AI Research</li>
-                                        <li>Robotics Team (Engineering & Programming Lead)</li>
-                                        <li>Competitive Programming Team</li>
-                                        <li>RU Autonomous</li>
-                                        <li>USACS</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Contact Section -->
-        <section id="contact" class="py-20 bg-black">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <h2 class="text-3xl font-bold text-center mb-12 text-darkgreen">Get In Touch</h2>
-                
-                <div class="flex flex-col lg:flex-row gap-12">
-                    <div class="w-full lg:w-1/2">
-                        <h3 class="text-xl font-semibold mb-6 text-darkgreen">Contact Information</h3>
-                        
-                        <div class="space-y-6">
-                            <div class="flex items-start">
-                                <div class="mr-4 mt-1 text-darkgreen">
-                                    <i class="fas fa-envelope text-xl"></i>
-                                </div>
-                                <div>
-                                    <h4 class="font-semibold text-white">Email</h4>
-                                    <p class="text-gray-400">Vishal.Nagamalla@gmail.com</p>
-                                </div>
-                            </div>
-                            
-                            <div class="flex items-start">
-                                <div class="mr-4 mt-1 text-darkgreen">
-                                    <i class="fas fa-phone-alt text-xl"></i>
-                                </div>
-                                <div>
-                                    <h4 class="font-semibold text-white">Phone</h4>
-                                    <p class="text-gray-400">(732) 285-3698</p>
-                                </div>
-                            </div>
-                            
-                            <div class="flex items-start">
-                                <div class="mr-4 mt-1 text-darkgreen">
-                                    <i class="fas fa-map-marker-alt text-xl"></i>
-                                </div>
-                                <div>
-                                    <h4 class="font-semibold text-white">Location</h4>
-                                    <p class="text-gray-400">New Brunswick, NJ</p>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="mt-10">
-                            <h3 class="text-xl font-semibold mb-6 text-darkgreen">Connect With Me</h3>
-                            <div class="flex space-x-4">
-                                <a href="www.linkedin.com/in/vishalnag" target="_blank" class="w-12 h-12 bg-darkgreen hover:bg-accentgreen rounded-full flex items-center justify-center text-white transition duration-300">
-                                    <i class="fab fa-linkedin-in text-xl"></i>
-                                </a>
-                                <a href="https://github.com/Vishal-Nagamalla" target="_blank" class="w-12 h-12 bg-darkgreen hover:bg-accentgreen rounded-full flex items-center justify-center text-white transition duration-300">
-                                    <i class="fab fa-github text-xl"></i>
-                                </a>
-                                <a href="https://devpost.com/Vishal-Nagamalla" target="_blank" class="w-12 h-12 bg-darkgreen hover:bg-accentgreen rounded-full flex items-center justify-center text-white transition duration-300">
-                                    <i class="fas fa-code text-xl"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="w-full lg:w-1/2">
-                        <h3 class="text-xl font-semibold mb-6 text-darkgreen">Send Me a Message</h3>
-                        
-                        <form class="space-y-6">
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                <div>
-                                    <label for="name" class="block text-sm font-medium text-gray-300 mb-1">Name</label>
-                                    <input type="text" id="name" class="w-full bg-black bg-opacity-30 border border-gray-700 focus:border-darkgreen focus:ring-1 focus:ring-darkgreen rounded-md px-4 py-2 text-white transition duration-300">
-                                </div>
-                                <div>
-                                    <label for="email" class="block text-sm font-medium text-gray-300 mb-1">Email</label>
-                                    <input type="email" id="email" class="w-full bg-black bg-opacity-30 border border-gray-700 focus:border-darkgreen focus:ring-1 focus:ring-darkgreen rounded-md px-4 py-2 text-white transition duration-300">
-                                </div>
-                            </div>
-                            
-                            <div>
-                                <label for="subject" class="block text-sm font-medium text-gray-300 mb-1">Subject</label>
-                                <input type="text" id="subject" class="w-full bg-black bg-opacity-30 border border-gray-700 focus:border-darkgreen focus:ring-1 focus:ring-darkgreen rounded-md px-4 py-2 text-white transition duration-300">
-                            </div>
-                            
-                            <div>
-                                <label for="message" class="block text-sm font-medium text-gray-300 mb-1">Message</label>
-                                <textarea id="message" rows="5" class="w-full bg-black bg-opacity-30 border border-gray-700 focus:border-darkgreen focus:ring-1 focus:ring-darkgreen rounded-md px-4 py-2 text-white transition duration-300"></textarea>
-                            </div>
-                            
-                            <button type="submit" class="bg-darkgreen hover:bg-accentgreen text-white px-6 py-3 rounded-md font-medium transition duration-300 w-full">
-                                Send Message <i class="fas fa-paper-plane ml-2"></i>
-                            </button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- Footer -->
-    <footer class="bg-black border-t border-gray-800 py-8">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col md:flex-row justify-between items-center">
-                <div class="mb-4 md:mb-0">
-                    <span class="text-xl font-bold text-darkgreen">Vishal Nagamalla</span>
-                    <p class="text-gray-500 mt-1">AI/ML & Robotics Researcher</p>
-                </div>
-                
-                <div class="flex space-x-6">
-                    <a href="www.linkedin.com/in/vishalnag" target="_blank" class="text-gray-400 hover:text-darkgreen">
-                        <i class="fab fa-linkedin-in"></i>
-                    </a>
-                    <a href="https://github.com/Vishal-Nagamalla" target="_blank" class="text-gray-400 hover:text-darkgreen">
-                        <i class="fab fa-github"></i>
-                    </a>
-                    <a href="https://devpost.com/Vishal-Nagamalla" target="_blank" class="text-gray-400 hover:text-darkgreen">
-                        <i class="fas fa-code"></i>
-                    </a>
-                </div>
-            </div>
-            
-            <div class="mt-8 pt-8 border-t border-gray-800 text-center text-gray-500 text-sm">
-                <p>&copy; 2024 Vishal Nagamalla. All rights reserved.</p>
-                <p class="mt-2">Designed & Developed with <i class="fas fa-heart text-red-500"></i> by Vishal Nagamalla</p>
-            </div>
+    <!-- Snapshot row -->
+    <section class="bg-black py-16">
+      <div class="max-w-6xl mx-auto px-6 grid sm:grid-cols-2 lg:grid-cols-4 gap-12 text-center">
+        <div class="flex flex-col items-center">
+          <i class="fas fa-university text-4xl text-accentgreen mb-4"></i>
+          <p class="font-semibold">Rutgers University</p>
+          <p class="text-gray-400 text-sm mt-1">CS + DS ’27</p>
         </div>
-    </footer>
+        <div class="flex flex-col items-center">
+          <i class="fas fa-robot text-4xl text-accentgreen mb-4"></i>
+          <p class="font-semibold">Physical AI Lab</p>
+          <p class="text-gray-400 text-sm mt-1">Research Fellow</p>
+        </div>
+        <div class="flex flex-col items-center">
+          <i class="fas fa-dumbbell text-4xl text-accentgreen mb-4"></i>
+          <p class="font-semibold">After Hours</p>
+          <p class="text-gray-400 text-sm mt-1">Lifting • Dancing • Don Toliver</p>
+        </div>
+        <div class="flex flex-col items-center">
+          <i class="fas fa-lightbulb text-4xl text-accentgreen mb-4"></i>
+          <p class="font-semibold">Creative Thinker</p>
+          <p class="text-gray-400 text-sm mt-1">Outside‑the‑box ideas</p>
+        </div>
+      </div>
+    </section>
 
-    <!-- Back to Top Button -->
-    <button id="back-to-top" class="fixed bottom-8 right-8 w-12 h-12 bg-darkgreen hover:bg-accentgreen text-white rounded-full flex items-center justify-center shadow-lg transition duration-300 opacity-0 invisible">
-        <i class="fas fa-arrow-up"></i>
-    </button>
+    <!-- Short About -->
+    <section class="bg-darkgreen py-20">
+      <div class="max-w-3xl mx-auto px-6 text-center">
+        <h2 class="text-3xl font-bold mb-6">About Me</h2>
+        <p class="text-gray-200 leading-relaxed text-lg">
+          I’m <span class="font-semibold">Vishal Nagamalla</span>  a innovator who loves turning bold, “what‑if?” ideas into working products. I see AI and Robotics not just as the future but as a playground for creativity, and that's my specialty. When I’m not training models or making robots, you’ll find me pushing plates in the gym, cutting loose on the dance floor, or geeking out over the newest tech drops.</p>
+      </div>
+    </section>
+  </main>
 
-    <script>
-        // Loading screen
-        window.addEventListener('load', function() {
-            setTimeout(function() {
-                document.getElementById('loading-screen').classList.add('opacity-0');
-                setTimeout(function() {
-                    document.getElementById('loading-screen').classList.add('hidden');
-                }, 500);
-            }, 1000);
-        });
+  <footer class="bg-black border-t border-gray-800 py-6 text-center text-gray-500 text-sm">
+    © 2025 Vishal Nagamalla
+  </footer>
 
-        // Mobile menu toggle
-        document.getElementById('mobile-menu-button').addEventListener('click', function() {
-            const menu = document.getElementById('mobile-menu');
-            menu.classList.toggle('hidden');
-        });
+  <!-- ───── JS ───── -->
+  <script>
+    /* contact dropdown */
+    (() => {
+      const btn  = document.querySelector('.group > button.nav-link');   // dropdown trigger
+      const menu = document.getElementById('contact-menu');
+      const chev = document.getElementById('contact-chevron');           // may not exist
 
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
-                
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                    
-                    // Close mobile menu if open
-                    document.getElementById('mobile-menu').classList.add('hidden');
-                }
-            });
-        });
+      if (!btn || !menu) return;        // exit gracefully if elements missing
 
-        // Active navigation link based on scroll position
-        const sections = document.querySelectorAll('section');
-        const navLinks = document.querySelectorAll('.nav-link');
-        
-        window.addEventListener('scroll', function() {
-            let current = '';
-            
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
-                
-                if (pageYOffset >= (sectionTop - 150)) {
-                    current = section.getAttribute('id');
-                }
-            });
-            
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === `#${current}`) {
-                    link.classList.add('active');
-                }
-            });
-        });
+      const open  = () => {
+        menu.classList.remove('opacity-0','invisible','scale-95');
+        menu.classList.add   ('opacity-100','visible','scale-100');
+        if (chev) chev.style.transform='rotate(180deg)';
+      };
 
-        // Back to top button
-        const backToTopButton = document.getElementById('back-to-top');
-        
-        window.addEventListener('scroll', function() {
-            if (window.pageYOffset > 300) {
-                backToTopButton.classList.remove('opacity-0', 'invisible');
-                backToTopButton.classList.add('opacity-100', 'visible');
-            } else {
-                backToTopButton.classList.remove('opacity-100', 'visible');
-                backToTopButton.classList.add('opacity-0', 'invisible');
-            }
-        });
-        
-        backToTopButton.addEventListener('click', function() {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
+      const close = () => {
+        menu.classList.add   ('opacity-0','invisible','scale-95');
+        menu.classList.remove('opacity-100','visible','scale-100');
+        if (chev) chev.style.transform='rotate(0)';
+      };
 
-        // Form submission
-        const contactForm = document.querySelector('form');
-        if (contactForm) {
-            contactForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                
-                // Get form values
-                const name = document.getElementById('name').value;
-                const email = document.getElementById('email').value;
-                const subject = document.getElementById('subject').value;
-                const message = document.getElementById('message').value;
-                
-                // Here you would typically send the data to a server
-                console.log('Form submitted:', { name, email, subject, message });
-                
-                // Show success message
-                alert('Thank you for your message! I will get back to you soon.');
-                
-                // Reset form
-                contactForm.reset();
-            });
-        }
+      btn.addEventListener('click', e => {
+        e.stopPropagation();
+        menu.classList.contains('visible') ? close() : open();
+      });
+      document.addEventListener('click', e => {
+        !menu.contains(e.target) && !btn.contains(e.target) && close();
+      });
+    })();
 
-        // Add animation classes when elements come into view
-        const animateOnScroll = function() {
-            const elements = document.querySelectorAll('.slide-up, .fade-in');
-            
-            elements.forEach(element => {
-                const elementPosition = element.getBoundingClientRect().top;
-                const screenPosition = window.innerHeight / 1.3;
-                
-                if (elementPosition < screenPosition) {
-                    element.classList.add('animate__animated', 'animate__fadeInUp');
-                }
-            });
-        };
+    /* rotating typewriter line */
+    const words = ['An Innovator','A Software Developer','An Engineer','A Roboticist','An Entrepreneur','An AI/ML Enthusiast'];
+    const line  = document.getElementById('role-line');
+    let idx = 0, char = 0, del = false;
+    function type() {
+      const w = words[idx];
+      if (!del) {
+        line.textContent = w.slice(0, ++char);
+        if (char === w.length) { del = true; return setTimeout(type, 2000); }
+      } else {
+        line.textContent = w.slice(0, --char);
+        if (char === 0) { del = false; idx = (idx + 1) % words.length; }
+      }
+      setTimeout(type, del ? 40 : 70);
+    }
+    setTimeout(type, 800);
 
-        window.addEventListener('scroll', animateOnScroll);
-        window.addEventListener('load', animateOnScroll);
+    /* mobile nav */
+    const mToggle = document.getElementById('mobile-nav-toggle');
+    const mNav    = document.getElementById('mobile-nav');
+    const mContactBtn = document.getElementById('mobile-contact');
+    const mContactBox = document.getElementById('mobile-contact-links');
 
-        // Enhanced Carousel Logic
-        const track = document.querySelector('.carousel-track');
-        const slides = Array.from(document.querySelectorAll('.carousel-slide'));
-        const prevButton = document.querySelector('.carousel-prev');
-        const nextButton = document.querySelector('.carousel-next');
-        let currentIndex = 0;
+    mToggle.addEventListener('click', ()=> {
+      mNav.style.transform = mNav.style.transform.includes('0')
+        ? 'translateX(100%)' : 'translateX(0)';
+    });
 
-        // Clone first and last slides for infinite effect
-        const cloneFirst = slides[0].cloneNode(true);
-        const cloneLast = slides[slides.length - 1].cloneNode(true);
-        track.appendChild(cloneFirst);
-        track.insertBefore(cloneLast, track.firstChild);
-        const allSlides = Array.from(document.querySelectorAll('.carousel-slide'));
-
-        function updateCarousel(direction) {
-            const container = document.querySelector('.carousel-container');
-            const containerWidth = container.offsetWidth;
-            const activeSlide = allSlides[currentIndex];
-            const slideWidth = activeSlide.offsetWidth;
-            const gap = 32; // Total margin (1rem = 16px * 2)
-
-            // Calculate translateX to center the active slide
-            const translateXValue = currentIndex * (slideWidth + gap) - 
-                                   (containerWidth - slideWidth) / 2;
-            
-            track.style.transform = `translateX(-${translateXValue}px)`;
-
-            // Handle infinite loop seamlessly
-            if (currentIndex === allSlides.length - 1) {
-                setTimeout(() => {
-                    track.style.transition = 'none';
-                    currentIndex = 1;
-                    const newTranslate = currentIndex * (slideWidth + gap) - 
-                                     (containerWidth - slideWidth) / 2;
-                    track.style.transform = `translateX(-${newTranslate}px)`;
-                    void track.offsetWidth; // Trigger reflow
-                    track.style.transition = 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
-                }, 500);
-            } else if (currentIndex === 0) {
-                setTimeout(() => {
-                    track.style.transition = 'none';
-                    currentIndex = allSlides.length - 2;
-                    const newTranslate = currentIndex * (slideWidth + gap) - 
-                                     (containerWidth - slideWidth) / 2;
-                    track.style.transform = `translateX(-${newTranslate}px)`;
-                    void track.offsetWidth; // Trigger reflow
-                    track.style.transition = 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
-                }, 500);
-            }
-
-            // Update slide classes
-            allSlides.forEach((slide, index) => {
-                slide.classList.remove('active', 'prev', 'next');
-                
-                if (index === currentIndex) {
-                    slide.classList.add('active');
-                } else {
-                    const prevIndex = (currentIndex - 1 + allSlides.length) % allSlides.length;
-                    const nextIndex = (currentIndex + 1) % allSlides.length;
-                    
-                    if (index === prevIndex) slide.classList.add('prev');
-                    if (index === nextIndex) slide.classList.add('next');
-                }
-            });
-        }
-
-        // Navigation handlers
-        prevButton.addEventListener('click', () => {
-            currentIndex--;
-            updateCarousel('prev');
-        });
-
-        nextButton.addEventListener('click', () => {
-            currentIndex++;
-            updateCarousel('next');
-        });
-
-        // Keyboard navigation
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'ArrowLeft') {
-                currentIndex--;
-                updateCarousel('prev');
-            } else if (e.key === 'ArrowRight') {
-                currentIndex++;
-                updateCarousel('next');
-            }
-        });
-
-        // Touch swipe handling
-        let touchStartX = 0;
-        track.addEventListener('touchstart', e => {
-            touchStartX = e.touches[0].clientX;
-        }, { passive: true });
-
-        track.addEventListener('touchend', e => {
-            const touchEndX = e.changedTouches[0].clientX;
-            const deltaX = touchStartX - touchEndX;
-            
-            if (Math.abs(deltaX) > 50) {
-                if (deltaX > 0) {
-                    currentIndex++;
-                } else {
-                    currentIndex--;
-                }
-                updateCarousel();
-            }
-        }, { passive: true });
-
-        // Initialize carousel
-        currentIndex = 1; // Start at first real slide
-        updateCarousel();
-    </script>
+    mContactBtn.addEventListener('click', ()=>{
+      mContactBox.classList.toggle('hidden');
+    });
+  </script>
 </body>
 </html>
