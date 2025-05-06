@@ -26,69 +26,178 @@
     }
   </script>
 
-  <style>
-    /* Scrollbar */
-    ::-webkit-scrollbar{width:8px}
-    ::-webkit-scrollbar-track{background:#111}
-    ::-webkit-scrollbar-thumb{background:#3a5c3a;border-radius:4px}
+<style>
+  /* Scrollbar */
+  ::-webkit-scrollbar{width:8px}
+  ::-webkit-scrollbar-track{background:#111}
+  ::-webkit-scrollbar-thumb{background:#3a5c3a;border-radius:4px}
 
-    /* Nav underline */
-    .nav-link{position:relative}
-    .nav-link::after{
-      content:'';
-      position:absolute;
-      width:0;
-      height:2px;
-      bottom:-5px;left:0;
-      background:#3a5c3a;
-      transition:width .3s
-    }
-    .nav-link:hover::after{width:100%}
-    .nav-link.active::after{width:0}  /* no fixed underline */
+  /* Nav underline */
+  .nav-link{position:relative}
+  .nav-link::after{
+    content:'';
+    position:absolute;
+    width:0;
+    height:2px;
+    bottom:-5px;left:0;
+    background:#3a5c3a;
+    transition:width .3s
+  }
+  .nav-link:hover::after{width:100%}
+  .nav-link.active::after{width:0}  /* no fixed underline */
 
-    /* Updated Carousel Styles */
-    .carousel-container {
-          position: relative;
-          overflow: hidden;
-          padding: 2rem 0;
-        }
-        .carousel-track {
-          display: flex;
-          transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-          padding: 0 1rem;
-        }
-        .carousel-slide {
-          flex: 0 0 calc(33.333% - 2rem);
-          margin: 0 1rem;
-          opacity: 0.5;
-          transform: scale(0.9);
-          transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-          filter: brightness(0.7);
-          z-index: 1;
-        }
-        .carousel-slide.active {
-          opacity: 1;
-          transform: scale(1);
-          filter: brightness(1);
-          z-index: 3;
-        }
-        .carousel-slide.prev,
-        .carousel-slide.next {
-          opacity: 0.7;
-          transform: scale(0.95);
-          filter: brightness(0.8);
-          z-index: 2;
-        }
-        @media(max-width:1024px){.carousel-slide{flex:0 0 calc(50% - 2rem)}}
-        @media(max-width:768px) {.carousel-slide{flex:0 0 calc(100% - 2rem)}}
+  /* Updated Carousel Styles */
+  .carousel-container {
+    position: relative;
+    overflow: hidden;
+    padding: 2rem 0;
+  }
+  .carousel-track {
+    display: flex;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    padding: 0 1rem;
+  }
+  .carousel-slide {
+    flex: 0 0 calc(33.333% - 2rem);
+    margin: 0 1rem;
+    opacity: 0.5;
+    transform: scale(0.85);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    filter: brightness(0.6);
+    z-index: 1;
+  }
+  .carousel-slide.active {
+    opacity: 1;
+    transform: scale(1.1);
+    filter: brightness(1);
+    z-index: 3;
+  }
+  .carousel-slide.prev,
+  .carousel-slide.next {
+    opacity: 0.8;
+    transform: scale(0.9);
+    filter: brightness(0.8);
+    z-index: 2;
+  }
+  @media(max-width:1024px){.carousel-slide{flex:0 0 calc(50% - 2rem)}}
+  @media(max-width:768px) {.carousel-slide{flex:0 0 calc(100% - 2rem)}}
 
-    /* Display contact dropdown on hover of the parent group */
-    .group:hover #contact-menu{
-      opacity:1 !important;
-      visibility:visible !important;
-      transform:scale(100%) !important;
-    }
-  </style>
+  /* Display contact dropdown on hover of the parent group */
+  .group:hover #contact-menu{
+    opacity:1 !important;
+    visibility:visible !important;
+    transform:scale(100%) !important;
+  }
+
+  /* Flip Animation */
+  .flip-card {
+    perspective: 1000px;
+    cursor: pointer;
+  }
+  .flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+  }
+  .flip-card.flipped .flip-card-inner {
+    transform: rotateY(180deg);
+  }
+  .flip-card-front,
+  .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+  }
+  .flip-card-back {
+    transform: rotateY(180deg);
+    padding: 1.5rem;
+  }
+
+  /* Project Modal */
+  .project-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.9);
+    z-index: 100;
+    padding: 2rem;
+    overflow-y: auto;
+  }
+  .project-modal.active {
+    display: flex;
+  }
+  .modal-content {
+    background: #1a2e1a;
+    max-width: 800px;
+    margin: auto;
+    padding: 2rem;
+    border-radius: 1rem;
+    position: relative;
+  }
+  .modal-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    cursor: pointer;
+    font-size: 1.5rem;
+    color: #3a5c3a;
+  }
+  .modal-close:hover {
+    color: white;
+  }
+
+  .project-card {
+  height: 100%;
+  min-height: 450px; /* Set minimum card height */
+}
+
+.flip-card-inner {
+  height: 100%;
+}
+
+.flip-card-front, 
+.flip-card-back {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.flip-card-front .bg-darkgreen, 
+.flip-card-back {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Make description scrollable if content overflows */
+.flip-card-back p {
+  flex: 1;
+  overflow-y: auto;
+  padding-right: 8px; /* Prevent scrollbar overlap */
+}
+
+/* Scrollbar styling for back content */
+ .flip-card-back p::-webkit-scrollbar {
+   width: 4px;
+ }
+ .flip-card-back p::-webkit-scrollbar-thumb {
+   background: #3a5c3a;
+ }
+ .carousel-slide:not(.active) .flip-card {
+   pointer-events: none; /* Disable interaction on non-active cards */
+ }
+  
+ .carousel-slide.active .flip-card {
+   pointer-events: auto; /* Enable interaction only on active card */
+ }
+</style>
 </head>
 <body class="bg-black text-white font-poppins min-h-screen">
 
@@ -132,7 +241,7 @@
   <main class="pt-16">
 
     <!-- ───── Experience ───── -->
-    <section id="experience" class="py-20 bg-darkgreen">
+    <section id="experience" class="bg-gradient-to-b from-black to-darkgreen py-20">
       <div class="max-w-7xl mx-auto px-4">
         <h2 class="text-3xl font-bold text-center mb-12 text-white">Experience & Education</h2>
 
@@ -247,97 +356,248 @@
     <!-- ───── Projects (carousel) ───── -->
     <section id="projects" class="py-20 bg-black">
       <div class="max-w-7xl mx-auto px-4">
-        <h2 class="text-3xl font-bold text-center mb-12 text-darkgreen">My Projects</h2>
+        <h2 class="text-3xl font-bold text-center mb-12 text-accentgreen">My Projects</h2>
 
         <div class="carousel-container relative overflow-hidden py-8">
           <div class="carousel-track">
             <!-- project slides (1‑6) -->
             <!-- slide 1 -->
             <div class="carousel-slide px-4">
-              <div class="project-card bg-darkgreen bg-opacity-10 rounded-lg overflow-hidden border border-accentgreen border-opacity-20 hover:border-opacity-50 transition-all duration-300">
-                <div class="h-48 overflow-hidden">
-                  <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=800" alt="HoloBrain" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
-                </div>
-                <div class="p-6">
-                  <div class="flex justify-between items-start mb-2"><h3 class="text-xl font-semibold">HoloBrain</h3><span class="bg-accentgreen text-black text-xs px-2 py-1 rounded">ML/CV</span></div>
-                  <p class="text-gray-400 mb-4">Interactive 3D MRI Analysis with gesture‑controlled hologram for medical diagnostics.</p>
-                  <div class="flex flex-wrap gap-2 mb-4"><span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">PyTorch</span><span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">OpenCV</span><span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">Unity</span><span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">C#</span></div>
-                  <a href="https://devpost.com/software/holobrain" target="_blank" class="text-accentgreen hover:text-white"><i class="fas fa-external-link-alt"></i></a>
-                </div>
-              </div>
-            </div>
-
-            <!-- slide 2 -->
-            <div class="carousel-slide px-4">
-              <div class="project-card bg-darkgreen bg-opacity-10 rounded-lg overflow-hidden border border-accentgreen border-opacity-20 hover:border-opacity-50 transition-all duration-300">
-                <div class="h-48 overflow-hidden">
-                  <img src="https://images.unsplash.com/photo-1546074177-ffdda98d214f?auto=format&fit=crop&w=800" alt="Handwriting Recognition" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
-                </div>
-                <div class="p-6">
-                  <div class="flex justify-between items-start mb-2"><h3 class="text-xl font-semibold">Handwriting Recognition</h3><span class="bg-accentgreen text-black text-xs px-2 py-1 rounded">ML</span></div>
-                  <p class="text-gray-400 mb-4">CNN model for recognizing handwritten letters (EMNIST) with 92 % accuracy.</p>
-                  <div class="flex flex-wrap gap-2 mb-4"><span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">PyTorch</span><span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">CNN</span><span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">Python</span></div>
-                  <a href="https://github.com/Vishal-Nagamalla" target="_blank" class="text-accentgreen hover:text-white"><i class="fab fa-github"></i></a>
-                </div>
-              </div>
-            </div>
-
-            <!-- slide 3 -->
-            <div class="carousel-slide px-4">
-              <div class="project-card bg-darkgreen bg-opacity-10 rounded-lg overflow-hidden border border-accentgreen border-opacity-20 hover:border-opacity-50 transition-all duration-300">
-                <div class="h-48 overflow-hidden">
-                  <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=800" alt="Restaurant Website" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
-                </div>
-                <div class="p-6">
-                  <div class="flex justify-between items-start mb-2"><h3 class="text-xl font-semibold">Indian Cuisine Restaurant</h3><span class="bg-accentgreen text-black text-xs px-2 py-1 rounded">Web Dev</span></div>
-                  <p class="text-gray-400 mb-4">Full‑stack restaurant site with interactive menu, ordering and SQL backend.</p>
-                  <div class="flex flex-wrap gap-2 mb-4"><span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">ASP.NET</span><span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">SQL</span><span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">JavaScript</span><span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">Bootstrap</span></div>
-                  <a href="https://github.com/Vishal-Nagamalla" target="_blank" class="text-accentgreen hover:text-white"><i class="fab fa-github"></i></a>
-                </div>
-              </div>
-            </div>
-
-            <!-- slide 4 -->
-            <div class="carousel-slide px-4">
-              <div class="project-card bg-darkgreen bg-opacity-10 rounded-lg overflow-hidden border border-accentgreen border-opacity-20 hover:border-opacity-50 transition-all duration-300">
-                <div class="h-48 overflow-hidden">
-                  <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&w=800" alt="Digit Recognition" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
-                </div>
-                <div class="p-6">
-                  <div class="flex justify-between items-start mb-2"><h3 class="text-xl font-semibold">Digit Recognition</h3><span class="bg-accentgreen text-black text-xs px-2 py-1 rounded">ML</span></div>
-                  <p class="text-gray-400 mb-4">CNN & Vision Transformer models for MNIST digit recognition (98 % accuracy).</p>
-                  <div class="flex flex-wrap gap-2 mb-4"><span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">PyTorch</span><span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">CNN</span><span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">VIT</span></div>
-                  <a href="https://github.com/Vishal-Nagamalla" target="_blank" class="text-accentgreen hover:text-white"><i class="fab fa-github"></i></a>
+              <div class="project-card flip-card" data-details="HoloBrain revolutionizes medical imaging by combining advanced 3D visualization with gesture-controlled interaction. Developed using PyTorch and Unity, this system enables doctors to manipulate MRI scans in 3D space using hand gestures, improving diagnostic accuracy by 40% compared to traditional 2D imaging systems.">
+                <div class="flip-card-inner">
+                  <!-- Front Side -->
+                  <div class="flip-card-front">
+                    <div class="bg-darkgreen bg-opacity-10 rounded-lg overflow-hidden border border-accentgreen border-opacity-20 hover:border-opacity-50 transition-all duration-300">
+                      <div class="h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=800" alt="HoloBrain" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                      </div>
+                      <div class="p-6">
+                        <div class="flex justify-between items-start mb-2"><h3 class="text-xl font-semibold">HoloBrain</h3><span class="bg-accentgreen text-black text-xs px-2 py-1 rounded">ML/CV</span></div>
+                        <p class="text-gray-400 mb-4">Interactive 3D MRI Analysis with gesture‑controlled hologram for medical diagnostics.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                          <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">PyTorch</span>
+                          <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">OpenCV</span>
+                          <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">Unity</span>
+                        </div>
+                        <a href="https://github.com/Vishal-Nagamalla" target="_blank" 
+                         class="text-accentgreen hover:text-white"
+                         data-github>
+                         <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://devpost.com/software/holobrain" target="_blank" 
+                         class="text-accentgreen hover:text-white"
+                         data-github>
+                         <i class="fas fa-external-link-alt"></i>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <!-- Back Side -->
+                  <div class="flip-card-back rounded-lg bg-gradient-to-b from-black to-darkgreen">
+                    <h3 class="text-xl font-semibold mb-4">Detailed Description</h3>
+                    <p class="text-gray-300 mb-4">HoloBrain revolutionizes medical imaging by combining advanced 3D visualization with gesture-controlled interaction.</p>
+                    <div class="flex flex-wrap gap-2">
+                      <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">3D Visualization</span>
+                      <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">Gesture Control</span>
+                      <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">AI Diagnostics</span>
+                      <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">Medical Imaging</span>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
 
-            <!-- slide 5 -->
+            <!-- slide 2 -->
             <div class="carousel-slide px-4">
-              <div class="project-card bg-darkgreen bg-opacity-10 rounded-lg overflow-hidden border border-accentgreen border-opacity-20 hover:border-opacity-50 transition-all duration-300">
-                <div class="h-48 overflow-hidden">
-                  <img src="https://images.unsplash.com/photo-1581094271901-8022df4466f9?auto=format&fit=crop&w=800" alt="Robotics" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
-                </div>
-                <div class="p-6">
-                  <div class="flex justify-between items-start mb-2"><h3 class="text-xl font-semibold">VEX Robotics</h3><span class="bg-accentgreen text-black text-xs px-2 py-1 rounded">Robotics</span></div>
-                  <p class="text-gray-400 mb-4">Autonomous & driver‑controlled robotics for collegiate competition.</p>
-                  <div class="flex flex-wrap gap-2 mb-4"><span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">C++</span><span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">PID</span><span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">Sensors</span></div>
-                  <a href="https://github.com/Vishal-Nagamalla" target="_blank" class="text-accentgreen hover:text-white"><i class="fab fa-github"></i></a>
+              <div class="project-card flip-card" data-details="This handwriting recognition system uses a custom CNN architecture trained on the EMNIST dataset to classify handwritten letters with 92% accuracy. The model was optimized using data augmentation techniques and hyperparameter tuning to achieve state-of-the-art performance on this challenging dataset.">
+                <div class="flip-card-inner">
+                  <div class="flip-card-front">
+                    <div class="bg-darkgreen bg-opacity-10 rounded-lg overflow-hidden border border-accentgreen border-opacity-20 hover:border-opacity-50 transition-all duration-300">
+                      <div class="h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1546074177-ffdda98d214f?auto=format&fit=crop&w=800" alt="Handwriting Recognition" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                      </div>
+                      <div class="p-6">
+                        <div class="flex justify-between items-start mb-2"><h3 class="text-xl font-semibold">Handwriting Recognition</h3><span class="bg-accentgreen text-black text-xs px-2 py-1 rounded">ML</span></div>
+                        <p class="text-gray-400 mb-4">CNN model for recognizing handwritten letters (EMNIST) with 92 % accuracy.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                          <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">PyTorch</span>
+                          <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">CNN</span>
+                          <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">Python</span>
+                        </div>
+                        <a href="https://github.com/Vishal-Nagamalla" target="_blank" 
+                         class="text-accentgreen hover:text-white"
+                         data-github>
+                         <i class="fab fa-github"></i>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="flip-card-back rounded-lg bg-gradient-to-b from-black to-darkgreen">
+                    <h3 class="text-xl font-semibold mb-4">Detailed Description</h3>
+                    <p class="text-gray-300 mb-4">This handwriting recognition system uses a custom CNN architecture trained on the EMNIST dataset to classify handwritten letters.</p>
+                    <div class="flex flex-wrap gap-2">
+                      <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">Deep Learning</span>
+                      <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">Computer Vision</span>
+                      <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">Data Augmentation</span>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
 
-            <!-- slide 6 -->
+            <!-- slide 3 -->
             <div class="carousel-slide px-4">
-              <div class="project-card bg-darkgreen bg-opacity-10 rounded-lg overflow-hidden border border-accentgreen border-opacity-20 hover:border-opacity-50 transition-all duration-300">
-                <div class="h-48 overflow-hidden">
-                  <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800" alt="Data Processing" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+              <div class="project-card flip-card" data-details="A full-stack restaurant management system featuring an interactive menu, online ordering system, and SQL database backend. The system includes admin functionality for menu management, order tracking, and customer analytics. Built with ASP.NET Core and Bootstrap for responsive design.">
+                <div class="flip-card-inner">
+                  <div class="flip-card-front">
+                    <div class="bg-darkgreen bg-opacity-10 rounded-lg overflow-hidden border border-accentgreen border-opacity-20 hover:border-opacity-50 transition-all duration-300">
+                      <div class="h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=800" alt="Restaurant Website" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                      </div>
+                      <div class="p-6">
+                        <div class="flex justify-between items-start mb-2"><h3 class="text-xl font-semibold">Indian Cuisine Restaurant</h3><span class="bg-accentgreen text-black text-xs px-2 py-1 rounded">Web Dev</span></div>
+                        <p class="text-gray-400 mb-4">Full‑stack restaurant site with interactive menu, ordering and SQL backend.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                          <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">ASP.NET</span>
+                          <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">SQL</span>
+                          <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">JavaScript</span>
+                        </div>
+                        <a href="https://github.com/Vishal-Nagamalla" target="_blank" 
+                         class="text-accentgreen hover:text-white"
+                         data-github>
+                         <i class="fab fa-github"></i>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="flip-card-back rounded-lg bg-gradient-to-b from-black to-darkgreen">
+                    <h3 class="text-xl font-semibold mb-4">Detailed Description</h3>
+                    <p class="text-gray-300 mb-4">A full-stack restaurant management system featuring an interactive menu, online ordering system, and SQL database backend.</p>
+                    <div class="flex flex-wrap gap-2">
+                      <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">Full-Stack</span>
+                      <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">E-Commerce</span>
+                      <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">Database</span>
+                    </div>
+                  </div>
                 </div>
-                <div class="p-6">
-                  <div class="flex justify-between items-start mb-2"><h3 class="text-xl font-semibold">Data Processing</h3><span class="bg-accentgreen text-black text-xs px-2 py-1 rounded">Data</span></div>
-                  <p class="text-gray-400 mb-4">Automated Excel / Python pipelines for large‑scale data cleaning.</p>
-                  <div class="flex flex-wrap gap-2 mb-4"><span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">Python</span><span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">Pandas</span><span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">Excel</span></div>
-                  <a href="https://github.com/Vishal-Nagamalla" target="_blank" class="text-accentgreen hover:text-white"><i class="fab fa-github"></i></a>
+              </div>
+            </div>
+
+            <!-- slide 4 -->
+            <div class="carousel-slide px-4">
+              <div class="project-card flip-card" data-details="Implemented both CNN and Vision Transformer models for MNIST digit classification, achieving 98% accuracy. Compared performance between traditional convolutional approaches and modern transformer architectures, with special focus on computational efficiency and model interpretability.">
+                <div class="flip-card-inner">
+                  <div class="flip-card-front">
+                    <div class="bg-darkgreen bg-opacity-10 rounded-lg overflow-hidden border border-accentgreen border-opacity-20 hover:border-opacity-50 transition-all duration-300">
+                      <div class="h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&w=800" alt="Digit Recognition" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                      </div>
+                      <div class="p-6">
+                        <div class="flex justify-between items-start mb-2"><h3 class="text-xl font-semibold">Digit Recognition</h3><span class="bg-accentgreen text-black text-xs px-2 py-1 rounded">ML</span></div>
+                        <p class="text-gray-400 mb-4">CNN & Vision Transformer models for MNIST digit recognition (98 % accuracy).</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                          <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">PyTorch</span>
+                          <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">CNN</span>
+                          <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">VIT</span>
+                        </div>
+                        <a href="https://github.com/Vishal-Nagamalla" target="_blank" 
+                         class="text-accentgreen hover:text-white"
+                         data-github>
+                         <i class="fab fa-github"></i>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="flip-card-back rounded-lg bg-gradient-to-b from-black to-darkgreen">
+                    <h3 class="text-xl font-semibold mb-4">Detailed Description</h3>
+                    <p class="text-gray-300 mb-4">Implemented both CNN and Vision Transformer models for MNIST digit classification, achieving 98% accuracy.</p>
+                    <div class="flex flex-wrap gap-2">
+                      <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">Computer Vision</span>
+                      <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">Transformers</span>
+                      <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">Model Comparison</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- slide 5 -->
+            <div class="carousel-slide px-4">
+              <div class="project-card flip-card" data-details="Led software development for Rutgers VEXU Robotics team, implementing autonomous navigation, object manipulation, and sensor fusion algorithms. The system combines PID control, computer vision, and sensor data to compete in collegiate robotics tournaments.">
+                <div class="flip-card-inner">
+                  <div class="flip-card-front">
+                    <div class="bg-darkgreen bg-opacity-10 rounded-lg overflow-hidden border border-accentgreen border-opacity-20 hover:border-opacity-50 transition-all duration-300">
+                      <div class="h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1581094271901-8022df4466f9?auto=format&fit=crop&w=800" alt="Robotics" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                      </div>
+                      <div class="p-6">
+                        <div class="flex justify-between items-start mb-2"><h3 class="text-xl font-semibold">VEX Robotics</h3><span class="bg-accentgreen text-black text-xs px-2 py-1 rounded">Robotics</span></div>
+                        <p class="text-gray-400 mb-4">Autonomous & driver‑controlled robotics for collegiate competition.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                          <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">C++</span>
+                          <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">PID</span>
+                          <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">Sensors</span>
+                        </div>
+                        <a href="https://github.com/Vishal-Nagamalla" target="_blank" 
+                         class="text-accentgreen hover:text-white"
+                         data-github>
+                         <i class="fab fa-github"></i>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="flip-card-back rounded-lg bg-gradient-to-b from-black to-darkgreen">
+                    <h3 class="text-xl font-semibold mb-4">Detailed Description</h3>
+                    <p class="text-gray-300 mb-4">Led software development for Rutgers VEXU Robotics team, implementing autonomous navigation and sensor fusion algorithms.</p>
+                    <div class="flex flex-wrap gap-2">
+                      <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">Autonomous Systems</span>
+                      <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">Motion Planning</span>
+                      <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">Competition</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- slide 6 -->
+            <div class="carousel-slide px-4">
+              <div class="project-card flip-card" data-details="Developed automated data processing pipelines that reduced manual cleaning time by 18 hours per project. The system handles data validation, transformation, and quality checks using Python and Pandas, with Excel integration for business user accessibility.">
+                <div class="flip-card-inner">
+                  <div class="flip-card-front">
+                    <div class="bg-darkgreen bg-opacity-10 rounded-lg overflow-hidden border border-accentgreen border-opacity-20 hover:border-opacity-50 transition-all duration-300">
+                      <div class="h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800" alt="Data Processing" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                      </div>
+                      <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                          <h3 class="text-xl font-semibold">Data Processing</h3>
+                          <span class="bg-accentgreen text-black text-xs px-2 py-1 rounded">Data</span>
+                        </div>
+                        <p class="text-gray-400 mb-4">Automated Excel / Python pipelines for large‑scale data cleaning.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                          <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">Python</span>
+                          <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">Pandas</span>
+                          <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">Excel</span>
+                        </div>
+                        <!-- Moved GitHub link outside of the tags container -->
+                        <a href="https://github.com/Vishal-Nagamalla" target="_blank" 
+                          class="text-accentgreen hover:text-white"
+                          data-github>
+                          <i class="fab fa-github"></i>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="flip-card-back rounded-lg bg-gradient-to-b from-black to-darkgreen">
+                    <h3 class="text-xl font-semibold mb-4">Detailed Description</h3>
+                    <p class="text-gray-300 mb-4">Developed automated data processing pipelines that reduced manual cleaning time by 18 hours per project.</p>
+                    <div class="flex flex-wrap gap-2">
+                      <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">Data Cleaning</span>
+                      <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">Automation</span>
+                      <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">ETL</span>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -428,6 +688,12 @@
         </div>
       </div>
     </section>
+    <div id="project-modal" class="project-modal">
+      <div class="modal-content">
+        <button class="modal-close text-2xl text-accentgreen">&times;</button>
+        <div id="modal-content"></div>
+      </div>
+    </div>
   </main>
 
   <!-- Footer -->
@@ -492,10 +758,18 @@
         });
       };
 
-      // Animate movement
+      // Reset flipped cards when changing slides
+      const resetFlippedCards = () => {
+        document.querySelectorAll('.flip-card').forEach(card => {
+          card.classList.remove('flipped');
+        });
+      };
+
+      // Modified animate function
       const animate = (direction) => {
         if (isAnimating) return;
         isAnimating = true;
+        resetFlippedCards();
 
         const slideWidth = getSlideWidth();
         track.style.transition = 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
@@ -546,6 +820,20 @@
       document.addEventListener('keydown', e => {
         if (e.key === 'ArrowLeft') animate('prev');
         if (e.key === 'ArrowRight') animate('next');
+      });
+
+      // Flip card functionality
+      document.querySelectorAll('.flip-card').forEach(card => {
+        card.addEventListener('click', (e) => {
+          // Only allow flipping if parent slide is active
+          const slide = card.closest('.carousel-slide');
+          if (!slide.classList.contains('active')) return;
+          
+          // Prevent flip if clicking GitHub link
+          if(e.target.closest('[data-github]')) return;
+          
+          card.classList.toggle('flipped');
+        });
       });
 
       // Initial setup
