@@ -761,56 +761,77 @@
       <div class="max-w-7xl mx-auto px-4">
         <h2 class="text-3xl font-bold text-center mb-12 text-white">My Skills</h2>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-          <!-- Technical -->
-          <div>
-            <h3 class="text-xl font-semibold mb-6 text-white">Technical Skills</h3>
-            <div class="space-y-6">
-              <div><div class="flex justify-between mb-1"><span>Python</span><span>95%</span></div><div class="w-full bg-black rounded-full h-2"><div class="bg-accentgreen h-2 rounded-full" style="width:95%"></div></div></div>
-              <div><div class="flex justify-between mb-1"><span>Java</span><span>90%</span></div><div class="w-full bg-black rounded-full h-2"><div class="bg-accentgreen h-2 rounded-full" style="width:90%"></div></div></div>
-              <div><div class="flex justify-between mb-1"><span>C#</span><span>85%</span></div><div class="w-full bg-black rounded-full h-2"><div class="bg-accentgreen h-2 rounded-full" style="width:85%"></div></div></div>
-              <div><div class="flex justify-between mb-1"><span>JavaScript</span><span>85%</span></div><div class="w-full bg-black rounded-full h-2"><div class="bg-accentgreen h-2 rounded-full" style="width:85%"></div></div></div>
-              <div><div class="flex justify-between mb-1"><span>C/C++</span><span>80%</span></div><div class="w-full bg-black rounded-full h-2"><div class="bg-accentgreen h-2 rounded-full" style="width:80%"></div></div></div>
-            </div>
-          </div>
+        <div class="flex flex-col items-center space-y-16">
 
-          <!-- Professional -->
-          <div>
-            <h3 class="text-xl font-semibold mb-6 text-white">Professional Skills</h3>
-            <div class="grid grid-cols-2 gap-4">
-              <div class="bg-black bg-opacity-30 p-4 rounded-lg border border-accentgreen border-opacity-20">
-                <div class="text-accentgreen mb-2"><i class="fas fa-robot text-2xl"></i></div>
-                <h4 class="font-medium mb-1">Robotics Engineering</h4>
-                <p class="text-gray-300 text-sm">Autonomous systems and competitive robotics</p>
-              </div>
-              <div class="bg-black bg-opacity-30 p-4 rounded-lg border border-accentgreen border-opacity-20">
-                <div class="text-accentgreen mb-2"><i class="fas fa-brain text-2xl"></i></div>
-                <h4 class="font-medium mb-1">AI/ML Research</h4>
-                <p class="text-gray-300 text-sm">CNN, Computer Vision, Neural Networks</p>
-              </div>
-              <div class="bg-black bg-opacity-30 p-4 rounded-lg border border-accentgreen border-opacity-20">
-                <div class="text-accentgreen mb-2"><i class="fas fa-users text-2xl"></i></div>
-                <h4 class="font-medium mb-1">Team Leadership</h4>
-                <p class="text-gray-300 text-sm">Engineering lead for robotics teams</p>
-              </div>
-              <div class="bg-black bg-opacity-30 p-4 rounded-lg border border-accentgreen border-opacity-20">
-                <div class="text-accentgreen mb-2"><i class="fas fa-project-diagram text-2xl"></i></div>
-                <h4 class="font-medium mb-1">Full‑Stack Dev</h4>
-                <p class="text-gray-300 text-sm">Front‑end & back‑end development</p>
-              </div>
-              <div class="bg-black bg-opacity-30 p-4 rounded-lg border border-accentgreen border-opacity-20">
-                <div class="text-accentgreen mb-2"><i class="fas fa-database text-2xl"></i></div>
-                <h4 class="font-medium mb-1">Data Science</h4>
-                <p class="text-gray-300 text-sm">Data analysis & visualization</p>
-              </div>
-              <div class="bg-black bg-opacity-30 p-4 rounded-lg border border-accentgreen border-opacity-20">
-                <div class="text-accentgreen mb-2"><i class="fas fa-lightbulb text-2xl"></i></div>
-                <h4 class="font-medium mb-1">Creative Problem Solving</h4>
-                <p class="text-gray-300 text-sm">Innovative solutions to complex problems</p>
-              </div>
-            </div>
-          </div>
-        </div>
+    <!-- Languages -->
+    <div class="skill-group opacity-0 translate-y-8 transition-all duration-700 w-full max-w-3xl text-center">
+      <h3 class="text-3xl font-semibold flex items-center justify-center gap-3 mb-6">
+        <i class="fas fa-code text-accentgreen"></i> Languages
+      </h3>
+      <ul class="flex flex-wrap justify-center gap-x-12 gap-y-3 text-lg md:text-xl list-disc list-inside text-gray-200">
+        <li>Python</li>
+        <li>Java</li>
+        <li>C#</li>
+        <li>C / C++</li>
+        <li>JavaScript</li>
+        <li>HTML / CSS</li>
+        <li>SQL</li>
+      </ul>
+    </div>
+
+    <!-- Developer Tools -->
+    <div class="skill-group opacity-0 translate-y-8 transition-all duration-700 delay-100 w-full max-w-3xl text-center">
+      <h3 class="text-3xl font-semibold flex items-center justify-center gap-3 mb-6">
+        <i class="fas fa-wrench text-accentgreen"></i> Developer Tools
+      </h3>
+      <ul class="flex flex-wrap justify-center gap-x-12 gap-y-3 text-lg md:text-xl list-disc list-inside text-gray-200">
+        <li>Git / GitHub</li>
+        <li>Visual Studio & VS Code</li>
+        <li>IntelliJ IDEA</li>
+        <li>PyCharm</li>
+        <li>Unity</li>
+        <li>Android Studio</li>
+        <li>Docker</li>
+        <li>Microsoft Azure</li>
+      </ul>
+    </div>
+
+    <!-- Frameworks & Libraries -->
+    <div class="skill-group opacity-0 translate-y-8 transition-all duration-700 delay-200 w-full max-w-3xl text-center">
+      <h3 class="text-3xl font-semibold flex items-center justify-center gap-3 mb-6">
+        <i class="fas fa-layer-group text-accentgreen"></i> Frameworks & Libraries
+      </h3>
+      <ul class="flex flex-wrap justify-center gap-x-12 gap-y-3 text-lg md:text-xl list-disc list-inside text-gray-200">
+        <li>PyTorch</li>
+        <li>OpenCV</li>
+        <li>MediaPipe</li>
+        <li>React&nbsp;JS</li>
+        <li>Bootstrap</li>
+        <li>ASP.NET Core</li>
+        <li>jQuery</li>
+        <li>Tailwind CSS</li>
+        <li>Socket IO</li>
+        <li>NumPy / Pandas</li>
+      </ul>
+    </div>
+
+    <!-- Interests -->
+    <div class="skill-group opacity-0 translate-y-8 transition-all duration-700 delay-300 w-full max-w-3xl text-center">
+      <h3 class="text-3xl font-semibold flex items-center justify-center gap-3 mb-6">
+        <i class="fas fa-lightbulb text-accentgreen"></i> Interests
+      </h3>
+      <ul class="flex flex-wrap justify-center gap-x-12 gap-y-3 text-lg md:text-xl list-disc list-inside text-gray-200">
+        <li>Artificial Intelligence</li>
+        <li>Machine Learning</li>
+        <li>Computer Vision</li>
+        <li>Data Science</li>
+        <li>Robotics & Autonomous Systems</li>
+        <li>Computer Science</li>
+        <li>3D Visualization & XR</li>
+        <li>Cloud Computing</li>
+      </ul>
+    </div>
+  </div>
 
         <!-- Tech icons -->
         <div class="mt-16">
@@ -982,6 +1003,19 @@
 
     // Initialize when DOM loads
     document.addEventListener('DOMContentLoaded', carousel);
+    /* Scroll‑reveal for skill groups */
+    (() => {
+      const observer = new IntersectionObserver((entries, obs) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.remove('opacity-0','translate-y-8');
+            obs.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.2 });
+
+      document.querySelectorAll('.skill-group').forEach(el => observer.observe(el));
+    })();
   </script>
 </body>
 </html>
