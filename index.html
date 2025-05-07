@@ -65,6 +65,39 @@
       visibility:visible !important;
       transform:scale(100%) !important;
     }
+    .spotify-embed-container {
+      position: relative;
+      border-radius: 12px;
+      overflow: hidden;
+      transition: transform 0.3s ease;
+    }
+
+    .spotify-embed-container:hover {
+      transform: scale(1.02);
+    }
+    
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-5px); }
+    }
+
+    .spotify-custom-frame {
+      background: linear-gradient(to bottom, #000 0%, #1a2e1a 100%);
+      border-radius: 12px;
+      padding: 8px;
+    }
+
+    /* Force Spotify to use transparent elements */
+    .spotify-custom-frame iframe {
+      mix-blend-mode: lighten;
+    }
+
+    /* Custom control recoloring */
+    .spotify-custom-frame ::part(root) {
+      --background-base: transparent !important;
+      --background-highlight: #2d4d2d !important;
+      --text-base: #ffffff !important;
+    }
   </style>
 </head>
 <body class="bg-black text-white font-poppins min-h-screen">
@@ -180,11 +213,36 @@
 
     <!-- Short About -->
     <section class="bg-darkgreen py-20">
-      <div class="max-w-3xl mx-auto px-6 text-center">
+      <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-start md:items-center gap-12">
+        <div class="flex-1 text-center space-y-6">
         <h2 class="text-3xl font-bold mb-6">About Me</h2>
         <p class="text-gray-200 leading-relaxed text-lg">
           I’m <span class="font-semibold">Vishal Nagamalla</span>  a innovator who loves turning bold, “what‑if?” ideas into working products. I see AI and Robotics not just as the future but as a playground for creativity, and that's my specialty. When I’m not training models or making robots, you’ll find me pushing plates in the gym, cutting loose on the dance floor, or geeking out over the newest tech drops.</p>
-      </div>
+        </div>
+            <div class="mt-12 md:mt-0 bg-black rounded-xl p-6 shadow-xl hover:shadow-2xl transition-shadow md:w-[28rem] w-full md:ml-0 relative overflow-hidden">
+              <!-- Animated header -->
+              <div class="flex items-center gap-3 mb-4">
+                <div class="relative h-6 w-6">
+                  <div class="absolute h-full w-1 bg-accentgreen left-0 animate-bounce"></div>
+                  <div class="absolute h-full w-1 bg-white left-2 animate-bounce" style="animation-delay:0.2s"></div>
+                  <div class="absolute h-full w-1 bg-accentgreen left-4 animate-bounce" style="animation-delay:0.4s"></div>
+                </div>
+                <h3 class="text-xl font-bold bg-white bg-clip-text text-transparent">
+                  Currently on Loop 🔥
+                </h3>
+              </div>
+            
+              <!-- Custom styled Spotify embed -->
+              <div class="mt-4 relative spotify-custom-frame">
+                <iframe style="border-radius:12px; border:none; background: transparent !important;"
+                  src="https://open.spotify.com/embed/track/7odMKT3Xc4ly8Shy9Iv07h?utm_source=generator&theme=0&background-color=1a2e1a&allow-transparency=true" 
+                  width="100%" 
+                  height="152" 
+                  allowfullscreen 
+                  allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
+                </iframe>
+              </div>
+            </div>
     </section>
   </main>
 
