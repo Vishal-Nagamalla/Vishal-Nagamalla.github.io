@@ -46,7 +46,7 @@
   .nav-link:hover::after{width:100%}
   .nav-link.active::after{width:0}
 
-  /* Carousel Styles */
+  /* Fixed Carousel Styles */
   .carousel-container {
     position: relative;
     overflow: hidden;
@@ -79,8 +79,35 @@
     filter: brightness(0.8);
     z-index: 2;
   }
-  @media(max-width:1024px){.carousel-slide{flex:0 0 calc(50% - 2rem)}}
-  @media(max-width:768px) {.carousel-slide{flex:0 0 calc(100% - 2rem)}}
+
+  @media (max-width: 1024px) {
+    .carousel-slide {
+      flex: 0 0 calc(50% - 2rem);
+    }
+    .carousel-slide.active {
+      transform: scale(1.05);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .carousel-slide {
+      flex: 0 0 calc(100% - 2rem) !important;
+      opacity: 0 !important;
+      transform: scale(0.85) !important;
+      filter: brightness(0.6) !important;
+      pointer-events: none;
+    }
+    .carousel-slide.active {
+      opacity: 1 !important;
+      transform: scale(1) !important;
+      filter: brightness(1) !important;
+      pointer-events: auto;
+    }
+    .carousel-slide.prev,
+    .carousel-slide.next {
+      display: none !important;
+    }
+  }
 
   /* Contact dropdown */
   .group:hover #contact-menu{
@@ -184,15 +211,14 @@
   }
 
   .project-card .flip-card-back {
-    transform: rotateY(180deg) translateZ(0);  /* ← add rotateY back */
+    transform: rotateY(180deg) translateZ(0);
     box-shadow: 0 4px 6px rgba(58, 92, 58, 0.1),
                 0 2px 4px rgba(255, 255, 255, 0.05);
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
-  /* hover state – elevate while still rotated 180° */
   .project-card:hover .flip-card-back {
-    transform: rotateY(180deg) translateY(-4px) translateZ(0); /* ← keep rotateY */
+    transform: rotateY(180deg) translateY(-4px) translateZ(0);
     box-shadow: 0 8px 12px rgba(58, 92, 58, 0.2),
                 0 4px 8px rgba(255, 255, 255, 0.1),
                 0 0 16px rgba(58, 92, 58, 0.1);
@@ -269,6 +295,7 @@
     pointer-events: auto;
   }
 </style>
+
 </head>
 <body class="bg-black text-white font-poppins min-h-screen">
 
@@ -864,7 +891,7 @@
 
   <!-- ─────────── JS ─────────── -->
   <script>
-    /* Contact dropdown (safe) */
+    /* Contact dropdown */
     (() => {
       const btn  = document.querySelector('.group > button.nav-link');
       const menu = document.getElementById('contact-menu');
@@ -872,61 +899,61 @@
 
       const open  = () => {
         menu.classList.remove('opacity-0','invisible','scale-95');
-        menu.classList.add   ('opacity-100','visible','scale-100');
+        menu.classList.add('opacity-100','visible','scale-100');
       };
       const close = () => {
-        menu.classList.add   ('opacity-0','invisible','scale-95');
+        menu.classList.add('opacity-0','invisible','scale-95');
         menu.classList.remove('opacity-100','visible','scale-100');
       };
 
-      btn.addEventListener('click', e=>{
+      btn.addEventListener('click', e => {
         e.stopPropagation();
         menu.classList.contains('visible') ? close() : open();
       });
-      document.addEventListener('click', e=>{
+      document.addEventListener('click', e => {
         !menu.contains(e.target) && !btn.contains(e.target) && close();
       });
     })();
 
-    /* Corrected Infinite Carousel */
+    /* Fixed Carousel */
     const carousel = () => {
       const track = document.querySelector('.carousel-track');
       const slides = Array.from(document.querySelectorAll('.carousel-slide'));
       const prevBtn = document.querySelector('.carousel-prev');
       const nextBtn = document.querySelector('.carousel-next');
       let isAnimating = false;
+      let windowWidth = window.innerWidth;
 
-      // Get slide width with margins
+      const getActiveIndex = () => windowWidth <= 768 ? 0 : 1;
+
       const getSlideWidth = () => {
         const slide = slides[0];
         const style = window.getComputedStyle(slide);
-        return slide.offsetWidth + 
-               parseFloat(style.marginLeft) + 
-               parseFloat(style.marginRight);
+        return slide.offsetWidth + parseFloat(style.marginLeft) + parseFloat(style.marginRight);
       };
 
-      // Update active classes with center highlight
       const updateActive = () => {
+        windowWidth = window.innerWidth;
+        const activeIndex = getActiveIndex();
+        
         slides.forEach((slide, index) => {
           slide.classList.remove('active', 'prev', 'next');
-          if (index === 1) {
-            slide.classList.add('active');
-          } else if (index === 0) {
-            slide.classList.add('prev');
-          } else if (index === 2) {
-            slide.classList.add('next');
+          if (windowWidth > 768) {
+            if (index === activeIndex) slide.classList.add('active');
+            else if (index === activeIndex - 1) slide.classList.add('prev');
+            else if (index === activeIndex + 1) slide.classList.add('next');
+          } else {
+            if (index === activeIndex) slide.classList.add('active');
           }
         });
       };
 
-      // Reset flipped cards when changing slides
       const resetFlippedCards = () => {
         document.querySelectorAll('.flip-card').forEach(card => {
           card.classList.remove('flipped');
         });
       };
 
-      // Modified animate function
       const animate = (direction) => {
         if (isAnimating) return;
         isAnimating = true;
@@ -960,11 +987,11 @@
         }
       };
 
-      // Event handlers
+      // Event Listeners
       nextBtn.addEventListener('click', () => animate('next'));
       prevBtn.addEventListener('click', () => animate('prev'));
 
-      // Touch/swipe support
+      // Touch Handling
       let touchStartX = 0;
       track.addEventListener('touchstart', e => {
         touchStartX = e.touches[0].clientX;
@@ -972,38 +999,43 @@
 
       track.addEventListener('touchend', e => {
         const delta = touchStartX - e.changedTouches[0].clientX;
-        if (Math.abs(delta) > 50) {
-          delta > 0 ? animate('next') : animate('prev');
-        }
+        if (Math.abs(delta) > 50) delta > 0 ? animate('next') : animate('prev');
       }, { passive: true });
 
-      // Keyboard support
+      // Keyboard Navigation
       document.addEventListener('keydown', e => {
         if (e.key === 'ArrowLeft') animate('prev');
         if (e.key === 'ArrowRight') animate('next');
       });
 
-      // Flip card functionality
+      // Resize Handler
+      let resizeTimer;
+      window.addEventListener('resize', () => {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(() => {
+          updateActive();
+          track.style.transform = 'translateX(0)';
+        }, 250);
+      });
+
+      // Flip Card Handling
       document.querySelectorAll('.flip-card').forEach(card => {
         card.addEventListener('click', (e) => {
-          // Only allow flipping if parent slide is active
           const slide = card.closest('.carousel-slide');
           if (!slide.classList.contains('active')) return;
-          
-          // Prevent flip if clicking GitHub link
           if(e.target.closest('[data-github]')) return;
-          
           card.classList.toggle('flipped');
         });
       });
 
-      // Initial setup
+      // Initial Setup
       updateActive();
     };
 
-    // Initialize when DOM loads
+    // Initialize Carousel
     document.addEventListener('DOMContentLoaded', carousel);
-    /* Scroll‑reveal for skill groups */
+
+    /* Scroll Reveal */
     (() => {
       const observer = new IntersectionObserver((entries, obs) => {
         entries.forEach(entry => {
