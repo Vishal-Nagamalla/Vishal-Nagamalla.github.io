@@ -107,6 +107,14 @@
     .carousel-slide.next {
       display: none !important;
     }
+    
+    /* Mobile flip card fix */
+    .carousel-slide:not(.active) .flip-card-inner {
+      transform: rotateY(0deg) !important;
+    }
+    .carousel-slide:not(.active) .flip-card {
+      pointer-events: none !important;
+    }
   }
 
   /* Contact dropdown */
@@ -889,7 +897,6 @@
     © 2025 Vishal Nagamalla
   </footer>
 
-  <!-- ─────────── JS ─────────── -->
   <script>
     /* Contact dropdown */
     (() => {
