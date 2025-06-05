@@ -91,28 +91,28 @@
 
   @media (max-width: 768px) {
     .carousel-track {
-      transform-style: preserve-3d;
+      /* Removed transform-style: preserve-3d; */
     }
-    
     .carousel-slide {
-      flex: 0 0 calc(100% - 2rem) !important;
+      flex: 0 0 100% !important;
       opacity: 0 !important;
-      transform: scale(0.85) !important;
-      filter: brightness(0.6) !important;
       pointer-events: none;
-      transform-style: preserve-3d;
+      display: none !important;
+      /* Removed transform-style: preserve-3d; */
+      transform: none !important;
+      filter: none !important;
     }
     .carousel-slide.active {
       opacity: 1 !important;
-      transform: scale(1) translateZ(0) !important;
-      filter: brightness(1) !important;
       pointer-events: auto;
+      display: block !important;
+      transform: none !important;
+      filter: none !important;
     }
     .carousel-slide.prev,
     .carousel-slide.next {
       display: none !important;
     }
-    
     /* Mobile flip card fix */
     .carousel-slide:not(.active) .flip-card {
       pointer-events: none !important;
