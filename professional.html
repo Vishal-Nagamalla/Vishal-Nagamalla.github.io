@@ -133,19 +133,17 @@
       width: 100%;
       height: 100%;
     }
+    .carousel-container {
+      margin-bottom: 2.5rem; /* Add space below carousel for the button */
+    }
     .project-card {
-      min-height: 420px;
-      max-height: 70vh; /* or 65vh for more margin */
-      height: 70vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
+      min-height: 340px;
+      max-height: 60vh; /* Reduce height for more margin */
+      height: 60vh;
     }
     .flip-card-front > div,
     .flip-card-back {
-      max-height: 60vh; /* slightly less than card to allow for padding */
-      overflow-y: auto;
-      padding-bottom: 1rem;
+      max-height: 50vh; /* Adjust to fit new card height */
     }
     .flip-card-front > div::-webkit-scrollbar,
     .flip-card-back::-webkit-scrollbar {
@@ -406,12 +404,12 @@
             <div class="relative flex flex-col md:flex-row items-center">
               <div class="hidden md:block w-1/2 pr-8 text-right">
                 <h3 class="text-xl font-semibold">Undergraduate Research Fellow</h3>
-                <p class="text-accentgreen">Rutgers University | Apr 2025 – Present</p>
-                <p class="text-gray-300 mt-2">Competitive fellowship in the Physical AI Lab focusing on AI & robotics.</p>
+                <p class="text-accentgreen">Rutgers University | Apr 2025 – Present</p>
+                <p class="text-gray-300 mt-2">Competitive fellowship in the Physical AI Lab focusing on AI & robotics.</p>
               </div>
               <div class="hidden md:flex items-center justify-center w-16 h-16 rounded-full bg-accentgreen text-black z-10 mx-auto"><i class="fas fa-flask text-2xl"></i></div>
               <div class="w-full md:w-1/2 pl-8 md:mt-0">
-                <div class="md:hidden mb-4"><h3 class="text-xl font-semibold">Undergraduate Research Fellow</h3><p class="text-accentgreen">Rutgers University | Apr 2025 – Present</p><p class="text-gray-300 mt-2">Competitive fellowship in the Physical AI Lab focusing on AI & robotics.</p></div>
+                <div class="md:hidden mb-4"><h3 class="text-xl font-semibold">Undergraduate Research Fellow</h3><p class="text-accentgreen">Rutgers University | Apr 2025 – Present</p><p class="text-gray-300 mt-2">Competitive fellowship in the Physical AI Lab focusing on AI & robotics.</p></div>
                 <div class="bg-black bg-opacity-30 p-6 rounded-lg border border-accentgreen border-opacity-20">
                   <h4 class="font-medium mb-2">Key Responsibilities:</h4>
                   <ul class="list-disc list-inside text-gray-300 space-y-1">
@@ -426,30 +424,30 @@
             <!-- Atyeti -->
             <div class="relative flex flex-col md:flex-row items-center">
               <div class="w-full md:w-1/2 pr-8 md:order-2">
-                <div class="md:hidden mb-4"><h3 class="text-xl font-semibold">AI/ML & Data Engineering Intern</h3><p class="text-accentgreen">Atyeti Inc. | May 2024 – Sep 2024</p><p class="text-gray-300 mt-2">Developed ML models & automated data processing.</p></div>
+                <div class="md:hidden mb-4"><h3 class="text-xl font-semibold">AI/ML & Data Engineering Intern</h3><p class="text-accentgreen">Atyeti Inc. | May 2024 – Sep 2024</p><p class="text-gray-300 mt-2">Developed ML models & automated data processing.</p></div>
                 <div class="bg-black bg-opacity-30 p-6 rounded-lg border border-accentgreen border-opacity-20">
                   <h4 class="font-medium mb-2">Key Achievements:</h4>
                   <ul class="list-disc list-inside text-gray-300 space-y-1">
-                    <li>Vision Transformer digit model (98 % accuracy)</li>
-                    <li>Automated cleaning (‑18 hrs per project)</li>
-                    <li>Data validation (97 % analysis accuracy)</li>
+                    <li>Vision Transformer digit model (98 % accuracy)</li>
+                    <li>Automated cleaning (-18 hrs per project)</li>
+                    <li>Data validation (97 % analysis accuracy)</li>
                   </ul>
                 </div>
               </div>
               <div class="hidden md:flex items-center justify-center w-16 h-16 rounded-full bg-accentgreen text-black z-10 mx-auto md:order-1"><i class="fas fa-briefcase text-2xl"></i></div>
-              <div class="hidden md:block w-1/2 pl-8 md:order-3 text-right"><h3 class="text-xl font-semibold">AI/ML & Data Engineering Intern</h3><p class="text-accentgreen">Atyeti Inc. | May 2024 – Sep 2024</p><p class="text-gray-300 mt-2">Developed ML models & automated data processing.</p></div>
+              <div class="hidden md:block w-1/2 pl-8 md:order-3 text-right"><h3 class="text-xl font-semibold">AI/ML & Data Engineering Intern</h3><p class="text-accentgreen">Atyeti Inc. | May 2024 – Sep 2024</p><p class="text-gray-300 mt-2">Developed ML models & automated data processing.</p></div>
             </div>
 
             <!-- VEXU -->
             <div class="relative flex flex-col md:flex-row items-center">
               <div class="hidden md:block w-1/2 pr-8 text-right">
-                <h3 class="text-xl font-semibold">Engineering Lead & Software Engineer</h3>
-                <p class="text-accentgreen">Rutgers VEXU Robotics | Sep 2024 – Present</p>
+                <h3 class="text-xl font-semibold">Engineering Lead & Software Engineer</h3>
+                <p class="text-accentgreen">Rutgers VEXU Robotics | Sep 2024 – Present</p>
                 <p class="text-gray-300 mt-2">Lead engineering & software for competitive robotics team.</p>
               </div>
               <div class="hidden md:flex items-center justify-center w-16 h-16 rounded-full bg-accentgreen text-black z-10 mx-auto"><i class="fas fa-robot text-2xl"></i></div>
               <div class="w-full md:w-1/2 pl-8 md:mt-0">
-                <div class="md:hidden mb-4"><h3 class="text-xl font-semibold">Engineering Lead & Software Engineer</h3><p class="text-accentgreen">Rutgers VEXU Robotics | Sep 2024 – Present</p><p class="text-gray-300 mt-2">Lead engineering & software for competitive robotics team.</p></div>
+                <div class="md:hidden mb-4"><h3 class="text-xl font-semibold">Engineering Lead & Software Engineer</h3><p class="text-accentgreen">Rutgers VEXU Robotics | Sep 2024 – Present</p><p class="text-gray-300 mt-2">Lead engineering & software for competitive robotics team.</p></div>
                 <div class="bg-black bg-opacity-30 p-6 rounded-lg border border-accentgreen border-opacity-20">
                   <h4 class="font-medium mb-2">Key Responsibilities:</h4>
                   <ul class="list-disc list-inside text-gray-300 space-y-1">
@@ -464,37 +462,37 @@
             <!-- Team Tranquil -->
             <div class="relative flex flex-col md:flex-row items-center">
               <div class="w-full md:w-1/2 pr-8 md:order-2">
-                <div class="md:hidden mb-4"><h3 class="text-xl font-semibold">Full‑Stack Web Dev Intern</h3><p class="text-accentgreen">Team Tranquil Inc. | Jul 2023 – Dec 2023</p><p class="text-gray-300 mt-2">Developed full‑stack web solutions for clients.</p></div>
+                <div class="md:hidden mb-4"><h3 class="text-xl font-semibold">Full-Stack Web Dev Intern</h3><p class="text-accentgreen">Team Tranquil Inc. | Jul 2023 – Dec 2023</p><p class="text-gray-300 mt-2">Developed full-stack web solutions for clients.</p></div>
                 <div class="bg-black bg-opacity-30 p-6 rounded-lg border border-accentgreen border-opacity-20">
                   <h4 class="font-medium mb-2">Key Achievements:</h4>
                   <ul class="list-disc list-inside text-gray-300 space-y-1">
                     <li>Restaurant website w/ SQL backend</li>
-                    <li>Image management system (+50 % productivity)</li>
-                    <li>Optimized SQL queries (+33 % speed)</li>
+                    <li>Image management system (+50 % productivity)</li>
+                    <li>Optimized SQL queries (+33 % speed)</li>
                   </ul>
                 </div>
               </div>
               <div class="hidden md:flex items-center justify-center w-16 h-16 rounded-full bg-accentgreen text-black z-10 mx-auto md:order-1"><i class="fas fa-laptop-code text-2xl"></i></div>
-              <div class="hidden md:block w-1/2 pl-8 md:order-3 text-right"><h3 class="text-xl font-semibold">Full‑Stack Web Dev Intern</h3><p class="text-accentgreen">Team Tranquil Inc. | Jul 2023 – Dec 2023</p><p class="text-gray-300 mt-2">Developed full‑stack web solutions for clients.</p></div>
+              <div class="hidden md:block w-1/2 pl-8 md:order-3 text-right"><h3 class="text-xl font-semibold">Full-Stack Web Dev Intern</h3><p class="text-accentgreen">Team Tranquil Inc. | Jul 2023 – Dec 2023</p><p class="text-gray-300 mt-2">Developed full-stack web solutions for clients.</p></div>
             </div>
 
             <!-- Education -->
             <div class="relative flex flex-col md:flex-row items-center">
               <div class="hidden md:block w-1/2 pr-8 text-right">
-                <h3 class="text-xl font-semibold">B.S. Computer Science & Data Science</h3>
-                <p class="text-accentgreen">Rutgers University | 2024 – 2027 (Expected)</p>
-                <p class="text-gray-300 mt-2">GPA 4.0 | Specializing in AI/ML & Robotics</p>
+                <h3 class="text-xl font-semibold">B.S. Computer Science & Data Science</h3>
+                <p class="text-accentgreen">Rutgers University | 2024 – 2027 (Expected)</p>
+                <p class="text-gray-300 mt-2">GPA 4.0 | Specializing in AI/ML & Robotics</p>
               </div>
               <div class="hidden md:flex items-center justify-center w-16 h-16 rounded-full bg-accentgreen text-black z-10 mx-auto"><i class="fas fa-graduation-cap text-2xl"></i></div>
               <div class="w-full md:w-1/2 pl-8 md:mt-0">
-                <div class="md:hidden mb-4"><h3 class="text-xl font-semibold">B.S. Computer Science & Data Science</h3><p class="text-accentgreen">Rutgers University | 2024 – 2027 (Expected)</p><p class="text-gray-300 mt-2">GPA 4.0 | Specializing in AI/ML & Robotics</p></div>
+                <div class="md:hidden mb-4"><h3 class="text-xl font-semibold">B.S. Computer Science & Data Science</h3><p class="text-accentgreen">Rutgers University | 2024 – 2027 (Expected)</p><p class="text-gray-300 mt-2">GPA 4.0 | Specializing in AI/ML & Robotics</p></div>
                 <div class="bg-black bg-opacity-30 p-6 rounded-lg border border-accentgreen border-opacity-20">
-                  <h4 class="font-medium mb-2">Activities & Societies:</h4>
+                  <h4 class="font-medium mb-2">Activities & Societies:</h4>
                   <ul class="list-disc list-inside text-gray-300 space-y-1">
                     <li>Physical AI Research</li>
                     <li>VEXU Robotics (Lead)</li>
                     <li>Competitive Programming</li>
-                    <li>RU Autonomous</li>
+                    <li>RU Autonomous</li>
                     <li>USACS</li>
                   </ul>
                 </div>
@@ -513,7 +511,7 @@
 
         <div class="carousel-container relative overflow-hidden py-8">
           <div class="carousel-track">
-            <!-- project slides (1‑6) -->
+            <!-- project slides (1-6) -->
             <!-- slide 1 -->
             <div class="carousel-slide px-4">
               <div class="project-card flip-card" data-details="HoloBrain revolutionizes medical imaging by combining advanced 3D visualization with gesture-controlled interaction. Developed using PyTorch and Unity, this system enables doctors to manipulate MRI scans in 3D space using hand gestures, improving diagnostic accuracy by 40% compared to traditional 2D imaging systems.">
@@ -527,7 +525,7 @@
                       <div class="p-6">
                         <div class="flex justify-between items-start mb-2"><h3 class="text-xl font-semibold">HoloBrain</h3><span class="bg-accentgreen text-black text-xs px-2 py-1 rounded">ML/CV</span></div>
                         <p class="text-gray-400 mb-4">
-                          AI‑powered 3D MRI hologram with real‑time hand‑gesture controls for faster, more accurate brain‑scan diagnosis.
+                          AI-powered 3D MRI hologram with real-time hand-gesture controls for faster, more accurate brain-scan diagnosis.
                         </p>
                         <div class="flex flex-wrap gap-2 mb-4">
                           <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">PyTorch</span>
@@ -552,12 +550,12 @@
                   <div class="flip-card-back rounded-lg bg-gradient-to-b from-black to-darkgreen">
                     <h3 class="text-xl font-semibold mb-4">Detailed Description</h3>
                     <p class="text-gray-300 mb-4">
-                      HoloBrain couples a 97 %‑accurate CNN classifier with a 3‑D volumetric renderer to turn conventional MRI stacks into an interactive hologram.  Doctors can rotate, zoom, and slice the brain model using 6 natural hand gestures detected by OpenCV&nbsp;+&nbsp;MediaPipe, leaving the keyboard and mouse behind.  A lightweight Python‑to‑Unity socket keeps classification overlays and gesture input in sync at 30&nbsp;fps, cutting review time by 40 % in user testing.
+                      HoloBrain couples a 97 %-accurate CNN classifier with a 3-D volumetric renderer to turn conventional MRI stacks into an interactive hologram.  Doctors can rotate, zoom, and slice the brain model using 6 natural hand gestures detected by OpenCV + MediaPipe, leaving the keyboard and mouse behind.  A lightweight Python-to-Unity socket keeps classification overlays and gesture input in sync at 30 fps, cutting review time by 40 % in user testing.
                     </p>
                     <div class="flex flex-wrap gap-2">
-                      <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">CNN&nbsp;(97 %)</span>
+                      <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">CNN&nbsp;(97 %)</span>
                       <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">Gesture&nbsp;Control</span>
-                      <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">Real‑time&nbsp;Sockets</span>
+                      <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">Real-time&nbsp;Sockets</span>
                     </div>
                   </div>
                 </div>
@@ -576,7 +574,7 @@
                       <div class="p-6">
                         <div class="flex justify-between items-start mb-2"><h3 class="text-xl font-semibold">Handwriting Recognition</h3><span class="bg-accentgreen text-black text-xs px-2 py-1 rounded">ML</span></div>
                         <p class="text-gray-400 mb-4">
-                          EMNIST letter‑classifier achieving 92 % accuracy using a 6‑layer CNN with data augmentation and hyper‑tuning.
+                          EMNIST letter-classifier achieving 92 % accuracy using a 6-layer CNN with data augmentation and hyper-tuning.
                         </p>
                         <div class="flex flex-wrap gap-2 mb-4">
                           <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">PyTorch</span>
@@ -594,12 +592,12 @@
                   <div class="flip-card-back rounded-lg bg-gradient-to-b from-black to-darkgreen">
                     <h3 class="text-xl font-semibold mb-4">Detailed Description</h3>
                     <p class="text-gray-300 mb-4">
-                      Trained a custom convolutional network on 130 k EMNIST characters with on‑the‑fly rotation, shear, and elastic transforms.  Implemented learning‑rate warm‑up and cyclical scheduling to squeeze out 4 % extra accuracy over baseline.  Results are served through a Flask API that returns top‑3 predictions in under 20 ms.
+                      Trained a custom convolutional network on 130 k EMNIST characters with on-the-fly rotation, shear, and elastic transforms.  Implemented learning-rate warm-up and cyclical scheduling to squeeze out 4 % extra accuracy over baseline.  Results are served through a Flask API that returns top-3 predictions in under 20 ms.
                     </p>
                     <div class="flex flex-wrap gap-2">
                       <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">Data&nbsp;Augmentation</span>
                       <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">Flask&nbsp;API</span>
-                      <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">92 %&nbsp;Top‑1</span>
+                      <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">92 %&nbsp;Top-1</span>
                     </div>
                   </div>
                 </div>
@@ -636,11 +634,11 @@
                   <div class="flip-card-back rounded-lg bg-gradient-to-b from-black to-darkgreen">
                     <h3 class="text-xl font-semibold mb-4">Detailed Description</h3>
                     <p class="text-gray-300 mb-4">
-                      Multi‑page site lets diners browse a photo‑rich menu, place pickup orders, and view promos nearest to them via Google&nbsp;Maps embedding.  The owner dashboard supports CRUD for dishes, photos, and coupons, all secured with ASP.NET Identity.  Optimised SQL indices dropped page‑load P95 from 1.9 s to 1.2 s.
+                      Multi-page site lets diners browse a photo-rich menu, place pickup orders, and view promos nearest to them via Google Maps embedding.  The owner dashboard supports CRUD for dishes, photos, and coupons, all secured with ASP.NET Identity.  Optimised SQL indices dropped page-load P95 from 1.9 s to 1.2 s.
                     </p>
                     <div class="flex flex-wrap gap-2">
-                      <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">E‑Commerce</span>
-                      <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">Role‑Based&nbsp;Auth</span>
+                      <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">E-Commerce</span>
+                      <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">Role-Based&nbsp;Auth</span>
                       <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">Performance&nbsp;Tuning</span>
                     </div>
                   </div>
@@ -660,7 +658,7 @@
                       <div class="p-6">
                         <div class="flex justify-between items-start mb-2"><h3 class="text-xl font-semibold">Digit Recognition</h3><span class="bg-accentgreen text-black text-xs px-2 py-1 rounded">ML</span></div>
                         <p class="text-gray-400 mb-4">
-                          Side‑by‑side CNN vs. Vision Transformer for MNIST digits, topping out at 98 % accuracy with 30 % fewer params.
+                          Side-by-side CNN vs. Vision Transformer for MNIST digits, topping out at 98 % accuracy with 30 % fewer params.
                         </p>
                         <div class="flex flex-wrap gap-2 mb-4">
                           <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">PyTorch</span>
@@ -678,12 +676,12 @@
                   <div class="flip-card-back rounded-lg bg-gradient-to-b from-black to-darkgreen">
                     <h3 class="text-xl font-semibold mb-4">Detailed Description</h3>
                     <p class="text-gray-300 mb-4">
-                      Re‑implemented LeNet‑5 and a compact DeiT‑style transformer to probe where attention outperforms convolutions.  Benchmarked training curves, FLOPs, and Grad‑CAM saliency maps; published findings showing transformers closed the gap after 8 epochs while being 22 % faster at inference on GPU.
+                      Re-implemented LeNet-5 and a compact DeiT-style transformer to probe where attention outperforms convolutions.  Benchmarked training curves, FLOPs, and Grad-CAM saliency maps; published findings showing transformers closed the gap after 8 epochs while being 22 % faster at inference on GPU.
                     </p>
                     <div class="flex flex-wrap gap-2">
                       <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">Model&nbsp;Benchmarking</span>
-                      <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">Grad‑CAM</span>
-                      <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">98 %&nbsp;Acc</span>
+                      <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">Grad-CAM</span>
+                      <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">98 %&nbsp;Acc</span>
                     </div>
                   </div>
                 </div>
@@ -702,7 +700,7 @@
                       <div class="p-6">
                         <div class="flex justify-between items-start mb-2"><h3 class="text-xl font-semibold">VEX Robotics</h3><span class="bg-accentgreen text-black text-xs px-2 py-1 rounded">Robotics</span></div>
                         <p class="text-gray-400 mb-4">
-                          C++ control stack for Rutgers VEXU robots: autonomous navigation, PID, and driver assist for top‑5 regional finish.
+                          C++ control stack for Rutgers VEXU robots: autonomous navigation, PID, and driver assist for top-5 regional finish.
                         </p>
                         <div class="flex flex-wrap gap-2 mb-4">
                           <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">C++</span>
@@ -720,11 +718,11 @@
                   <div class="flip-card-back rounded-lg bg-gradient-to-b from-black to-darkgreen">
                     <h3 class="text-xl font-semibold mb-4">Detailed Description</h3>
                     <p class="text-gray-300 mb-4">
-                      Designed modular task scheduler around PROS RTOS, fusing IMU, encoders, and vision to achieve ±1° orientation repeatability.  Dynamic motion‑planning cut autonomous cycle time by 18 %.  Driver‑assist modes add auto‑aim and intake sequencing triggered by controller macros.
+                      Designed modular task scheduler around PROS RTOS, fusing IMU, encoders, and vision to achieve ±1° orientation repeatability.  Dynamic motion-planning cut autonomous cycle time by 18 %.  Driver-assist modes add auto-aim and intake sequencing triggered by controller macros.
                     </p>
                     <div class="flex flex-wrap gap-2">
                       <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">Autonomous&nbsp;Ops</span>
-                      <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">Real‑Time&nbsp;OS</span>
+                      <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">Real-Time&nbsp;OS</span>
                       <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">Competition&nbsp;Bots</span>
                     </div>
                   </div>
@@ -747,7 +745,7 @@
                           <span class="bg-accentgreen text-black text-xs px-2 py-1 rounded">Data</span>
                         </div>
                         <p class="text-gray-400 mb-4">
-                          Excel‑Python ETL toolkit that slashes manual cleaning by 18 hours per dataset via smart type‑casting and validation.
+                          Excel-Python ETL toolkit that slashes manual cleaning by 18 hours per dataset via smart type-casting and validation.
                         </p>
                         <div class="flex flex-wrap gap-2 mb-4">
                           <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">Python</span>
@@ -766,11 +764,11 @@
                   <div class="flip-card-back rounded-lg bg-gradient-to-b from-black to-darkgreen">
                     <h3 class="text-xl font-semibold mb-4">Detailed Description</h3>
                     <p class="text-gray-300 mb-4">
-                      Automated detection of mixed dtype columns, date normalisation, and cross‑sheet referential checks push dataset integrity to 97 %.  Generates reproducible cleaning logs and summary dashboards for business analysts, delivered as a one‑click macro‑enabled workbook.
+                      Automated detection of mixed dtype columns, date normalisation, and cross-sheet referential checks push dataset integrity to 97 %.  Generates reproducible cleaning logs and summary dashboards for business analysts, delivered as a one-click macro-enabled workbook.
                     </p>
                     <div class="flex flex-wrap gap-2">
                       <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">ETL</span>
-                      <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">Data&nbsp;Quality&nbsp;97 %</span>
+                      <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">Data&nbsp;Quality&nbsp;97 %</span>
                       <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">Automation</span>
                     </div>
                   </div>
@@ -779,7 +777,7 @@
             </div>
           <!-- slide 7 -->
           <div class="carousel-slide px-4">
-            <div class="project-card flip-card" data-details="Python‑based Monte‑Carlo Tree Search and reinforcement learning engine that recommends optimal scoring routes for VEX U High Stakes, fed by a procedural field generator.">
+            <div class="project-card flip-card" data-details="Python-based Monte-Carlo Tree Search and reinforcement learning engine that recommends optimal scoring routes for VEX U High Stakes, fed by a procedural field generator.">
               <div class="flip-card-inner">
                 <!-- Front Side -->
                 <div class="flip-card-front">
@@ -793,7 +791,7 @@
                         <span class="bg-accentgreen text-black text-xs px-2 py-1 rounded">AI/Robotics</span>
                       </div>
                       <p class="text-gray-400 mb-4">
-                        Pre‑match AI that explores 10 k+ action trees in 1 s to output the highest‑value autonomous paths for VEXU.
+                        Pre-match AI that explores 10 k+ action trees in 1 s to output the highest-value autonomous paths for VEXU.
                       </p>
                       <div class="flex flex-wrap gap-2 mb-4">
                         <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">Python</span>
@@ -813,11 +811,11 @@
                 <div class="flip-card-back rounded-lg bg-gradient-to-b from-black to-darkgreen">
                   <h3 class="text-xl font-semibold mb-4">Detailed Description</h3>
                   <p class="text-gray-300 mb-4">
-                    Generates a randomised replica of the High Stakes field, then simulates pick‑and‑place actions with physics‑aware cost models.  A Monte‑Carlo Tree Search prunes low‑value branches while a Q‑learning critic refines move ordering between iterations, converging to strategies that score 15 % higher than human baselines.  Outputs JSON playbooks that sync to the competition robot over Wi‑Fi.
+                    Generates a randomised replica of the High Stakes field, then simulates pick-and-place actions with physics-aware cost models.  A Monte-Carlo Tree Search prunes low-value branches while a Q-learning critic refines move ordering between iterations, converging to strategies that score 15 % higher than human baselines.  Outputs JSON playbooks that sync to the competition robot over Wi-Fi.
                   </p>
                   <div class="flex flex-wrap gap-2">
                     <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">Procedural&nbsp;Field&nbsp;Gen</span>
-                    <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">Q‑Learning&nbsp;Critic</span>
+                    <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">Q-Learning&nbsp;Critic</span>
                     <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">JSON&nbsp;Playbooks</span>
                   </div>
                 </div>
@@ -854,9 +852,9 @@
         <li>Python</li>
         <li>Java</li>
         <li>C#</li>
-        <li>C / C++</li>
+        <li>C / C++</li>
         <li>JavaScript</li>
-        <li>HTML / CSS</li>
+        <li>HTML / CSS</li>
         <li>SQL</li>
       </ul>
     </div>
@@ -864,24 +862,24 @@
     <!-- Developer Tools -->
     <div class="skill-group opacity-0 translate-y-8 transition-all duration-700 delay-100 w-full max-w-3xl text-center">
       <h3 class="text-3xl font-semibold flex items-center justify-center gap-3 mb-6">
-        <i class="fas fa-wrench text-accentgreen"></i> Developer Tools
+        <i class="fas fa-wrench text-accentgreen"></i> Developer Tools
       </h3>
       <ul class="flex flex-wrap justify-center gap-x-12 gap-y-3 text-lg md:text-xl list-disc list-inside text-gray-200">
-        <li>Git / GitHub</li>
-        <li>Visual Studio & VS Code</li>
-        <li>IntelliJ IDEA</li>
+        <li>Git / GitHub</li>
+        <li>Visual Studio & VS Code</li>
+        <li>IntelliJ IDEA</li>
         <li>PyCharm</li>
         <li>Unity</li>
-        <li>Android Studio</li>
+        <li>Android Studio</li>
         <li>Docker</li>
-        <li>Microsoft Azure</li>
+        <li>Microsoft Azure</li>
       </ul>
     </div>
 
     <!-- Frameworks & Libraries -->
     <div class="skill-group opacity-0 translate-y-8 transition-all duration-700 delay-200 w-full max-w-3xl text-center">
       <h3 class="text-3xl font-semibold flex items-center justify-center gap-3 mb-6">
-        <i class="fas fa-layer-group text-accentgreen"></i> Frameworks & Libraries
+        <i class="fas fa-layer-group text-accentgreen"></i> Frameworks & Libraries
       </h3>
       <ul class="flex flex-wrap justify-center gap-x-12 gap-y-3 text-lg md:text-xl list-disc list-inside text-gray-200">
         <li>PyTorch</li>
@@ -889,11 +887,11 @@
         <li>MediaPipe</li>
         <li>React&nbsp;JS</li>
         <li>Bootstrap</li>
-        <li>ASP.NET Core</li>
+        <li>ASP.NET Core</li>
         <li>jQuery</li>
-        <li>Tailwind CSS</li>
-        <li>Socket IO</li>
-        <li>NumPy / Pandas</li>
+        <li>Tailwind CSS</li>
+        <li>Socket IO</li>
+        <li>NumPy / Pandas</li>
       </ul>
     </div>
 
@@ -903,13 +901,13 @@
         <i class="fas fa-lightbulb text-accentgreen"></i> Interests
       </h3>
       <ul class="flex flex-wrap justify-center gap-x-12 gap-y-3 text-lg md:text-xl list-disc list-inside text-gray-200">
-        <li>Artificial Intelligence</li>
-        <li>Machine Learning</li>
-        <li>Computer Vision</li>
-        <li>Data Science</li>
-        <li>Robotics & Autonomous Systems</li>
-        <li>Computer Science</li>
-        <li>3D Visualization & XR</li>
+        <li>Artificial Intelligence</li>
+        <li>Machine Learning</li>
+        <li>Computer Vision</li>
+        <li>Data Science</li>
+        <li>Robotics & Autonomous Systems</li>
+        <li>Computer Science</li>
+        <li>3D Visualization & XR</li>
         <li>Cloud Computing</li>
       </ul>
     </div>
@@ -917,7 +915,7 @@
 
         <!-- Tech icons -->
         <div class="mt-16">
-          <h3 class="text-xl font-semibold mb-6 text-white text-center">Technologies & Tools</h3>
+          <h3 class="text-xl font-semibold mb-6 text-white text-center">Technologies & Tools</h3>
           <div class="flex flex-wrap justify-center gap-6">
             <div class="flex flex-col items-center"><div class="w-16 h-16 bg-black rounded-full flex items-center justify-center mb-2"><i class="fab fa-python text-3xl text-accentgreen"></i></div><span class="text-sm">Python</span></div>
             <div class="flex flex-col items-center"><div class="w-16 h-16 bg-black rounded-full flex items-center justify-center mb-2"><i class="fas fa-robot text-3xl text-accentgreen"></i></div><span class="text-sm">PyTorch</span></div>
@@ -941,7 +939,7 @@
 
   <!-- Footer -->
   <footer class="bg-black border-t border-gray-800 py-6 text-center text-gray-500 text-sm">
-    © 2025 Vishal Nagamalla
+    © 2025 Vishal Nagamalla
   </footer>
 
   <script>
