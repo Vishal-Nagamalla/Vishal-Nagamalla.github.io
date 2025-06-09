@@ -116,6 +116,23 @@
     .carousel-slide:not(.active) .flip-card {
       pointer-events: none !important;
     }
+    .flip-card-front, .flip-card-back {
+      backface-visibility: hidden !important;
+      -webkit-backface-visibility: hidden !important;
+    }
+    .flip-card:not(.flipped) .flip-card-back {
+      display: none !important;
+    }
+    .flip-card.flipped .flip-card-front {
+      display: none !important;
+    }
+    .flip-card .flip-card-front,
+    .flip-card .flip-card-back {
+      display: block;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+    }
   }
 
   /* Contact dropdown */
