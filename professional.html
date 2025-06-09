@@ -91,22 +91,21 @@
 
   @media (max-width: 768px) {
     .carousel-track {
-      transform-style: preserve-3d;
+      /* Remove transform-style to avoid conflicts with flip cards */
     }
     
     .carousel-slide {
-      flex: 0 0 calc(100% - 2rem) !important;
+      flex: 0 0 100% !important;
       opacity: 0 !important;
-      transform: scale(0.85) !important;
-      filter: brightness(0.6) !important;
       pointer-events: none;
-      transform-style: preserve-3d;
+      display: none !important;
+      /* Remove all transforms and filters to avoid conflicts */
     }
     .carousel-slide.active {
       opacity: 1 !important;
-      transform: scale(1) translateZ(0) !important;
-      filter: brightness(1) !important;
       pointer-events: auto;
+      display: block !important;
+      /* Remove all transforms and filters for clean display */
     }
     .carousel-slide.prev,
     .carousel-slide.next {
