@@ -90,6 +90,9 @@
   }
 
   @media (max-width: 768px) {
+    .carousel-container {
+      padding-bottom: 5rem !important;
+    }
     .carousel-track {
       /* Remove transform-style to avoid conflicts with flip cards */
     }
@@ -99,13 +102,11 @@
       opacity: 0 !important;
       pointer-events: none;
       display: none !important;
-      /* Remove all transforms and filters to avoid conflicts */
     }
     .carousel-slide.active {
       opacity: 1 !important;
       pointer-events: auto;
       display: block !important;
-      /* Remove all transforms and filters for clean display */
     }
     .carousel-slide.prev,
     .carousel-slide.next {
@@ -117,8 +118,9 @@
       pointer-events: none !important;
     }
     .flip-card-front, .flip-card-back {
-      backface-visibility: hidden !important;
-      -webkit-backface-visibility: hidden !important;
+      min-height: 420px !important;
+      max-height: 70vh !important;
+      overflow-y: auto !important;
     }
     .flip-card:not(.flipped) .flip-card-back {
       display: none !important;
@@ -132,6 +134,14 @@
       position: absolute;
       width: 100%;
       height: 100%;
+    }
+    .project-card {
+      min-height: 420px !important;
+      margin-bottom: 2rem !important;
+    }
+    .flip-card-back p {
+      max-height: 40vh !important;
+      overflow-y: auto !important;
     }
   }
 
@@ -215,9 +225,9 @@
   }
 
   /* Project Card Styles */
-  .project-card {
+  .project-card, .flip-card-front, .flip-card-back {
+    min-height: 420px;
     height: 100%;
-    min-height: 450px;
   }
 
   /* Enhanced Card Effects */
