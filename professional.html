@@ -4,1088 +4,989 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Vishal Nagamalla | Professional</title>
-  <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
 
-  <!-- Tailwind CSS & Font‑Awesome -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
-  <link  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
 
   <script>
     tailwind.config = {
       theme: {
         extend: {
-          fontFamily: { poppins: ['Poppins', 'sans-serif'] },
-          colors: {
-            darkgreen : '#1a2e1a',
-            lightgreen: '#2d4d2d',
-            accentgreen:'#3a5c3a',
-          }
+          fontFamily: { poppins: ['Poppins','sans-serif'], grotesk: ['Space Grotesk','sans-serif'] },
+          colors: { darkgreen:'#1a2e1a', lightgreen:'#2d4d2d', accentgreen:'#3a5c3a', emerald:'#4ade80' },
         }
       }
     }
   </script>
 
-<style>
-  /* Scrollbar */
-  ::-webkit-scrollbar{width:8px}
-  ::-webkit-scrollbar-track{background:#111}
-  ::-webkit-scrollbar-thumb{background:#3a5c3a;border-radius:4px}
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; }
+    ::-webkit-scrollbar { width:6px; }
+    ::-webkit-scrollbar-track { background:#0a0a0a; }
+    ::-webkit-scrollbar-thumb { background:#3a5c3a; border-radius:3px; }
 
-  /* Nav underline */
-  .nav-link{position:relative}
-  .nav-link::after{
-    content:'';
-    position:absolute;
-    width:0;
-    height:2px;
-    bottom:-5px;left:0;
-    background:#3a5c3a;
-    transition:width .3s
-  }
-  .nav-link:hover::after{width:100%}
-  .nav-link.active::after{width:0}
+    .nav-link { position:relative; }
+    .nav-link::after { content:''; position:absolute; width:0; height:2px; bottom:-4px; left:0; background:#4ade80; transition:width .3s ease; }
+    .nav-link:hover::after { width:100%; }
+    .group:hover #contact-menu { opacity:1!important; visibility:visible!important; transform:translateY(0)!important; }
+    .gradient-text { background:linear-gradient(135deg,#fff 0%,#4ade80 50%,#3a5c3a 100%); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
 
-  /* Fixed Carousel Styles */
-  .carousel-container {
-    position: relative;
-    overflow: hidden;
-    padding: 2rem 0;
-  }
-  .carousel-track {
-    display: flex;
-    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    padding: 0 1rem;
-  }
-  .carousel-slide {
-    flex: 0 0 calc(33.333% - 2rem);
-    margin: 0 1rem;
-    opacity: 0.5;
-    transform: scale(0.85);
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    filter: brightness(0.6);
-    z-index: 1;
-  }
-  .carousel-slide.active {
-    opacity: 1;
-    transform: scale(1.1) translateZ(0);
-    filter: brightness(1);
-    z-index: 3;
-  }
-  .carousel-slide.prev,
-  .carousel-slide.next {
-    opacity: 0.8;
-    transform: scale(0.9);
-    filter: brightness(0.8);
-    z-index: 2;
-  }
+    /* ── Apple-esque Experience ── */
+    .exp-container {
+      position: relative;
+      height: 100vh;
+      overflow: hidden;
+      background: radial-gradient(ellipse at 30% 50%, rgba(26,46,26,0.3) 0%, rgba(0,0,0,1) 70%);
+    }
 
-  @media (max-width: 1024px) {
-    .carousel-slide {
-      flex: 0 0 calc(50% - 2rem);
-    }
-    .carousel-slide.active {
-      transform: scale(1.05);
-    }
-  }
-
-  @media (max-width: 768px) {
-    .carousel-container {
-      padding-bottom: 8rem !important;
-    }
-    .carousel-track {
-      /* Remove transform-style to avoid conflicts with flip cards */
-    }
-    
-    .carousel-slide {
-      flex: 0 0 100% !important;
-      opacity: 0 !important;
-      pointer-events: none;
-      display: none !important;
-    }
-    .carousel-slide.active {
-      opacity: 1 !important;
-      pointer-events: auto;
-      display: block !important;
-    }
-    .carousel-slide.prev,
-    .carousel-slide.next {
-      display: none !important;
-    }
-    
-    /* Mobile flip card fix */
-    .carousel-slide:not(.active) .flip-card {
-      pointer-events: none !important;
-    }
-    .flip-card-front, .flip-card-back {
-      min-height: 420px !important;
-      max-height: none !important;
-      overflow-y: visible !important;
-    }
-    .flip-card:not(.flipped) .flip-card-back {
-      display: none !important;
-    }
-    .flip-card.flipped .flip-card-front {
-      display: none !important;
-    }
-    .flip-card .flip-card-front,
-    .flip-card .flip-card-back {
-      display: block;
+    /* Internal scroll area — invisible scrollbar */
+    .exp-scroll-area {
       position: absolute;
+      inset: 0;
+      overflow-y: auto;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      z-index: 5;
+    }
+    .exp-scroll-area::-webkit-scrollbar { display: none; }
+
+    /* Spacer inside scroll area creates the scroll distance */
+    .exp-scroll-spacer {
+      /* height is set by JS: (numPanels) * 100vh */
+      pointer-events: none;
+    }
+
+    /* Display layer sits on top, sticky, holds the visible content */
+    .exp-display {
+      position: sticky;
+      top: 0;
+      height: 100vh;
       width: 100%;
+      pointer-events: none;
+      z-index: 10;
+    }
+
+    /* Each experience frame */
+    .exp-frame {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .exp-frame.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    /* Big step number */
+    .exp-step-number {
+      font-size: clamp(8rem, 20vw, 18rem);
+      font-weight: 800;
+      line-height: 1;
+      color: transparent;
+      -webkit-text-stroke: 1.5px rgba(74, 222, 128, 0.12);
+      position: absolute;
+      right: 5%;
+      top: 50%;
+      transform: translateY(-50%);
+      user-select: none;
+      pointer-events: none;
+      transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* Side navigation dots */
+    .exp-nav-dots {
+      position: absolute;
+      right: 2rem;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 20;
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+      pointer-events: auto;
+    }
+    .exp-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      border: 2px solid rgba(74, 222, 128, 0.3);
+      background: transparent;
+      cursor: pointer;
+      transition: all 0.4s ease;
+      position: relative;
+    }
+    .exp-dot.active {
+      background: #4ade80;
+      border-color: #4ade80;
+      box-shadow: 0 0 20px rgba(74, 222, 128, 0.4);
+    }
+    .exp-dot::after {
+      content: attr(data-label);
+      position: absolute;
+      right: 24px;
+      top: 50%;
+      transform: translateY(-50%);
+      white-space: nowrap;
+      font-size: 11px;
+      color: rgba(255,255,255,0.4);
+      font-family: 'Space Grotesk', sans-serif;
+      letter-spacing: 0.05em;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      pointer-events: none;
+    }
+    .exp-dot:hover::after,
+    .exp-dot.active::after {
+      opacity: 1;
+    }
+
+    /* Progress line behind dots */
+    .exp-progress-line {
+      position: absolute;
+      right: 2rem;
+      top: 50%;
+      width: 12px;
+      z-index: 19;
+      pointer-events: none;
+    }
+    .exp-progress-track {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 2px;
       height: 100%;
+      background: rgba(58, 92, 58, 0.2);
+      border-radius: 1px;
     }
-    .project-card {
-      min-height: 420px !important;
-      margin-bottom: 2rem !important;
+    .exp-progress-fill-line {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 2px;
+      background: #4ade80;
+      border-radius: 1px;
+      transition: height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      top: 0;
     }
-    .flip-card-back p {
-      max-height: 40vh !important;
-      overflow-y: auto !important;
+
+    /* Scroll hint */
+    .scroll-hint {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 20;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      animation: scrollBounce 2s ease-in-out infinite;
+      pointer-events: none;
     }
-  }
+    @keyframes scrollBounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); opacity: 0.6; }
+      50% { transform: translateX(-50%) translateY(8px); opacity: 1; }
+    }
 
-  /* Contact dropdown */
-  .group:hover #contact-menu{
-    opacity:1 !important;
-    visibility:visible !important;
-    transform:scale(100%) !important;
-  }
+    /* Content animations */
+    .exp-content-inner {
+      transform: translateY(30px);
+      opacity: 0;
+      transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.1s;
+    }
+    .exp-frame.active .exp-content-inner {
+      transform: translateY(0);
+      opacity: 1;
+    }
 
-  /* Fixed Flip Animation */
-  .flip-card {
-    perspective: 1000px;
-    -webkit-perspective: 1000px;
-    cursor: pointer;
-    transform-style: preserve-3d;
-    height: 100%;
-  }
-  .flip-card-inner {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    -webkit-transition: transform 0.6s;
-    transition: transform 0.6s;
-    -webkit-transform-style: preserve-3d;
-    transform-style: preserve-3d;
-  }
-  .flip-card.flipped .flip-card-inner {
-    transform: rotateY(180deg);
-  }
-  .flip-card-front,
-  .flip-card-back {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
-    -webkit-transform-style: preserve-3d;
-    transform-style: preserve-3d;
-  }
-  .flip-card-back {
-    -webkit-transform: rotateY(180deg);
-    transform: rotateY(180deg);
-    padding: 1.5rem;
-  }
+    .exp-tags-inner {
+      transform: translateY(20px);
+      opacity: 0;
+      transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.25s;
+    }
+    .exp-frame.active .exp-tags-inner {
+      transform: translateY(0);
+      opacity: 1;
+    }
 
-  /* Project Modal */
-  .project-modal {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0,0,0,0.9);
-    z-index: 100;
-    padding: 2rem;
-    overflow-y: auto;
-  }
-  .project-modal.active {
-    display: flex;
-  }
-  .modal-content {
-    background: #1a2e1a;
-    max-width: 800px;
-    margin: auto;
-    padding: 2rem;
-    border-radius: 1rem;
-    position: relative;
-  }
-  .modal-close {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    cursor: pointer;
-    font-size: 1.5rem;
-    color: #3a5c3a;
-  }
-  .modal-close:hover {
-    color: white;
-  }
+    /* ── Infinite Carousel ── */
+    .carousel-viewport { overflow: hidden; position: relative; }
+    .carousel-belt {
+      display: flex;
+      transition: transform 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
+    .carousel-cell {
+      flex: 0 0 100%;
+      padding: 0 1rem;
+      transition: transform 0.4s ease, filter 0.4s ease, opacity 0.4s ease;
+      transform: scale(0.85);
+      filter: brightness(0.5);
+      opacity: 0.6;
+    }
+    @media (min-width:768px) { .carousel-cell { flex: 0 0 50%; } }
+    @media (min-width:1024px) { .carousel-cell { flex: 0 0 33.333%; } }
 
-  /* Project Card Styles */
-  .project-card, .flip-card-front, .flip-card-back {
-    min-height: 420px;
-    height: 100%;
-  }
+    .carousel-cell.center {
+      transform: scale(1.05);
+      filter: brightness(1);
+      opacity: 1;
+      z-index: 2;
+    }
+    .carousel-cell.adjacent {
+      transform: scale(0.92);
+      filter: brightness(0.75);
+      opacity: 0.8;
+    }
 
-  /* Enhanced Card Effects */
-  .project-card .flip-card-front > div {
-    transform: translateZ(0);
-    box-shadow: 0 4px 6px rgba(58, 92, 58, 0.1),
-                0 2px 4px rgba(255, 255, 255, 0.05);
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  }
+    /* Flip card */
+    .flip-card { perspective:1200px; cursor:pointer; }
+    .flip-card-inner { position:relative; width:100%; height:100%; transition:transform .7s cubic-bezier(.4,0,.2,1); transform-style:preserve-3d; }
+    .flip-card.flipped .flip-card-inner { transform:rotateY(180deg); }
+    .flip-card-front,.flip-card-back { backface-visibility:hidden; -webkit-backface-visibility:hidden; }
+    .flip-card-back { position:absolute; inset:0; transform:rotateY(180deg); display:flex; flex-direction:column; justify-content:center; padding:2rem; }
 
-  .project-card:hover .flip-card-front > div {
-    transform: translateY(-4px) translateZ(0);
-    box-shadow: 0 8px 12px rgba(58, 92, 58, 0.2),
-                0 4px 8px rgba(255, 255, 255, 0.1),
-                0 0 16px rgba(58, 92, 58, 0.1);
-  }
+    .reveal { opacity:0; transform:translateY(60px); }
+    .skill-icon { transition:transform .3s ease, box-shadow .3s ease; }
+    .skill-icon:hover { transform:translateY(-4px); box-shadow:0 10px 30px rgba(74,222,128,.15); }
 
-  .carousel-slide.active .project-card .flip-card-front > div {
-    box-shadow: 0 8px 16px rgba(58, 92, 58, 0.3),
-                0 6px 12px rgba(255, 255, 255, 0.15),
-                0 0 24px rgba(58, 92, 58, 0.2);
-  }
-
-  .project-card .flip-card-back {
-    transform: rotateY(180deg) translateZ(0);
-    box-shadow: 0 4px 6px rgba(58, 92, 58, 0.1),
-                0 2px 4px rgba(255, 255, 255, 0.05);
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-
-  .project-card:hover .flip-card-back {
-    transform: rotateY(180deg) translateY(-4px) translateZ(0);
-    box-shadow: 0 8px 12px rgba(58, 92, 58, 0.2),
-                0 4px 8px rgba(255, 255, 255, 0.1),
-                0 0 16px rgba(58, 92, 58, 0.1);
-  }
-
-  .carousel-slide.active .project-card .flip-card-back {
-    box-shadow: 0 8px 16px rgba(58, 92, 58, 0.3),
-                0 6px 12px rgba(255, 255, 255, 0.15),
-                0 0 24px rgba(58, 92, 58, 0.2);
-  }
-
-  .project-card .flip-card-front > div::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    border: 1px solid rgba(58, 92, 58, 0.3);
-    border-radius: 0.5rem;
-    pointer-events: none;
-    transition: all 0.3s ease;
-  }
-
-  .project-card:hover .flip-card-front > div::after {
-    border: 2px solid rgba(58, 92, 58, 0.5);
-    box-shadow: inset 0 0 12px rgba(58, 92, 58, 0.2);
-  }
-
-  .carousel-slide.active .project-card .flip-card-front > div::after {
-    border: 2px solid rgba(58, 92, 58, 0.8);
-    box-shadow: inset 0 0 16px rgba(58, 92, 58, 0.3);
-  }
-
-  /* Card Layout Fixes */
-  .flip-card-inner {
-    height: 100%;
-  }
-
-  .flip-card-front, 
-  .flip-card-back {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-  }
-
-  .flip-card-front .bg-darkgreen, 
-  .flip-card-back {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-  }
-
-  /* Scrollable Back Content */
-  .flip-card-back p {
-    flex: 1;
-    overflow-y: auto;
-    padding-right: 8px;
-  }
-
-  .flip-card-back p::-webkit-scrollbar {
-    width: 4px;
-  }
-  .flip-card-back p::-webkit-scrollbar-thumb {
-    background: #3a5c3a;
-  }
-
-  /* Carousel Interactions */
-  .carousel-slide:not(.active) .flip-card {
-    pointer-events: none;
-  }
-    
-  .carousel-slide.active .flip-card {
-    pointer-events: auto;
-  }
-</style>
-
+    /* Mobile experience adjustments */
+    @media (max-width: 768px) {
+      .exp-nav-dots { right: 1rem; gap: 1rem; }
+      .exp-dot { width: 10px; height: 10px; }
+      .exp-dot::after { display: none; }
+      .exp-step-number { font-size: 6rem; right: 10%; }
+    }
+  </style>
 </head>
-<body class="bg-black text-white font-poppins min-h-screen">
 
-  <!-- ─────────── Navigation ─────────── -->
-  <nav class="fixed w-full bg-black bg-opacity-90 z-40 shadow-lg">
-    <div class="max-w-7xl mx-auto px-4 flex items-center justify-between h-16">
-      <!-- Left logo -->
-      <span class="text-xl font-extrabold text-darkgreen">VN</span>
+<body class="bg-black text-white font-poppins overflow-x-hidden">
 
-      <!-- Right‑aligned menu -->
-      <div class="space-x-8 hidden md:flex">
-        <a href="./"        class="nav-link px-3 py-2">Home</a>
-        <a href="./professional" class="nav-link px-3 py-2">Professional</a>
-
-        <!-- Contact dropdown -->
+  <!-- ───── NAV ───── -->
+  <nav class="fixed w-full z-50 transition-all duration-500" id="navbar">
+    <div class="max-w-7xl mx-auto px-6 flex items-center justify-between h-20">
+      <a href="./index.html" class="text-2xl font-extrabold font-grotesk tracking-tight"><span class="text-white">V</span><span class="text-emerald">N</span></a>
+      <div class="hidden md:flex items-center gap-10">
+        <a href="./index.html" class="nav-link text-sm tracking-wide uppercase text-gray-300 hover:text-white transition-colors">Home</a>
+        <a href="#experience" class="nav-link text-sm tracking-wide uppercase text-gray-300 hover:text-white transition-colors">Experience</a>
         <div class="relative group">
-          <button class="nav-link px-3 py-2">Contact</button>
-          <div id="contact-menu"
-               class="absolute right-0 mt-2 bg-darkgreen text-white rounded-lg shadow-lg border border-accentgreen
-                      opacity-0 invisible transform scale-95 origin-top-right transition-all duration-150 z-50
-                      flex flex-row items-center gap-3 px-4 py-2">
-            <a href="mailto:Vishal.Nagamalla@gmail.com" target="_blank"
-               class="w-9 h-9 flex items-center justify-center rounded-md hover:bg-lightgreen">
-              <i class="fas fa-envelope text-base"></i>
-            </a>
-            <a href="https://github.com/Vishal-Nagamalla" target="_blank"
-               class="w-9 h-9 flex items-center justify-center rounded-md hover:bg-lightgreen">
-              <i class="fab fa-github text-base"></i>
-            </a>
-            <a href="https://www.linkedin.com/in/vishalnag" target="_blank"
-               class="w-9 h-9 flex items-center justify-center rounded-md hover:bg-lightgreen">
-              <i class="fab fa-linkedin text-base"></i>
-            </a>
+          <button class="nav-link text-sm tracking-wide uppercase text-gray-300 hover:text-white transition-colors flex items-center gap-1">Contact</button>
+          <div id="contact-menu" class="absolute right-0 mt-4 bg-black/90 backdrop-blur-xl text-white rounded-xl shadow-2xl border border-accentgreen/30 opacity-0 invisible transform -translate-y-2 transition-all duration-200 z-50 flex items-center gap-3 px-5 py-3">
+            <a href="mailto:Vishal.Nagamalla@gmail.com" target="_blank" class="w-10 h-10 flex items-center justify-center rounded-lg text-gray-400 hover:text-emerald hover:bg-white/5 transition-all"><i class="fas fa-envelope text-lg"></i></a>
+            <a href="https://github.com/Vishal-Nagamalla" target="_blank" class="w-10 h-10 flex items-center justify-center rounded-lg text-gray-400 hover:text-emerald hover:bg-white/5 transition-all"><i class="fab fa-github text-lg"></i></a>
+            <a href="https://www.linkedin.com/in/vishalnag" target="_blank" class="w-10 h-10 flex items-center justify-center rounded-lg text-gray-400 hover:text-emerald hover:bg-white/5 transition-all"><i class="fab fa-linkedin text-lg"></i></a>
           </div>
         </div>
       </div>
+      <button id="mobile-nav-toggle" class="md:hidden text-white text-2xl focus:outline-none"><i class="fas fa-bars"></i></button>
     </div>
   </nav>
 
-  <!-- ─────────── Main ─────────── -->
-  <main class="pt-16">
-
-    <!-- ───── Experience ───── -->
-    <section id="experience" class="bg-gradient-to-b from-black to-darkgreen py-20">
-      <div class="max-w-7xl mx-auto px-4">
-        <h2 class="text-3xl font-bold text-center mb-12 text-white">Experience & Education</h2>
-
-        <div class="relative">
-          <div class="hidden md:block absolute left-1/2 top-0 bottom-0 w-1 bg-accentgreen transform -translate-x-1/2"></div>
-
-          <div class="space-y-8 md:space-y-16">
-            <!-- Fellowship -->
-            <div class="relative flex flex-col md:flex-row items-center">
-              <div class="hidden md:block w-1/2 pr-8 text-right">
-                <h3 class="text-xl font-semibold">Undergraduate Research Fellow</h3>
-                <p class="text-accentgreen">Rutgers University | Apr 2025 – Present</p>
-                <p class="text-gray-300 mt-2">Competitive fellowship in the Physical AI Lab focusing on AI & robotics.</p>
-              </div>
-              <div class="hidden md:flex items-center justify-center w-16 h-16 rounded-full bg-accentgreen text-black z-10 mx-auto"><i class="fas fa-flask text-2xl"></i></div>
-              <div class="w-full md:w-1/2 pl-8 md:mt-0">
-                <div class="md:hidden mb-4"><h3 class="text-xl font-semibold">Undergraduate Research Fellow</h3><p class="text-accentgreen">Rutgers University | Apr 2025 – Present</p><p class="text-gray-300 mt-2">Competitive fellowship in the Physical AI Lab focusing on AI & robotics.</p></div>
-                <div class="bg-black bg-opacity-30 p-6 rounded-lg border border-accentgreen border-opacity-20">
-                  <h4 class="font-medium mb-2">Key Responsibilities:</h4>
-                  <ul class="list-disc list-inside text-gray-300 space-y-1">
-                    <li>Interdisciplinary AI & robotics research</li>
-                    <li>Prototype novel perception systems</li>
-                    <li>Publish results & present to faculty</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-
-            <!-- Atyeti -->
-            <div class="relative flex flex-col md:flex-row items-center">
-              <div class="w-full md:w-1/2 pr-8 md:order-2">
-                <div class="md:hidden mb-4"><h3 class="text-xl font-semibold">AI/ML & Data Engineering Intern</h3><p class="text-accentgreen">Atyeti Inc. | May 2024 – Sep 2024</p><p class="text-gray-300 mt-2">Developed ML models & automated data processing.</p></div>
-                <div class="bg-black bg-opacity-30 p-6 rounded-lg border border-accentgreen border-opacity-20">
-                  <h4 class="font-medium mb-2">Key Achievements:</h4>
-                  <ul class="list-disc list-inside text-gray-300 space-y-1">
-                    <li>Vision Transformer digit model (98 % accuracy)</li>
-                    <li>Automated cleaning (-18 hrs per project)</li>
-                    <li>Data validation (97 % analysis accuracy)</li>
-                  </ul>
-                </div>
-              </div>
-              <div class="hidden md:flex items-center justify-center w-16 h-16 rounded-full bg-accentgreen text-black z-10 mx-auto md:order-1"><i class="fas fa-briefcase text-2xl"></i></div>
-              <div class="hidden md:block w-1/2 pl-8 md:order-3 text-right"><h3 class="text-xl font-semibold">AI/ML & Data Engineering Intern</h3><p class="text-accentgreen">Atyeti Inc. | May 2024 – Sep 2024</p><p class="text-gray-300 mt-2">Developed ML models & automated data processing.</p></div>
-            </div>
-
-            <!-- VEXU -->
-            <div class="relative flex flex-col md:flex-row items-center">
-              <div class="hidden md:block w-1/2 pr-8 text-right">
-                <h3 class="text-xl font-semibold">Engineering Lead & Software Engineer</h3>
-                <p class="text-accentgreen">Rutgers VEXU Robotics | Sep 2024 – Present</p>
-                <p class="text-gray-300 mt-2">Lead engineering & software for competitive robotics team.</p>
-              </div>
-              <div class="hidden md:flex items-center justify-center w-16 h-16 rounded-full bg-accentgreen text-black z-10 mx-auto"><i class="fas fa-robot text-2xl"></i></div>
-              <div class="w-full md:w-1/2 pl-8 md:mt-0">
-                <div class="md:hidden mb-4"><h3 class="text-xl font-semibold">Engineering Lead & Software Engineer</h3><p class="text-accentgreen">Rutgers VEXU Robotics | Sep 2024 – Present</p><p class="text-gray-300 mt-2">Lead engineering & software for competitive robotics team.</p></div>
-                <div class="bg-black bg-opacity-30 p-6 rounded-lg border border-accentgreen border-opacity-20">
-                  <h4 class="font-medium mb-2">Key Responsibilities:</h4>
-                  <ul class="list-disc list-inside text-gray-300 space-y-1">
-                    <li>Autonomous & driver code (C++)</li>
-                    <li>Sensor fusion & motion planning</li>
-                    <li>Mechanical design leadership</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-
-            <!-- Team Tranquil -->
-            <div class="relative flex flex-col md:flex-row items-center">
-              <div class="w-full md:w-1/2 pr-8 md:order-2">
-                <div class="md:hidden mb-4"><h3 class="text-xl font-semibold">Full-Stack Web Dev Intern</h3><p class="text-accentgreen">Team Tranquil Inc. | Jul 2023 – Dec 2023</p><p class="text-gray-300 mt-2">Developed full-stack web solutions for clients.</p></div>
-                <div class="bg-black bg-opacity-30 p-6 rounded-lg border border-accentgreen border-opacity-20">
-                  <h4 class="font-medium mb-2">Key Achievements:</h4>
-                  <ul class="list-disc list-inside text-gray-300 space-y-1">
-                    <li>Restaurant website w/ SQL backend</li>
-                    <li>Image management system (+50 % productivity)</li>
-                    <li>Optimized SQL queries (+33 % speed)</li>
-                  </ul>
-                </div>
-              </div>
-              <div class="hidden md:flex items-center justify-center w-16 h-16 rounded-full bg-accentgreen text-black z-10 mx-auto md:order-1"><i class="fas fa-laptop-code text-2xl"></i></div>
-              <div class="hidden md:block w-1/2 pl-8 md:order-3 text-right"><h3 class="text-xl font-semibold">Full-Stack Web Dev Intern</h3><p class="text-accentgreen">Team Tranquil Inc. | Jul 2023 – Dec 2023</p><p class="text-gray-300 mt-2">Developed full-stack web solutions for clients.</p></div>
-            </div>
-
-            <!-- Education -->
-            <div class="relative flex flex-col md:flex-row items-center">
-              <div class="hidden md:block w-1/2 pr-8 text-right">
-                <h3 class="text-xl font-semibold">B.S. Computer Science & Data Science</h3>
-                <p class="text-accentgreen">Rutgers University | 2024 – 2027 (Expected)</p>
-                <p class="text-gray-300 mt-2">GPA 4.0 | Specializing in AI/ML & Robotics</p>
-              </div>
-              <div class="hidden md:flex items-center justify-center w-16 h-16 rounded-full bg-accentgreen text-black z-10 mx-auto"><i class="fas fa-graduation-cap text-2xl"></i></div>
-              <div class="w-full md:w-1/2 pl-8 md:mt-0">
-                <div class="md:hidden mb-4"><h3 class="text-xl font-semibold">B.S. Computer Science & Data Science</h3><p class="text-accentgreen">Rutgers University | 2024 – 2027 (Expected)</p><p class="text-gray-300 mt-2">GPA 4.0 | Specializing in AI/ML & Robotics</p></div>
-                <div class="bg-black bg-opacity-30 p-6 rounded-lg border border-accentgreen border-opacity-20">
-                  <h4 class="font-medium mb-2">Activities & Societies:</h4>
-                  <ul class="list-disc list-inside text-gray-300 space-y-1">
-                    <li>Physical AI Research</li>
-                    <li>VEXU Robotics (Lead)</li>
-                    <li>Competitive Programming</li>
-                    <li>RU Autonomous</li>
-                    <li>USACS</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ───── Projects (carousel) ───── -->
-    <section id="projects" class="py-20 bg-black">
-      <div class="max-w-7xl mx-auto px-4">
-        <h2 class="text-3xl font-bold text-center mb-12 text-accentgreen">My Projects</h2>
-
-        <div class="carousel-container relative overflow-hidden py-8">
-          <div class="carousel-track">
-            <!-- project slides (1-6) -->
-            <!-- slide 1 -->
-            <div class="carousel-slide px-4">
-              <div class="project-card flip-card" data-details="HoloBrain revolutionizes medical imaging by combining advanced 3D visualization with gesture-controlled interaction. Developed using PyTorch and Unity, this system enables doctors to manipulate MRI scans in 3D space using hand gestures, improving diagnostic accuracy by 40% compared to traditional 2D imaging systems.">
-                <div class="flip-card-inner">
-                  <!-- Front Side -->
-                  <div class="flip-card-front">
-                    <div class="bg-darkgreen bg-opacity-10 rounded-lg overflow-hidden border border-accentgreen border-opacity-20 hover:border-opacity-50 transition-all duration-300">
-                      <div class="h-48 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=800" alt="HoloBrain" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
-                      </div>
-                      <div class="p-6">
-                        <div class="flex justify-between items-start mb-2"><h3 class="text-xl font-semibold">HoloBrain</h3><span class="bg-accentgreen text-black text-xs px-2 py-1 rounded">ML/CV</span></div>
-                        <p class="text-gray-400 mb-4">
-                          AI-powered 3D MRI hologram with real-time hand-gesture controls for faster, more accurate brain-scan diagnosis.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                          <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">PyTorch</span>
-                          <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">OpenCV&nbsp;&nbsp;MediaPipe</span>
-                          <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">Unity&nbsp;3D</span>
-                        </div>
-                        <a href="https://github.com/Vishal-Nagamalla" target="_blank" 
-                         class="text-accentgreen hover:text-white"
-                         data-github>
-                         <i class="fab fa-github"></i>
-                        </a>
-                        <a href="https://devpost.com/software/holobrain" target="_blank" 
-                         class="text-accentgreen hover:text-white"
-                         data-github>
-                         <i class="fas fa-external-link-alt"></i>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                  
-                  <!-- Back Side -->
-                  <div class="flip-card-back rounded-lg bg-gradient-to-b from-black to-darkgreen">
-                    <h3 class="text-xl font-semibold mb-4">Detailed Description</h3>
-                    <p class="text-gray-300 mb-4">
-                      HoloBrain couples a 97 %-accurate CNN classifier with a 3-D volumetric renderer to turn conventional MRI stacks into an interactive hologram.  Doctors can rotate, zoom, and slice the brain model using 6 natural hand gestures detected by OpenCV + MediaPipe, leaving the keyboard and mouse behind.  A lightweight Python-to-Unity socket keeps classification overlays and gesture input in sync at 30 fps, cutting review time by 40 % in user testing.
-                    </p>
-                    <div class="flex flex-wrap gap-2">
-                      <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">CNN&nbsp;(97 %)</span>
-                      <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">Gesture&nbsp;Control</span>
-                      <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">Real-time&nbsp;Sockets</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- slide 2 -->
-            <div class="carousel-slide px-4">
-              <div class="project-card flip-card" data-details="This handwriting recognition system uses a custom CNN architecture trained on the EMNIST dataset to classify handwritten letters with 92% accuracy. The model was optimized using data augmentation techniques and hyperparameter tuning to achieve state-of-the-art performance on this challenging dataset.">
-                <div class="flip-card-inner">
-                  <div class="flip-card-front">
-                    <div class="bg-darkgreen bg-opacity-10 rounded-lg overflow-hidden border border-accentgreen border-opacity-20 hover:border-opacity-50 transition-all duration-300">
-                      <div class="h-48 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1546074177-ffdda98d214f?auto=format&fit=crop&w=800" alt="Handwriting Recognition" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
-                      </div>
-                      <div class="p-6">
-                        <div class="flex justify-between items-start mb-2"><h3 class="text-xl font-semibold">Handwriting Recognition</h3><span class="bg-accentgreen text-black text-xs px-2 py-1 rounded">ML</span></div>
-                        <p class="text-gray-400 mb-4">
-                          EMNIST letter-classifier achieving 92 % accuracy using a 6-layer CNN with data augmentation and hyper-tuning.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                          <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">PyTorch</span>
-                          <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">CNN</span>
-                          <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">Python</span>
-                        </div>
-                        <a href="https://github.com/Vishal-Nagamalla" target="_blank" 
-                         class="text-accentgreen hover:text-white"
-                         data-github>
-                         <i class="fab fa-github"></i>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="flip-card-back rounded-lg bg-gradient-to-b from-black to-darkgreen">
-                    <h3 class="text-xl font-semibold mb-4">Detailed Description</h3>
-                    <p class="text-gray-300 mb-4">
-                      Trained a custom convolutional network on 130 k EMNIST characters with on-the-fly rotation, shear, and elastic transforms.  Implemented learning-rate warm-up and cyclical scheduling to squeeze out 4 % extra accuracy over baseline.  Results are served through a Flask API that returns top-3 predictions in under 20 ms.
-                    </p>
-                    <div class="flex flex-wrap gap-2">
-                      <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">Data&nbsp;Augmentation</span>
-                      <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">Flask&nbsp;API</span>
-                      <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">92 %&nbsp;Top-1</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- slide 3 -->
-            <div class="carousel-slide px-4">
-              <div class="project-card flip-card" data-details="A full-stack restaurant management system featuring an interactive menu, online ordering system, and SQL database backend. The system includes admin functionality for menu management, order tracking, and customer analytics. Built with ASP.NET Core and Bootstrap for responsive design.">
-                <div class="flip-card-inner">
-                  <div class="flip-card-front">
-                    <div class="bg-darkgreen bg-opacity-10 rounded-lg overflow-hidden border border-accentgreen border-opacity-20 hover:border-opacity-50 transition-all duration-300">
-                      <div class="h-48 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=800" alt="Restaurant Website" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
-                      </div>
-                      <div class="p-6">
-                        <div class="flex justify-between items-start mb-2"><h3 class="text-xl font-semibold">Indian Cuisine Restaurant</h3><span class="bg-accentgreen text-black text-xs px-2 py-1 rounded">Web Dev</span></div>
-                        <p class="text-gray-400 mb-4">
-                          Responsive ASP.NET webapp featuring live menu, geocoded locations, and an admin portal backed by SQL Server.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                          <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">ASP.NET&nbsp;Core</span>
-                          <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">Bootstrap</span>
-                          <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">SQL&nbsp;Server</span>
-                        </div>
-                        <a href="https://github.com/Vishal-Nagamalla" target="_blank" 
-                         class="text-accentgreen hover:text-white"
-                         data-github>
-                         <i class="fab fa-github"></i>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="flip-card-back rounded-lg bg-gradient-to-b from-black to-darkgreen">
-                    <h3 class="text-xl font-semibold mb-4">Detailed Description</h3>
-                    <p class="text-gray-300 mb-4">
-                      Multi-page site lets diners browse a photo-rich menu, place pickup orders, and view promos nearest to them via Google Maps embedding.  The owner dashboard supports CRUD for dishes, photos, and coupons, all secured with ASP.NET Identity.  Optimised SQL indices dropped page-load P95 from 1.9 s to 1.2 s.
-                    </p>
-                    <div class="flex flex-wrap gap-2">
-                      <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">E-Commerce</span>
-                      <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">Role-Based&nbsp;Auth</span>
-                      <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">Performance&nbsp;Tuning</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- slide 4 -->
-            <div class="carousel-slide px-4">
-              <div class="project-card flip-card" data-details="Implemented both CNN and Vision Transformer models for MNIST digit classification, achieving 98% accuracy. Compared performance between traditional convolutional approaches and modern transformer architectures, with special focus on computational efficiency and model interpretability.">
-                <div class="flip-card-inner">
-                  <div class="flip-card-front">
-                    <div class="bg-darkgreen bg-opacity-10 rounded-lg overflow-hidden border border-accentgreen border-opacity-20 hover:border-opacity-50 transition-all duration-300">
-                      <div class="h-48 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&w=800" alt="Digit Recognition" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
-                      </div>
-                      <div class="p-6">
-                        <div class="flex justify-between items-start mb-2"><h3 class="text-xl font-semibold">Digit Recognition</h3><span class="bg-accentgreen text-black text-xs px-2 py-1 rounded">ML</span></div>
-                        <p class="text-gray-400 mb-4">
-                          Side-by-side CNN vs. Vision Transformer for MNIST digits, topping out at 98 % accuracy with 30 % fewer params.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                          <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">PyTorch</span>
-                          <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">CNN&nbsp;vs&nbsp;ViT</span>
-                          <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">TensorBoard</span>
-                        </div>
-                        <a href="https://github.com/Vishal-Nagamalla" target="_blank" 
-                         class="text-accentgreen hover:text-white"
-                         data-github>
-                         <i class="fab fa-github"></i>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="flip-card-back rounded-lg bg-gradient-to-b from-black to-darkgreen">
-                    <h3 class="text-xl font-semibold mb-4">Detailed Description</h3>
-                    <p class="text-gray-300 mb-4">
-                      Re-implemented LeNet-5 and a compact DeiT-style transformer to probe where attention outperforms convolutions.  Benchmarked training curves, FLOPs, and Grad-CAM saliency maps; published findings showing transformers closed the gap after 8 epochs while being 22 % faster at inference on GPU.
-                    </p>
-                    <div class="flex flex-wrap gap-2">
-                      <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">Model&nbsp;Benchmarking</span>
-                      <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">Grad-CAM</span>
-                      <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">98 %&nbsp;Acc</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- slide 5 -->
-            <div class="carousel-slide px-4">
-              <div class="project-card flip-card" data-details="Led software development for Rutgers VEXU Robotics team, implementing autonomous navigation, object manipulation, and sensor fusion algorithms. The system combines PID control, computer vision, and sensor data to compete in collegiate robotics tournaments.">
-                <div class="flip-card-inner">
-                  <div class="flip-card-front">
-                    <div class="bg-darkgreen bg-opacity-10 rounded-lg overflow-hidden border border-accentgreen border-opacity-20 hover:border-opacity-50 transition-all duration-300">
-                      <div class="h-48 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1581094271901-8022df4466f9?auto=format&fit=crop&w=800" alt="Robotics" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
-                      </div>
-                      <div class="p-6">
-                        <div class="flex justify-between items-start mb-2"><h3 class="text-xl font-semibold">VEX Robotics</h3><span class="bg-accentgreen text-black text-xs px-2 py-1 rounded">Robotics</span></div>
-                        <p class="text-gray-400 mb-4">
-                          C++ control stack for Rutgers VEXU robots: autonomous navigation, PID, and driver assist for top-5 regional finish.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                          <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">C++</span>
-                          <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">Sensor&nbsp;Fusion</span>
-                          <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">PID&nbsp;Loops</span>
-                        </div>
-                        <a href="https://github.com/Vishal-Nagamalla" target="_blank" 
-                         class="text-accentgreen hover:text-white"
-                         data-github>
-                         <i class="fab fa-github"></i>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="flip-card-back rounded-lg bg-gradient-to-b from-black to-darkgreen">
-                    <h3 class="text-xl font-semibold mb-4">Detailed Description</h3>
-                    <p class="text-gray-300 mb-4">
-                      Designed modular task scheduler around PROS RTOS, fusing IMU, encoders, and vision to achieve ±1° orientation repeatability.  Dynamic motion-planning cut autonomous cycle time by 18 %.  Driver-assist modes add auto-aim and intake sequencing triggered by controller macros.
-                    </p>
-                    <div class="flex flex-wrap gap-2">
-                      <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">Autonomous&nbsp;Ops</span>
-                      <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">Real-Time&nbsp;OS</span>
-                      <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">Competition&nbsp;Bots</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- slide 6 -->
-            <div class="carousel-slide px-4">
-              <div class="project-card flip-card" data-details="Developed automated data processing pipelines that reduced manual cleaning time by 18 hours per project. The system handles data validation, transformation, and quality checks using Python and Pandas, with Excel integration for business user accessibility.">
-                <div class="flip-card-inner">
-                  <div class="flip-card-front">
-                    <div class="bg-darkgreen bg-opacity-10 rounded-lg overflow-hidden border border-accentgreen border-opacity-20 hover:border-opacity-50 transition-all duration-300">
-                      <div class="h-48 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800" alt="Data Processing" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
-                      </div>
-                      <div class="p-6">
-                        <div class="flex justify-between items-start mb-2">
-                          <h3 class="text-xl font-semibold">Data Processing</h3>
-                          <span class="bg-accentgreen text-black text-xs px-2 py-1 rounded">Data</span>
-                        </div>
-                        <p class="text-gray-400 mb-4">
-                          Excel-Python ETL toolkit that slashes manual cleaning by 18 hours per dataset via smart type-casting and validation.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                          <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">Python</span>
-                          <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">Pandas</span>
-                          <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">Excel&nbsp;Interop</span>
-                        </div>
-                        <!-- Moved GitHub link outside of the tags container -->
-                        <a href="https://github.com/Vishal-Nagamalla" target="_blank" 
-                          class="text-accentgreen hover:text-white"
-                          data-github>
-                          <i class="fab fa-github"></i>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="flip-card-back rounded-lg bg-gradient-to-b from-black to-darkgreen">
-                    <h3 class="text-xl font-semibold mb-4">Detailed Description</h3>
-                    <p class="text-gray-300 mb-4">
-                      Automated detection of mixed dtype columns, date normalisation, and cross-sheet referential checks push dataset integrity to 97 %.  Generates reproducible cleaning logs and summary dashboards for business analysts, delivered as a one-click macro-enabled workbook.
-                    </p>
-                    <div class="flex flex-wrap gap-2">
-                      <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">ETL</span>
-                      <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">Data&nbsp;Quality&nbsp;97 %</span>
-                      <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">Automation</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          <!-- slide 7 -->
-          <div class="carousel-slide px-4">
-            <div class="project-card flip-card" data-details="Python-based Monte-Carlo Tree Search and reinforcement learning engine that recommends optimal scoring routes for VEX U High Stakes, fed by a procedural field generator.">
-              <div class="flip-card-inner">
-                <!-- Front Side -->
-                <div class="flip-card-front">
-                  <div class="bg-darkgreen bg-opacity-10 rounded-lg overflow-hidden border border-accentgreen border-opacity-20 hover:border-opacity-50 transition-all duration-300">
-                    <div class="h-48 overflow-hidden">
-                      <img src="https://images.unsplash.com/photo-1605902711622-cfb43c4437d1?auto=format&fit=crop&w=800" alt="VEXAI Strategy Planner" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
-                    </div>
-                    <div class="p-6">
-                      <div class="flex justify-between items-start mb-2">
-                        <h3 class="text-xl font-semibold">VEXAI Strategy Planner</h3>
-                        <span class="bg-accentgreen text-black text-xs px-2 py-1 rounded">AI/Robotics</span>
-                      </div>
-                      <p class="text-gray-400 mb-4">
-                        Pre-match AI that explores 10 k+ action trees in 1 s to output the highest-value autonomous paths for VEXU.
-                      </p>
-                      <div class="flex flex-wrap gap-2 mb-4">
-                        <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">Python</span>
-                        <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">MCTS</span>
-                        <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">Reinforcement&nbsp;Learning</span>
-                      </div>
-                      <a href="https://github.com/Vishal-Nagamalla" target="_blank"
-                         class="text-accentgreen hover:text-white"
-                         data-github>
-                         <i class="fab fa-github"></i>
-                      </a>
-                    </div>
-                  </div>
-                </div>
-
-                <!-- Back Side -->
-                <div class="flip-card-back rounded-lg bg-gradient-to-b from-black to-darkgreen">
-                  <h3 class="text-xl font-semibold mb-4">Detailed Description</h3>
-                  <p class="text-gray-300 mb-4">
-                    Generates a randomised replica of the High Stakes field, then simulates pick-and-place actions with physics-aware cost models.  A Monte-Carlo Tree Search prunes low-value branches while a Q-learning critic refines move ordering between iterations, converging to strategies that score 15 % higher than human baselines.  Outputs JSON playbooks that sync to the competition robot over Wi-Fi.
-                  </p>
-                  <div class="flex flex-wrap gap-2">
-                    <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">Procedural&nbsp;Field&nbsp;Gen</span>
-                    <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">Q-Learning&nbsp;Critic</span>
-                    <span class="text-xs bg-black text-accentgreen px-2 py-1 rounded">JSON&nbsp;Playbooks</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <button class="carousel-prev absolute left-4 top-1/2 -translate-y-1/2 bg-darkgreen hover:bg-accentgreen text-white p-3 rounded-full shadow-lg">←</button>
-        <button class="carousel-next absolute right-4 top-1/2 -translate-y-1/2 bg-darkgreen hover:bg-accentgreen text-white p-3 rounded-full shadow-lg">→</button>
-
-        <div class="mt-12 text-center">
-          <a href="https://github.com/Vishal-Nagamalla" target="_blank"
-             class="inline-flex items-center border border-darkgreen hover:bg-darkgreen px-6 py-3 rounded-md">
-            View All Projects <i class="fas fa-arrow-right ml-2"></i>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- ───── Skills ───── -->
-    <section id="skills" class="py-20 bg-darkgreen">
-      <div class="max-w-7xl mx-auto px-4">
-        <h2 class="text-3xl font-bold text-center mb-12 text-white">My Skills</h2>
-
-        <div class="flex flex-col items-center space-y-16">
-
-    <!-- Languages -->
-    <div class="skill-group opacity-0 translate-y-8 transition-all duration-700 w-full max-w-3xl text-center">
-      <h3 class="text-3xl font-semibold flex items-center justify-center gap-3 mb-6">
-        <i class="fas fa-code text-accentgreen"></i> Languages
-      </h3>
-      <ul class="flex flex-wrap justify-center gap-x-12 gap-y-3 text-lg md:text-xl list-disc list-inside text-gray-200">
-        <li>Python</li>
-        <li>Java</li>
-        <li>C#</li>
-        <li>C / C++</li>
-        <li>JavaScript</li>
-        <li>HTML / CSS</li>
-        <li>SQL</li>
-      </ul>
-    </div>
-
-    <!-- Developer Tools -->
-    <div class="skill-group opacity-0 translate-y-8 transition-all duration-700 delay-100 w-full max-w-3xl text-center">
-      <h3 class="text-3xl font-semibold flex items-center justify-center gap-3 mb-6">
-        <i class="fas fa-wrench text-accentgreen"></i> Developer Tools
-      </h3>
-      <ul class="flex flex-wrap justify-center gap-x-12 gap-y-3 text-lg md:text-xl list-disc list-inside text-gray-200">
-        <li>Git / GitHub</li>
-        <li>Visual Studio & VS Code</li>
-        <li>IntelliJ IDEA</li>
-        <li>PyCharm</li>
-        <li>Unity</li>
-        <li>Android Studio</li>
-        <li>Docker</li>
-        <li>Microsoft Azure</li>
-      </ul>
-    </div>
-
-    <!-- Frameworks & Libraries -->
-    <div class="skill-group opacity-0 translate-y-8 transition-all duration-700 delay-200 w-full max-w-3xl text-center">
-      <h3 class="text-3xl font-semibold flex items-center justify-center gap-3 mb-6">
-        <i class="fas fa-layer-group text-accentgreen"></i> Frameworks & Libraries
-      </h3>
-      <ul class="flex flex-wrap justify-center gap-x-12 gap-y-3 text-lg md:text-xl list-disc list-inside text-gray-200">
-        <li>PyTorch</li>
-        <li>OpenCV</li>
-        <li>MediaPipe</li>
-        <li>React&nbsp;JS</li>
-        <li>Bootstrap</li>
-        <li>ASP.NET Core</li>
-        <li>jQuery</li>
-        <li>Tailwind CSS</li>
-        <li>Socket IO</li>
-        <li>NumPy / Pandas</li>
-      </ul>
-    </div>
-
-    <!-- Interests -->
-    <div class="skill-group opacity-0 translate-y-8 transition-all duration-700 delay-300 w-full max-w-3xl text-center">
-      <h3 class="text-3xl font-semibold flex items-center justify-center gap-3 mb-6">
-        <i class="fas fa-lightbulb text-accentgreen"></i> Interests
-      </h3>
-      <ul class="flex flex-wrap justify-center gap-x-12 gap-y-3 text-lg md:text-xl list-disc list-inside text-gray-200">
-        <li>Artificial Intelligence</li>
-        <li>Machine Learning</li>
-        <li>Computer Vision</li>
-        <li>Data Science</li>
-        <li>Robotics & Autonomous Systems</li>
-        <li>Computer Science</li>
-        <li>3D Visualization & XR</li>
-        <li>Cloud Computing</li>
-      </ul>
+  <!-- Mobile nav -->
+  <div id="mobile-nav" class="fixed top-20 right-0 w-72 bg-black/95 backdrop-blur-xl border-l border-accentgreen/20 rounded-bl-2xl transform translate-x-full transition-transform duration-300 z-40 md:hidden">
+    <a href="./index.html" class="block px-8 py-5 text-gray-300 hover:text-white border-b border-white/5">Home</a>
+    <a href="#experience" class="block px-8 py-5 text-gray-300 hover:text-white border-b border-white/5">Experience</a>
+    <button id="mobile-contact" class="w-full text-left px-8 py-5 text-gray-300 flex items-center justify-between border-b border-white/5">Contact <i class="fas fa-chevron-down text-xs transition-transform"></i></button>
+    <div id="mobile-contact-links" class="hidden px-8 py-4 space-y-4 bg-darkgreen/20">
+      <a href="mailto:Vishal.Nagamalla@gmail.com" class="flex items-center gap-3 text-gray-400 hover:text-emerald transition-colors"><i class="fas fa-envelope"></i> Email</a>
+      <a href="https://github.com/Vishal-Nagamalla" target="_blank" class="flex items-center gap-3 text-gray-400 hover:text-emerald transition-colors"><i class="fab fa-github"></i> GitHub</a>
+      <a href="https://www.linkedin.com/in/vishalnag" target="_blank" class="flex items-center gap-3 text-gray-400 hover:text-emerald transition-colors"><i class="fab fa-linkedin"></i> LinkedIn</a>
     </div>
   </div>
 
-        <!-- Tech icons -->
-        <div class="mt-16">
-          <h3 class="text-xl font-semibold mb-6 text-white text-center">Technologies & Tools</h3>
-          <div class="flex flex-wrap justify-center gap-6">
-            <div class="flex flex-col items-center"><div class="w-16 h-16 bg-black rounded-full flex items-center justify-center mb-2"><i class="fab fa-python text-3xl text-accentgreen"></i></div><span class="text-sm">Python</span></div>
-            <div class="flex flex-col items-center"><div class="w-16 h-16 bg-black rounded-full flex items-center justify-center mb-2"><i class="fas fa-robot text-3xl text-accentgreen"></i></div><span class="text-sm">PyTorch</span></div>
-            <div class="flex flex-col items-center"><div class="w-16 h-16 bg-black rounded-full flex items-center justify-center mb-2"><i class="fas fa-eye text-3xl text-accentgreen"></i></div><span class="text-sm">OpenCV</span></div>
-            <div class="flex flex-col items-center"><div class="w-16 h-16 bg-black rounded-full flex items-center justify-center mb-2"><i class="fab fa-java text-3xl text-accentgreen"></i></div><span class="text-sm">Java</span></div>
-            <div class="flex flex-col items-center"><div class="w-16 h-16 bg-black rounded-full flex items-center justify-center mb-2"><i class="fab fa-js text-3xl text-accentgreen"></i></div><span class="text-sm">JavaScript</span></div>
-            <div class="flex flex-col items-center"><div class="w-16 h-16 bg-black rounded-full flex items-center justify-center mb-2"><i class="fab fa-react text-3xl text-accentgreen"></i></div><span class="text-sm">React</span></div>
-            <div class="flex flex-col items-center"><div class="w-16 h-16 bg-black rounded-full flex items-center justify-center mb-2"><i class="fas fa-database text-3xl text-accentgreen"></i></div><span class="text-sm">SQL</span></div>
-            <div class="flex flex-col items-center"><div class="w-16 h-16 bg-black rounded-full flex items-center justify-center mb-2"><i class="fab fa-git-alt text-3xl text-accentgreen"></i></div><span class="text-sm">Git</span></div>
+  <main class="pt-20">
+
+    <!-- ───── EXPERIENCE — Apple-esque Internal Scroll ───── -->
+    <section id="experience" class="exp-container">
+
+      <!-- Scroll hint -->
+      <div class="scroll-hint" id="scroll-hint">
+        <span class="text-gray-500 text-xs font-grotesk tracking-widest uppercase">Scroll to explore</span>
+        <i class="fas fa-chevron-down text-emerald text-sm"></i>
+      </div>
+
+      <!-- Section header (absolute top-left) -->
+      <div class="absolute top-8 left-6 sm:left-10 lg:left-16 z-20">
+        <p class="text-emerald font-grotesk text-xs tracking-widest uppercase mb-1">Experience &amp; Education</p>
+        <h2 class="text-2xl md:text-3xl font-bold font-grotesk">Where I've <span class="gradient-text">Worked</span></h2>
+      </div>
+
+      <!-- Step counter (top-right) -->
+      <div class="absolute top-8 right-20 sm:right-24 z-20 text-right">
+        <span class="text-emerald font-grotesk text-sm font-bold" id="exp-counter">01</span>
+        <span class="text-gray-600 font-grotesk text-sm"> / 04</span>
+      </div>
+
+      <!-- Internal scroll area -->
+      <div class="exp-scroll-area" id="exp-scroll-area">
+        <!-- Display layer (sticky) -->
+        <div class="exp-display" id="exp-display">
+
+          <!-- Big background step number -->
+          <div class="exp-step-number" id="exp-big-number">01</div>
+
+          <!-- Frame 0: PRACSYS Lab -->
+          <div class="exp-frame active" data-frame="0">
+            <div class="max-w-4xl mx-auto px-6 sm:px-10 lg:px-16 w-full">
+              <div class="exp-content-inner">
+                <div class="flex items-center gap-4 mb-2">
+                  <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-accentgreen to-emerald flex items-center justify-center shadow-lg shadow-emerald/20 flex-shrink-0">
+                    <i class="fas fa-flask text-xl text-black"></i>
+                  </div>
+                  <div>
+                    <p class="text-emerald font-grotesk text-xs tracking-wider uppercase">Apr 2025 &mdash; Sep 2025</p>
+                    <h3 class="text-2xl sm:text-3xl md:text-4xl font-bold font-grotesk leading-tight">Software Engineering Intern</h3>
+                  </div>
+                </div>
+                <p class="text-gray-400 font-light text-lg mb-8 ml-[4.5rem]">PRACSYS Lab: Physical AI &bull; Rutgers University</p>
+
+                <div class="space-y-3 mb-8 ml-2">
+                  <div class="flex gap-3 items-start">
+                    <span class="text-emerald mt-1.5 text-xs">&#9654;</span>
+                    <p class="text-gray-300 leading-relaxed">Designed AI robotic motion systems in <span class="text-white font-medium">Python/ROS</span>, implementing frameworks under the GELLO imitation-learning architecture</p>
+                  </div>
+                  <div class="flex gap-3 items-start">
+                    <span class="text-emerald mt-1.5 text-xs">&#9654;</span>
+                    <p class="text-gray-300 leading-relaxed">Deployed supervised learning pipelines for 6-DOF robotic arm, improving <span class="text-white font-medium">training efficiency by 35%</span></p>
+                  </div>
+                  <div class="flex gap-3 items-start">
+                    <span class="text-emerald mt-1.5 text-xs">&#9654;</span>
+                    <p class="text-gray-300 leading-relaxed">Engineered reinforcement, diffusion, and flow-matching models in <span class="text-white font-medium">PyTorch</span> for noisy environments</p>
+                  </div>
+                  <div class="flex gap-3 items-start">
+                    <span class="text-emerald mt-1.5 text-xs">&#9654;</span>
+                    <p class="text-gray-300 leading-relaxed">Conducted joint-state noise experiments improving <span class="text-white font-medium">path stability by 22%</span></p>
+                  </div>
+                  <div class="flex gap-3 items-start">
+                    <span class="text-emerald mt-1.5 text-xs">&#9654;</span>
+                    <p class="text-gray-300 leading-relaxed">Built <span class="text-white font-medium">MuJoCo simulations</span> and benchmarking tools for real-time debugging</p>
+                  </div>
+                </div>
+              </div>
+              <div class="exp-tags-inner flex flex-wrap gap-2 ml-2">
+                <span class="text-xs bg-accentgreen/10 text-emerald px-3 py-1.5 rounded-lg font-grotesk border border-accentgreen/20">Python/ROS</span>
+                <span class="text-xs bg-accentgreen/10 text-emerald px-3 py-1.5 rounded-lg font-grotesk border border-accentgreen/20">PyTorch</span>
+                <span class="text-xs bg-accentgreen/10 text-emerald px-3 py-1.5 rounded-lg font-grotesk border border-accentgreen/20">MuJoCo</span>
+                <span class="text-xs bg-accentgreen/10 text-emerald px-3 py-1.5 rounded-lg font-grotesk border border-accentgreen/20">Imitation Learning</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Frame 1: Atyeti -->
+          <div class="exp-frame" data-frame="1">
+            <div class="max-w-4xl mx-auto px-6 sm:px-10 lg:px-16 w-full">
+              <div class="exp-content-inner">
+                <div class="flex items-center gap-4 mb-2">
+                  <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-accentgreen to-emerald flex items-center justify-center shadow-lg shadow-emerald/20 flex-shrink-0">
+                    <i class="fas fa-briefcase text-xl text-black"></i>
+                  </div>
+                  <div>
+                    <p class="text-emerald font-grotesk text-xs tracking-wider uppercase">May 2024 &mdash; Aug 2024</p>
+                    <h3 class="text-2xl sm:text-3xl md:text-4xl font-bold font-grotesk leading-tight">Software Engineering Intern</h3>
+                  </div>
+                </div>
+                <p class="text-gray-400 font-light text-lg mb-8 ml-[4.5rem]">Atyeti Inc. &bull; Princeton, NJ</p>
+
+                <div class="space-y-3 mb-8 ml-2">
+                  <div class="flex gap-3 items-start">
+                    <span class="text-emerald mt-1.5 text-xs">&#9654;</span>
+                    <p class="text-gray-300 leading-relaxed">Transformed <span class="text-white font-medium">Python/PyTorch</span> data workflows for financial clients, automating large-scale dataset cleaning</p>
+                  </div>
+                  <div class="flex gap-3 items-start">
+                    <span class="text-emerald mt-1.5 text-xs">&#9654;</span>
+                    <p class="text-gray-300 leading-relaxed">Trained CNN and ViT models achieving <span class="text-white font-medium">98% accuracy</span> on MNIST through optimized transfer learning</p>
+                  </div>
+                  <div class="flex gap-3 items-start">
+                    <span class="text-emerald mt-1.5 text-xs">&#9654;</span>
+                    <p class="text-gray-300 leading-relaxed">Deployed inference logic as <span class="text-white font-medium">containerized microservices</span> using Docker for production</p>
+                  </div>
+                  <div class="flex gap-3 items-start">
+                    <span class="text-emerald mt-1.5 text-xs">&#9654;</span>
+                    <p class="text-gray-300 leading-relaxed">Automated Excel/CSV validation, reducing manual reformatting by <span class="text-white font-medium">18 hrs/project</span> (97% accuracy)</p>
+                  </div>
+                  <div class="flex gap-3 items-start">
+                    <span class="text-emerald mt-1.5 text-xs">&#9654;</span>
+                    <p class="text-gray-300 leading-relaxed">Implemented <span class="text-white font-medium">CI/CD deployment automation</span> with Agile/Scrum workflow using JIRA</p>
+                  </div>
+                </div>
+              </div>
+              <div class="exp-tags-inner flex flex-wrap gap-2 ml-2">
+                <span class="text-xs bg-accentgreen/10 text-emerald px-3 py-1.5 rounded-lg font-grotesk border border-accentgreen/20">PyTorch</span>
+                <span class="text-xs bg-accentgreen/10 text-emerald px-3 py-1.5 rounded-lg font-grotesk border border-accentgreen/20">Docker</span>
+                <span class="text-xs bg-accentgreen/10 text-emerald px-3 py-1.5 rounded-lg font-grotesk border border-accentgreen/20">CI/CD</span>
+                <span class="text-xs bg-accentgreen/10 text-emerald px-3 py-1.5 rounded-lg font-grotesk border border-accentgreen/20">98% Accuracy</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Frame 2: Team Tranquil -->
+          <div class="exp-frame" data-frame="2">
+            <div class="max-w-4xl mx-auto px-6 sm:px-10 lg:px-16 w-full">
+              <div class="exp-content-inner">
+                <div class="flex items-center gap-4 mb-2">
+                  <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-accentgreen to-emerald flex items-center justify-center shadow-lg shadow-emerald/20 flex-shrink-0">
+                    <i class="fas fa-laptop-code text-xl text-black"></i>
+                  </div>
+                  <div>
+                    <p class="text-emerald font-grotesk text-xs tracking-wider uppercase">Jul 2023 &mdash; Sep 2023</p>
+                    <h3 class="text-2xl sm:text-3xl md:text-4xl font-bold font-grotesk leading-tight">Software Engineering Intern</h3>
+                  </div>
+                </div>
+                <p class="text-gray-400 font-light text-lg mb-8 ml-[4.5rem]">Team Tranquil Inc. &bull; Fairfield, NJ</p>
+
+                <div class="space-y-3 mb-8 ml-2">
+                  <div class="flex gap-3 items-start">
+                    <span class="text-emerald mt-1.5 text-xs">&#9654;</span>
+                    <p class="text-gray-300 leading-relaxed">Built <span class="text-white font-medium">full-stack web solutions</span> improving platform reliability, scalability, and UX</p>
+                  </div>
+                  <div class="flex gap-3 items-start">
+                    <span class="text-emerald mt-1.5 text-xs">&#9654;</span>
+                    <p class="text-gray-300 leading-relaxed">Delivered production features using <span class="text-white font-medium">HTML, CSS, JavaScript, C#, and SQL</span> in Agile sprints</p>
+                  </div>
+                  <div class="flex gap-3 items-start">
+                    <span class="text-emerald mt-1.5 text-xs">&#9654;</span>
+                    <p class="text-gray-300 leading-relaxed">Redesigned SQL-backed image management, improving <span class="text-white font-medium">reliability by 33%</span> and <span class="text-white font-medium">load time by 50%</span></p>
+                  </div>
+                  <div class="flex gap-3 items-start">
+                    <span class="text-emerald mt-1.5 text-xs">&#9654;</span>
+                    <p class="text-gray-300 leading-relaxed">Built reusable <span class="text-white font-medium">API endpoints</span> and front-end modules for interactive dashboards</p>
+                  </div>
+                  <div class="flex gap-3 items-start">
+                    <span class="text-emerald mt-1.5 text-xs">&#9654;</span>
+                    <p class="text-gray-300 leading-relaxed">Collaborated on UI and cross-browser testing with <span class="text-white font-medium">Chrome DevTools and Bootstrap</span></p>
+                  </div>
+                </div>
+              </div>
+              <div class="exp-tags-inner flex flex-wrap gap-2 ml-2">
+                <span class="text-xs bg-accentgreen/10 text-emerald px-3 py-1.5 rounded-lg font-grotesk border border-accentgreen/20">C# / ASP.NET</span>
+                <span class="text-xs bg-accentgreen/10 text-emerald px-3 py-1.5 rounded-lg font-grotesk border border-accentgreen/20">SQL</span>
+                <span class="text-xs bg-accentgreen/10 text-emerald px-3 py-1.5 rounded-lg font-grotesk border border-accentgreen/20">Bootstrap</span>
+                <span class="text-xs bg-accentgreen/10 text-emerald px-3 py-1.5 rounded-lg font-grotesk border border-accentgreen/20">+50% Speed</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Frame 3: Education -->
+          <div class="exp-frame" data-frame="3">
+            <div class="max-w-4xl mx-auto px-6 sm:px-10 lg:px-16 w-full">
+              <div class="exp-content-inner">
+                <div class="flex items-center gap-4 mb-2">
+                  <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-accentgreen to-emerald flex items-center justify-center shadow-lg shadow-emerald/20 flex-shrink-0">
+                    <i class="fas fa-graduation-cap text-xl text-black"></i>
+                  </div>
+                  <div>
+                    <p class="text-emerald font-grotesk text-xs tracking-wider uppercase">2022 &mdash; Dec 2026</p>
+                    <h3 class="text-2xl sm:text-3xl md:text-4xl font-bold font-grotesk leading-tight">B.S. Computer Science &amp; Data Science</h3>
+                  </div>
+                </div>
+                <p class="text-gray-400 font-light text-lg mb-8 ml-[4.5rem]">Rutgers University &bull; GPA 3.96 &bull; Dean's List</p>
+
+                <div class="space-y-3 mb-8 ml-2">
+                  <div class="flex gap-3 items-start">
+                    <span class="text-emerald mt-1.5 text-xs">&#9654;</span>
+                    <p class="text-gray-300 leading-relaxed"><span class="text-white font-medium">Robotics Team Captain</span> &mdash; leading competitive VEX robotics</p>
+                  </div>
+                  <div class="flex gap-3 items-start">
+                    <span class="text-emerald mt-1.5 text-xs">&#9654;</span>
+                    <p class="text-gray-300 leading-relaxed"><span class="text-white font-medium">Competitive Programming Team</span> member</p>
+                  </div>
+                  <div class="flex gap-3 items-start">
+                    <span class="text-emerald mt-1.5 text-xs">&#9654;</span>
+                    <p class="text-gray-300 leading-relaxed"><span class="text-white font-medium">AI Club &amp; Data Science Club</span></p>
+                  </div>
+                  <div class="flex gap-3 items-start">
+                    <span class="text-emerald mt-1.5 text-xs">&#9654;</span>
+                    <p class="text-gray-300 leading-relaxed"><span class="text-white font-medium">Aresty RAD Research Program</span></p>
+                  </div>
+                </div>
+              </div>
+              <div class="exp-tags-inner flex flex-wrap gap-2 ml-2">
+                <span class="text-xs bg-accentgreen/10 text-emerald px-3 py-1.5 rounded-lg font-grotesk border border-accentgreen/20">AI/ML</span>
+                <span class="text-xs bg-accentgreen/10 text-emerald px-3 py-1.5 rounded-lg font-grotesk border border-accentgreen/20">Robotics</span>
+                <span class="text-xs bg-accentgreen/10 text-emerald px-3 py-1.5 rounded-lg font-grotesk border border-accentgreen/20">Research</span>
+                <span class="text-xs bg-accentgreen/10 text-emerald px-3 py-1.5 rounded-lg font-grotesk border border-accentgreen/20">Dean's List</span>
+              </div>
+            </div>
+          </div>
+
+        </div><!-- end exp-display -->
+
+        <!-- Scroll spacer -->
+        <div class="exp-scroll-spacer" id="exp-scroll-spacer"></div>
+      </div><!-- end exp-scroll-area -->
+
+      <!-- Side navigation dots -->
+      <div class="exp-nav-dots" id="exp-nav-dots">
+        <div class="exp-dot active" data-index="0" data-label="PRACSYS Lab"></div>
+        <div class="exp-dot" data-index="1" data-label="Atyeti Inc."></div>
+        <div class="exp-dot" data-index="2" data-label="Team Tranquil"></div>
+        <div class="exp-dot" data-index="3" data-label="Education"></div>
+      </div>
+
+    </section>
+
+    <!-- ───── PROJECTS — Infinite Carousel ───── -->
+    <section id="projects" class="py-28 bg-black relative">
+      <div class="absolute inset-0 bg-gradient-to-b from-darkgreen/10 via-transparent to-transparent pointer-events-none"></div>
+      <div class="max-w-7xl mx-auto px-4 relative">
+        <div class="text-center mb-16 reveal">
+          <p class="text-emerald font-grotesk text-sm tracking-widest uppercase mb-3">Portfolio</p>
+          <h2 class="text-4xl md:text-5xl font-bold font-grotesk">My Projects</h2>
+        </div>
+
+        <div class="carousel-viewport py-8" id="carousel-viewport">
+          <div class="carousel-belt" id="carousel-belt">
+            <!-- Filled by JS for infinite loop -->
+          </div>
+
+          <button id="car-prev" class="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-black/60 backdrop-blur-sm border border-accentgreen/20 rounded-full flex items-center justify-center text-white hover:bg-accentgreen/20 hover:border-emerald/40 transition-all z-10"><i class="fas fa-chevron-left"></i></button>
+          <button id="car-next" class="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-black/60 backdrop-blur-sm border border-accentgreen/20 rounded-full flex items-center justify-center text-white hover:bg-accentgreen/20 hover:border-emerald/40 transition-all z-10"><i class="fas fa-chevron-right"></i></button>
+        </div>
+        <div class="flex justify-center gap-3 mt-8" id="car-dots"></div>
+      </div>
+    </section>
+
+    <!-- ───── SKILLS ───── -->
+    <section id="skills" class="py-28 bg-gradient-to-b from-black via-darkgreen/15 to-black relative">
+      <div class="max-w-6xl mx-auto px-6">
+        <div class="text-center mb-16 reveal">
+          <p class="text-emerald font-grotesk text-sm tracking-widest uppercase mb-3">Tech Stack</p>
+          <h2 class="text-4xl md:text-5xl font-bold font-grotesk">Tools I Work With</h2>
+        </div>
+
+        <!-- Languages -->
+        <div class="mb-12">
+          <h3 class="text-lg font-grotesk text-gray-400 mb-6 reveal">Languages</h3>
+          <div class="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 gap-5">
+            <div class="skill-icon reveal flex flex-col items-center gap-2"><div class="w-14 h-14 rounded-xl bg-accentgreen/10 border border-accentgreen/10 flex items-center justify-center hover:border-emerald/30 transition-all"><i class="fab fa-python text-xl text-emerald"></i></div><span class="text-[10px] text-gray-500 font-grotesk">Python</span></div>
+            <div class="skill-icon reveal flex flex-col items-center gap-2"><div class="w-14 h-14 rounded-xl bg-accentgreen/10 border border-accentgreen/10 flex items-center justify-center hover:border-emerald/30 transition-all"><i class="fab fa-java text-xl text-emerald"></i></div><span class="text-[10px] text-gray-500 font-grotesk">Java</span></div>
+            <div class="skill-icon reveal flex flex-col items-center gap-2"><div class="w-14 h-14 rounded-xl bg-accentgreen/10 border border-accentgreen/10 flex items-center justify-center hover:border-emerald/30 transition-all"><i class="fas fa-code text-xl text-emerald"></i></div><span class="text-[10px] text-gray-500 font-grotesk">C++</span></div>
+            <div class="skill-icon reveal flex flex-col items-center gap-2"><div class="w-14 h-14 rounded-xl bg-accentgreen/10 border border-accentgreen/10 flex items-center justify-center hover:border-emerald/30 transition-all"><i class="fas fa-c text-xl text-emerald"></i></div><span class="text-[10px] text-gray-500 font-grotesk">C / C#</span></div>
+            <div class="skill-icon reveal flex flex-col items-center gap-2"><div class="w-14 h-14 rounded-xl bg-accentgreen/10 border border-accentgreen/10 flex items-center justify-center hover:border-emerald/30 transition-all"><i class="fab fa-js text-xl text-emerald"></i></div><span class="text-[10px] text-gray-500 font-grotesk">JavaScript</span></div>
+            <div class="skill-icon reveal flex flex-col items-center gap-2"><div class="w-14 h-14 rounded-xl bg-accentgreen/10 border border-accentgreen/10 flex items-center justify-center hover:border-emerald/30 transition-all"><i class="fas fa-code text-xl text-emerald"></i></div><span class="text-[10px] text-gray-500 font-grotesk">TypeScript</span></div>
+            <div class="skill-icon reveal flex flex-col items-center gap-2"><div class="w-14 h-14 rounded-xl bg-accentgreen/10 border border-accentgreen/10 flex items-center justify-center hover:border-emerald/30 transition-all"><i class="fas fa-database text-xl text-emerald"></i></div><span class="text-[10px] text-gray-500 font-grotesk">SQL</span></div>
+            <div class="skill-icon reveal flex flex-col items-center gap-2"><div class="w-14 h-14 rounded-xl bg-accentgreen/10 border border-accentgreen/10 flex items-center justify-center hover:border-emerald/30 transition-all"><i class="fab fa-html5 text-xl text-emerald"></i></div><span class="text-[10px] text-gray-500 font-grotesk">HTML/CSS</span></div>
+            <div class="skill-icon reveal flex flex-col items-center gap-2"><div class="w-14 h-14 rounded-xl bg-accentgreen/10 border border-accentgreen/10 flex items-center justify-center hover:border-emerald/30 transition-all"><i class="fas fa-chart-line text-xl text-emerald"></i></div><span class="text-[10px] text-gray-500 font-grotesk">R</span></div>
+            <div class="skill-icon reveal flex flex-col items-center gap-2"><div class="w-14 h-14 rounded-xl bg-accentgreen/10 border border-accentgreen/10 flex items-center justify-center hover:border-emerald/30 transition-all"><i class="fas fa-terminal text-xl text-emerald"></i></div><span class="text-[10px] text-gray-500 font-grotesk">Bash/Shell</span></div>
+          </div>
+        </div>
+
+        <!-- Frameworks -->
+        <div class="mb-12">
+          <h3 class="text-lg font-grotesk text-gray-400 mb-6 reveal">Frameworks & Libraries</h3>
+          <div class="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 gap-5">
+            <div class="skill-icon reveal flex flex-col items-center gap-2"><div class="w-14 h-14 rounded-xl bg-accentgreen/10 border border-accentgreen/10 flex items-center justify-center hover:border-emerald/30 transition-all"><i class="fab fa-react text-xl text-emerald"></i></div><span class="text-[10px] text-gray-500 font-grotesk">React/Next</span></div>
+            <div class="skill-icon reveal flex flex-col items-center gap-2"><div class="w-14 h-14 rounded-xl bg-accentgreen/10 border border-accentgreen/10 flex items-center justify-center hover:border-emerald/30 transition-all"><i class="fab fa-node-js text-xl text-emerald"></i></div><span class="text-[10px] text-gray-500 font-grotesk">Node.js</span></div>
+            <div class="skill-icon reveal flex flex-col items-center gap-2"><div class="w-14 h-14 rounded-xl bg-accentgreen/10 border border-accentgreen/10 flex items-center justify-center hover:border-emerald/30 transition-all"><i class="fas fa-bolt text-xl text-emerald"></i></div><span class="text-[10px] text-gray-500 font-grotesk">FastAPI</span></div>
+            <div class="skill-icon reveal flex flex-col items-center gap-2"><div class="w-14 h-14 rounded-xl bg-accentgreen/10 border border-accentgreen/10 flex items-center justify-center hover:border-emerald/30 transition-all"><i class="fas fa-fire text-xl text-emerald"></i></div><span class="text-[10px] text-gray-500 font-grotesk">PyTorch</span></div>
+            <div class="skill-icon reveal flex flex-col items-center gap-2"><div class="w-14 h-14 rounded-xl bg-accentgreen/10 border border-accentgreen/10 flex items-center justify-center hover:border-emerald/30 transition-all"><i class="fas fa-eye text-xl text-emerald"></i></div><span class="text-[10px] text-gray-500 font-grotesk">OpenCV</span></div>
+            <div class="skill-icon reveal flex flex-col items-center gap-2"><div class="w-14 h-14 rounded-xl bg-accentgreen/10 border border-accentgreen/10 flex items-center justify-center hover:border-emerald/30 transition-all"><i class="fas fa-fire-flame-curved text-xl text-emerald"></i></div><span class="text-[10px] text-gray-500 font-grotesk">Firebase</span></div>
+            <div class="skill-icon reveal flex flex-col items-center gap-2"><div class="w-14 h-14 rounded-xl bg-accentgreen/10 border border-accentgreen/10 flex items-center justify-center hover:border-emerald/30 transition-all"><i class="fas fa-wind text-xl text-emerald"></i></div><span class="text-[10px] text-gray-500 font-grotesk">Tailwind</span></div>
+            <div class="skill-icon reveal flex flex-col items-center gap-2"><div class="w-14 h-14 rounded-xl bg-accentgreen/10 border border-accentgreen/10 flex items-center justify-center hover:border-emerald/30 transition-all"><i class="fas fa-flask text-xl text-emerald"></i></div><span class="text-[10px] text-gray-500 font-grotesk">Flask</span></div>
+            <div class="skill-icon reveal flex flex-col items-center gap-2"><div class="w-14 h-14 rounded-xl bg-accentgreen/10 border border-accentgreen/10 flex items-center justify-center hover:border-emerald/30 transition-all"><i class="fab fa-bootstrap text-xl text-emerald"></i></div><span class="text-[10px] text-gray-500 font-grotesk">Bootstrap</span></div>
+            <div class="skill-icon reveal flex flex-col items-center gap-2"><div class="w-14 h-14 rounded-xl bg-accentgreen/10 border border-accentgreen/10 flex items-center justify-center hover:border-emerald/30 transition-all"><i class="fas fa-map text-xl text-emerald"></i></div><span class="text-[10px] text-gray-500 font-grotesk">Leaflet</span></div>
+            <div class="skill-icon reveal flex flex-col items-center gap-2"><div class="w-14 h-14 rounded-xl bg-accentgreen/10 border border-accentgreen/10 flex items-center justify-center hover:border-emerald/30 transition-all"><i class="fas fa-wand-magic-sparkles text-xl text-emerald"></i></div><span class="text-[10px] text-gray-500 font-grotesk">Framer Motion</span></div>
+            <div class="skill-icon reveal flex flex-col items-center gap-2"><div class="w-14 h-14 rounded-xl bg-accentgreen/10 border border-accentgreen/10 flex items-center justify-center hover:border-emerald/30 transition-all"><i class="fas fa-cube text-xl text-emerald"></i></div><span class="text-[10px] text-gray-500 font-grotesk">ASP.NET</span></div>
+          </div>
+        </div>
+
+        <!-- Technologies -->
+        <div>
+          <h3 class="text-lg font-grotesk text-gray-400 mb-6 reveal">Technologies & Tools</h3>
+          <div class="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 gap-5">
+            <div class="skill-icon reveal flex flex-col items-center gap-2"><div class="w-14 h-14 rounded-xl bg-accentgreen/10 border border-accentgreen/10 flex items-center justify-center hover:border-emerald/30 transition-all"><i class="fab fa-docker text-xl text-emerald"></i></div><span class="text-[10px] text-gray-500 font-grotesk">Docker</span></div>
+            <div class="skill-icon reveal flex flex-col items-center gap-2"><div class="w-14 h-14 rounded-xl bg-accentgreen/10 border border-accentgreen/10 flex items-center justify-center hover:border-emerald/30 transition-all"><i class="fab fa-aws text-xl text-emerald"></i></div><span class="text-[10px] text-gray-500 font-grotesk">AWS S3</span></div>
+            <div class="skill-icon reveal flex flex-col items-center gap-2"><div class="w-14 h-14 rounded-xl bg-accentgreen/10 border border-accentgreen/10 flex items-center justify-center hover:border-emerald/30 transition-all"><i class="fas fa-database text-xl text-emerald"></i></div><span class="text-[10px] text-gray-500 font-grotesk">PostgreSQL</span></div>
+            <div class="skill-icon reveal flex flex-col items-center gap-2"><div class="w-14 h-14 rounded-xl bg-accentgreen/10 border border-accentgreen/10 flex items-center justify-center hover:border-emerald/30 transition-all"><i class="fas fa-robot text-xl text-emerald"></i></div><span class="text-[10px] text-gray-500 font-grotesk">Gemini API</span></div>
+            <div class="skill-icon reveal flex flex-col items-center gap-2"><div class="w-14 h-14 rounded-xl bg-accentgreen/10 border border-accentgreen/10 flex items-center justify-center hover:border-emerald/30 transition-all"><i class="fas fa-dharmachakra text-xl text-emerald"></i></div><span class="text-[10px] text-gray-500 font-grotesk">Kubernetes</span></div>
+            <div class="skill-icon reveal flex flex-col items-center gap-2"><div class="w-14 h-14 rounded-xl bg-accentgreen/10 border border-accentgreen/10 flex items-center justify-center hover:border-emerald/30 transition-all"><i class="fab fa-git-alt text-xl text-emerald"></i></div><span class="text-[10px] text-gray-500 font-grotesk">Git</span></div>
+            <div class="skill-icon reveal flex flex-col items-center gap-2"><div class="w-14 h-14 rounded-xl bg-accentgreen/10 border border-accentgreen/10 flex items-center justify-center hover:border-emerald/30 transition-all"><i class="fas fa-infinity text-xl text-emerald"></i></div><span class="text-[10px] text-gray-500 font-grotesk">CI/CD</span></div>
+            <div class="skill-icon reveal flex flex-col items-center gap-2"><div class="w-14 h-14 rounded-xl bg-accentgreen/10 border border-accentgreen/10 flex items-center justify-center hover:border-emerald/30 transition-all"><i class="fab fa-linux text-xl text-emerald"></i></div><span class="text-[10px] text-gray-500 font-grotesk">Linux</span></div>
+            <div class="skill-icon reveal flex flex-col items-center gap-2"><div class="w-14 h-14 rounded-xl bg-accentgreen/10 border border-accentgreen/10 flex items-center justify-center hover:border-emerald/30 transition-all"><i class="fas fa-lock text-xl text-emerald"></i></div><span class="text-[10px] text-gray-500 font-grotesk">NextAuth</span></div>
+            <div class="skill-icon reveal flex flex-col items-center gap-2"><div class="w-14 h-14 rounded-xl bg-accentgreen/10 border border-accentgreen/10 flex items-center justify-center hover:border-emerald/30 transition-all"><i class="fas fa-plug text-xl text-emerald"></i></div><span class="text-[10px] text-gray-500 font-grotesk">REST APIs</span></div>
+            <div class="skill-icon reveal flex flex-col items-center gap-2"><div class="w-14 h-14 rounded-xl bg-accentgreen/10 border border-accentgreen/10 flex items-center justify-center hover:border-emerald/30 transition-all"><i class="fas fa-brain text-xl text-emerald"></i></div><span class="text-[10px] text-gray-500 font-grotesk">scikit-learn</span></div>
+            <div class="skill-icon reveal flex flex-col items-center gap-2"><div class="w-14 h-14 rounded-xl bg-accentgreen/10 border border-accentgreen/10 flex items-center justify-center hover:border-emerald/30 transition-all"><i class="fas fa-hand text-xl text-emerald"></i></div><span class="text-[10px] text-gray-500 font-grotesk">MediaPipe</span></div>
           </div>
         </div>
       </div>
     </section>
-    <div id="project-modal" class="project-modal">
-      <div class="modal-content">
-        <button class="modal-close text-2xl text-accentgreen">&times;</button>
-        <div id="modal-content"></div>
-      </div>
-    </div>
   </main>
 
-  <!-- Footer -->
-  <footer class="bg-black border-t border-gray-800 py-6 text-center text-gray-500 text-sm">
-    © 2025 Vishal Nagamalla
+  <footer class="bg-black border-t border-white/5 py-8">
+    <div class="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <p class="text-gray-600 text-sm font-grotesk">&copy; 2025 Vishal Nagamalla</p>
+      <div class="flex items-center gap-6">
+        <a href="mailto:Vishal.Nagamalla@gmail.com" class="text-gray-600 hover:text-emerald transition-colors"><i class="fas fa-envelope"></i></a>
+        <a href="https://github.com/Vishal-Nagamalla" target="_blank" class="text-gray-600 hover:text-emerald transition-colors"><i class="fab fa-github"></i></a>
+        <a href="https://www.linkedin.com/in/vishalnag" target="_blank" class="text-gray-600 hover:text-emerald transition-colors"><i class="fab fa-linkedin"></i></a>
+      </div>
+    </div>
   </footer>
 
   <script>
-    /* Contact dropdown */
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Navbar
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 60) { navbar.style.background='rgba(0,0,0,.85)'; navbar.style.backdropFilter='blur(20px)'; navbar.style.borderBottom='1px solid rgba(58,92,58,.15)'; }
+      else { navbar.style.background='transparent'; navbar.style.backdropFilter='none'; navbar.style.borderBottom='none'; }
+    });
+
+    // ── Apple-esque Experience: Internal Scroll ──
     (() => {
-      const btn  = document.querySelector('.group > button.nav-link');
-      const menu = document.getElementById('contact-menu');
-      if (!btn || !menu) return;
+      const scrollArea = document.getElementById('exp-scroll-area');
+      const spacer = document.getElementById('exp-scroll-spacer');
+      const frames = document.querySelectorAll('.exp-frame');
+      const dots = document.querySelectorAll('.exp-dot');
+      const counter = document.getElementById('exp-counter');
+      const bigNumber = document.getElementById('exp-big-number');
+      const scrollHint = document.getElementById('scroll-hint');
+      const totalFrames = frames.length;
+      let currentFrame = 0;
 
-      const open  = () => {
-        menu.classList.remove('opacity-0','invisible','scale-95');
-        menu.classList.add('opacity-100','visible','scale-100');
-      };
-      const close = () => {
-        menu.classList.add('opacity-0','invisible','scale-95');
-        menu.classList.remove('opacity-100','visible','scale-100');
-      };
+      // Set spacer height to create scroll distance
+      // Each frame gets 100vh of scroll distance
+      spacer.style.height = (totalFrames * 100) + 'vh';
 
-      btn.addEventListener('click', e => {
-        e.stopPropagation();
-        menu.classList.contains('visible') ? close() : open();
+      function setFrame(index) {
+        if (index === currentFrame) return;
+        if (index < 0 || index >= totalFrames) return;
+
+        currentFrame = index;
+
+        // Update frames
+        frames.forEach((f, i) => {
+          f.classList.toggle('active', i === index);
+        });
+
+        // Update dots
+        dots.forEach((d, i) => {
+          d.classList.toggle('active', i === index);
+        });
+
+        // Update counter
+        counter.textContent = String(index + 1).padStart(2, '0');
+
+        // Update big number
+        bigNumber.textContent = String(index + 1).padStart(2, '0');
+
+        // Hide scroll hint after first scroll
+        if (index > 0) {
+          scrollHint.style.opacity = '0';
+          scrollHint.style.transition = 'opacity 0.5s ease';
+        }
+      }
+
+      // Listen to internal scroll
+      scrollArea.addEventListener('scroll', () => {
+        const scrollTop = scrollArea.scrollTop;
+        const maxScroll = scrollArea.scrollHeight - scrollArea.clientHeight;
+        const progress = scrollTop / maxScroll;
+
+        // Map progress to frame index
+        const frameIndex = Math.min(
+          totalFrames - 1,
+          Math.floor(progress * totalFrames)
+        );
+
+        setFrame(frameIndex);
+      }, { passive: true });
+
+      // Dot click navigation
+      dots.forEach((dot) => {
+        dot.addEventListener('click', () => {
+          const index = parseInt(dot.dataset.index);
+          const maxScroll = scrollArea.scrollHeight - scrollArea.clientHeight;
+          const targetScroll = (index / totalFrames) * maxScroll + 1;
+          scrollArea.scrollTo({ top: targetScroll, behavior: 'smooth' });
+        });
       });
-      document.addEventListener('click', e => {
-        !menu.contains(e.target) && !btn.contains(e.target) && close();
-      });
+
+      // Also handle wheel events on the experience container to redirect to internal scroll
+      const container = document.querySelector('.exp-container');
+      container.addEventListener('wheel', (e) => {
+        // Check if scroll area is at bounds
+        const atTop = scrollArea.scrollTop <= 0 && e.deltaY < 0;
+        const atBottom = scrollArea.scrollTop >= (scrollArea.scrollHeight - scrollArea.clientHeight - 2) && e.deltaY > 0;
+
+        if (!atTop && !atBottom) {
+          // Redirect wheel to internal scroll area
+          e.preventDefault();
+          scrollArea.scrollTop += e.deltaY;
+        }
+        // If at bounds, let the window scroll naturally
+      }, { passive: false });
     })();
 
-    /* Fixed Carousel */
-    const carousel = () => {
-      const track = document.querySelector('.carousel-track');
-      const slides = Array.from(document.querySelectorAll('.carousel-slide'));
-      const prevBtn = document.querySelector('.carousel-prev');
-      const nextBtn = document.querySelector('.carousel-next');
-      let isAnimating = false;
-      let windowWidth = window.innerWidth;
-
-      const getActiveIndex = () => windowWidth <= 768 ? 0 : 1;
-
-      const getSlideWidth = () => {
-        const slide = slides[0];
-        const style = window.getComputedStyle(slide);
-        return slide.offsetWidth + parseFloat(style.marginLeft) + parseFloat(style.marginRight);
-      };
-
-      const updateActive = () => {
-        windowWidth = window.innerWidth;
-        const activeIndex = getActiveIndex();
-        
-        slides.forEach((slide, index) => {
-          slide.classList.remove('active', 'prev', 'next');
-          if (windowWidth > 768) {
-            if (index === activeIndex) slide.classList.add('active');
-            else if (index === activeIndex - 1) slide.classList.add('prev');
-            else if (index === activeIndex + 1) slide.classList.add('next');
-          } else {
-            if (index === activeIndex) slide.classList.add('active');
-          }
-        });
-      };
-
-      const resetFlippedCards = () => {
-        document.querySelectorAll('.flip-card').forEach(card => {
-          card.classList.remove('flipped');
-        });
-      };
-
-      const animate = (direction) => {
-        if (isAnimating) return;
-        isAnimating = true;
-        resetFlippedCards();
-
-        const slideWidth = getSlideWidth();
-        track.style.transition = 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
-        
-        if (direction === 'next') {
-          track.style.transform = `translateX(-${slideWidth}px)`;
-          setTimeout(() => {
-            track.style.transition = 'none';
-            const movedSlide = slides.shift();
-            track.appendChild(movedSlide);
-            slides.push(movedSlide);
-            track.style.transform = 'translateX(0)';
-            isAnimating = false;
-            updateActive();
-          }, 500);
-        } else {
-          track.style.transform = `translateX(${slideWidth}px)`;
-          setTimeout(() => {
-            track.style.transition = 'none';
-            const movedSlide = slides.pop();
-            track.insertBefore(movedSlide, track.firstElementChild);
-            slides.unshift(movedSlide);
-            track.style.transform = 'translateX(0)';
-            isAnimating = false;
-            updateActive();
-          }, 500);
-        }
-      };
-
-      // Event Listeners
-      nextBtn.addEventListener('click', () => animate('next'));
-      prevBtn.addEventListener('click', () => animate('prev'));
-
-      // Touch Handling
-      let touchStartX = 0;
-      track.addEventListener('touchstart', e => {
-        touchStartX = e.touches[0].clientX;
-      }, { passive: true });
-
-      track.addEventListener('touchend', e => {
-        const delta = touchStartX - e.changedTouches[0].clientX;
-        if (Math.abs(delta) > 50) delta > 0 ? animate('next') : animate('prev');
-      }, { passive: true });
-
-      // Keyboard Navigation
-      document.addEventListener('keydown', e => {
-        if (e.key === 'ArrowLeft') animate('prev');
-        if (e.key === 'ArrowRight') animate('next');
-      });
-
-      // Resize Handler
-      let resizeTimer;
-      window.addEventListener('resize', () => {
-        clearTimeout(resizeTimer);
-        resizeTimer = setTimeout(() => {
-          updateActive();
-          track.style.transform = 'translateX(0)';
-        }, 250);
-      });
-
-      // Flip Card Handling
-      document.querySelectorAll('.flip-card').forEach(card => {
-        card.addEventListener('click', (e) => {
-          const slide = card.closest('.carousel-slide');
-          if (!slide.classList.contains('active')) return;
-          if(e.target.closest('[data-github]')) return;
-          card.classList.toggle('flipped');
-        });
-      });
-
-      updateActive();
-    };
-
-    // Initialize Carousel
-    document.addEventListener('DOMContentLoaded', carousel);
-
-    /* Scroll Reveal */
+    // ── Infinite Carousel ──
     (() => {
-      const observer = new IntersectionObserver((entries, obs) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.remove('opacity-0','translate-y-8');
-            obs.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.2 });
+      const projects = [
+        {
+          title: 'RealEstatePro',
+          tag: 'Full-Stack',
+          desc: 'Production realtor portfolio with listings, Leaflet maps, admin CMS, NextAuth, S3 uploads, and Neon Postgres.',
+          tech: ['Next.js', 'React', 'PostgreSQL', 'AWS S3'],
+          img: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=800',
+          links: [{ url: 'https://real-estate-pro-iota.vercel.app', icon: 'fas fa-external-link-alt' }, { url: 'https://github.com/Vishal-Nagamalla', icon: 'fab fa-github' }],
+          detail: 'Built production-grade listings UX with type filtering, Favorites, and Leaflet maps powered by geocoded pins. Developed a secure Admin CMS using NextAuth with allowlist for end-to-end CRUD. Implemented address-to-coordinates geocoding with Photon and direct-to-S3 uploads via presigned URLs with CORS hardening. Deployed on Vercel with Neon Postgres.'
+        },
+        {
+          title: 'AirNote',
+          tag: 'AI / Full-Stack',
+          desc: 'AI note management platform with Gemini integration, AR glasses support, and real-time Firebase backend.',
+          tech: ['Python', 'React', 'Firebase', 'Gemini API'],
+          img: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=800',
+          links: [{ url: 'https://github.com/Vishal-Nagamalla', icon: 'fab fa-github' }],
+          detail: 'Built a scalable AI note management platform using Gemini, Firebase, and React for automated labels, summaries, and categorization. Integrated AR glasses with OpenCV and an AI voice assistant for gesture-based note-taking. Developed a FastAPI backend for real-time ingestion and classification. Automated AI embedding and clustering workflows for semantic analysis.'
+        },
+        {
+          title: 'HoloBrain',
+          tag: 'MLH Winner',
+          desc: 'AI-powered 3D MRI hologram with real-time hand-gesture controls for brain-scan diagnosis.',
+          tech: ['PyTorch', 'OpenCV', 'Unity 3D', 'C#'],
+          img: 'https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=800',
+          links: [{ url: 'https://devpost.com/software/holobrain', icon: 'fas fa-external-link-alt' }, { url: 'https://github.com/Vishal-Nagamalla', icon: 'fab fa-github' }],
+          detail: 'CNN model with 97% accuracy classifying healthy vs. unhealthy MRI scans. Dynamic hand gesture tracking using OpenCV and MediaPipe to manipulate 3D holograms. Python-to-Unity socket integration keeps classification overlays in sync at 30 fps, cutting review time by 40%.'
+        },
+        {
+          title: 'VEX Robotics',
+          tag: 'Robotics',
+          desc: 'C++ control stack for competitive VEX robot: autonomous navigation, PID control, and sensor fusion.',
+          tech: ['C++', 'PID Control', 'Sensor Fusion'],
+          img: 'https://images.unsplash.com/photo-1561557944-6e7860d1a7eb?auto=format&fit=crop&w=800',
+          links: [{ url: 'https://github.com/Vishal-Nagamalla', icon: 'fab fa-github' }],
+          detail: 'Full autonomous and driver control software stack in C++ for VEX competition robots. Implemented PID-based motion planning, multi-sensor fusion, and a modular architecture enabling rapid iteration between competition runs. As team captain, leading both engineering and software development.'
+        },
+        {
+          title: 'Digit Recognition',
+          tag: 'ML Research',
+          desc: 'CNN vs Vision Transformer comparison on MNIST, achieving 98% accuracy with architectural analysis.',
+          tech: ['PyTorch', 'ViT', 'CNN', 'MNIST'],
+          img: 'https://images.unsplash.com/photo-1555949963-aa79dcee981c?auto=format&fit=crop&w=800',
+          links: [{ url: 'https://github.com/Vishal-Nagamalla', icon: 'fab fa-github' }],
+          detail: 'Comprehensive study comparing CNN and Vision Transformer architectures on digit classification. Both models achieved 98% accuracy. Analysis revealed key trade-offs in computational efficiency, attention patterns, and generalization capabilities.'
+        },
+        {
+          title: 'Indian Cuisine',
+          tag: 'Full-Stack',
+          desc: 'Restaurant web app with SQL backend, Bootstrap UI, and reusable image management system.',
+          tech: ['ASP.NET Core', 'C#', 'SQL Server', 'Bootstrap'],
+          img: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=800',
+          links: [{ url: 'https://github.com/Vishal-Nagamalla', icon: 'fab fa-github' }],
+          detail: 'Full-stack restaurant website built with ASP.NET Core and Bootstrap. Features include an SQL-backed image management system, interactive menus, and optimized SQL queries yielding 33% faster page loads. Delivered through Agile sprints with cross-browser compatibility.'
+        },
+        {
+          title: 'Data Processing',
+          tag: 'Automation',
+          desc: 'Python-Excel ETL toolkit for automated data cleaning with Pandas and Excel interop.',
+          tech: ['Python', 'Pandas', 'Excel Interop', 'ETL'],
+          img: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800',
+          links: [{ url: 'https://github.com/Vishal-Nagamalla', icon: 'fab fa-github' }],
+          detail: 'Python-based ETL toolkit that automates large-scale data cleaning and validation for Excel and CSV datasets. Reduced manual reformatting by 18 hours per project while maintaining 97% dataset accuracy. Built for enterprise-scale financial data workflows.'
+        },
+        {
+          title: 'VEXAI Planner',
+          tag: 'AI / Robotics',
+          desc: 'Monte-Carlo Tree Search strategy planner for autonomous robotics path planning.',
+          tech: ['Python', 'MCTS', 'RL', 'Simulation'],
+          img: 'https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=800',
+          links: [{ url: 'https://github.com/Vishal-Nagamalla', icon: 'fab fa-github' }],
+          detail: 'Monte-Carlo Tree Search implementation for VEX robotics autonomous strategy. Uses reinforcement learning principles to evaluate and optimize robot path planning in real-time competitive environments. Simulates thousands of game scenarios to determine optimal movement strategies.'
+        }
+      ];
 
-      document.querySelectorAll('.skill-group').forEach(el => observer.observe(el));
+      const belt = document.getElementById('carousel-belt');
+      const viewport = document.getElementById('carousel-viewport');
+      const dotsContainer = document.getElementById('car-dots');
+      const prevBtn = document.getElementById('car-prev');
+      const nextBtn = document.getElementById('car-next');
+      const N = projects.length;
+      let currentIndex = 0;
+      let cellsPerView = 3;
+      let isTransitioning = false;
+
+      function getCellsPerView() {
+        if (window.innerWidth < 768) return 1;
+        if (window.innerWidth < 1024) return 2;
+        return 3;
+      }
+
+      function buildCard(p) {
+        return `
+          <div class="project-card flip-card">
+            <div class="flip-card-inner">
+              <div class="flip-card-front">
+                <div class="bg-darkgreen/10 rounded-2xl overflow-hidden border border-accentgreen/15 hover:border-accentgreen/40 transition-all duration-300">
+                  <div class="h-48 overflow-hidden"><img src="${p.img}" alt="${p.title}" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110"></div>
+                  <div class="p-6">
+                    <div class="flex justify-between items-start mb-3">
+                      <h3 class="text-xl font-semibold font-grotesk">${p.title}</h3>
+                      <span class="bg-emerald/10 text-emerald text-xs px-3 py-1 rounded-lg font-grotesk whitespace-nowrap">${p.tag}</span>
+                    </div>
+                    <p class="text-gray-400 mb-4 text-sm leading-relaxed">${p.desc}</p>
+                    <div class="flex flex-wrap gap-2 mb-4">${p.tech.map(t => `<span class="text-xs bg-black/50 text-accentgreen px-2 py-1 rounded-lg">${t}</span>`).join('')}</div>
+                    <div class="flex gap-3">${p.links.map(l => `<a href="${l.url}" target="_blank" class="text-gray-500 hover:text-emerald transition-colors" data-link><i class="${l.icon}"></i></a>`).join('')}</div>
+                  </div>
+                </div>
+              </div>
+              <div class="flip-card-back rounded-2xl bg-gradient-to-br from-darkgreen to-black border border-accentgreen/20">
+                <h3 class="text-xl font-semibold font-grotesk mb-4">Deep Dive</h3>
+                <p class="text-gray-300 text-sm leading-relaxed mb-4">${p.detail}</p>
+                <div class="flex flex-wrap gap-2">${p.tech.map(t => `<span class="text-xs bg-black/50 text-emerald px-2 py-1 rounded-lg">${t}</span>`).join('')}</div>
+              </div>
+            </div>
+          </div>`;
+      }
+
+      function buildBelt() {
+        cellsPerView = getCellsPerView();
+        const cloneBefore = projects.slice(-cellsPerView);
+        const cloneAfter = projects.slice(0, cellsPerView);
+        const allItems = [...cloneBefore, ...projects, ...cloneAfter];
+
+        belt.innerHTML = allItems.map(p => `<div class="carousel-cell">${buildCard(p)}</div>`).join('');
+        currentIndex = 0;
+        jumpToIndex(currentIndex, true);
+        updateClasses();
+        buildDots();
+      }
+
+      function getOffset(index) {
+        const realIndex = index + cellsPerView;
+        const cellWidth = 100 / cellsPerView;
+        const centerOffset = cellsPerView > 1 ? Math.floor(cellsPerView / 2) : 0;
+        return -(realIndex - centerOffset) * cellWidth;
+      }
+
+      function jumpToIndex(index, instant) {
+        if (instant) belt.style.transition = 'none';
+        belt.style.transform = `translateX(${getOffset(index)}%)`;
+        if (instant) { belt.offsetHeight; belt.style.transition = ''; }
+      }
+
+      function goTo(index) {
+        if (isTransitioning) return;
+        isTransitioning = true;
+        currentIndex = index;
+        belt.style.transform = `translateX(${getOffset(index)}%)`;
+        updateClasses();
+        updateDots();
+
+        setTimeout(() => {
+          if (currentIndex >= N) {
+            currentIndex = 0;
+            jumpToIndex(currentIndex, true);
+          } else if (currentIndex < 0) {
+            currentIndex = N - 1;
+            jumpToIndex(currentIndex, true);
+          }
+          updateClasses();
+          updateDots();
+          isTransitioning = false;
+        }, 550);
+      }
+
+      function updateClasses() {
+        const cells = belt.querySelectorAll('.carousel-cell');
+        const realCenter = currentIndex + cellsPerView;
+        cells.forEach((c, i) => {
+          c.classList.remove('center', 'adjacent');
+          if (i === realCenter) c.classList.add('center');
+          else if (i === realCenter - 1 || i === realCenter + 1) c.classList.add('adjacent');
+        });
+      }
+
+      function buildDots() {
+        dotsContainer.innerHTML = '';
+        for (let i = 0; i < N; i++) {
+          const dot = document.createElement('button');
+          dot.className = `h-3 rounded-full transition-all duration-300 ${i === currentIndex ? 'bg-emerald w-8' : 'bg-accentgreen/30 w-3'}`;
+          dot.addEventListener('click', () => goTo(i));
+          dotsContainer.appendChild(dot);
+        }
+      }
+
+      function updateDots() {
+        const realIdx = ((currentIndex % N) + N) % N;
+        dotsContainer.querySelectorAll('button').forEach((d, i) => {
+          d.classList.toggle('bg-emerald', i === realIdx);
+          d.classList.toggle('w-8', i === realIdx);
+          d.classList.toggle('bg-accentgreen/30', i !== realIdx);
+          d.classList.toggle('w-3', i !== realIdx);
+        });
+      }
+
+      prevBtn.addEventListener('click', () => goTo(currentIndex - 1));
+      nextBtn.addEventListener('click', () => goTo(currentIndex + 1));
+
+      // Flip on center click
+      belt.addEventListener('click', (e) => {
+        const cell = e.target.closest('.carousel-cell');
+        if (!cell || !cell.classList.contains('center')) return;
+        if (e.target.closest('[data-link]')) return;
+        cell.querySelector('.flip-card').classList.toggle('flipped');
+      });
+
+      // Touch swipe
+      let touchStartX = 0;
+      viewport.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
+      viewport.addEventListener('touchend', e => {
+        const diff = touchStartX - e.changedTouches[0].clientX;
+        if (Math.abs(diff) > 50) goTo(currentIndex + (diff > 0 ? 1 : -1));
+      }, { passive: true });
+
+      window.addEventListener('resize', buildBelt);
+      buildBelt();
+    })();
+
+    // Scroll reveals
+    gsap.utils.toArray('.reveal').forEach((el, i) => {
+      gsap.to(el, {
+        scrollTrigger: { trigger: el, start: 'top 85%', toggleActions: 'play none none none' },
+        opacity: 1, y: 0, duration: 0.8, ease: 'power3.out', delay: i * 0.03,
+      });
+    });
+
+    // Mobile nav
+    const mToggle = document.getElementById('mobile-nav-toggle');
+    const mNav = document.getElementById('mobile-nav');
+    let navOpen = false;
+    mToggle.addEventListener('click', () => {
+      navOpen = !navOpen;
+      mNav.style.transform = navOpen ? 'translateX(0)' : 'translateX(100%)';
+      mToggle.innerHTML = navOpen ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+    });
+    document.getElementById('mobile-contact').addEventListener('click', () => {
+      document.getElementById('mobile-contact-links').classList.toggle('hidden');
+    });
+    mNav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+      navOpen = false; mNav.style.transform = 'translateX(100%)'; mToggle.innerHTML = '<i class="fas fa-bars"></i>';
+    }));
+
+    // Contact dropdown
+    (() => {
+      const btn = document.querySelector('.group > button.nav-link');
+      const menu = document.getElementById('contact-menu');
+      if (!btn || !menu) return;
+      btn.addEventListener('click', e => {
+        e.stopPropagation();
+        menu.classList.toggle('opacity-0'); menu.classList.toggle('invisible'); menu.classList.toggle('-translate-y-2');
+        menu.classList.toggle('opacity-100'); menu.classList.toggle('visible'); menu.classList.toggle('translate-y-0');
+      });
+      document.addEventListener('click', e => {
+        if (!menu.contains(e.target) && !btn.contains(e.target)) {
+          menu.classList.add('opacity-0','invisible','-translate-y-2');
+          menu.classList.remove('opacity-100','visible','translate-y-0');
+        }
+      });
     })();
   </script>
 </body>

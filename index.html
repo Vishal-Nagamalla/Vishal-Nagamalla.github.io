@@ -3,315 +3,470 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Vishal Nagamalla | Home</title>
+  <title>Vishal Nagamalla</title>
 
-  <!-- Google Font -->
+  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-  <!-- Tailwind & Font‑Awesome -->
+  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Font Awesome -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+  <!-- GSAP + ScrollTrigger + Lenis -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
 
   <script>
     tailwind.config = {
       theme: {
         extend: {
-          fontFamily: { poppins: ['Poppins', 'sans-serif'] },
+          fontFamily: {
+            poppins: ['Poppins', 'sans-serif'],
+            grotesk: ['Space Grotesk', 'sans-serif'],
+          },
           colors: {
-            darkgreen : '#1a2e1a',
+            darkgreen: '#1a2e1a',
             lightgreen: '#2d4d2d',
-            accentgreen:'#3a5c3a',
+            accentgreen: '#3a5c3a',
+            emerald: '#4ade80',
           },
-          keyframes: {
-            shimmer: {
-              '0%':  {backgroundPosition: '-700px 0'},
-              '100%':{backgroundPosition:  '700px 0'}
-            }
-          },
-          animation: {
-            shimmer: 'shimmer 4s linear infinite'
-          }
         }
       }
     }
   </script>
 
   <style>
-    /* Scrollbar */
-    ::-webkit-scrollbar{width:8px}
-    ::-webkit-scrollbar-track{background:#111}
-    ::-webkit-scrollbar-thumb{background:#3a5c3a;border-radius:4px}
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
-    /* Nav underline */
-    .nav-link{position:relative}
-    .nav-link::after{content:'';position:absolute;width:0;height:2px;bottom:-5px;left:0;background:#3a5c3a;transition:width .3s}
-    /* underline grows on hover */
-    .nav-link:hover::after{
-      width:100%;
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: #0a0a0a; }
+    ::-webkit-scrollbar-thumb { background: #3a5c3a; border-radius: 3px; }
+
+    html.lenis, html.lenis body { height: auto; }
+    .lenis.lenis-smooth { scroll-behavior: auto !important; }
+
+    /* Nav */
+    .nav-link { position: relative; }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      width: 0; height: 2px;
+      bottom: -4px; left: 0;
+      background: #4ade80;
+      transition: width 0.3s ease;
     }
-    .nav-link.active::after{width:0}
+    .nav-link:hover::after { width: 100%; }
 
-    /* typing cursor */
-    .type-cursor::after{content:'|';margin-left:4px;animation:blink .8s infinite}
-    @keyframes blink{0%,50%{opacity:1}51%,100%{opacity:0}}
-
-    /* fade‑up helper */
-    .fade-up{opacity:0;transform:translateY(40px);animation:fadeUp .8s forwards}
-    @keyframes fadeUp{to{opacity:1;transform:translateY(0)}}
-
-    /* show desktop contact dropdown on hover of parent */
-    .group:hover #contact-menu{
-      opacity:1 !important;
-      visibility:visible !important;
-      transform:scale(100%) !important;
-    }
-    .spotify-embed-container {
+    /* Hero full-bleed — extends through stats */
+    .hero-wrapper {
       position: relative;
-      border-radius: 12px;
       overflow: hidden;
-      transition: transform 0.3s ease;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center top;
+      filter: brightness(0.45) contrast(1.1);
+      transform: scale(1.05);
+    }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(0,0,0,0.3) 0%,
+        rgba(0,0,0,0.1) 30%,
+        rgba(0,0,0,0.15) 55%,
+        rgba(0,0,0,0.4) 75%,
+        rgba(0,0,0,0.7) 90%,
+        rgba(0,0,0,0.95) 100%
+      );
+    }
+    .hero-overlay-side {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to right,
+        rgba(0,0,0,0.6) 0%,
+        rgba(0,0,0,0.0) 50%,
+        rgba(0,0,0,0.3) 100%
+      );
     }
 
-    .spotify-embed-container:hover {
-      transform: scale(1.02);
+    /* Role morph */
+    .role-word {
+      position: absolute;
+      left: 0; top: 0;
+      width: 100%;
+      opacity: 0;
+      filter: blur(8px);
+      transition: opacity 0.6s ease, filter 0.6s ease;
     }
-    
-    @keyframes bounce {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-5px); }
+    .role-word.active {
+      opacity: 1;
+      filter: blur(0px);
     }
 
+    /* Gradient text */
+    .gradient-text {
+      background: linear-gradient(135deg, #ffffff 0%, #4ade80 50%, #3a5c3a 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* Contact dropdown */
+    .group:hover #contact-menu {
+      opacity: 1 !important;
+      visibility: visible !important;
+      transform: translateY(0) !important;
+    }
+
+    /* Spotify */
     .spotify-custom-frame {
       background: linear-gradient(to bottom, #000 0%, #1a2e1a 100%);
       border-radius: 12px;
       padding: 8px;
     }
+    .spotify-custom-frame iframe { mix-blend-mode: lighten; }
 
-    /* Force Spotify to use transparent elements */
-    .spotify-custom-frame iframe {
-      mix-blend-mode: lighten;
+    /* Reveals */
+    .reveal { opacity: 0; transform: translateY(60px); }
+    .reveal-left { opacity: 0; transform: translateX(-60px); }
+    .reveal-right { opacity: 0; transform: translateX(60px); }
+
+    /* Stat card */
+    .stat-card { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+    .stat-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 40px rgba(58, 92, 58, 0.15);
     }
 
-    /* Custom control recoloring */
-    .spotify-custom-frame ::part(root) {
-      --background-base: transparent !important;
-      --background-highlight: #2d4d2d !important;
-      --text-base: #ffffff !important;
+    /* Social pill */
+    .social-pill {
+      backdrop-filter: blur(10px);
+      background: rgba(0,0,0,0.3);
+      border: 1px solid rgba(255,255,255,0.08);
+      transition: all 0.3s ease;
+    }
+    .social-pill:hover {
+      background: rgba(58,92,58,0.4);
+      border-color: rgba(74,222,128,0.3);
     }
   </style>
 </head>
-<body class="bg-black text-white font-poppins min-h-screen">
+
+<body class="bg-black text-white font-poppins overflow-x-hidden">
 
   <!-- ───── NAV ───── -->
-  <nav class="fixed w-full bg-black bg-opacity-90 z-40 shadow-lg">
-    <div class="max-w-7xl mx-auto px-4 flex items-center justify-between h-16">
-      <span class="text-xl font-extrabold text-darkgreen">VN</span>
-      <div class="space-x-8 hidden md:flex">
-        <a href="#hero"        class="nav-link px-3 py-2">Home</a>
-        <a href="./professional" class="nav-link       px-3 py-2">Professional</a>
-        <!-- Contact dropdown -->
+  <nav class="fixed w-full z-50 transition-all duration-500" id="navbar">
+    <div class="max-w-7xl mx-auto px-6 flex items-center justify-between h-20">
+      <a href="#" class="text-2xl font-extrabold font-grotesk tracking-tight">
+        <span class="text-white">V</span><span class="text-emerald">N</span>
+      </a>
+      <div class="hidden md:flex items-center gap-10">
+        <a href="#hero" class="nav-link text-sm tracking-wide uppercase text-gray-300 hover:text-white transition-colors">Home</a>
+        <a href="./professional.html#experience" class="nav-link text-sm tracking-wide uppercase text-gray-300 hover:text-white transition-colors">Experience</a>
         <div class="relative group">
-          <button class="nav-link px-3 py-2 flex items-center gap-1">
-            Contact 
-          </button>
+          <button class="nav-link text-sm tracking-wide uppercase text-gray-300 hover:text-white transition-colors flex items-center gap-1">Contact</button>
           <div id="contact-menu"
-               class="absolute right-0 mt-2 bg-darkgreen text-white rounded-lg shadow-lg border border-accentgreen opacity-0 invisible transform scale-95 origin-top-right transition-all duration-150 z-50 flex flex-row items-center gap-4 px-4 py-3">
-            <a href="mailto:Vishal.Nagamalla@gmail.com" target="_blank"
-               class="w-10 h-10 flex items-center justify-center rounded-md text-white hover:bg-accentgreen">
-              <i class="fas fa-envelope text-lg"></i>
-            </a>
-            <a href="https://github.com/Vishal-Nagamalla" target="_blank"
-               class="w-10 h-10 flex items-center justify-center rounded-md text-white hover:bg-accentgreen">
-              <i class="fab fa-github text-lg"></i>
-            </a>
-            <a href="https://www.linkedin.com/in/vishalnag" target="_blank"
-               class="w-10 h-10 flex items-center justify-center rounded-md text-white hover:bg-accentgreen">
-              <i class="fab fa-linkedin text-lg"></i>
-            </a>
+               class="absolute right-0 mt-4 bg-black/90 backdrop-blur-xl text-white rounded-xl shadow-2xl border border-accentgreen/30 opacity-0 invisible transform -translate-y-2 transition-all duration-200 z-50 flex items-center gap-3 px-5 py-3">
+            <a href="mailto:Vishal.Nagamalla@gmail.com" target="_blank" class="w-10 h-10 flex items-center justify-center rounded-lg text-gray-400 hover:text-emerald hover:bg-white/5 transition-all"><i class="fas fa-envelope text-lg"></i></a>
+            <a href="https://github.com/Vishal-Nagamalla" target="_blank" class="w-10 h-10 flex items-center justify-center rounded-lg text-gray-400 hover:text-emerald hover:bg-white/5 transition-all"><i class="fab fa-github text-lg"></i></a>
+            <a href="https://www.linkedin.com/in/vishalnag" target="_blank" class="w-10 h-10 flex items-center justify-center rounded-lg text-gray-400 hover:text-emerald hover:bg-white/5 transition-all"><i class="fab fa-linkedin text-lg"></i></a>
           </div>
         </div>
       </div>
-      <!-- hamburger (mobile only) -->
-      <button id="mobile-nav-toggle"
-              class="md:hidden text-white text-2xl focus:outline-none">
-        <i class="fas fa-bars"></i>
-      </button>
+      <button id="mobile-nav-toggle" class="md:hidden text-white text-2xl focus:outline-none"><i class="fas fa-bars"></i></button>
     </div>
   </nav>
-</nav>
 
-<!-- mobile nav panel -->
-<div id="mobile-nav"
-     class="fixed top-16 right-0 w-60 bg-black bg-opacity-95 border-l border-accentgreen
-            transform translate-x-full transition-transform duration-200 z-40 md:hidden">
-  <a href="#hero"        class="block px-6 py-4 nav-link border-b border-gray-800">Home</a>
-  <a href="./professional" class="block px-6 py-4 nav-link border-b border-gray-800">Professional</a>
-  <button id="mobile-contact"
-          class="w-full text-left px-6 py-4 flex items-center gap-3 border-b border-gray-800">
-    Contact <i class="fas fa-chevron-down ml-auto"></i>
-  </button>
-  <div id="mobile-contact-links" class="pl-10 pb-4 space-y-3 hidden">
-    <a href="mailto:Vishal.Nagamalla@gmail.com" class="block">Email</a>
-    <a href="https://github.com/Vishal-Nagamalla" target="_blank" class="block">GitHub</a>
-    <a href="https://www.linkedin.com/in/vishalnag" target="_blank"  class="block">LinkedIn</a>
+  <!-- Mobile nav -->
+  <div id="mobile-nav" class="fixed top-20 right-0 w-72 bg-black/95 backdrop-blur-xl border-l border-accentgreen/20 rounded-bl-2xl transform translate-x-full transition-transform duration-300 z-40 md:hidden">
+    <a href="#hero" class="block px-8 py-5 text-gray-300 hover:text-white border-b border-white/5 transition-colors">Home</a>
+    <a href="./professional.html#experience" class="block px-8 py-5 text-gray-300 hover:text-white border-b border-white/5 transition-colors">Experience</a>
+    <button id="mobile-contact" class="w-full text-left px-8 py-5 text-gray-300 hover:text-white flex items-center justify-between border-b border-white/5">Contact <i class="fas fa-chevron-down text-xs transition-transform"></i></button>
+    <div id="mobile-contact-links" class="hidden px-8 py-4 space-y-4 bg-darkgreen/20">
+      <a href="mailto:Vishal.Nagamalla@gmail.com" class="flex items-center gap-3 text-gray-400 hover:text-emerald transition-colors"><i class="fas fa-envelope"></i> Email</a>
+      <a href="https://github.com/Vishal-Nagamalla" target="_blank" class="flex items-center gap-3 text-gray-400 hover:text-emerald transition-colors"><i class="fab fa-github"></i> GitHub</a>
+      <a href="https://www.linkedin.com/in/vishalnag" target="_blank" class="flex items-center gap-3 text-gray-400 hover:text-emerald transition-colors"><i class="fab fa-linkedin"></i> LinkedIn</a>
+    </div>
   </div>
-</div>
 
   <!-- ───── MAIN ───── -->
-  <main class="pt-20">
+  <main>
 
-    <!-- Hero -->
-    <section class="min-h-[95vh] flex flex-col lg:flex-row items-center lg:items-start pt-32 lg:pt-40
-                bg-gradient-to-b from-black to-darkgreen">
-      <div class="max-w-[1300px] mx-auto flex flex-col lg:flex-row items-center justify-center gap-10 lg:gap-20 w-full px-6">
-        <!-- text -->
-        <div class="space-y-10 text-center md:text-left fade-up flex-1">
-          <h1 class="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold leading-tight whitespace-nowrap
-                     bg-gradient-to-r from-white via-accentgreen to-white
-                     bg-[length:400%_100%] bg-clip-text text-transparent animate-shimmer">
-            Hi, I'm&nbsp;Vishal
-          </h1>
-          <p id="role-line"
-             class="text-xl sm:text-2xl md:text-3xl lg:text-4xl text-gray-200 type-cursor">
+    <!-- ───── HERO + STATS — One continuous bg ───── -->
+    <div class="hero-wrapper">
+      <!-- Background portrait — covers hero AND stats -->
+      <div class="hero-bg" id="hero-bg" style="background-image: url('./portrait.JPG');"></div>
+      <div class="hero-overlay"></div>
+      <div class="hero-overlay-side"></div>
+
+      <!-- HERO section -->
+      <section id="hero" class="relative h-screen w-full">
+        <!-- Content overlay -->
+        <div class="relative h-full flex flex-col justify-between px-6 sm:px-10 lg:px-16 py-8 z-10">
+          <!-- Top: empty (nav handles this) -->
+          <div></div>
+
+          <!-- Bottom section: name + info -->
+          <div class="flex flex-col lg:flex-row items-end lg:items-end justify-between gap-8 pb-6">
+
+            <!-- Left: Name + role -->
+            <div class="flex-1" id="hero-text">
+              <!-- Social links row -->
+              <div class="flex gap-3 mb-6 opacity-0" id="hero-socials">
+                <a href="https://github.com/Vishal-Nagamalla" target="_blank" class="social-pill px-4 py-2 rounded-full text-xs font-grotesk tracking-wider uppercase text-gray-300 hover:text-white flex items-center gap-2">
+                  <i class="fab fa-github"></i> GitHub
+                </a>
+                <a href="https://www.linkedin.com/in/vishalnag" target="_blank" class="social-pill px-4 py-2 rounded-full text-xs font-grotesk tracking-wider uppercase text-gray-300 hover:text-white flex items-center gap-2">
+                  <i class="fab fa-linkedin"></i> LinkedIn
+                </a>
+                <a href="mailto:Vishal.Nagamalla@gmail.com" class="social-pill px-4 py-2 rounded-full text-xs font-grotesk tracking-wider uppercase text-gray-300 hover:text-white flex items-center gap-2">
+                  <i class="fas fa-envelope"></i> Email
+                </a>
+              </div>
+
+              <h1 class="text-5xl sm:text-6xl md:text-7xl lg:text-[7rem] xl:text-[8rem] font-extrabold font-grotesk leading-[0.85] tracking-tight text-white opacity-0" id="hero-name">
+                Vishal<br>
+                <span class="gradient-text">Nagamalla</span>
+              </h1>
+
+              <!-- Role morph -->
+              <div class="relative h-10 sm:h-12 md:h-14 mt-6 overflow-hidden" id="role-container">
+                <span class="role-word active text-xl sm:text-2xl md:text-3xl text-gray-300 font-light font-grotesk">Software Engineer</span>
+                <span class="role-word text-xl sm:text-2xl md:text-3xl text-gray-300 font-light font-grotesk">AI/ML Enthusiast</span>
+                <span class="role-word text-xl sm:text-2xl md:text-3xl text-gray-300 font-light font-grotesk">Roboticist</span>
+                <span class="role-word text-xl sm:text-2xl md:text-3xl text-gray-300 font-light font-grotesk">Full-Stack Developer</span>
+                <span class="role-word text-xl sm:text-2xl md:text-3xl text-gray-300 font-light font-grotesk">Innovator</span>
+                <span class="role-word text-xl sm:text-2xl md:text-3xl text-gray-300 font-light font-grotesk">Entrepreneur</span>
+              </div>
+            </div>
+
+            <!-- Right: Meta info -->
+            <div class="text-right opacity-0" id="hero-meta">
+              <p class="text-emerald font-grotesk text-sm tracking-widest uppercase mb-1">Rutgers University</p>
+              <p class="text-gray-400 font-grotesk text-sm">CS &amp; Data Science &bull; Dean's List</p>
+              <p class="text-gray-500 font-grotesk text-xs mt-2">GPA 3.96 &bull; Class of 2026</p>
+              <a href="./professional.html" class="inline-flex items-center gap-2 mt-4 px-6 py-3 bg-accentgreen/80 backdrop-blur-sm text-white rounded-lg font-semibold text-sm tracking-wide hover:bg-emerald hover:text-black transition-all duration-300 group">
+                View My Work <i class="fas fa-arrow-right text-xs group-hover:translate-x-1 transition-transform"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ───── SNAPSHOT STATS — still inside the hero-wrapper bg ───── -->
+      <section class="relative py-24 z-10">
+        <div class="max-w-6xl mx-auto px-6">
+          <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="stat-card reveal bg-black/40 backdrop-blur-md border border-accentgreen/15 rounded-2xl p-8 text-center">
+              <div class="w-14 h-14 mx-auto mb-4 rounded-xl bg-accentgreen/10 flex items-center justify-center">
+                <i class="fas fa-university text-2xl text-emerald"></i>
+              </div>
+              <p class="font-semibold text-lg font-grotesk">Rutgers University</p>
+              <p class="text-gray-400 text-sm mt-1">CS + DS &bull; Dean's List</p>
+            </div>
+            <div class="stat-card reveal bg-black/40 backdrop-blur-md border border-accentgreen/15 rounded-2xl p-8 text-center">
+              <div class="w-14 h-14 mx-auto mb-4 rounded-xl bg-accentgreen/10 flex items-center justify-center">
+                <i class="fas fa-robot text-2xl text-emerald"></i>
+              </div>
+              <p class="font-semibold text-lg font-grotesk">PRACSYS Lab</p>
+              <p class="text-gray-400 text-sm mt-1">Physical AI Research</p>
+            </div>
+            <div class="stat-card reveal bg-black/40 backdrop-blur-md border border-accentgreen/15 rounded-2xl p-8 text-center">
+              <div class="w-14 h-14 mx-auto mb-4 rounded-xl bg-accentgreen/10 flex items-center justify-center">
+                <i class="fas fa-dumbbell text-2xl text-emerald"></i>
+              </div>
+              <p class="font-semibold text-lg font-grotesk">After Hours</p>
+              <p class="text-gray-400 text-sm mt-1">Lifting &bull; Dancing &bull; Don Toliver</p>
+            </div>
+            <div class="stat-card reveal bg-black/40 backdrop-blur-md border border-accentgreen/15 rounded-2xl p-8 text-center">
+              <div class="w-14 h-14 mx-auto mb-4 rounded-xl bg-accentgreen/10 flex items-center justify-center">
+                <i class="fas fa-trophy text-2xl text-emerald"></i>
+              </div>
+              <p class="font-semibold text-lg font-grotesk">Robotics Captain</p>
+              <p class="text-gray-400 text-sm mt-1">Rutgers VEXU Team</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div><!-- end hero-wrapper -->
+
+    <!-- ───── ABOUT ───── -->
+    <section class="relative py-28 overflow-hidden">
+      <div class="absolute inset-0 bg-gradient-to-b from-black via-darkgreen/30 to-black"></div>
+      <div class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-accentgreen/30 to-transparent"></div>
+
+      <div class="relative max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-start gap-16">
+        <div class="flex-1 space-y-8">
+          <div class="reveal-left">
+            <p class="text-emerald font-grotesk text-sm tracking-widest uppercase mb-3">About Me</p>
+            <h2 class="text-4xl md:text-5xl font-bold font-grotesk leading-tight">
+              Building the future<br>
+              <span class="gradient-text">one idea at a time.</span>
+            </h2>
+          </div>
+          <p class="reveal-left text-gray-400 leading-relaxed text-lg max-w-xl">
+            I'm <span class="text-white font-semibold">Vishal Nagamalla</span> &mdash; an innovator who loves turning bold, "what-if?" ideas into working products. I see AI and Robotics not just as the future but as a playground for creativity, and that's my specialty.
+          </p>
+          <p class="reveal-left text-gray-500 leading-relaxed">
+            When I'm not training models or building robots, you'll find me pushing plates in the gym, cutting loose on the dance floor, or geeking out over the newest tech drops.
           </p>
         </div>
 
-        <!-- portrait -->
-        <div class="flex justify-center md:justify-end fade-up" style="animation-delay:.05s">
-          <img src="./portrait.JPG"
-               alt="Vishal portrait"
-               class="w-72 sm:w-96 md:w-[22rem] lg:w-[26rem] xl:w-[28rem] aspect-square rounded-2xl object-cover shadow-[0_10px_40px_rgba(0,0,0,0.5)]">
-        </div>
-      </div>
-    </section>
-
-    <!-- Snapshot row -->
-    <section class="bg-black py-16">
-      <div class="max-w-6xl mx-auto px-6 grid sm:grid-cols-2 lg:grid-cols-4 gap-12 text-center">
-        <div class="flex flex-col items-center">
-          <i class="fas fa-university text-4xl text-accentgreen mb-4"></i>
-          <p class="font-semibold">Rutgers University</p>
-          <p class="text-gray-400 text-sm mt-1">CS + DS ’27</p>
-        </div>
-        <div class="flex flex-col items-center">
-          <i class="fas fa-robot text-4xl text-accentgreen mb-4"></i>
-          <p class="font-semibold">Physical AI Lab</p>
-          <p class="text-gray-400 text-sm mt-1">Research Fellow</p>
-        </div>
-        <div class="flex flex-col items-center">
-          <i class="fas fa-dumbbell text-4xl text-accentgreen mb-4"></i>
-          <p class="font-semibold">After Hours</p>
-          <p class="text-gray-400 text-sm mt-1">Lifting • Dancing • Don Toliver</p>
-        </div>
-        <div class="flex flex-col items-center">
-          <i class="fas fa-lightbulb text-4xl text-accentgreen mb-4"></i>
-          <p class="font-semibold">Creative Thinker</p>
-          <p class="text-gray-400 text-sm mt-1">Outside‑the‑box ideas</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Short About -->
-    <section class="bg-darkgreen py-20">
-      <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-start md:items-center gap-12">
-        <div class="flex-1 text-center space-y-6">
-        <h2 class="text-3xl font-bold mb-6">About Me</h2>
-        <p class="text-gray-200 leading-relaxed text-lg">
-          I’m <span class="font-semibold">Vishal Nagamalla</span>  a innovator who loves turning bold, “what‑if?” ideas into working products. I see AI and Robotics not just as the future but as a playground for creativity, and that's my specialty. When I’m not training models or making robots, you’ll find me pushing plates in the gym, cutting loose on the dance floor, or geeking out over the newest tech drops.</p>
-        </div>
-            <div class="mt-12 md:mt-0 bg-black rounded-xl p-6 shadow-xl hover:shadow-2xl transition-shadow md:w-[28rem] w-full md:ml-0 relative overflow-hidden">
-              <!-- Animated header -->
-              <div class="flex items-center gap-3 mb-4">
-                <div class="relative h-6 w-6">
-                  <div class="absolute h-full w-1 bg-accentgreen left-0 animate-bounce"></div>
-                  <div class="absolute h-full w-1 bg-white left-2 animate-bounce" style="animation-delay:0.2s"></div>
-                  <div class="absolute h-full w-1 bg-accentgreen left-4 animate-bounce" style="animation-delay:0.4s"></div>
-                </div>
-                <h3 class="text-xl font-bold bg-white bg-clip-text text-transparent">
-                  Currently on Loop 🔥
-                </h3>
+        <div class="reveal-right w-full md:w-[380px] flex-shrink-0">
+          <div class="bg-black/60 backdrop-blur-sm rounded-2xl p-6 border border-accentgreen/10 shadow-2xl">
+            <div class="flex items-center gap-3 mb-5">
+              <div class="relative h-6 w-6 flex items-center gap-[3px]">
+                <div class="w-[3px] h-full bg-emerald rounded-full animate-bounce"></div>
+                <div class="w-[3px] h-full bg-white rounded-full animate-bounce" style="animation-delay:0.15s"></div>
+                <div class="w-[3px] h-full bg-emerald rounded-full animate-bounce" style="animation-delay:0.3s"></div>
               </div>
-            
-              <!-- Custom styled Spotify embed -->
-              <div class="mt-4 relative spotify-custom-frame">
-                <iframe style="border-radius:12px; border:none; background: transparent !important;"
-                  src="https://open.spotify.com/embed/track/7odMKT3Xc4ly8Shy9Iv07h?utm_source=generator&theme=0&background-color=1a2e1a&allow-transparency=true" 
-                  width="100%" 
-                  height="152" 
-                  allowfullscreen 
-                  allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
-                </iframe>
-              </div>
+              <h3 class="text-lg font-bold font-grotesk text-white">On Loop</h3>
             </div>
+            <div class="spotify-custom-frame rounded-xl overflow-hidden">
+              <iframe style="border-radius:12px; border:none; background: transparent !important;"
+                src="https://open.spotify.com/embed/track/7odMKT3Xc4ly8Shy9Iv07h?utm_source=generator&theme=0&background-color=1a2e1a&allow-transparency=true"
+                width="100%" height="152" allowfullscreen allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
+
   </main>
 
-  <footer class="bg-black border-t border-gray-800 py-6 text-center text-gray-500 text-sm">
-    © 2025 Vishal Nagamalla
+  <!-- Footer -->
+  <footer class="bg-black border-t border-white/5 py-8">
+    <div class="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <p class="text-gray-600 text-sm font-grotesk">&copy; 2025 Vishal Nagamalla</p>
+      <div class="flex items-center gap-6">
+        <a href="mailto:Vishal.Nagamalla@gmail.com" class="text-gray-600 hover:text-emerald transition-colors text-sm"><i class="fas fa-envelope"></i></a>
+        <a href="https://github.com/Vishal-Nagamalla" target="_blank" class="text-gray-600 hover:text-emerald transition-colors text-sm"><i class="fab fa-github"></i></a>
+        <a href="https://www.linkedin.com/in/vishalnag" target="_blank" class="text-gray-600 hover:text-emerald transition-colors text-sm"><i class="fab fa-linkedin"></i></a>
+      </div>
+    </div>
   </footer>
 
   <!-- ───── JS ───── -->
   <script>
-    /* contact dropdown */
-    (() => {
-      const btn  = document.querySelector('.group > button.nav-link');   // dropdown trigger
-      const menu = document.getElementById('contact-menu');
-      const chev = document.getElementById('contact-chevron');           // may not exist
+    // Lenis
+    const lenis = new Lenis({ duration: 1.2, easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), smoothWheel: true });
+    function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
+    requestAnimationFrame(raf);
+    lenis.on('scroll', ScrollTrigger.update);
+    gsap.ticker.add((time) => lenis.raf(time * 1000));
+    gsap.ticker.lagSmoothing(0);
+    gsap.registerPlugin(ScrollTrigger);
 
-      if (!btn || !menu) return;        // exit gracefully if elements missing
+    // Hero animations
+    const heroTl = gsap.timeline({ delay: 0.4 });
+    gsap.set('#hero-name', { y: 60 });
+    gsap.set('#hero-socials', { y: 20 });
+    gsap.set('#hero-meta', { y: 20 });
 
-      const open  = () => {
-        menu.classList.remove('opacity-0','invisible','scale-95');
-        menu.classList.add   ('opacity-100','visible','scale-100');
-        if (chev) chev.style.transform='rotate(180deg)';
-      };
+    heroTl
+      .to('#hero-name', { opacity: 1, y: 0, duration: 1.2, ease: 'power3.out' })
+      .to('#hero-socials', { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out' }, '-=0.6')
+      .to('#hero-meta', { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out' }, '-=0.5');
 
-      const close = () => {
-        menu.classList.add   ('opacity-0','invisible','scale-95');
-        menu.classList.remove('opacity-100','visible','scale-100');
-        if (chev) chev.style.transform='rotate(0)';
-      };
+    // Hero bg parallax
+    gsap.to('#hero-bg', {
+      scrollTrigger: { trigger: '.hero-wrapper', start: 'top top', end: 'bottom top', scrub: 1 },
+      y: 150, scale: 1.12, ease: 'none',
+    });
 
-      btn.addEventListener('click', e => {
-        e.stopPropagation();
-        menu.classList.contains('visible') ? close() : open();
-      });
-      document.addEventListener('click', e => {
-        !menu.contains(e.target) && !btn.contains(e.target) && close();
-      });
-    })();
-
-    /* rotating typewriter line */
-    const words = ['An Innovator','A Software Developer','An AI/ML Enthusiast', 'An Engineer','A Roboticist','An Entrepreneur'];
-    const line  = document.getElementById('role-line');
-    let idx = 0, char = 0, del = false;
-    function type() {
-      const w = words[idx];
-      if (!del) {
-        line.textContent = w.slice(0, ++char);
-        if (char === w.length) { del = true; return setTimeout(type, 2000); }
-      } else {
-        line.textContent = w.slice(0, --char);
-        if (char === 0) { del = false; idx = (idx + 1) % words.length; }
-      }
-      setTimeout(type, del ? 40 : 70);
+    // Role morph
+    const roleWords = document.querySelectorAll('.role-word');
+    let currentRole = 0;
+    function morphRole() {
+      roleWords[currentRole].classList.remove('active');
+      currentRole = (currentRole + 1) % roleWords.length;
+      roleWords[currentRole].classList.add('active');
     }
-    setTimeout(type, 800);
+    setInterval(morphRole, 3000);
 
-    /* mobile nav */
+    // Scroll reveals
+    gsap.utils.toArray('.reveal').forEach((el, i) => {
+      gsap.to(el, {
+        scrollTrigger: { trigger: el, start: 'top 85%', toggleActions: 'play none none none' },
+        opacity: 1, y: 0, duration: 0.8, ease: 'power3.out',
+        delay: parseFloat(getComputedStyle(el).getPropertyValue('--delay') || 0) + i * 0.05,
+      });
+    });
+    gsap.utils.toArray('.reveal-left').forEach(el => {
+      gsap.to(el, {
+        scrollTrigger: { trigger: el, start: 'top 85%', toggleActions: 'play none none none' },
+        opacity: 1, x: 0, duration: 0.8, ease: 'power3.out',
+      });
+    });
+    gsap.utils.toArray('.reveal-right').forEach(el => {
+      gsap.to(el, {
+        scrollTrigger: { trigger: el, start: 'top 85%', toggleActions: 'play none none none' },
+        opacity: 1, x: 0, duration: 0.8, ease: 'power3.out',
+      });
+    });
+
+    // Navbar
+    const navbar = document.getElementById('navbar');
+    ScrollTrigger.create({
+      start: 80,
+      onUpdate: () => {
+        if (window.scrollY > 80) {
+          navbar.style.background = 'rgba(0,0,0,0.85)';
+          navbar.style.backdropFilter = 'blur(20px)';
+          navbar.style.borderBottom = '1px solid rgba(58,92,58,0.15)';
+        } else {
+          navbar.style.background = 'transparent';
+          navbar.style.backdropFilter = 'none';
+          navbar.style.borderBottom = 'none';
+        }
+      }
+    });
+
+    // Mobile nav
     const mToggle = document.getElementById('mobile-nav-toggle');
-    const mNav    = document.getElementById('mobile-nav');
+    const mNav = document.getElementById('mobile-nav');
     const mContactBtn = document.getElementById('mobile-contact');
     const mContactBox = document.getElementById('mobile-contact-links');
-
-    mToggle.addEventListener('click', ()=> {
-      mNav.style.transform = mNav.style.transform.includes('0')
-        ? 'translateX(100%)' : 'translateX(0)';
+    let navOpen = false;
+    mToggle.addEventListener('click', () => {
+      navOpen = !navOpen;
+      mNav.style.transform = navOpen ? 'translateX(0)' : 'translateX(100%)';
+      mToggle.innerHTML = navOpen ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
     });
-
-    mContactBtn.addEventListener('click', ()=>{
+    mContactBtn.addEventListener('click', () => {
       mContactBox.classList.toggle('hidden');
+      mContactBtn.querySelector('i').style.transform = mContactBox.classList.contains('hidden') ? 'rotate(0)' : 'rotate(180deg)';
     });
+    mNav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+      navOpen = false; mNav.style.transform = 'translateX(100%)'; mToggle.innerHTML = '<i class="fas fa-bars"></i>';
+    }));
+
+    // Contact dropdown
+    (() => {
+      const btn = document.querySelector('.group > button.nav-link');
+      const menu = document.getElementById('contact-menu');
+      if (!btn || !menu) return;
+      btn.addEventListener('click', e => {
+        e.stopPropagation();
+        menu.classList.toggle('opacity-0'); menu.classList.toggle('invisible'); menu.classList.toggle('-translate-y-2');
+        menu.classList.toggle('opacity-100'); menu.classList.toggle('visible'); menu.classList.toggle('translate-y-0');
+      });
+      document.addEventListener('click', e => {
+        if (!menu.contains(e.target) && !btn.contains(e.target)) {
+          menu.classList.add('opacity-0','invisible','-translate-y-2');
+          menu.classList.remove('opacity-100','visible','translate-y-0');
+        }
+      });
+    })();
   </script>
 </body>
 </html>
