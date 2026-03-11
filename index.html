@@ -186,15 +186,29 @@
     </div>
   </nav>
 
-  <!-- Mobile nav -->
-  <div id="mobile-nav" class="fixed top-20 right-0 w-72 bg-black/95 backdrop-blur-xl border-l border-accentgreen/20 rounded-bl-2xl transform translate-x-full transition-transform duration-300 z-40 md:hidden">
-    <a href="#hero" class="block px-8 py-5 text-gray-300 hover:text-white border-b border-white/5 transition-colors">Home</a>
-    <a href="./professional.html#experience" class="block px-8 py-5 text-gray-300 hover:text-white border-b border-white/5 transition-colors">Experience</a>
-    <button id="mobile-contact" class="w-full text-left px-8 py-5 text-gray-300 hover:text-white flex items-center justify-between border-b border-white/5">Contact <i class="fas fa-chevron-down text-xs transition-transform"></i></button>
-    <div id="mobile-contact-links" class="hidden px-8 py-4 space-y-4 bg-darkgreen/20">
-      <a href="mailto:Vishal.Nagamalla@gmail.com" class="flex items-center gap-3 text-gray-400 hover:text-emerald transition-colors"><i class="fas fa-envelope"></i> Email</a>
-      <a href="https://github.com/Vishal-Nagamalla" target="_blank" class="flex items-center gap-3 text-gray-400 hover:text-emerald transition-colors"><i class="fab fa-github"></i> GitHub</a>
-      <a href="https://www.linkedin.com/in/vishalnag" target="_blank" class="flex items-center gap-3 text-gray-400 hover:text-emerald transition-colors"><i class="fab fa-linkedin"></i> LinkedIn</a>
+  <!-- Mobile nav — fullscreen overlay -->
+  <div id="mobile-nav" class="fixed inset-0 z-40 md:hidden pointer-events-none">
+    <!-- Backdrop -->
+    <div id="mobile-nav-backdrop" class="absolute inset-0 bg-black/0 backdrop-blur-0 transition-all duration-500"></div>
+    <!-- Panel -->
+    <div id="mobile-nav-panel" class="absolute inset-0 flex flex-col justify-center items-center opacity-0 translate-y-8 transition-all duration-500 ease-out">
+      <nav class="flex flex-col items-center gap-2 mb-12">
+        <a href="#hero" class="mobile-nav-item text-4xl font-grotesk font-bold text-white/90 hover:text-emerald transition-all duration-300 py-3 px-6 rounded-2xl hover:bg-white/5">Home</a>
+        <a href="./professional.html#experience" class="mobile-nav-item text-4xl font-grotesk font-bold text-white/90 hover:text-emerald transition-all duration-300 py-3 px-6 rounded-2xl hover:bg-white/5">Experience</a>
+        <span class="mobile-nav-item text-4xl font-grotesk font-bold text-white/90 py-3 px-6">Contact</span>
+      </nav>
+      <!-- Contact links row -->
+      <div class="flex items-center gap-5">
+        <a href="mailto:Vishal.Nagamalla@gmail.com" class="mobile-nav-item w-14 h-14 flex items-center justify-center rounded-2xl bg-white/5 border border-white/10 text-gray-400 hover:text-emerald hover:border-emerald/40 hover:bg-emerald/10 transition-all duration-300">
+          <i class="fas fa-envelope text-xl"></i>
+        </a>
+        <a href="https://github.com/Vishal-Nagamalla" target="_blank" class="mobile-nav-item w-14 h-14 flex items-center justify-center rounded-2xl bg-white/5 border border-white/10 text-gray-400 hover:text-emerald hover:border-emerald/40 hover:bg-emerald/10 transition-all duration-300">
+          <i class="fab fa-github text-xl"></i>
+        </a>
+        <a href="https://www.linkedin.com/in/vishalnag" target="_blank" class="mobile-nav-item w-14 h-14 flex items-center justify-center rounded-2xl bg-white/5 border border-white/10 text-gray-400 hover:text-emerald hover:border-emerald/40 hover:bg-emerald/10 transition-all duration-300">
+          <i class="fab fa-linkedin text-xl"></i>
+        </a>
+      </div>
     </div>
   </div>
 
@@ -233,7 +247,7 @@
                 </a>
               </div>
 
-              <h1 class="text-5xl sm:text-6xl md:text-7xl lg:text-[7rem] xl:text-[8rem] font-extrabold font-grotesk leading-[0.85] tracking-tight text-white opacity-0" id="hero-name">
+              <h1 class="text-[2.8rem] sm:text-6xl md:text-7xl lg:text-[7rem] xl:text-[8rem] font-extrabold font-grotesk leading-[0.85] tracking-tight text-white opacity-0" id="hero-name">
                 Vishal<br>
                 <span class="gradient-text">Nagamalla</span>
               </h1>
@@ -431,24 +445,58 @@
       }
     });
 
-    // Mobile nav
+    // Mobile nav — fullscreen overlay
     const mToggle = document.getElementById('mobile-nav-toggle');
     const mNav = document.getElementById('mobile-nav');
-    const mContactBtn = document.getElementById('mobile-contact');
-    const mContactBox = document.getElementById('mobile-contact-links');
+    const mBackdrop = document.getElementById('mobile-nav-backdrop');
+    const mPanel = document.getElementById('mobile-nav-panel');
+    const mItems = document.querySelectorAll('.mobile-nav-item');
     let navOpen = false;
-    mToggle.addEventListener('click', () => {
-      navOpen = !navOpen;
-      mNav.style.transform = navOpen ? 'translateX(0)' : 'translateX(100%)';
-      mToggle.innerHTML = navOpen ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
-    });
-    mContactBtn.addEventListener('click', () => {
-      mContactBox.classList.toggle('hidden');
-      mContactBtn.querySelector('i').style.transform = mContactBox.classList.contains('hidden') ? 'rotate(0)' : 'rotate(180deg)';
-    });
-    mNav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
-      navOpen = false; mNav.style.transform = 'translateX(100%)'; mToggle.innerHTML = '<i class="fas fa-bars"></i>';
-    }));
+
+    function openMobileNav() {
+      navOpen = true;
+      mNav.classList.remove('pointer-events-none');
+      mNav.classList.add('pointer-events-auto');
+      mBackdrop.style.background = 'rgba(0,0,0,0.92)';
+      mBackdrop.style.backdropFilter = 'blur(30px)';
+      mPanel.style.opacity = '1';
+      mPanel.style.transform = 'translateY(0)';
+      mToggle.innerHTML = '<i class="fas fa-times"></i>';
+      // Stagger items
+      mItems.forEach((item, i) => {
+        item.style.transition = `opacity 0.4s ease ${i * 0.07}s, transform 0.4s ease ${i * 0.07}s`;
+        item.style.opacity = '1';
+        item.style.transform = 'translateY(0)';
+      });
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeMobileNav() {
+      navOpen = false;
+      mBackdrop.style.background = 'rgba(0,0,0,0)';
+      mBackdrop.style.backdropFilter = 'blur(0px)';
+      mPanel.style.opacity = '0';
+      mPanel.style.transform = 'translateY(8px)';
+      mToggle.innerHTML = '<i class="fas fa-bars"></i>';
+      mItems.forEach(item => {
+        item.style.opacity = '0';
+        item.style.transform = 'translateY(20px)';
+      });
+      document.body.style.overflow = '';
+      setTimeout(() => {
+        if (!navOpen) {
+          mNav.classList.add('pointer-events-none');
+          mNav.classList.remove('pointer-events-auto');
+        }
+      }, 500);
+    }
+
+    // Init hidden state
+    mItems.forEach(item => { item.style.opacity = '0'; item.style.transform = 'translateY(20px)'; });
+
+    mToggle.addEventListener('click', () => navOpen ? closeMobileNav() : openMobileNav());
+    mBackdrop.addEventListener('click', closeMobileNav);
+    mNav.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMobileNav));
 
     // Contact dropdown
     (() => {
