@@ -29,14 +29,16 @@
   <meta property="og:title" content="Vishal Nagamalla | Software Engineer & Roboticist">
   <meta property="og:description" content="Software Engineer, Roboticist, and CS & Data Science student at Rutgers University. Explore my projects in AI, robotics, and full-stack development.">
   <meta property="og:url" content="https://vishal-nagamalla.github.io/">
-  <meta property="og:image" content="https://vishal-nagamalla.github.io/portrait.jpg">
+  <meta property="og:image" content="https://vishal-nagamalla.github.io/assets/og-card.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
   <meta property="og:site_name" content="Vishal Nagamalla">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Vishal Nagamalla | Software Engineer & Roboticist">
   <meta name="twitter:description" content="Software Engineer, Roboticist, and CS & Data Science student at Rutgers University.">
-  <meta name="twitter:image" content="https://vishal-nagamalla.github.io/portrait.jpg">
+  <meta name="twitter:image" content="https://vishal-nagamalla.github.io/assets/og-card.jpg">
 
   <!-- Structured Data (JSON-LD) -->
   <script type="application/ld+json">
@@ -45,7 +47,7 @@
     "@type": "Person",
     "name": "Vishal Nagamalla",
     "url": "https://vishal-nagamalla.github.io",
-    "image": "https://vishal-nagamalla.github.io/portrait.jpg",
+    "image": "https://vishal-nagamalla.github.io/assets/og-card.jpg",
     "jobTitle": "Software Engineer & Roboticist",
     "description": "Computer Science and Data Science student at Rutgers University specializing in AI, robotics, and full-stack development.",
     "alumniOf": {
@@ -60,8 +62,12 @@
   }
   </script>
 
-  <!-- Fonts (self-hosted) -->
+  <!-- Fonts (self-hosted) + compiled Tailwind -->
+  <link rel="preload" href="/fonts/pxiEyp8kv8JHgFVrFJXUdVNF.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/V8mDoQDjQSkFtoMM3T6r8E7mDbNyDNs1.woff2" as="font" type="font/woff2" crossorigin>
   <link href="/fonts/fonts.css" rel="stylesheet">
+  <link href="/assets/site.css" rel="stylesheet">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
@@ -70,36 +76,15 @@
   <link rel="apple-touch-icon" href="/favicon.png">
 
   <!-- Tailwind CSS -->
-  <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- Font Awesome -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 
   <!-- GSAP + ScrollTrigger + Lenis -->
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
   <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
 
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: {
-            poppins: ['Poppins', 'sans-serif'],
-            grotesk: ['Space Grotesk', 'sans-serif'],
-          },
-          colors: {
-            darkgreen: '#1a2e1a',
-            lightgreen: '#2d4d2d',
-            accentgreen: '#3a5c3a',
-            emerald: '#4ade80',
-          },
-        }
-      }
-    }
-  </script>
-
   <style>
+    .ico { width:1em; height:1em; display:inline-block; vertical-align:-.125em; flex:0 0 auto; }
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
     ::-webkit-scrollbar { width: 6px; }
@@ -232,18 +217,17 @@
       <div class="hidden md:flex items-center gap-10">
         <a href="/" class="nav-link text-sm tracking-wide uppercase text-gray-300 hover:text-white transition-colors">Home</a>
         <a href="/professional" class="nav-link text-sm tracking-wide uppercase text-gray-300 hover:text-white transition-colors">Experience</a>
-        <a href="/resume/Vishal_Nagamalla_Resume.pdf" target="_blank" rel="noopener" class="nav-link text-sm tracking-wide uppercase text-gray-300 hover:text-white transition-colors">Résumé</a>
         <div class="relative group">
           <button class="nav-link text-sm tracking-wide uppercase text-gray-300 hover:text-white transition-colors flex items-center gap-1">Contact</button>
           <div id="contact-menu"
                class="absolute right-0 mt-4 bg-black/90 backdrop-blur-xl text-white rounded-xl shadow-2xl border border-accentgreen/30 opacity-0 invisible transform -translate-y-2 transition-all duration-200 z-50 flex items-center gap-3 px-5 py-3">
-            <a href="mailto:Vishal.Nagamalla@gmail.com" target="_blank" class="w-10 h-10 flex items-center justify-center rounded-lg text-gray-400 hover:text-emerald hover:bg-white/5 transition-all"><i class="fas fa-envelope text-lg"></i></a>
-            <a href="https://github.com/Vishal-Nagamalla" target="_blank" class="w-10 h-10 flex items-center justify-center rounded-lg text-gray-400 hover:text-emerald hover:bg-white/5 transition-all"><i class="fab fa-github text-lg"></i></a>
-            <a href="https://www.linkedin.com/in/vishalnag" target="_blank" class="w-10 h-10 flex items-center justify-center rounded-lg text-gray-400 hover:text-emerald hover:bg-white/5 transition-all"><i class="fab fa-linkedin text-lg"></i></a>
+            <a href="mailto:Vishal.Nagamalla@gmail.com" target="_blank" class="w-10 h-10 flex items-center justify-center rounded-lg text-gray-400 hover:text-emerald hover:bg-white/5 transition-all"><svg class="ico text-lg" aria-hidden="true"><use href="#i-mail"/></svg></a>
+            <a href="https://github.com/Vishal-Nagamalla" target="_blank" class="w-10 h-10 flex items-center justify-center rounded-lg text-gray-400 hover:text-emerald hover:bg-white/5 transition-all"><svg class="ico text-lg" aria-hidden="true"><use href="#i-github"/></svg></a>
+            <a href="https://www.linkedin.com/in/vishalnag" target="_blank" class="w-10 h-10 flex items-center justify-center rounded-lg text-gray-400 hover:text-emerald hover:bg-white/5 transition-all"><svg class="ico text-lg" aria-hidden="true"><use href="#i-linkedin"/></svg></a>
           </div>
         </div>
       </div>
-      <button id="mobile-nav-toggle" class="md:hidden text-white text-2xl focus:outline-none"><i class="fas fa-bars"></i></button>
+      <button id="mobile-nav-toggle" class="md:hidden text-white text-2xl focus:outline-none"><svg class="ico" aria-hidden="true"><use href="#i-menu"/></svg></button>
     </div>
   </nav>
 
@@ -256,19 +240,18 @@
       <nav class="flex flex-col items-center gap-2 mb-12">
         <a href="/" class="mobile-nav-item text-4xl font-grotesk font-bold text-white/90 hover:text-emerald transition-all duration-300 py-3 px-6 rounded-2xl hover:bg-white/5">Home</a>
         <a href="/professional" class="mobile-nav-item text-4xl font-grotesk font-bold text-white/90 hover:text-emerald transition-all duration-300 py-3 px-6 rounded-2xl hover:bg-white/5">Experience</a>
-        <a href="/resume/Vishal_Nagamalla_Resume.pdf" target="_blank" rel="noopener" class="mobile-nav-item text-4xl font-grotesk font-bold text-white/90 hover:text-emerald transition-all duration-300 py-3 px-6 rounded-2xl hover:bg-white/5">Résumé</a>
         <span class="mobile-nav-item text-4xl font-grotesk font-bold text-white/90 py-3 px-6">Contact</span>
       </nav>
       <!-- Contact links row -->
       <div class="flex items-center gap-5">
         <a href="mailto:Vishal.Nagamalla@gmail.com" class="mobile-nav-item w-14 h-14 flex items-center justify-center rounded-2xl bg-white/5 border border-white/10 text-gray-400 hover:text-emerald hover:border-emerald/40 hover:bg-emerald/10 transition-all duration-300">
-          <i class="fas fa-envelope text-xl"></i>
+          <svg class="ico text-xl" aria-hidden="true"><use href="#i-mail"/></svg>
         </a>
         <a href="https://github.com/Vishal-Nagamalla" target="_blank" class="mobile-nav-item w-14 h-14 flex items-center justify-center rounded-2xl bg-white/5 border border-white/10 text-gray-400 hover:text-emerald hover:border-emerald/40 hover:bg-emerald/10 transition-all duration-300">
-          <i class="fab fa-github text-xl"></i>
+          <svg class="ico text-xl" aria-hidden="true"><use href="#i-github"/></svg>
         </a>
         <a href="https://www.linkedin.com/in/vishalnag" target="_blank" class="mobile-nav-item w-14 h-14 flex items-center justify-center rounded-2xl bg-white/5 border border-white/10 text-gray-400 hover:text-emerald hover:border-emerald/40 hover:bg-emerald/10 transition-all duration-300">
-          <i class="fab fa-linkedin text-xl"></i>
+          <svg class="ico text-xl" aria-hidden="true"><use href="#i-linkedin"/></svg>
         </a>
       </div>
     </div>
@@ -280,7 +263,7 @@
     <!-- ───── HERO + STATS — One continuous bg ───── -->
     <div class="hero-wrapper">
       <!-- Background portrait — covers hero AND stats -->
-      <div class="hero-bg" id="hero-bg" style="background-image: url('./portrait.JPG');"></div>
+      <div class="hero-bg" id="hero-bg" style="background-image: url('./portrait.webp');"></div>
       <div class="hero-overlay"></div>
       <div class="hero-overlay-side"></div>
 
@@ -299,13 +282,13 @@
               <!-- Social links row -->
               <div class="flex gap-3 mb-6 opacity-0" id="hero-socials">
                 <a href="https://github.com/Vishal-Nagamalla" target="_blank" class="social-pill px-4 py-2 rounded-full text-xs font-grotesk tracking-wider uppercase text-gray-300 hover:text-white flex items-center gap-2">
-                  <i class="fab fa-github"></i> GitHub
+                  <svg class="ico" aria-hidden="true"><use href="#i-github"/></svg> GitHub
                 </a>
                 <a href="https://www.linkedin.com/in/vishalnag" target="_blank" class="social-pill px-4 py-2 rounded-full text-xs font-grotesk tracking-wider uppercase text-gray-300 hover:text-white flex items-center gap-2">
-                  <i class="fab fa-linkedin"></i> LinkedIn
+                  <svg class="ico" aria-hidden="true"><use href="#i-linkedin"/></svg> LinkedIn
                 </a>
                 <a href="mailto:Vishal.Nagamalla@gmail.com" class="social-pill px-4 py-2 rounded-full text-xs font-grotesk tracking-wider uppercase text-gray-300 hover:text-white flex items-center gap-2">
-                  <i class="fas fa-envelope"></i> Email
+                  <svg class="ico" aria-hidden="true"><use href="#i-mail"/></svg> Email
                 </a>
               </div>
 
@@ -331,7 +314,7 @@
               <p class="text-gray-400 font-grotesk text-sm">Computer Science &amp; Data Science &bull; Dean's List</p>
               <p class="text-gray-500 font-grotesk text-xs mt-2">GPA 3.89 &bull; Graduating December 2026</p>
               <a href="/professional" class="inline-flex items-center gap-2 mt-4 px-6 py-3 bg-accentgreen/80 backdrop-blur-sm text-white rounded-lg font-semibold text-sm tracking-wide hover:bg-emerald hover:text-black transition-all duration-300 group">
-                View My Work <i class="fas fa-arrow-right text-xs group-hover:translate-x-1 transition-transform"></i>
+                View My Work <svg class="ico text-xs group-hover:translate-x-1 transition-transform" aria-hidden="true"><use href="#i-arrow-right"/></svg>
               </a>
             </div>
           </div>
@@ -344,28 +327,28 @@
           <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             <div class="stat-card reveal bg-black/40 backdrop-blur-md border border-accentgreen/15 rounded-2xl p-8 text-center">
               <div class="w-14 h-14 mx-auto mb-4 rounded-xl bg-accentgreen/10 flex items-center justify-center">
-                <i class="fas fa-university text-2xl text-emerald"></i>
+                <svg class="ico text-2xl text-emerald" aria-hidden="true"><use href="#i-landmark"/></svg>
               </div>
               <p class="font-semibold text-lg font-grotesk">Rutgers University</p>
               <p class="text-gray-400 text-sm mt-1">CS + DS &bull; Dean's List</p>
             </div>
             <div class="stat-card reveal bg-black/40 backdrop-blur-md border border-accentgreen/15 rounded-2xl p-8 text-center">
               <div class="w-14 h-14 mx-auto mb-4 rounded-xl bg-accentgreen/10 flex items-center justify-center">
-                <i class="fas fa-robot text-2xl text-emerald"></i>
+                <svg class="ico text-2xl text-emerald" aria-hidden="true"><use href="#i-robot"/></svg>
               </div>
               <p class="font-semibold text-lg font-grotesk">Creative Innovator</p>
               <p class="text-gray-400 text-sm mt-1">Out-of-the-Box Thinker</p>
             </div>
             <div class="stat-card reveal bg-black/40 backdrop-blur-md border border-accentgreen/15 rounded-2xl p-8 text-center">
               <div class="w-14 h-14 mx-auto mb-4 rounded-xl bg-accentgreen/10 flex items-center justify-center">
-                <i class="fas fa-dumbbell text-2xl text-emerald"></i>
+                <svg class="ico text-2xl text-emerald" aria-hidden="true"><use href="#i-dumbbell"/></svg>
               </div>
               <p class="font-semibold text-lg font-grotesk">After Hours</p>
               <p class="text-gray-400 text-sm mt-1">Lifting &bull; Dancing &bull; Don Toliver</p>
             </div>
             <div class="stat-card reveal bg-black/40 backdrop-blur-md border border-accentgreen/15 rounded-2xl p-8 text-center">
               <div class="w-14 h-14 mx-auto mb-4 rounded-xl bg-accentgreen/10 flex items-center justify-center">
-                <i class="fas fa-trophy text-2xl text-emerald"></i>
+                <svg class="ico text-2xl text-emerald" aria-hidden="true"><use href="#i-trophy"/></svg>
               </div>
               <p class="font-semibold text-lg font-grotesk">First Place</p>
               <p class="text-gray-400 text-sm mt-1">Major League Hackathon Winner</p>
@@ -424,15 +407,29 @@
     <div class="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
       <p class="text-gray-600 text-sm font-grotesk">&copy; <script>document.write(new Date().getFullYear())</script> Vishal Nagamalla</p>
       <div class="flex items-center gap-6">
-        <a href="mailto:Vishal.Nagamalla@gmail.com" class="text-gray-600 hover:text-emerald transition-colors text-sm"><i class="fas fa-envelope"></i></a>
-        <a href="https://github.com/Vishal-Nagamalla" target="_blank" class="text-gray-600 hover:text-emerald transition-colors text-sm"><i class="fab fa-github"></i></a>
-        <a href="https://www.linkedin.com/in/vishalnag" target="_blank" class="text-gray-600 hover:text-emerald transition-colors text-sm"><i class="fab fa-linkedin"></i></a>
+        <a href="mailto:Vishal.Nagamalla@gmail.com" class="text-gray-600 hover:text-emerald transition-colors text-sm"><svg class="ico" aria-hidden="true"><use href="#i-mail"/></svg></a>
+        <a href="https://github.com/Vishal-Nagamalla" target="_blank" class="text-gray-600 hover:text-emerald transition-colors text-sm"><svg class="ico" aria-hidden="true"><use href="#i-github"/></svg></a>
+        <a href="https://www.linkedin.com/in/vishalnag" target="_blank" class="text-gray-600 hover:text-emerald transition-colors text-sm"><svg class="ico" aria-hidden="true"><use href="#i-linkedin"/></svg></a>
       </div>
     </div>
   </footer>
 
   <!-- ───── JS ───── -->
   <script>
+    // Icon sprite (inline so <use href="#id"> works everywhere)
+    fetch('/assets/icons/sprite.svg').then(r => r.text()).then(t => { const d = document.createElement('div'); d.setAttribute('aria-hidden', 'true'); d.style.display = 'none'; d.innerHTML = t; document.body.prepend(d); }).catch(() => {});
+
+    // Analytics events
+    const track = (name, params) => { try { if (typeof gtag === 'function') gtag('event', name, params || {}); } catch (e) {} };
+    document.addEventListener('click', e => {
+      const a = e.target.closest('a[href]'); if (!a) return;
+      const h = a.getAttribute('href') || '';
+      if (h.startsWith('mailto:')) track('contact_click', { channel: 'email' });
+      else if (h.includes('linkedin.com/in/')) track('contact_click', { channel: 'linkedin' });
+      else if (/github\.com\/Vishal-Nagamalla\/?$/.test(h)) track('contact_click', { channel: 'github' });
+      else if (h === '/professional') track('view_work_click', { location: a.closest('nav') ? 'nav' : 'hero' });
+    });
+
     // Lenis
     const lenis = new Lenis({ duration: 1.2, easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), smoothWheel: true });
     function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
@@ -523,7 +520,7 @@
       mBackdrop.style.backdropFilter = 'blur(30px)';
       mPanel.style.opacity = '1';
       mPanel.style.transform = 'translateY(0)';
-      mToggle.innerHTML = '<i class="fas fa-times"></i>';
+      mToggle.innerHTML = '<svg class="ico" aria-hidden="true"><use href="#i-x"/></svg>';
       // Stagger items
       mItems.forEach((item, i) => {
         item.style.transition = `opacity 0.4s ease ${i * 0.07}s, transform 0.4s ease ${i * 0.07}s`;
@@ -539,7 +536,7 @@
       mBackdrop.style.backdropFilter = 'blur(0px)';
       mPanel.style.opacity = '0';
       mPanel.style.transform = 'translateY(8px)';
-      mToggle.innerHTML = '<i class="fas fa-bars"></i>';
+      mToggle.innerHTML = '<svg class="ico" aria-hidden="true"><use href="#i-menu"/></svg>';
       mItems.forEach(item => {
         item.style.opacity = '0';
         item.style.transform = 'translateY(20px)';

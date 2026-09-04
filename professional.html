@@ -26,10 +26,16 @@
   <meta property="og:title" content="Vishal Nagamalla | Experience & Projects">
   <meta property="og:description" content="Experience at Applied Materials, PRACSYS Lab, Atyeti, and Team Tranquil, plus AI, robotics, and full-stack projects.">
   <meta property="og:url" content="https://vishal-nagamalla.github.io/professional.html">
-  <meta property="og:image" content="https://vishal-nagamalla.github.io/portrait.jpg">
+  <meta property="og:image" content="https://vishal-nagamalla.github.io/assets/og-card.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
 
-  <!-- Fonts (self-hosted) -->
+  <!-- Fonts (self-hosted) + compiled Tailwind -->
+  <link rel="preload" href="/fonts/pxiEyp8kv8JHgFVrFJXUdVNF.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/V8mDoQDjQSkFtoMM3T6r8E7mDbNyDNs1.woff2" as="font" type="font/woff2" crossorigin>
   <link href="/fonts/fonts.css" rel="stylesheet">
+  <link href="/assets/site.css" rel="stylesheet">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
@@ -37,9 +43,6 @@
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
   <link rel="apple-touch-icon" href="/favicon.png">
 
-  <!-- Tailwind + Font Awesome -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 
   <!-- GSAP + ScrollTrigger + Observer + Lenis -->
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
@@ -47,18 +50,8 @@
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/Observer.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/lenis@1.3.26/dist/lenis.min.js"></script>
 
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: { poppins: ['Poppins','sans-serif'], grotesk: ['Space Grotesk','sans-serif'] },
-          colors: { darkgreen:'#1a2e1a', lightgreen:'#2d4d2d', accentgreen:'#3a5c3a', emerald:'#4ade80' },
-        }
-      }
-    }
-  </script>
-
   <style>
+    .ico { width:1em; height:1em; display:inline-block; vertical-align:-.125em; flex:0 0 auto; }
     * { margin:0; padding:0; box-sizing:border-box; }
     ::-webkit-scrollbar { width:6px; }
     ::-webkit-scrollbar-track { background:#0a0a0a; }
@@ -320,17 +313,16 @@
       <div class="hidden md:flex items-center gap-10">
         <a href="/" class="nav-link text-sm tracking-wide uppercase text-gray-300 hover:text-white transition-colors">Home</a>
         <a href="/professional" class="nav-link is-current text-sm tracking-wide uppercase text-white transition-colors">Experience</a>
-        <a href="/resume/Vishal_Nagamalla_Resume.pdf" target="_blank" rel="noopener" class="nav-link text-sm tracking-wide uppercase text-gray-300 hover:text-white transition-colors">Résumé</a>
         <div class="relative group">
           <button class="nav-link text-sm tracking-wide uppercase text-gray-300 hover:text-white transition-colors flex items-center gap-1">Contact</button>
           <div id="contact-menu" class="absolute right-0 mt-4 bg-black/90 backdrop-blur-xl text-white rounded-xl shadow-2xl border border-accentgreen/30 opacity-0 invisible transform -translate-y-2 transition-all duration-200 z-50 flex items-center gap-3 px-5 py-3">
-            <a href="mailto:Vishal.Nagamalla@gmail.com" target="_blank" class="w-10 h-10 flex items-center justify-center rounded-lg text-gray-400 hover:text-emerald hover:bg-white/5 transition-all" aria-label="Email"><i class="fas fa-envelope text-lg"></i></a>
-            <a href="https://github.com/Vishal-Nagamalla" target="_blank" class="w-10 h-10 flex items-center justify-center rounded-lg text-gray-400 hover:text-emerald hover:bg-white/5 transition-all" aria-label="GitHub"><i class="fab fa-github text-lg"></i></a>
-            <a href="https://www.linkedin.com/in/vishalnag" target="_blank" class="w-10 h-10 flex items-center justify-center rounded-lg text-gray-400 hover:text-emerald hover:bg-white/5 transition-all" aria-label="LinkedIn"><i class="fab fa-linkedin text-lg"></i></a>
+            <a href="mailto:Vishal.Nagamalla@gmail.com" target="_blank" class="w-10 h-10 flex items-center justify-center rounded-lg text-gray-400 hover:text-emerald hover:bg-white/5 transition-all" aria-label="Email"><svg class="ico text-lg" aria-hidden="true"><use href="#i-mail"/></svg></a>
+            <a href="https://github.com/Vishal-Nagamalla" target="_blank" class="w-10 h-10 flex items-center justify-center rounded-lg text-gray-400 hover:text-emerald hover:bg-white/5 transition-all" aria-label="GitHub"><svg class="ico text-lg" aria-hidden="true"><use href="#i-github"/></svg></a>
+            <a href="https://www.linkedin.com/in/vishalnag" target="_blank" class="w-10 h-10 flex items-center justify-center rounded-lg text-gray-400 hover:text-emerald hover:bg-white/5 transition-all" aria-label="LinkedIn"><svg class="ico text-lg" aria-hidden="true"><use href="#i-linkedin"/></svg></a>
           </div>
         </div>
       </div>
-      <button id="mobile-nav-toggle" class="md:hidden text-white text-2xl focus:outline-none" aria-label="Menu"><i class="fas fa-bars"></i></button>
+      <button id="mobile-nav-toggle" class="md:hidden text-white text-2xl focus:outline-none" aria-label="Menu"><svg class="ico" aria-hidden="true"><use href="#i-menu"/></svg></button>
     </div>
   </nav>
 
@@ -341,13 +333,12 @@
       <nav class="flex flex-col items-center gap-2 mb-12">
         <a href="/" class="mobile-nav-item text-4xl font-grotesk font-bold text-white/90 hover:text-emerald transition-all duration-300 py-3 px-6 rounded-2xl hover:bg-white/5">Home</a>
         <a href="/professional" class="mobile-nav-item text-4xl font-grotesk font-bold text-emerald transition-all duration-300 py-3 px-6 rounded-2xl hover:bg-white/5">Experience</a>
-        <a href="/resume/Vishal_Nagamalla_Resume.pdf" target="_blank" rel="noopener" class="mobile-nav-item text-4xl font-grotesk font-bold text-white/90 hover:text-emerald transition-all duration-300 py-3 px-6 rounded-2xl hover:bg-white/5">Résumé</a>
         <span class="mobile-nav-item text-4xl font-grotesk font-bold text-white/90 py-3 px-6">Contact</span>
       </nav>
       <div class="flex items-center gap-5">
-        <a href="mailto:Vishal.Nagamalla@gmail.com" class="mobile-nav-item w-14 h-14 flex items-center justify-center rounded-2xl bg-white/5 border border-white/10 text-gray-400 hover:text-emerald hover:border-emerald/40 hover:bg-emerald/10 transition-all duration-300" aria-label="Email"><i class="fas fa-envelope text-xl"></i></a>
-        <a href="https://github.com/Vishal-Nagamalla" target="_blank" class="mobile-nav-item w-14 h-14 flex items-center justify-center rounded-2xl bg-white/5 border border-white/10 text-gray-400 hover:text-emerald hover:border-emerald/40 hover:bg-emerald/10 transition-all duration-300" aria-label="GitHub"><i class="fab fa-github text-xl"></i></a>
-        <a href="https://www.linkedin.com/in/vishalnag" target="_blank" class="mobile-nav-item w-14 h-14 flex items-center justify-center rounded-2xl bg-white/5 border border-white/10 text-gray-400 hover:text-emerald hover:border-emerald/40 hover:bg-emerald/10 transition-all duration-300" aria-label="LinkedIn"><i class="fab fa-linkedin text-xl"></i></a>
+        <a href="mailto:Vishal.Nagamalla@gmail.com" class="mobile-nav-item w-14 h-14 flex items-center justify-center rounded-2xl bg-white/5 border border-white/10 text-gray-400 hover:text-emerald hover:border-emerald/40 hover:bg-emerald/10 transition-all duration-300" aria-label="Email"><svg class="ico text-xl" aria-hidden="true"><use href="#i-mail"/></svg></a>
+        <a href="https://github.com/Vishal-Nagamalla" target="_blank" class="mobile-nav-item w-14 h-14 flex items-center justify-center rounded-2xl bg-white/5 border border-white/10 text-gray-400 hover:text-emerald hover:border-emerald/40 hover:bg-emerald/10 transition-all duration-300" aria-label="GitHub"><svg class="ico text-xl" aria-hidden="true"><use href="#i-github"/></svg></a>
+        <a href="https://www.linkedin.com/in/vishalnag" target="_blank" class="mobile-nav-item w-14 h-14 flex items-center justify-center rounded-2xl bg-white/5 border border-white/10 text-gray-400 hover:text-emerald hover:border-emerald/40 hover:bg-emerald/10 transition-all duration-300" aria-label="LinkedIn"><svg class="ico text-xl" aria-hidden="true"><use href="#i-linkedin"/></svg></a>
       </div>
     </div>
   </div>
@@ -855,8 +846,8 @@
             </div>
             <div class="flex items-center gap-4">
               <div class="font-grotesk text-sm text-gray-500 whitespace-nowrap"><span id="proj-counter" class="text-emerald font-bold">01</span> / <span id="proj-total">09</span></div>
-              <button class="icon-btn" id="proj-prev" aria-label="Previous project"><i class="fas fa-chevron-left text-sm"></i></button>
-              <button class="icon-btn" id="proj-next" aria-label="Next project"><i class="fas fa-chevron-right text-sm"></i></button>
+              <button class="icon-btn" id="proj-prev" aria-label="Previous project"><svg class="ico text-sm" aria-hidden="true"><use href="#i-chevron-left"/></svg></button>
+              <button class="icon-btn" id="proj-next" aria-label="Next project"><svg class="ico text-sm" aria-hidden="true"><use href="#i-chevron-right"/></svg></button>
             </div>
           </header>
           <div class="proj-viewport" id="proj-viewport">
@@ -976,7 +967,7 @@
           <a href="mailto:Vishal.Nagamalla@gmail.com" class="btn btn-pri">Email me</a>
           <a href="https://www.linkedin.com/in/vishalnag" target="_blank" rel="noopener" class="btn btn-gh">LinkedIn</a>
           <a href="https://github.com/Vishal-Nagamalla" target="_blank" rel="noopener" class="btn btn-gh">GitHub</a>
-          <a href="/resume/Vishal_Nagamalla_Resume.pdf" target="_blank" rel="noopener" class="btn btn-gh">Résumé <i class="fas fa-arrow-down text-xs"></i></a>
+          <a href="/resume/Vishal_Nagamalla_Resume.pdf" target="_blank" rel="noopener" class="btn btn-gh">Resume <svg class="ico text-xs" aria-hidden="true"><use href="#i-arrow-down"/></svg></a>
         </div>
       </div>
     </section>
@@ -986,9 +977,9 @@
     <div class="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
       <p class="text-gray-600 text-sm font-grotesk">&copy; <script>document.write(new Date().getFullYear())</script> Vishal Nagamalla</p>
       <div class="flex items-center gap-6">
-        <a href="mailto:Vishal.Nagamalla@gmail.com" class="text-gray-600 hover:text-emerald transition-colors" aria-label="Email"><i class="fas fa-envelope"></i></a>
-        <a href="https://github.com/Vishal-Nagamalla" target="_blank" class="text-gray-600 hover:text-emerald transition-colors" aria-label="GitHub"><i class="fab fa-github"></i></a>
-        <a href="https://www.linkedin.com/in/vishalnag" target="_blank" class="text-gray-600 hover:text-emerald transition-colors" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        <a href="mailto:Vishal.Nagamalla@gmail.com" class="text-gray-600 hover:text-emerald transition-colors" aria-label="Email"><svg class="ico" aria-hidden="true"><use href="#i-mail"/></svg></a>
+        <a href="https://github.com/Vishal-Nagamalla" target="_blank" class="text-gray-600 hover:text-emerald transition-colors" aria-label="GitHub"><svg class="ico" aria-hidden="true"><use href="#i-github"/></svg></a>
+        <a href="https://www.linkedin.com/in/vishalnag" target="_blank" class="text-gray-600 hover:text-emerald transition-colors" aria-label="LinkedIn"><svg class="ico" aria-hidden="true"><use href="#i-linkedin"/></svg></a>
       </div>
     </div>
   </footer>
@@ -1005,9 +996,22 @@
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
     const pad = n => String(n + 1).padStart(2, '0');
+    const trackEvent = (name, params) => { try { if (typeof gtag === 'function') gtag('event', name, params || {}); } catch (e) {} };
+    document.addEventListener('click', e => {
+      const a = e.target.closest('a[href]'); if (!a) return;
+      const h = a.getAttribute('href') || '';
+      const card = a.closest('.proj-card'), sheet = a.closest('#sheet-panel');
+      const project = card ? card.querySelector('.proj-name')?.textContent : sheet ? sheet.querySelector('h3')?.textContent : null;
+      if (h.includes('Vishal_Nagamalla_Resume.pdf')) trackEvent('resume_click', { location: a.closest('#contact') ? 'closing_band' : 'other' });
+      else if (h.startsWith('mailto:')) trackEvent('contact_click', { channel: 'email' });
+      else if (h.includes('linkedin.com/in/')) trackEvent('contact_click', { channel: 'linkedin' });
+      else if (/github\.com\/Vishal-Nagamalla\/?$/.test(h)) trackEvent('contact_click', { channel: 'github' });
+      else if (project && h.includes('github.com')) trackEvent('project_code_click', { project });
+      else if (project) trackEvent('project_live_click', { project, url: h });
+    });
 
     /* ── Icon sprite: inlined so <use href="#id"> works in every browser ── */
-    fetch('assets/icons/sprite.svg').then(r => r.text()).then(t => {
+    fetch('/assets/icons/sprite.svg').then(r => r.text()).then(t => {
       const d = document.createElement('div'); d.setAttribute('aria-hidden', 'true'); d.style.display = 'none'; d.innerHTML = t; document.body.prepend(d);
     }).catch(() => {});
 
@@ -1039,13 +1043,13 @@
       navOpen = true; mNav.classList.remove('pointer-events-none'); mNav.classList.add('pointer-events-auto');
       mBackdrop.style.background = 'rgba(0,0,0,.92)'; mBackdrop.style.backdropFilter = 'blur(30px)';
       mPanel.style.opacity = '1'; mPanel.style.transform = 'translateY(0)';
-      mToggle.innerHTML = '<i class="fas fa-times"></i>';
+      mToggle.innerHTML = '<svg class="ico" aria-hidden="true"><use href="#i-x"/></svg>';
       mItems.forEach((item, i) => { item.style.transition = `opacity .4s ease ${i * .07}s, transform .4s ease ${i * .07}s`; item.style.opacity = '1'; item.style.transform = 'translateY(0)'; });
       document.body.style.overflow = 'hidden'; lenis && lenis.stop();
     }
     function closeMobileNav() {
       navOpen = false; mBackdrop.style.background = 'rgba(0,0,0,0)'; mBackdrop.style.backdropFilter = 'blur(0px)';
-      mPanel.style.opacity = '0'; mPanel.style.transform = 'translateY(8px)'; mToggle.innerHTML = '<i class="fas fa-bars"></i>';
+      mPanel.style.opacity = '0'; mPanel.style.transform = 'translateY(8px)'; mToggle.innerHTML = '<svg class="ico" aria-hidden="true"><use href="#i-menu"/></svg>';
       mItems.forEach(item => { item.style.opacity = '0'; item.style.transform = 'translateY(20px)'; });
       document.body.style.overflow = ''; lenis && lenis.start();
       setTimeout(() => { if (!navOpen) { mNav.classList.add('pointer-events-none'); mNav.classList.remove('pointer-events-auto'); } }, 500);
@@ -1128,7 +1132,7 @@
         beats[c].forEach((b, i) => gsap.set(b, { autoAlpha: i === 0 ? 1 : 0, y: 0 }));
         gsap.set(ch.querySelectorAll('.callout'), { autoAlpha: 0, y: 14 });
         gsap.set(metricBlocks[c], { autoAlpha: c === 0 ? 1 : 0, y: 0 });
-        gsap.set(wmItems[c], { autoAlpha: c === 0 ? .045 : 0, scale: 1 });
+        gsap.set(wmItems[c], { autoAlpha: c === 0 ? .045 : 0 });
         gsap.set(railItems[c], { opacity: c === 0 ? 1 : .38 });
       });
 
@@ -1142,11 +1146,11 @@
         if (c > 0) {
           tl.to(chapters[c - 1], { autoAlpha: 0, y: -30, duration: .45 })
             .to(metricBlocks[c - 1], { autoAlpha: 0, y: -20, duration: .35 }, '<')
-            .to(wmItems[c - 1], { autoAlpha: 0, scale: 1.05, duration: .5 }, '<')
+            .to(wmItems[c - 1], { autoAlpha: 0, duration: .5 }, '<')
             .to(railItems[c - 1], { opacity: .38, duration: .3 }, '<')
             .fromTo(ch, { autoAlpha: 0, y: 40 }, { autoAlpha: 1, y: 0, duration: .55 }, '<0.2')
             .fromTo(metric, { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: .45 }, '<0.1')
-            .fromTo(wmItems[c], { autoAlpha: 0, scale: .95 }, { autoAlpha: .045, scale: 1, duration: .6 }, '<')
+            .fromTo(wmItems[c], { autoAlpha: 0 }, { autoAlpha: .045, duration: .6 }, '<')
             .to(railItems[c], { opacity: 1, duration: .3 }, '<');
         }
         const num = metric.querySelector('.metric-num'), target = +num.dataset.target, suffix = num.dataset.suffix || '', proxy = { v: 0 };
@@ -1165,7 +1169,14 @@
         });
       });
       tl.addLabel('end');
-      const totalBeats = k; let current = 0;
+      // Watermark drift: each company mark glides and grows across its whole chapter
+      const D = tl.duration();
+      chapters.forEach((ch, c) => {
+        const t0 = chapterStart[c], t1 = c + 1 < chapterStart.length ? chapterStart[c + 1] : D;
+        const start = Math.max(0, t0 - .4), end = Math.min(D, t1 + .4);
+        tl.fromTo(wmItems[c], { xPercent: 8, yPercent: 6, scale: .92, rotation: .6 }, { xPercent: -8, yPercent: -5, scale: 1.12, rotation: -.6, ease: 'none', duration: end - start, immediateRender: false }, start);
+      });
+      const totalBeats = k; let current = 0; const seenChapters = new Set([0]);
       // Intro: reveal the first beat on load so the stage is complete before any scrolling
       const firstNum = metricBlocks[0].querySelector('.metric-num'), firstProxy = { v: 0 };
       gsap.timeline({ delay: .35, defaults: { ease: 'power3.out' } })
@@ -1180,7 +1191,7 @@
           snapper && snapper.onUpdate();
           const p = (self.progress * 100).toFixed(2) + '%'; expFill.style.width = p; railFill.style.height = p;
           const t = self.progress * tl.duration(); let c = 0; for (let i = 1; i < chapterStart.length; i++) if (t >= chapterStart[i] + .3) c = i;
-          if (c !== current) { current = c; expCounter.textContent = pad(c); railItems.forEach((r, i) => r.classList.toggle('is-active', i === c)); }
+          if (c !== current) { current = c; expCounter.textContent = pad(c); railItems.forEach((r, i) => r.classList.toggle('is-active', i === c)); if (!seenChapters.has(c)) { seenChapters.add(c); trackEvent('experience_chapter_view', { chapter: c + 1, company: railItems[c].getAttribute('aria-label') }); } }
         }
       });
 
@@ -1210,7 +1221,7 @@
       { id: 'autotrader', name: 'AutoTrader', sub: 'AI prediction-market trader', tag: 'AI · Trading', year: '2026',
         blurb: 'A bot that finds mispriced Polymarket bets, reads the news, sizes each wager, and executes under strict risk limits.',
         stats: [['6', 'cooperating agents'], ['5 min', 'scan cadence'], ['¼ Kelly', 'position sizing']],
-        tech: ['Python', 'FastAPI', 'Claude API', 'XGBoost', 'React'], image: 'assets/covers/autotrader.svg',
+        tech: ['Python', 'FastAPI', 'Claude API', 'XGBoost', 'React'], image: 'assets/projects/autotrader.jpg',
         code: 'https://github.com/Vishal-Nagamalla/AutoTrader',
         highlights: [['Multi-agent', 'scan → research → predict → risk → execute'], ['Claude', 'research and post-mortems'], ['XGBoost', 'probability model'], ['Risk gate', 'daily and weekly loss limits']],
         rows: [['What it does', 'Scans Polymarket every few minutes, pulls news from Reddit, Google News, RSS, and X, estimates the true probability of each market, and only bets when the edge clears a threshold, sized with fractional Kelly.'],
@@ -1228,19 +1239,19 @@
                ['Highlights', ['Multi-key API rotation with dead-key detection', 'Scheduler picks sports by time of day to save credits', 'Budget optimizer weighs ROI, book risk, and usage', 'Settings and bet history persist across deploys']],
                ['Role', 'Solo · 2026']] },
       { id: 'devenai', name: 'DevenAI', sub: 'On-screen AI assistant for Mac', tag: 'AI · Native macOS', year: '2026',
-        blurb: 'A floating overlay that hears what is happening on screen and answers questions instantly, hands-free.',
-        stats: [['Live', 'transcription'], ['Wake word', 'activation'], ['OTA', 'signed updates']],
-        tech: ['Swift', 'ScreenCaptureKit', 'OpenAI', 'Whisper'], image: 'assets/covers/devenai.svg',
+        blurb: 'A native macOS overlay that lives at the OS layer: it hears system audio, sees the active window, and answers instantly from a floating, always-accessible interface.',
+        stats: [['Whisper', 'live transcription'], ['30+', 'filler phrases filtered'], ['14-step', 'onboarding tutorial']],
+        tech: ['Swift', 'ScreenCaptureKit', 'OpenAI', 'Whisper', 'Sparkle'], image: 'assets/covers/devenai.svg',
         code: null,
-        highlights: [['Whisper', 'real-time speech to text'], ['ScreenCaptureKit', 'audio and window capture'], ['Sparkle', 'EdDSA-verified updates'], ['Markdown', 'exportable Q&A history']],
-        rows: [['What it does', 'Captures system audio and the active window, transcribes it live, detects when a question was asked, and answers in an always-on-top overlay with tabbed history.'],
-               ['Stack', ['Swift and AppKit', 'ScreenCaptureKit', 'Python helper process', 'OpenAI Whisper and chat APIs', 'Sparkle updater']],
-               ['Highlights', ['Auto-solve with silence detection and filler-phrase filtering', 'Active-window capture across multiple monitors', 'Wake-word activation', 'Tabbed Q&A history with Markdown export']],
-               ['Role', 'Solo · 2026']] },
+        highlights: [['ScreenCaptureKit', 'system audio and single-window capture'], ['Auto-solve', 'silence detection, background answers'], ['Wake word', 'hands-free with global hotkeys'], ['Sparkle', 'EdDSA-signed OTA updates']],
+        rows: [['What it does', 'Captures system audio through SCStream, transcribes it live with Whisper including speaker attribution, grabs only the active window even on ultrawide and multi-monitor setups, and answers through OpenAI in a tabbed overlay that works alongside any app.'],
+               ['Stack', ['Swift and AppKit', 'ScreenCaptureKit SCStream and SCContentFilter', 'CGWindowListCopyWindowInfo Z-order enumeration', 'OpenAI Whisper and chat APIs', 'Sparkle with EdDSA-verified GitHub Releases appcast', 'JSON-encoded UserDefaults']],
+               ['Highlights', ['Auto-solve engine with configurable silence detection and 30+ filler-phrase filters, running API calls in the background', 'Tabbed Q&A history with follow-up context injection and Markdown transcripts with embedded screenshots', 'Wake-word activation, voice commands, and customizable global hotkeys', '14-step interactive onboarding with contextual hints and progress tracking']],
+               ['Role', 'Solo · March 2026']] },
       { id: 'lattice', name: 'Lattice', sub: 'Self-driving warehouse simulator', tag: 'Robotics · Simulation', year: '2026',
         blurb: 'A simulated warehouse where a robot fleet drives itself and an AI agent steps in only when something goes wrong.',
         stats: [['MuJoCo', 'physics engine'], ['Classical', 'fleet control'], ['Agent', 'on exception']],
-        tech: ['Python', 'MuJoCo', 'NumPy'], image: 'assets/covers/lattice.svg',
+        tech: ['Python', 'MuJoCo', 'NumPy'], image: 'assets/projects/lattice.jpg',
         code: 'https://github.com/Vishal-Nagamalla/Lattice',
         highlights: [['MuJoCo 3', 'hand-built warehouse scene'], ['Planar drive', 'robots with heading control'], ['Exceptions', 'routed to an LLM orchestrator'], ['Strict', 'typing, linting, tests']],
         rows: [['What it does', 'Robots navigate a physics-simulated warehouse under classical control. When a robot stalls or a task fails, an agentic orchestrator diagnoses the situation and re-plans, keeping the LLM out of the hot loop.'],
@@ -1257,16 +1268,16 @@
                ['Stack', ['Claude scheduled tasks', 'Robinhood MCP connector', 'Web research with citations', 'Python paper-trading engine with JSON state']],
                ['Highlights', ['Liquidity, spread, and falling-knife filters', 'Take-profit and stop-loss rules in a deterministic engine', 'Broker-agnostic design', 'Daily research notes with cited sources']],
                ['Role', 'Solo · 2026 · private']] },
-      { id: 'quantum', name: 'Quantum Market Signals', sub: 'Quantum features for stock prediction', tag: 'Quantum · Hackathon', year: '2026',
-        blurb: 'Tests whether quantum-computed features predict stock returns better than classical ones, with honest rolling-window evaluation.',
-        stats: [['S&P 500', 'real-market task'], ['Braket', 'quantum hardware'], ['Rolling', 'walk-forward windows']],
-        tech: ['Python', 'Amazon Braket', 'scikit-learn', 'Next.js'], image: 'assets/projects/qat.jpg',
+      { id: 'quantum', name: 'QAT', sub: 'Quantum-augmented trading research', tag: 'Quantum · YQuantum 2026', year: '2026',
+        blurb: 'Compares classical and quantum feature engineering for predicting 5-day S&P 500 returns, with a walk-forward backtest and an interactive results dashboard.',
+        stats: [['9', 'S&P 500 tickers'], ['5-day', 'excess-return target'], ['3D', 'data explorer']],
+        tech: ['Python', 'Amazon Braket', 'scikit-learn', 'Next.js', 'React Three Fiber'], image: 'assets/projects/qat.jpg',
         live: 'https://qat-state-street.vercel.app', code: 'https://github.com/sidp24/QAT---AWS-x-State-Street-Challenge',
-        highlights: [['IQP', 'quantum encoders'], ['QKVM', 'kernel-style features'], ['Aquila', 'window embeddings'], ['Ridge · NN', 'classical baselines']],
-        rows: [['What it does', 'Compares classical and quantum-derived feature maps on a synthetic regime-switching benchmark and on next-5-day S&P 500 excess returns, tracking overfitting, stability, and resource usage.'],
-               ['Stack', ['Python, NumPy, scikit-learn', 'Amazon Braket with Aquila and Ankaa-3', 'Next.js results dashboard on Vercel']],
-               ['Highlights', ['Strict train/test separation and rolling windows', 'Negative results treated as valid outcomes', 'Synthetic and real-market benchmarks', 'YQuantum 2026, AWS x State Street challenge']],
-               ['Role', 'Team · 2026']] },
+        highlights: [['Quantum kernel', 'feature augmentation on AWS'], ['Walk-forward', 'per-stock and portfolio backtest'], ['Recharts', 'ticker-selectable prediction charts'], ['R3F', 'instanced 3D explorer with hover tooltips']],
+        rows: [['What it does', 'Runs a quantum kernel feature-augmentation pipeline alongside a classical baseline, evaluates both with a walk-forward backtest across nine S&P 500 tickers, and presents predictions, synthetic-data checks, and a 3D explorer in a Next.js dashboard.'],
+               ['Stack', ['Python, NumPy, scikit-learn', 'AWS cloud infrastructure and Amazon Braket', 'Next.js, Recharts, animated tab navigation', 'React Three Fiber with instanced meshes and raycast hover tooltips', 'Vercel']],
+               ['Highlights', ['Quantum kernel feature augmentation pipeline built on AWS', 'Walk-forward backtesting with per-stock and portfolio-level analysis', 'Synthetic regime-switching data generator to validate model behavior on controlled nonlinear patterns', 'Built at YQuantum 2026, Yale\'s quantum hackathon, for the AWS x State Street challenge track']],
+               ['Role', 'Team · April 2026']] },
       { id: 'realestatepro', name: 'RealEstatePro', sub: 'Realtor listings website', tag: 'Full-stack · Live', year: '2026',
         blurb: 'A production website for a San Francisco realtor: property listings, interactive maps, and a private admin dashboard.',
         stats: [['Live', 'in production'], ['CMS', 'secure admin'], ['S3', 'direct uploads']],
@@ -1311,9 +1322,9 @@
     const progressEl = document.getElementById('proj-progress'), projCounter = document.getElementById('proj-counter'), prevBtn = document.getElementById('proj-prev'), nextBtn = document.getElementById('proj-next');
     const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;');
     const linkRow = (p, full) => [
-      p.live ? `<a class="btn btn-pri" href="${p.live}" target="_blank" rel="noopener">Live site <i class="fas fa-arrow-up-right-from-square text-xs"></i></a>` : '',
-      p.code ? `<a class="btn btn-gh" href="${p.code}" target="_blank" rel="noopener"><i class="fab fa-github"></i> ${full ? 'GitHub' : 'Code'}</a>` : (full ? '' : `<span class="btn btn-gh opacity-60 cursor-default" title="Private repository"><i class="fas fa-lock text-xs"></i> Private</span>`),
-      full && p.extra ? `<a class="btn btn-gh" href="${p.extra[1]}" target="_blank" rel="noopener">${p.extra[0]} <i class="fas fa-arrow-up-right-from-square text-xs"></i></a>` : ''
+      p.live ? `<a class="btn btn-pri" href="${p.live}" target="_blank" rel="noopener">Live site <svg class="ico text-xs" aria-hidden="true"><use href="#i-external"/></svg></a>` : '',
+      p.code ? `<a class="btn btn-gh" href="${p.code}" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-github"/></svg> ${full ? 'GitHub' : 'Code'}</a>` : (full ? '' : `<span class="btn btn-gh opacity-60 cursor-default" title="Private repository"><svg class="ico text-xs" aria-hidden="true"><use href="#i-lock"/></svg> Private</span>`),
+      full && p.extra ? `<a class="btn btn-gh" href="${p.extra[1]}" target="_blank" rel="noopener">${p.extra[0]} <svg class="ico text-xs" aria-hidden="true"><use href="#i-external"/></svg></a>` : ''
     ].join('');
 
     track.innerHTML = projects.map((p, i) => `
@@ -1324,7 +1335,7 @@
           <p class="proj-blurb">${esc(p.blurb)}</p>
           <div class="proj-stats">${p.stats.map(s => `<div><div class="v">${esc(s[0])}</div><div class="l">${esc(s[1])}</div></div>`).join('')}</div>
           <div class="proj-tech">${p.tech.map(t => `<span class="chip">${esc(t)}</span>`).join('')}</div>
-          <div class="proj-actions">${linkRow(p, false)}<button class="btn btn-gh" data-details="${i}">Details <i class="fas fa-chevron-down text-xs"></i></button></div>
+          <div class="proj-actions">${linkRow(p, false)}<button class="btn btn-gh" data-details="${i}">Details <svg class="ico text-xs" aria-hidden="true"><use href="#i-chevron-down"/></svg></button></div>
         </div>
         <div class="proj-media">
           <div class="device"><div class="device-tilt">
@@ -1339,11 +1350,12 @@
       <div class="archive-row">
         <div><div class="archive-name">${esc(a.name)}</div><div class="text-emerald font-grotesk text-[.68rem] tracking-[.18em] uppercase mt-1">${esc(a.sub)}</div></div>
         <div class="archive-desc">${esc(a.desc)}</div>
-        <div class="archive-meta"><span>${a.year}</span>${a.tags.map(t => `<span class="chip">${esc(t)}</span>`).join('')}${a.code ? `<a href="${a.code}" target="_blank" rel="noopener" aria-label="${esc(a.name)} on GitHub"><i class="fab fa-github text-base"></i></a>` : ''}</div>
+        <div class="archive-meta"><span>${a.year}</span>${a.tags.map(t => `<span class="chip">${esc(t)}</span>`).join('')}${a.code ? `<a href="${a.code}" target="_blank" rel="noopener" aria-label="${esc(a.name)} on GitHub"><svg class="ico text-base" aria-hidden="true"><use href="#i-github"/></svg></a>` : ''}</div>
       </div>`).join('');
 
     const segs = Array.from(progressEl.children); let currentIdx = -1, dragged = false;
-    function updateUI(i) { if (i === currentIdx) return; currentIdx = i; projCounter.textContent = pad(i); segs.forEach((s, k) => { s.classList.toggle('is-active', k === i); s.classList.toggle('is-past', k < i); }); }
+    const seenCards = new Set();
+    function updateUI(i) { if (i === currentIdx) return; currentIdx = i; projCounter.textContent = pad(i); if (!seenCards.has(i) && projects[i]) { seenCards.add(i); trackEvent('project_card_view', { project: projects[i].name, index: i + 1 }); } segs.forEach((s, k) => { s.classList.toggle('is-active', k === i); s.classList.toggle('is-past', k < i); }); }
 
     function setupPinnedGallery() {
       projSection.classList.add('proj-pinned');
@@ -1420,13 +1432,14 @@
     /* ── Details sheet ── */
     const dialog = document.getElementById('proj-sheet'), panel = document.getElementById('sheet-panel');
     function renderSheet(p) {
-      return `<button class="icon-btn sheet-close" aria-label="Close details"><i class="fas fa-times"></i></button>
+      return `<button class="icon-btn sheet-close" aria-label="Close details"><svg class="ico" aria-hidden="true"><use href="#i-x"/></svg></button>
         <div class="pr-14"><p class="eyebrow">${esc(p.tag)} · ${esc(p.year)}</p><h3 class="font-grotesk font-bold text-3xl md:text-4xl mt-2">${esc(p.name)}</h3><p class="text-gray-400 mt-2 font-light max-w-2xl">${esc(p.sub)}. ${esc(p.blurb)}</p></div>
         <div class="flex flex-wrap gap-2.5 mt-5">${linkRow(p, true)}</div>
         <div class="hl-grid">${p.highlights.map(h => `<div class="hl-tile"><div class="v">${esc(h[0])}</div><div class="l">${esc(h[1])}</div></div>`).join('')}</div>
         <div class="spec">${p.rows.map(r => `<div class="spec-row"><div class="k">${esc(r[0])}</div><div class="val">${Array.isArray(r[1]) ? r[1].map(x => `<span>${esc(x)}</span>`).join('') : esc(r[1])}</div></div>`).join('')}</div>`;
     }
     function openSheet(p) {
+      trackEvent('project_details_open', { project: p.name });
       panel.innerHTML = renderSheet(p);
       document.documentElement.classList.add('sheet-open'); lenis && lenis.stop();
       dialog.showModal(); panel.scrollTop = 0;
