@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" font-family="Space Grotesk, Poppins, Helvetica, Arial, sans-serif">
+  <defs><pattern id="g" width="80" height="80" patternUnits="userSpaceOnUse"><path d="M80 0H0V80" fill="none" stroke="#4ade80" stroke-opacity=".07"/></pattern></defs>
+  <rect width="1600" height="1000" fill="#0b120b"/><rect width="1600" height="1000" fill="url(#g)"/>
+  <g fill="none" stroke="#fff" stroke-width="6" stroke-linecap="round"><rect x="120" y="150" width="180" height="110" rx="40"/><rect x="340" y="150" width="180" height="110" rx="40"/><path d="M300 200h40"/><path d="M120 200h-40M520 200h40"/></g>
+  <text x="150" y="330" fill="#9ca3af" font-size="26" letter-spacing="6">AR GLASSES · VOICE · GESTURE</text>
+  <g fill="#111811" stroke="#2a3a2a" stroke-width="3"><rect x="140" y="440" width="420" height="300" rx="26"/><rect x="620" y="360" width="420" height="300" rx="26" stroke="#4ade80"/><rect x="1100" y="500" width="380" height="300" rx="26"/></g>
+  <g fill="#2a3a2a"><rect x="180" y="500" width="300" height="14" rx="7"/><rect x="180" y="534" width="240" height="14" rx="7"/><rect x="180" y="568" width="320" height="14" rx="7"/><rect x="180" y="602" width="200" height="14" rx="7"/><rect x="660" y="420" width="320" height="14" rx="7"/><rect x="660" y="454" width="280" height="14" rx="7"/><rect x="660" y="488" width="340" height="14" rx="7"/><rect x="660" y="522" width="220" height="14" rx="7"/><rect x="1140" y="560" width="280" height="14" rx="7"/><rect x="1140" y="594" width="220" height="14" rx="7"/><rect x="1140" y="628" width="300" height="14" rx="7"/></g>
+  <g font-size="20" font-weight="700">
+    <rect x="180" y="670" width="120" height="40" rx="20" fill="#0f2a1a"/><text x="240" y="697" fill="#4ade80" text-anchor="middle">research</text>
+    <rect x="660" y="590" width="130" height="40" rx="20" fill="#0f2a1a"/><text x="725" y="617" fill="#4ade80" text-anchor="middle">summary</text>
+    <rect x="800" y="590" width="100" height="40" rx="20" fill="#0f2a1a"/><text x="850" y="617" fill="#4ade80" text-anchor="middle">idea</text>
+    <rect x="1140" y="730" width="120" height="40" rx="20" fill="#0f2a1a"/><text x="1200" y="757" fill="#4ade80" text-anchor="middle">todo</text>
+  </g>
+  <g fill="none" stroke="#4ade80" stroke-width="3" stroke-dasharray="10 10"><path d="M560 590 C600 590 600 500 620 500"/><path d="M1040 520 C1080 520 1080 640 1100 640"/></g>
+  <rect x="1100" y="150" width="380" height="96" rx="24" fill="#111811" stroke="#4ade80" stroke-width="3"/>
+  <text x="1130" y="190" fill="#4ade80" font-size="26" font-weight="700">Gemini · auto-labeled</text>
+  <text x="1130" y="226" fill="#9ca3af" font-size="22">3 related notes linked</text>
+</svg>

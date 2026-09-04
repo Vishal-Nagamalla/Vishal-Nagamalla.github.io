@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" font-family="Space Grotesk, Poppins, Helvetica, Arial, sans-serif">
+  <defs><pattern id="g" width="80" height="80" patternUnits="userSpaceOnUse"><path d="M80 0H0V80" fill="none" stroke="#4ade80" stroke-opacity=".12"/></pattern></defs>
+  <rect width="1600" height="1000" fill="#0b120b"/><rect x="80" y="80" width="1440" height="840" fill="url(#g)" stroke="#2a3a2a" stroke-width="4"/>
+  <g fill="#1f2b1f" stroke="#334433" stroke-width="2">
+    <rect x="240" y="200" width="400" height="60" rx="8"/><rect x="240" y="360" width="400" height="60" rx="8"/><rect x="240" y="520" width="400" height="60" rx="8"/><rect x="240" y="680" width="400" height="60" rx="8"/>
+    <rect x="880" y="200" width="400" height="60" rx="8"/><rect x="880" y="360" width="400" height="60" rx="8"/><rect x="880" y="520" width="400" height="60" rx="8"/><rect x="880" y="680" width="400" height="60" rx="8"/>
+  </g>
+  <g fill="none" stroke="#4ade80" stroke-width="4" stroke-dasharray="14 12"><path d="M160 300 H760 V460 H1380"/><path d="M160 640 H480 V800 H1200"/></g>
+  <g>
+    <rect x="740" y="440" width="44" height="44" rx="10" fill="#4ade80"/><path d="M784 462 l18 -12 v24z" fill="#4ade80"/>
+    <rect x="1180" y="780" width="44" height="44" rx="10" fill="#4ade80"/><path d="M1224 802 l18 -12 v24z" fill="#4ade80"/>
+    <rect x="460" y="620" width="44" height="44" rx="10" fill="#9ca3af"/><path d="M482 620 l12 -18 h-24z" fill="#9ca3af"/>
+    <rect x="1360" y="440" width="44" height="44" rx="10" fill="#fff"/><path d="M1404 462 l18 -12 v24z" fill="#fff"/>
+  </g>
+  <circle cx="1400" cy="430" r="22" fill="#0b120b" stroke="#4ade80" stroke-width="4"/><text x="1400" y="440" fill="#4ade80" font-size="28" font-weight="700" text-anchor="middle">!</text>
+  <rect x="1000" y="120" width="440" height="100" rx="22" fill="#111811" stroke="#4ade80" stroke-width="3"/>
+  <text x="1030" y="162" fill="#4ade80" font-size="24" font-weight="700">EXCEPTION · aisle blocked</text>
+  <text x="1030" y="200" fill="#9ca3af" font-size="22">agent re-plans route for R4</text>
+  <text x="150" y="880" fill="#9ca3af" font-size="26" letter-spacing="6">MUJOCO · FLEET CONTROL</text>
+</svg>

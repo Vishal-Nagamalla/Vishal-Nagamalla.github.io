@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" font-family="Space Grotesk, Poppins, Helvetica, Arial, sans-serif">
+  <rect width="1600" height="1000" fill="#0b120b"/>
+  <ellipse cx="560" cy="860" rx="330" ry="40" fill="#4ade80" fill-opacity=".12"/>
+  <g stroke="#4ade80" stroke-opacity=".25" stroke-width="3"><line x1="300" y1="860" x2="380" y2="520"/><line x1="820" y1="860" x2="740" y2="520"/></g>
+  <g fill="none" stroke="#4ade80" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M560 260c-110 0-200 70-210 170-6 60 20 110 60 140 30 25 70 30 100 20 40-15 60-50 50-90"/>
+    <path d="M560 260c110 0 200 70 210 170 6 60-20 110-60 140-30 25-70 30-100 20-40-15-60-50-50-90"/>
+    <path d="M560 260v330"/>
+    <path d="M430 340c40-10 60 20 50 50s-40 40-30 70"/><path d="M480 470c30 10 40 40 20 70"/>
+    <path d="M690 340c-40-10-60 20-50 50s40 40 30 70"/><path d="M640 470c-30 10-40 40-20 70"/>
+    <path d="M400 430c-20 30-10 70 20 90"/><path d="M720 430c20 30 10 70-20 90"/>
+  </g>
+  <g fill="#4ade80" fill-opacity=".9"><circle cx="560" cy="260" r="8"/><circle cx="430" cy="340" r="6"/><circle cx="690" cy="340" r="6"/></g>
+  <g stroke="#9ca3af" stroke-width="4" fill="none"><path d="M1150 720 L1130 560 L1120 420"/><path d="M1150 720 L1200 500 L1220 380"/><path d="M1150 720 L1260 520 L1300 400"/><path d="M1150 720 L1310 560 L1360 460"/><path d="M1150 720 L1330 640 L1400 600"/><path d="M1120 420 L1220 380 L1300 400 L1360 460"/></g>
+  <g fill="#fff"><circle cx="1150" cy="720" r="12"/><circle cx="1130" cy="560" r="9"/><circle cx="1120" cy="420" r="9"/><circle cx="1200" cy="500" r="9"/><circle cx="1220" cy="380" r="9"/><circle cx="1260" cy="520" r="9"/><circle cx="1300" cy="400" r="9"/><circle cx="1310" cy="560" r="9"/><circle cx="1360" cy="460" r="9"/><circle cx="1330" cy="640" r="9"/><circle cx="1400" cy="600" r="9"/></g>
+  <rect x="1000" y="120" width="480" height="100" rx="24" fill="#111811" stroke="#4ade80" stroke-width="3"/>
+  <text x="1030" y="162" fill="#4ade80" font-size="26" font-weight="700">CNN · 97% accuracy</text>
+  <text x="1030" y="200" fill="#9ca3af" font-size="22">gesture control · 30 fps sync</text>
+  <text x="150" y="160" fill="#9ca3af" font-size="26" letter-spacing="6">MRI HOLOGRAM · MLH WINNER</text>
+</svg>

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Vishal Nagamalla | Experience & Projects</title>
 
   <!-- Google Analytics -->
@@ -15,8 +15,8 @@
   </script>
 
   <!-- SEO Meta Tags -->
-  <meta name="description" content="Vishal Nagamalla's professional experience, projects, and skills. Software Engineer & Roboticist at Rutgers University with expertise in AI, full-stack development, and robotics.">
-  <meta name="keywords" content="Vishal Nagamalla, experience, projects, skills, software engineer, roboticist, Rutgers, PRACSYS Lab, AI, robotics">
+  <meta name="description" content="Vishal Nagamalla's experience, projects, and skills: Software Engineering Intern at Applied Materials and PRACSYS Lab, Rutgers CS and Data Science. AI, robotics, full-stack, and trading systems.">
+  <meta name="keywords" content="Vishal Nagamalla, experience, projects, skills, software engineer, Applied Materials, PRACSYS Lab, Rutgers, AI, robotics, full-stack, Polymarket, MuJoCo">
   <meta name="author" content="Vishal Nagamalla">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://vishal-nagamalla.github.io/professional.html">
@@ -24,7 +24,7 @@
   <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="Vishal Nagamalla | Experience & Projects">
-  <meta property="og:description" content="Professional experience, projects, and technical skills of Vishal Nagamalla — Software Engineer & Roboticist.">
+  <meta property="og:description" content="Experience at Applied Materials, PRACSYS Lab, Atyeti, and Team Tranquil, plus AI, robotics, and full-stack projects.">
   <meta property="og:url" content="https://vishal-nagamalla.github.io/professional.html">
   <meta property="og:image" content="https://vishal-nagamalla.github.io/portrait.jpg">
 
@@ -36,10 +36,16 @@
   <link rel="icon" type="image/png" sizes="48x48" href="/favicon.png">
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
   <link rel="apple-touch-icon" href="/favicon.png">
+
+  <!-- Tailwind + Font Awesome -->
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+
+  <!-- GSAP + ScrollTrigger + Observer + Lenis -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/Observer.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.3.26/dist/lenis.min.js"></script>
 
   <script>
     tailwind.config = {
@@ -57,246 +63,255 @@
     ::-webkit-scrollbar { width:6px; }
     ::-webkit-scrollbar-track { background:#0a0a0a; }
     ::-webkit-scrollbar-thumb { background:#3a5c3a; border-radius:3px; }
+    html.lenis, html.lenis body { height:auto; }
+    .lenis.lenis-smooth { scroll-behavior:auto !important; }
+    html.sheet-open, html.sheet-open body { overflow:hidden; }
+    body { background:#050505; -webkit-font-smoothing:antialiased; }
+    :root { --line: rgba(255,255,255,.08); --glass: rgba(255,255,255,.035); }
 
+    /* Nav */
     .nav-link { position:relative; }
     .nav-link::after { content:''; position:absolute; width:0; height:2px; bottom:-4px; left:0; background:#4ade80; transition:width .3s ease; }
-    .nav-link:hover::after { width:100%; }
+    .nav-link:hover::after, .nav-link.is-current::after { width:100%; }
     .group:hover #contact-menu { opacity:1!important; visibility:visible!important; transform:translateY(0)!important; }
-    .gradient-text { background:linear-gradient(135deg,#fff 0%,#4ade80 50%,#3a5c3a 100%); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
 
-    /* ── Apple-esque Experience ── */
-    .exp-container {
-      position: relative;
-      height: 100vh;
-      overflow: hidden;
-      background: radial-gradient(ellipse at 30% 50%, rgba(26,46,26,0.3) 0%, rgba(0,0,0,1) 70%);
-    }
-
-    /* Internal scroll area — invisible scrollbar */
-    .exp-scroll-area {
-      position: absolute;
-      inset: 0;
-      overflow-y: auto;
-      scrollbar-width: none;
-      -ms-overflow-style: none;
-      z-index: 5;
-    }
-    .exp-scroll-area::-webkit-scrollbar { display: none; }
-
-    /* Spacer inside scroll area creates the scroll distance */
-    .exp-scroll-spacer {
-      /* height is set by JS: (numPanels) * 100vh */
-      pointer-events: none;
+    /* Atmosphere */
+    .aurora { position:absolute; inset:0; overflow:hidden; pointer-events:none; z-index:0; }
+    .aurora i { position:absolute; display:block; border-radius:50%; filter:blur(110px); opacity:.6; will-change:transform; }
+    .aurora .a1 { width:900px; height:900px; left:-250px; top:-300px; background:#1a2e1a; }
+    .aurora .a2 { width:700px; height:700px; right:-150px; top:250px; background:#2d4d2d; opacity:.45; }
+    .aurora .a3 { width:420px; height:420px; left:45%; top:60%; background:#4ade80; opacity:.10; }
+    @media (max-width:1023px) {
+      .aurora i { filter:blur(70px); }
+      .aurora .a1 { width:600px; height:600px; }
+      .aurora .a2 { width:460px; height:460px; }
+      .aurora .a3 { width:260px; height:260px; }
     }
 
-    /* Display layer sits on top, sticky, holds the visible content */
-    .exp-display {
-      position: sticky;
-      top: 0;
-      height: 100vh;
-      width: 100%;
-      pointer-events: none;
-      z-index: 10;
+    /* Surfaces + primitives */
+    .glass { background:var(--glass); border:1px solid var(--line); box-shadow:inset 0 1px 0 rgba(255,255,255,.07), 0 30px 80px rgba(0,0,0,.55); backdrop-filter:blur(24px); -webkit-backdrop-filter:blur(24px); border-radius:28px; }
+    .eyebrow { color:#4ade80; font-family:'Space Grotesk',sans-serif; font-size:.78rem; letter-spacing:.18em; text-transform:uppercase; }
+    .chip { display:inline-block; padding:.4rem .85rem; border-radius:999px; background:rgba(255,255,255,.06); border:1px solid var(--line); color:#d1d5db; font-family:'Space Grotesk',sans-serif; font-size:.78rem; line-height:1.2; white-space:nowrap; }
+    .btn { display:inline-flex; align-items:center; gap:.5rem; padding:.72rem 1.3rem; border-radius:999px; font-family:'Space Grotesk',sans-serif; font-size:.85rem; font-weight:600; line-height:1; transition:transform .25s ease, background .25s ease, border-color .25s ease, color .25s ease; cursor:pointer; text-decoration:none; }
+    .btn:hover { transform:translateY(-2px); }
+    .btn-pri { background:#4ade80; color:#052e16; }
+    .btn-pri:hover { background:#86efac; }
+    .btn-gh { border:1px solid rgba(255,255,255,.14); color:#fff; background:rgba(255,255,255,.04); }
+    .btn-gh:hover { border-color:rgba(74,222,128,.5); background:rgba(255,255,255,.07); }
+    .icon-btn { width:2.9rem; height:2.9rem; border-radius:50%; border:1px solid rgba(255,255,255,.14); background:rgba(255,255,255,.04); color:#fff; display:inline-flex; align-items:center; justify-content:center; transition:background .25s, border-color .25s, transform .25s; cursor:pointer; }
+    .icon-btn:hover { background:rgba(74,222,128,.15); border-color:rgba(74,222,128,.5); }
+    .icon-btn:active { transform:scale(.96); }
+    .metric-num { font-family:'Space Grotesk',sans-serif; font-weight:700; line-height:.9; background:linear-gradient(180deg,#fff 0%,#4ade80 70%); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
+    .section-title { font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:clamp(2rem, 4.2vw, 2.75rem); line-height:1.1; letter-spacing:-.01em; }
+    .reveal { opacity:0; transform:translateY(40px); }
+    @media (prefers-reduced-motion: reduce) { .reveal { opacity:1; transform:none; } }
+    .sr-only { position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; }
+
+    /* ── Experience ── */
+    .exp-stage { position:relative; overflow:hidden; background:#050505; }
+    .exp-inner { position:relative; z-index:2; max-width:1440px; margin:0 auto; padding:6.5rem 1.5rem 3rem; }
+    .exp-title { font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:clamp(2rem, 4.2vw, 2.75rem); line-height:1.1; }
+    .exp-watermark { position:absolute; right:-6%; bottom:-4%; width:min(72vw,1100px); aspect-ratio:178/45; z-index:1; pointer-events:none; }
+    .exp-watermark > * { position:absolute; right:0; bottom:0; width:100%; height:auto; opacity:0; color:#fff; }
+    .exp-watermark img { object-fit:contain; object-position:right bottom; }
+    .exp-grid { margin-top:2.5rem; }
+    .rail, .exp-aside { display:none; }
+    .exp-chapter { margin-bottom:1.25rem; }
+    .exp-chead { display:flex; flex-direction:column; gap:.35rem; }
+    .exp-clogo { height:34px; margin-bottom:1rem; color:#fff; }
+    .exp-clogo img, .exp-clogo svg { height:100%; width:auto; max-width:200px; display:block; }
+    .exp-role { font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:clamp(1.5rem, 3vw, 2.3rem); line-height:1.1; margin-top:.5rem; }
+    .exp-company { color:#9ca3af; font-size:1.05rem; font-weight:300; }
+    .exp-metric-inline { display:flex; align-items:baseline; gap:.6rem; margin-top:1rem; }
+    .exp-metric-inline .num { font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:2.4rem; line-height:1; color:#4ade80; }
+    .exp-metric-inline .cap { color:#9ca3af; font-size:.9rem; }
+    .exp-beat { margin-top:1.4rem; }
+    .exp-beat-label { display:none; }
+    .exp-headline { font-size:1.15rem; line-height:1.5; color:#fff; max-width:44rem; }
+    .exp-callouts { list-style:none; margin-top:1rem; display:flex; flex-direction:column; gap:.8rem; max-width:44rem; }
+    .callout { display:flex; gap:.85rem; color:#e5e7eb; font-size:.98rem; line-height:1.55; }
+    .callout i { color:#4ade80; font-style:normal; flex:0 0 auto; }
+    .callout b { font-weight:600; color:#fff; }
+    .exp-tags { display:flex; flex-wrap:wrap; gap:.55rem; margin-top:1.6rem; }
+    .exp-progress { display:none; }
+    .exp-counter-wrap { display:none; }
+    .exp-pinned .exp-counter-wrap { display:block; }
+    .exp-card { padding:1.75rem 1.5rem; }
+    .exp-section:not(.exp-pinned) .exp-card { background:transparent; border:0; box-shadow:none; backdrop-filter:none; padding:0; }
+    .exp-section:not(.exp-pinned) .exp-chapter { padding:1.6rem 1.35rem 1.8rem; background:var(--glass); border:1px solid var(--line); border-radius:24px; box-shadow:inset 0 1px 0 rgba(255,255,255,.07); max-width:62rem; }
+    .exp-section:not(.exp-pinned) .exp-beat-label { display:block; color:#4ade80; font-family:'Space Grotesk',sans-serif; font-size:.7rem; letter-spacing:.16em; text-transform:uppercase; margin-bottom:.4rem; }
+    .exp-section:not(.exp-pinned) .exp-beat + .exp-beat { padding-top:1.2rem; border-top:1px solid var(--line); }
+    .exp-section:not(.exp-pinned) .exp-watermark { display:none; }
+    @media (min-width:1024px) { .exp-section:not(.exp-pinned) .exp-chapter { padding:2.2rem 2.4rem 2.4rem; } }
+
+    /* Desktop pinned mode */
+    @media (min-width:1024px) {
+      .exp-inner { padding:clamp(5rem, 11vh, 6rem) 4rem 3.25rem; }
+      .exp-pinned .exp-grid { display:grid; grid-template-columns:clamp(170px, 16vw, 230px) minmax(0,1fr) clamp(190px, 19vw, 280px); gap:clamp(1.5rem, 2.6vw, 3rem); align-items:start; margin-top:calc(clamp(1rem, 3.5vh, 3rem) * var(--fs, 1)); }
+      .exp-pinned .rail { display:flex; position:relative; flex-direction:column; gap:clamp(1.4rem, 3.8vh, 2.4rem); padding:1.4rem 0 1.4rem 1.5rem; }
+      .rail-line { position:absolute; left:0; top:1.4rem; bottom:1.4rem; width:2px; background:rgba(255,255,255,.08); border-radius:1px; }
+      .rail-fill { width:100%; height:0; background:#4ade80; box-shadow:0 0 16px #4ade80; border-radius:1px; }
+      .rail-item { position:relative; display:block; text-align:left; opacity:.38; color:#fff; height:38px; border:0; background:none; cursor:pointer; padding:0; transition:opacity .35s ease; }
+      .rail-item img, .rail-item svg { height:100%; width:auto; max-width:190px; display:block; }
+      .rail-item .logo-brand { position:absolute; left:0; top:0; opacity:0; transition:opacity .3s ease; }
+      .rail-item:hover { opacity:.9; }
+      .rail-item:hover .logo-brand { opacity:1; }
+      .rail-item:hover .logo-base { opacity:0; }
+      .rail-item:hover svg { color:var(--brand,#fff); }
+      .rail-item:hover .ru-a { fill:#CC0033; } .rail-item:hover .ru-b { fill:#5F6A72; }
+      .rail-item.is-active { opacity:1; }
+      .rail-item:focus-visible { outline:2px solid #4ade80; outline-offset:6px; border-radius:6px; }
+      .exp-pinned .exp-aside { display:block; padding-top:clamp(.5rem, 2vh, 2rem); }
+      .metric-block { position:absolute; opacity:0; visibility:hidden; }
+      .exp-aside { position:relative; }
+      .metric-num { font-size:calc(clamp(5.2rem, 12vh, 8rem) * var(--fs, 1)); }
+      .metric-cap { color:#9ca3af; font-size:1rem; margin-top:.9rem; }
+      .beat-list { list-style:none; margin-top:clamp(1.2rem, 4vh, 2.8rem); display:flex; flex-direction:column; gap:.75rem; font-family:'Space Grotesk',sans-serif; font-size:.78rem; letter-spacing:.08em; text-transform:uppercase; color:#6b7280; }
+      .beat-list li { display:flex; align-items:center; gap:.65rem; opacity:.45; transition:opacity .3s; }
+      .beat-list li::before { content:''; width:22px; height:2px; background:#4ade80; display:block; }
+      .beat-list li:first-child { opacity:1; }
+      .exp-pinned .exp-clogo, .exp-pinned .exp-metric-inline { display:none; }
+      .exp-pinned .exp-card { position:relative; padding:0; }
+      .exp-pinned { --fs:1; }
+      .exp-pinned .exp-title { font-size:calc(clamp(1.7rem, 4.2vw, 2.75rem) * var(--fs)); }
+      .exp-pinned .exp-company { font-size:calc(1.05rem * var(--fs)); }
+      .exp-pinned .chip { font-size:calc(.78rem * var(--fs)); }
+      .exp-pinned .exp-chapter { position:absolute; left:0; right:0; top:0; margin:0; padding:calc(clamp(1.6rem, 4.6vh, 2.9rem) * var(--fs)) calc(clamp(1.8rem, 3.4vw, 3.25rem) * var(--fs)); opacity:0; visibility:hidden; }
+      .exp-pinned .exp-beats { position:relative; }
+      .exp-pinned .exp-beat { position:absolute; left:0; right:0; top:0; margin-top:0; opacity:0; visibility:hidden; padding-top:clamp(1rem, 3vh, 1.6rem); }
+      .exp-pinned .exp-role { font-size:calc(clamp(1.6rem, 4.2vh, 2.5rem) * var(--fs)); margin-top:.45rem; }
+      .exp-pinned .exp-headline { font-size:calc(clamp(1rem, 2.6vh, 1.32rem) * var(--fs)); }
+      .exp-pinned .exp-callouts { margin-top:calc(clamp(.8rem, 2.4vh, 1.4rem) * var(--fs)); gap:calc(clamp(.5rem, 1.6vh, .9rem) * var(--fs)); }
+      .exp-pinned .callout { font-size:calc(clamp(.86rem, 1.95vh, 1rem) * var(--fs)); opacity:0; }
+      .exp-pinned .exp-tags { margin-top:calc(clamp(1rem, 3.2vh, 2rem) * var(--fs)); }
+      .exp-pinned .exp-progress { display:block; position:absolute; left:4rem; right:4rem; bottom:2.4rem; height:2px; background:rgba(255,255,255,.08); z-index:3; border-radius:1px; }
+      .exp-pinned .exp-progress > div { height:100%; width:0; background:#4ade80; border-radius:1px; }
+      .exp-pinned .exp-inner { min-height:100svh; display:flex; flex-direction:column; }
     }
 
-    /* Each experience frame */
-    .exp-frame {
-      position: absolute;
-      inset: 0;
-      display: flex;
-      align-items: center;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    .exp-frame.active {
-      opacity: 1;
-      pointer-events: auto;
+    /* ── Education ── */
+    .edu-band { padding:clamp(2rem, 4vw, 3.25rem) clamp(1.4rem, 4vw, 3.5rem); }
+    .edu-tile { background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.07); border-radius:20px; padding:1.4rem 1.6rem; }
+    .edu-tile .v { font-family:'Space Grotesk',sans-serif; font-size:clamp(1.6rem, 2.4vw, 2.3rem); font-weight:700; color:#4ade80; line-height:1.05; }
+    .edu-tile .l { color:#9ca3af; font-size:.85rem; margin-top:.4rem; }
+    .edu-logo { height:clamp(52px, 5.5vw, 78px); width:auto; display:block; }
+    .edu-logo .ru-a { fill:#CC0033; } .edu-logo .ru-b { fill:#8b95a1; }
+
+    /* ── Projects ── */
+    .proj-stage { position:relative; overflow:hidden; }
+    .proj-inner { position:relative; z-index:2; max-width:1440px; margin:0 auto; padding:5.5rem 0 2rem; }
+    .proj-head { padding:0 1.5rem; }
+    @media (max-width:639px) { .proj-head { flex-direction:column !important; align-items:flex-start !important; gap:1rem; } }
+    .proj-viewport { position:relative; margin-top:1.75rem; overflow-x:auto; overflow-y:hidden; scroll-snap-type:x mandatory; scrollbar-width:none; -ms-overflow-style:none; padding:0 1.5rem 1rem; -webkit-overflow-scrolling:touch; }
+    .proj-viewport::-webkit-scrollbar { display:none; }
+    .proj-track { display:flex; gap:1rem; list-style:none; width:max-content; }
+    .proj-card { flex:0 0 auto; width:min(86vw, 520px); scroll-snap-align:center; padding:1.35rem; display:grid; grid-template-columns:1fr; gap:1.2rem; }
+    .proj-name { font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:clamp(1.5rem, 2.6vw, 2.5rem); line-height:1.05; margin-top:.5rem; }
+    .proj-sub { color:#4ade80; font-family:'Space Grotesk',sans-serif; font-size:.78rem; letter-spacing:.18em; text-transform:uppercase; }
+    .proj-blurb { color:#9ca3af; font-size:clamp(.92rem, 1.9vh, 1.05rem); line-height:1.6; margin-top:.8rem; font-weight:300; }
+    .proj-stats { display:grid; grid-template-columns:repeat(3,1fr); gap:.8rem; margin-top:1.2rem; }
+    .proj-stats .v { font-family:'Space Grotesk',sans-serif; font-size:clamp(1.15rem, 2.6vh, 1.5rem); font-weight:700; color:#fff; line-height:1.1; }
+    .proj-stats .l { font-size:.74rem; color:#9ca3af; margin-top:.2rem; }
+    .proj-tech { display:flex; flex-wrap:wrap; gap:.45rem; margin-top:1.1rem; }
+    .proj-actions { display:flex; flex-wrap:wrap; gap:.6rem; margin-top:1.4rem; }
+    .proj-media { order:-1; display:flex; justify-content:center; }
+    .device { width:100%; max-width:640px; will-change:transform; }
+    .device-tilt { transform-style:preserve-3d; will-change:transform; }
+    .device-win { border-radius:16px; overflow:hidden; background:#0b0f0b; border:1px solid rgba(255,255,255,.12); box-shadow:0 30px 70px rgba(0,0,0,.65), 0 0 0 1px rgba(255,255,255,.03); }
+    .device-bar { height:28px; background:#141814; display:flex; align-items:center; gap:7px; padding:0 12px; border-bottom:1px solid rgba(255,255,255,.06); }
+    .device-bar i { width:9px; height:9px; border-radius:50%; background:#2a3a2a; display:block; }
+    .device-shot { position:relative; aspect-ratio:16/10; overflow:hidden; background:#0b120b; }
+    .device-shot img { position:absolute; left:-4%; top:-4%; width:108%; height:108%; object-fit:cover; object-position:top; will-change:transform; }
+    .device-refl { display:none; }
+    .proj-progress { display:flex; gap:6px; margin:1.2rem 1.5rem 0; }
+    .proj-progress i { flex:1; height:3px; border-radius:2px; background:rgba(255,255,255,.1); display:block; transition:background .35s, box-shadow .35s; }
+    .proj-progress i.is-active { background:#4ade80; box-shadow:0 0 12px #4ade80; }
+    .proj-progress i.is-past { background:#4ade80; }
+    .proj-archive { position:relative; z-index:2; max-width:1440px; margin:0 auto; padding:2.5rem 1.5rem 4rem; }
+    .archive-row { display:grid; grid-template-columns:1fr; gap:.4rem; padding:1.1rem 0; border-top:1px solid var(--line); align-items:center; }
+    .archive-row:last-child { border-bottom:1px solid var(--line); }
+    .archive-name { font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:1.05rem; color:#fff; }
+    .archive-desc { color:#9ca3af; font-size:.9rem; font-weight:300; }
+    .archive-meta { display:flex; align-items:center; gap:.7rem; color:#6b7280; font-size:.8rem; font-family:'Space Grotesk',sans-serif; flex-wrap:wrap; }
+    .archive-meta a { color:#9ca3af; transition:color .25s; } .archive-meta a:hover { color:#4ade80; }
+    @media (min-width:768px) { .archive-row { grid-template-columns:minmax(0,1.1fr) minmax(0,1.6fr) auto; gap:1.5rem; } }
+    @media (min-width:1024px) {
+      .proj-inner { padding:6rem 4rem 3rem; }
+      .proj-head { padding:0; }
+      .proj-pinned .proj-inner { min-height:100svh; display:flex; flex-direction:column; }
+      .proj-pinned .proj-viewport { flex:1; display:flex; align-items:center; overflow:visible; scroll-snap-type:none; padding:0; margin-top:clamp(1rem, 3vh, 2.5rem); cursor:grab; }
+      .proj-pinned .proj-viewport.is-dragging { cursor:grabbing; user-select:none; }
+      .proj-pinned .proj-track { gap:2.5rem; }
+      .proj-pinned { --pfs:1; }
+      .proj-pinned .proj-card { width:min(1240px, calc(100vw - 8rem)); height:auto; min-height:calc(clamp(400px, 56vh, 620px) * var(--pfs)); padding:calc(clamp(1.4rem, 3.6vh, 3rem) * var(--pfs)) calc(clamp(1.8rem, 3vw, 3.4rem) * var(--pfs)); grid-template-columns:minmax(0, calc(clamp(18rem, 30vw, 24rem) * var(--pfs))) minmax(0,1fr); gap:calc(2.5rem * var(--pfs)); align-items:center; }
+      .proj-pinned .proj-name { font-size:calc(clamp(1.5rem, 2.6vw, 2.5rem) * var(--pfs)); }
+      .proj-pinned .proj-blurb { font-size:calc(clamp(.92rem, 1.9vh, 1.05rem) * var(--pfs)); }
+      .proj-pinned .proj-stats .v { font-size:calc(clamp(1.15rem, 2.6vh, 1.5rem) * var(--pfs)); }
+      .proj-pinned .proj-stats .l, .proj-pinned .chip { font-size:calc(.76rem * var(--pfs)); }
+      .proj-pinned .btn { font-size:calc(.85rem * var(--pfs)); padding:calc(.7rem * var(--pfs)) calc(1.25rem * var(--pfs)); }
+      .proj-pinned .device { max-width:calc(640px * var(--pfs)); }
+      .proj-pinned .proj-stats, .proj-pinned .proj-tech, .proj-pinned .proj-actions { margin-top:calc(1.1rem * var(--pfs)); }
+      .proj-pinned .proj-media { order:0; perspective:1600px; padding-right:.5rem; }
+      .proj-pinned .device { transform:rotateY(-12deg) rotateX(3deg); transform-style:preserve-3d; }
+      .proj-pinned .device-refl { display:block; margin-top:10px; height:clamp(50px, 9vh, 90px); overflow:hidden; border-radius:16px; transform:scaleY(-1); opacity:.2; -webkit-mask-image:linear-gradient(to top, rgba(0,0,0,.7), transparent 75%); mask-image:linear-gradient(to top, rgba(0,0,0,.7), transparent 75%); }
+      .proj-pinned .device-refl img { width:100%; display:block; object-fit:cover; object-position:top; height:300px; }
+      .proj-pinned .proj-progress { margin:clamp(.8rem, 2.5vh, 1.6rem) 0 0; }
+      .proj-archive { padding:4rem 4rem 5rem; }
     }
 
-    /* Big step number */
-    .exp-step-number {
-      font-size: clamp(8rem, 20vw, 18rem);
-      font-weight: 800;
-      line-height: 1;
-      color: transparent;
-      -webkit-text-stroke: 1.5px rgba(74, 222, 128, 0.12);
-      position: absolute;
-      right: 5%;
-      top: 50%;
-      transform: translateY(-50%);
-      user-select: none;
-      pointer-events: none;
-      transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    /* Details sheet */
+    dialog.sheet { border:0; padding:0; background:transparent; max-width:none; max-height:none; width:100%; height:100%; margin:0; position:fixed; inset:0; color:#fff; }
+    dialog.sheet::backdrop { background:rgba(0,0,0,.62); backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px); }
+    .sheet-panel { position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); width:min(1120px, calc(100vw - 3rem)); max-height:calc(100svh - 4rem); overflow:auto; padding:2.6rem 3rem 2.8rem; scrollbar-width:thin; }
+    .sheet-close { position:absolute; top:1.4rem; right:1.4rem; }
+    .sheet-close:focus-visible, .icon-btn:focus-visible, .btn:focus-visible { outline:2px solid #4ade80; outline-offset:3px; }
+    .sheet-close:focus:not(:focus-visible) { outline:none; }
+    .sheet-panel:focus, .sheet-panel:focus-visible, dialog.sheet:focus { outline:none; }
+    .hl-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:.9rem; margin-top:1.8rem; }
+    .hl-tile { background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.07); border-radius:20px; padding:1.15rem 1.3rem; }
+    .hl-tile .v { font-family:'Space Grotesk',sans-serif; font-size:clamp(1.25rem, 1.9vw, 1.7rem); font-weight:700; color:#4ade80; line-height:1.1; }
+    .hl-tile .l { color:#9ca3af; font-size:.8rem; margin-top:.35rem; }
+    .spec { margin-top:1.6rem; }
+    .spec-row { display:grid; grid-template-columns:190px minmax(0,1fr); gap:1.5rem; padding:1.05rem 0; border-top:1px solid rgba(255,255,255,.07); font-size:.95rem; }
+    .spec-row:last-child { border-bottom:1px solid rgba(255,255,255,.07); }
+    .spec-row .k { color:#9ca3af; }
+    .spec-row .val { color:#fff; line-height:1.6; }
+    .spec-row .val span + span::before { content:'·'; color:#4ade80; margin:0 .55rem; }
+    @media (max-width:767px) {
+      .sheet-panel { left:0; top:auto; bottom:0; transform:none; width:100%; max-height:92svh; border-radius:28px 28px 0 0; padding:1.5rem 1.25rem 2.6rem; }
+      .hl-grid { grid-template-columns:repeat(2,1fr); }
+      .spec-row { grid-template-columns:1fr; gap:.3rem; }
+      .sheet-close { top:1rem; right:1rem; }
     }
 
-    /* Side navigation dots */
-    .exp-nav-dots {
-      position: absolute;
-      right: 2rem;
-      top: 50%;
-      transform: translateY(-50%);
-      z-index: 20;
-      display: flex;
-      flex-direction: column;
-      gap: 1.2rem;
-      pointer-events: auto;
-    }
-    .exp-dot {
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      border: 2px solid rgba(74, 222, 128, 0.3);
-      background: transparent;
-      cursor: pointer;
-      transition: all 0.4s ease;
-      position: relative;
-    }
-    .exp-dot.active {
-      background: #4ade80;
-      border-color: #4ade80;
-      box-shadow: 0 0 20px rgba(74, 222, 128, 0.4);
-    }
-    .exp-dot::after {
-      content: attr(data-label);
-      position: absolute;
-      right: 24px;
-      top: 50%;
-      transform: translateY(-50%);
-      white-space: nowrap;
-      font-size: 11px;
-      color: rgba(255,255,255,0.4);
-      font-family: 'Space Grotesk', sans-serif;
-      letter-spacing: 0.05em;
-      opacity: 0;
-      transition: opacity 0.3s ease;
-      pointer-events: none;
-    }
-    .exp-dot:hover::after,
-    .exp-dot.active::after {
-      opacity: 1;
-    }
+    /* ── Skills ── */
+    .marquee { overflow:hidden; -webkit-mask-image:linear-gradient(to right, transparent, #000 12%, #000 88%, transparent); mask-image:linear-gradient(to right, transparent, #000 12%, #000 88%, transparent); }
+    .marquee-track { display:flex; align-items:center; gap:clamp(2rem, 4vw, 3.6rem); width:max-content; animation:marquee 48s linear infinite; padding:.5rem 0; }
+    .marquee:hover .marquee-track { animation-play-state:paused; }
+    @keyframes marquee { to { transform:translateX(-50%); } }
+    .marquee-track svg { width:34px; height:34px; color:rgba(255,255,255,.72); flex:0 0 auto; transition:color .3s, transform .3s; }
+    .marquee-track svg:hover { color:var(--c,#fff); transform:scale(1.15); }
+    @media (prefers-reduced-motion: reduce) { .marquee-track { animation:none; } }
+    .bento { display:grid; grid-template-columns:1fr; gap:1.1rem; }
+    @media (min-width:640px) { .bento { grid-template-columns:repeat(2,1fr); } }
+    @media (min-width:1024px) { .bento { grid-template-columns:repeat(3,1fr); } }
+    .bento-tile { padding:1.5rem 1.6rem; border-radius:24px; }
+    .bento-tile h4 { font-family:'Space Grotesk',sans-serif; font-size:.7rem; letter-spacing:.14em; text-transform:uppercase; color:#6b7280; font-weight:500; margin-bottom:.9rem; }
+    .bento-tile.is-featured { border-color:rgba(74,222,128,.45); }
+    .bento-tile.is-featured h4 { color:#4ade80; }
+    .skill { display:flex; align-items:center; gap:.75rem; font-size:.94rem; color:#e5e7eb; padding:.42rem 0; }
+    .skill svg { width:22px; height:22px; color:rgba(255,255,255,.85); transition:color .3s, transform .3s; flex:0 0 auto; }
+    .skill:hover svg { color:var(--c,#fff); transform:scale(1.15); }
 
-    /* Progress line behind dots */
-    .exp-progress-line {
-      position: absolute;
-      right: 2rem;
-      top: 50%;
-      width: 12px;
-      z-index: 19;
-      pointer-events: none;
-    }
-    .exp-progress-track {
-      position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 2px;
-      height: 100%;
-      background: rgba(58, 92, 58, 0.2);
-      border-radius: 1px;
-    }
-    .exp-progress-fill-line {
-      position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 2px;
-      background: #4ade80;
-      border-radius: 1px;
-      transition: height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-      top: 0;
-    }
+    /* ── Closing ── */
+    .closing { position:relative; overflow:hidden; text-align:center; padding:clamp(5rem, 12vh, 8rem) 1.5rem clamp(3rem, 6vh, 4rem); }
+    .closing h2 { font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:clamp(2.2rem, 5vw, 3.5rem); line-height:1.05; }
 
-    /* Scroll hint */
-    .scroll-hint {
-      position: absolute;
-      bottom: 2rem;
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 20;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.5rem;
-      animation: scrollBounce 2s ease-in-out infinite;
-      pointer-events: none;
-    }
-    @keyframes scrollBounce {
-      0%, 100% { transform: translateX(-50%) translateY(0); opacity: 0.6; }
-      50% { transform: translateX(-50%) translateY(8px); opacity: 1; }
-    }
-
-    /* Content animations */
-    .exp-content-inner {
-      transform: translateY(30px);
-      opacity: 0;
-      transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.1s;
-    }
-    .exp-frame.active .exp-content-inner {
-      transform: translateY(0);
-      opacity: 1;
-    }
-
-    .exp-tags-inner {
-      transform: translateY(20px);
-      opacity: 0;
-      transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.25s;
-    }
-    .exp-frame.active .exp-tags-inner {
-      transform: translateY(0);
-      opacity: 1;
-    }
-
-    /* ── Infinite Carousel ── */
-    .carousel-viewport { overflow: hidden; position: relative; }
-    .carousel-belt {
-      display: flex;
-      transition: transform 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
-    }
-    .carousel-cell {
-      flex: 0 0 100%;
-      padding: 0 1rem;
-      transition: transform 0.4s ease, filter 0.4s ease, opacity 0.4s ease;
-      transform: scale(0.85);
-      filter: brightness(0.5);
-      opacity: 0.6;
-    }
-    @media (min-width:768px) { .carousel-cell { flex: 0 0 50%; } }
-    @media (min-width:1024px) { .carousel-cell { flex: 0 0 33.333%; } }
-
-    .carousel-cell.center {
-      transform: scale(1.05);
-      filter: brightness(1);
-      opacity: 1;
-      z-index: 2;
-    }
-    .carousel-cell.adjacent {
-      transform: scale(0.92);
-      filter: brightness(0.75);
-      opacity: 0.8;
-    }
-
-    /* Flip card */
-    .flip-card { perspective:1200px; cursor:pointer; }
-    .flip-card-inner { position:relative; width:100%; height:100%; transition:transform .7s cubic-bezier(.4,0,.2,1); transform-style:preserve-3d; }
-    .flip-card.flipped .flip-card-inner { transform:rotateY(180deg); }
-    .flip-card-front,.flip-card-back { backface-visibility:hidden; -webkit-backface-visibility:hidden; }
-    .flip-card-back { position:absolute; inset:0; transform:rotateY(180deg); display:flex; flex-direction:column; justify-content:center; padding:2rem; }
-
-    .reveal { opacity:0; transform:translateY(60px); }
-    .skill-icon { transition:transform .3s ease, box-shadow .3s ease; }
-    .skill-icon:hover { transform:translateY(-4px); box-shadow:0 10px 30px rgba(74,222,128,.15); }
-
-    /* Mobile experience adjustments */
-    @media (max-width: 768px) {
-      .exp-nav-dots { right: 1rem; gap: 1rem; }
-      .exp-dot { width: 10px; height: 10px; }
-      .exp-dot::after { display: none; }
-      .exp-step-number { font-size: 6rem; right: 10%; }
-    }
+    /* Mobile nav items */
+    .mobile-nav-item { opacity:0; transform:translateY(20px); }
   </style>
 </head>
-
-<body class="bg-black text-white font-poppins overflow-x-hidden">
+<body class="text-white font-poppins overflow-x-hidden">
 
   <!-- ───── NAV ───── -->
   <nav class="fixed w-full z-50 transition-all duration-500" id="navbar">
@@ -304,740 +319,1142 @@
       <a href="/" class="text-2xl font-extrabold font-grotesk tracking-tight"><span class="text-white">V</span><span class="text-emerald">N</span></a>
       <div class="hidden md:flex items-center gap-10">
         <a href="/" class="nav-link text-sm tracking-wide uppercase text-gray-300 hover:text-white transition-colors">Home</a>
-        <a href="/professional" class="nav-link text-sm tracking-wide uppercase text-gray-300 hover:text-white transition-colors">Experience</a>
+        <a href="/professional" class="nav-link is-current text-sm tracking-wide uppercase text-white transition-colors">Experience</a>
+        <a href="/resume/Vishal_Nagamalla_Resume.pdf" target="_blank" rel="noopener" class="nav-link text-sm tracking-wide uppercase text-gray-300 hover:text-white transition-colors">Résumé</a>
         <div class="relative group">
           <button class="nav-link text-sm tracking-wide uppercase text-gray-300 hover:text-white transition-colors flex items-center gap-1">Contact</button>
           <div id="contact-menu" class="absolute right-0 mt-4 bg-black/90 backdrop-blur-xl text-white rounded-xl shadow-2xl border border-accentgreen/30 opacity-0 invisible transform -translate-y-2 transition-all duration-200 z-50 flex items-center gap-3 px-5 py-3">
-            <a href="mailto:Vishal.Nagamalla@gmail.com" target="_blank" class="w-10 h-10 flex items-center justify-center rounded-lg text-gray-400 hover:text-emerald hover:bg-white/5 transition-all"><i class="fas fa-envelope text-lg"></i></a>
-            <a href="https://github.com/Vishal-Nagamalla" target="_blank" class="w-10 h-10 flex items-center justify-center rounded-lg text-gray-400 hover:text-emerald hover:bg-white/5 transition-all"><i class="fab fa-github text-lg"></i></a>
-            <a href="https://www.linkedin.com/in/vishalnag" target="_blank" class="w-10 h-10 flex items-center justify-center rounded-lg text-gray-400 hover:text-emerald hover:bg-white/5 transition-all"><i class="fab fa-linkedin text-lg"></i></a>
+            <a href="mailto:Vishal.Nagamalla@gmail.com" target="_blank" class="w-10 h-10 flex items-center justify-center rounded-lg text-gray-400 hover:text-emerald hover:bg-white/5 transition-all" aria-label="Email"><i class="fas fa-envelope text-lg"></i></a>
+            <a href="https://github.com/Vishal-Nagamalla" target="_blank" class="w-10 h-10 flex items-center justify-center rounded-lg text-gray-400 hover:text-emerald hover:bg-white/5 transition-all" aria-label="GitHub"><i class="fab fa-github text-lg"></i></a>
+            <a href="https://www.linkedin.com/in/vishalnag" target="_blank" class="w-10 h-10 flex items-center justify-center rounded-lg text-gray-400 hover:text-emerald hover:bg-white/5 transition-all" aria-label="LinkedIn"><i class="fab fa-linkedin text-lg"></i></a>
           </div>
         </div>
       </div>
-      <button id="mobile-nav-toggle" class="md:hidden text-white text-2xl focus:outline-none"><i class="fas fa-bars"></i></button>
+      <button id="mobile-nav-toggle" class="md:hidden text-white text-2xl focus:outline-none" aria-label="Menu"><i class="fas fa-bars"></i></button>
     </div>
   </nav>
 
-  <!-- Mobile nav -->
-  <div id="mobile-nav" class="fixed top-20 right-0 w-72 bg-black/95 backdrop-blur-xl border-l border-accentgreen/20 rounded-bl-2xl transform translate-x-full transition-transform duration-300 z-40 md:hidden">
-    <a href="/" class="block px-8 py-5 text-gray-300 hover:text-white border-b border-white/5">Home</a>
-    <a href="/professional" class="block px-8 py-5 text-gray-300 hover:text-white border-b border-white/5">Experience</a>
-    <button id="mobile-contact" class="w-full text-left px-8 py-5 text-gray-300 flex items-center justify-between border-b border-white/5">Contact <i class="fas fa-chevron-down text-xs transition-transform"></i></button>
-    <div id="mobile-contact-links" class="hidden px-8 py-4 space-y-4 bg-darkgreen/20">
-      <a href="mailto:Vishal.Nagamalla@gmail.com" class="flex items-center gap-3 text-gray-400 hover:text-emerald transition-colors"><i class="fas fa-envelope"></i> Email</a>
-      <a href="https://github.com/Vishal-Nagamalla" target="_blank" class="flex items-center gap-3 text-gray-400 hover:text-emerald transition-colors"><i class="fab fa-github"></i> GitHub</a>
-      <a href="https://www.linkedin.com/in/vishalnag" target="_blank" class="flex items-center gap-3 text-gray-400 hover:text-emerald transition-colors"><i class="fab fa-linkedin"></i> LinkedIn</a>
+  <!-- Mobile nav — fullscreen overlay -->
+  <div id="mobile-nav" class="fixed inset-0 z-40 md:hidden pointer-events-none">
+    <div id="mobile-nav-backdrop" class="absolute inset-0 bg-black/0 backdrop-blur-0 transition-all duration-500"></div>
+    <div id="mobile-nav-panel" class="absolute inset-0 flex flex-col justify-center items-center opacity-0 translate-y-8 transition-all duration-500 ease-out">
+      <nav class="flex flex-col items-center gap-2 mb-12">
+        <a href="/" class="mobile-nav-item text-4xl font-grotesk font-bold text-white/90 hover:text-emerald transition-all duration-300 py-3 px-6 rounded-2xl hover:bg-white/5">Home</a>
+        <a href="/professional" class="mobile-nav-item text-4xl font-grotesk font-bold text-emerald transition-all duration-300 py-3 px-6 rounded-2xl hover:bg-white/5">Experience</a>
+        <a href="/resume/Vishal_Nagamalla_Resume.pdf" target="_blank" rel="noopener" class="mobile-nav-item text-4xl font-grotesk font-bold text-white/90 hover:text-emerald transition-all duration-300 py-3 px-6 rounded-2xl hover:bg-white/5">Résumé</a>
+        <span class="mobile-nav-item text-4xl font-grotesk font-bold text-white/90 py-3 px-6">Contact</span>
+      </nav>
+      <div class="flex items-center gap-5">
+        <a href="mailto:Vishal.Nagamalla@gmail.com" class="mobile-nav-item w-14 h-14 flex items-center justify-center rounded-2xl bg-white/5 border border-white/10 text-gray-400 hover:text-emerald hover:border-emerald/40 hover:bg-emerald/10 transition-all duration-300" aria-label="Email"><i class="fas fa-envelope text-xl"></i></a>
+        <a href="https://github.com/Vishal-Nagamalla" target="_blank" class="mobile-nav-item w-14 h-14 flex items-center justify-center rounded-2xl bg-white/5 border border-white/10 text-gray-400 hover:text-emerald hover:border-emerald/40 hover:bg-emerald/10 transition-all duration-300" aria-label="GitHub"><i class="fab fa-github text-xl"></i></a>
+        <a href="https://www.linkedin.com/in/vishalnag" target="_blank" class="mobile-nav-item w-14 h-14 flex items-center justify-center rounded-2xl bg-white/5 border border-white/10 text-gray-400 hover:text-emerald hover:border-emerald/40 hover:bg-emerald/10 transition-all duration-300" aria-label="LinkedIn"><i class="fab fa-linkedin text-xl"></i></a>
+      </div>
     </div>
   </div>
 
-  <main class="pt-20">
+  <main>
 
-    <!-- ───── EXPERIENCE — Apple-esque Internal Scroll ───── -->
-    <section id="experience" class="exp-container">
+    <!-- ───── EXPERIENCE — pinned, scroll-driven chapters ───── -->
+    <section id="experience" class="exp-section" aria-label="Experience">
+      <div class="exp-stage" id="exp-stage">
+        <div class="aurora"><i class="a1"></i><i class="a2"></i><i class="a3"></i></div>
+        <div class="exp-watermark" id="exp-watermark" aria-hidden="true">
+          <svg class="am-logo" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 178.791 45.092" >
+<path fill="currentColor" d="M29.242,6.267L9.271,6.25L6.182,9.372l23.06,0.012c3.525,0,6.373,2.796,6.373,6.241v29.239h3.197
+	l0.01-29.239C38.822,10.456,34.532,6.267,29.242,6.267z M45.215,44.864l-0.003-29.239c0-8.612-7.151-15.623-15.971-15.623L15.448,0
+	L12.36,3.122l16.882,0.004c7.054,0,12.772,5.608,12.772,12.499v29.239H45.215z M29.242,12.505L3.098,12.499L0,15.619h0.042L0,15.625
+	l0.001,13.621c0,7.944,6.054,14.521,13.924,15.5l2.951-2.997l-0.903-0.005c-7.057,0-12.777-5.61-12.777-12.498V15.62h3.202
+	L6.39,29.246c0,5.164,4.29,9.355,9.583,9.355h4.012l3.084-3.119h-7.096c-3.527,0-6.374-2.794-6.374-6.236V15.62h3.169l0.003,13.626
+	c0.01,1.722,1.436,3.113,3.201,3.113h10.179l3.08-3.11l-13.259-0.003V15.622l13.269,0.003v29.239h3.203l-0.001-29.239
+	C32.433,13.9,31.006,12.505,29.242,12.505z"/>
+<path fill="currentColor" d="M136.111,23.418v-6.101h10.09h0.276v-0.272v-1.954v-0.274h-0.276h-10.09V8.88h11.313h0.274V8.606V6.65V6.377
+	h-0.274h-13.731h-0.275V6.65v18.997v0.271h0.275h13.866h0.274v-0.271v-1.955v-0.274h-0.274H136.111z M67.86,30.171h-0.146
+	l-0.08,0.122l-4.936,7.392l-4.935-7.392l-0.081-0.122h-0.146h-1.62h-0.273v0.274v14.17v0.274h0.273h1.56h0.274v-0.274V34.046
+	l4.661,6.838l0.081,0.118h0.146h0.082h0.144l0.081-0.118l4.662-6.855v10.587v0.274h0.274h1.599h0.274v-0.274v-14.17v-0.274H69.48
+	H67.86z M150.291,42.864V30.445v-0.274h-0.272h-1.599h-0.273v0.274v14.17v0.274h0.273h7.188h0.275v-0.274v-1.477v-0.274h-0.275
+	H150.291z M57.346,25.919l0.073-0.16l2.179-4.858h9.984l2.153,4.857l0.071,0.161h0.18h2.305h0.425l-0.176-0.385L65.885,6.403
+	l-0.071-0.161h-0.178h-2.008h-0.178l-0.072,0.161l-8.657,19.131l-0.176,0.385h0.427h2.197H57.346z M64.605,9.683l3.894,8.743h-7.813
+	L64.605,9.683z M79.638,25.919h0.272v-0.271v-6.43h4.341c3.851,0,7.736-2.006,7.736-6.488v-0.055c0-3.825-2.898-6.298-7.385-6.298
+	h-7.108H77.22V6.65v18.997v0.271h0.274H79.638z M79.911,8.905h4.53c3.068,0,4.828,1.404,4.828,3.852v0.055
+	c0,2.371-1.938,3.904-4.938,3.904h-4.421V8.905z M129.206,25.919v-0.271V6.65V6.377h-0.272h-2.145h-0.275V6.65v18.997v0.271h0.275
+	h2.145H129.206z M163.66,36.492c-3.07-0.658-3.632-1.353-3.632-2.484v-0.04c0-1.186,1.128-2.014,2.743-2.014
+	c1.437,0,2.681,0.47,3.916,1.477l0.22,0.181l0.174-0.228l0.93-1.234l0.16-0.212l-0.208-0.167c-1.571-1.263-3.111-1.802-5.15-1.802
+	c-2.855,0-4.931,1.742-4.931,4.142v0.04c0,2.72,1.988,3.708,4.974,4.356c2.932,0.617,3.469,1.302,3.469,2.424v0.04
+	c0,1.277-1.159,2.136-2.885,2.136c-1.801,0-3.155-0.56-4.675-1.934l-0.211-0.188l-0.184,0.215l-0.991,1.176l-0.17,0.202l0.198,0.179
+	c1.785,1.593,3.683,2.336,5.973,2.336c3.009,0,5.111-1.76,5.111-4.281v-0.042C168.491,38.511,167.046,37.232,163.66,36.492z
+	 M158.01,25.919c6.01,0,10.369-4.106,10.369-9.771v-0.054c0-5.631-4.359-9.718-10.369-9.718h-6.593h-0.274V6.65v18.997v0.271h0.274
+	H158.01z M153.835,8.905h4.175c4.473,0,7.598,2.979,7.598,7.243v0.055c0,4.232-3.125,7.188-7.598,7.188h-4.175V8.905z
+	 M80.319,30.231l-0.074-0.161h-0.176h-1.5h-0.176l-0.073,0.161l-6.458,14.271l-0.174,0.387h0.425h1.639h0.177l0.074-0.162
+	l1.605-3.583h7.359l1.586,3.582l0.073,0.163h0.177h1.722h0.425l-0.176-0.387L80.319,30.231z M76.483,39.159l2.813-6.281l2.799,6.281
+	H76.483z M123.459,25.919v-0.271v-1.981v-0.274h-0.272h-8.314V6.65V6.377h-0.273h-2.145h-0.274V6.65v18.997v0.271h0.274h10.732
+	H123.459z M120.216,38.99c2.288-0.563,3.653-2.136,3.653-4.294v-0.04c0-1.171-0.417-2.231-1.174-2.987
+	c-0.965-0.966-2.465-1.498-4.223-1.498h-6.094h-0.272v0.274v14.17v0.274h0.272h1.601h0.272v-0.274v-5.232h3.637l4.03,5.396
+	l0.082,0.11h0.137h1.964h0.549l-0.331-0.439L120.216,38.99z M114.252,37.397v-5.199h4.1c2.13,0,3.351,0.917,3.351,2.52v0.04
+	c0,1.604-1.322,2.64-3.37,2.64H114.252z M100.669,42.885v-4.411h7.457h0.276v-0.275v-1.457v-0.275h-0.276h-7.457v-4.288h8.368h0.275
+	v-0.275v-1.457v-0.274h-0.275H98.796h-0.274v0.274v14.17v0.274h0.274h10.345h0.273v-0.274v-1.457v-0.273h-0.273H100.669z
+	 M127.076,30.171H126.8v0.274v14.17v0.274h0.275h1.598h0.275v-0.274v-14.17v-0.274h-0.275H127.076z M109.507,12.729v-0.055
+	c0-3.825-2.898-6.298-7.384-6.298h-7.108H94.74V6.65v18.997v0.271h0.275h2.143h0.274v-0.271v-6.43h4.339
+	C105.622,19.218,109.507,17.212,109.507,12.729z M97.432,8.905h4.528c3.067,0,4.828,1.404,4.828,3.852v0.055
+	c0,2.371-1.938,3.904-4.937,3.904h-4.42V8.905z M84.927,30.171h-0.272v0.274v1.477v0.276h0.272h4.483v12.417v0.274h0.273h1.624
+	h0.276v-0.274V32.198h4.482h0.273v-0.276v-1.477v-0.274h-0.273H84.927z M139.579,30.231l-0.074-0.161h-0.174h-1.499h-0.177
+	l-0.071,0.161l-6.458,14.271l-0.176,0.387h0.426h1.638h0.176l0.075-0.162l1.605-3.583h7.359l1.588,3.582l0.071,0.163h0.179h1.721
+	h0.425l-0.176-0.387L139.579,30.231z M135.745,39.159l2.813-6.281l2.799,6.281H135.745z"/>
+<g>
+	<path fill="currentColor" d="M171.924,41.662v-0.021c0-1.867,1.517-3.43,3.443-3.43c1.923,0,3.423,1.544,3.423,3.414v0.016
+		c0,1.869-1.519,3.437-3.442,3.437C173.423,45.077,171.924,43.532,171.924,41.662z M178.478,41.641v-0.016
+		c0-1.718-1.338-3.12-3.11-3.12c-1.784,0-3.132,1.421-3.132,3.136v0.021c0,1.715,1.338,3.117,3.112,3.117
+		C177.129,44.779,178.478,43.358,178.478,41.641z M174.01,39.784h1.575c0.445,0,0.813,0.142,1.042,0.37
+		c0.172,0.16,0.284,0.399,0.284,0.68v0.021c0,0.569-0.381,0.908-0.908,1.032l1.09,1.415h-0.646l-1.014-1.328h-0.019h-0.884v1.328
+		h-0.521V39.784z M175.536,41.508c0.495,0,0.839-0.225,0.839-0.624v-0.018c0-0.371-0.305-0.61-0.807-0.61h-1.036v1.252H175.536z"/>
+</g>
+</svg>
+          <img src="assets/logos/pracsys.png" alt="">
+          <img src="assets/logos/atyeti-white.png" alt="">
+          <img src="assets/logos/teamtranquil-white.png" alt="">
+        </div>
 
-      <!-- Scroll hint -->
-      <div class="scroll-hint" id="scroll-hint">
-        <span class="text-gray-500 text-xs font-grotesk tracking-widest uppercase">Scroll to explore</span>
-        <i class="fas fa-chevron-down text-emerald text-sm"></i>
-      </div>
-
-      <!-- Section header (absolute top-left) -->
-      <div class="absolute top-8 left-6 sm:left-10 lg:left-16 z-20">
-        <p class="text-emerald font-grotesk text-xs tracking-widest uppercase mb-1">Experience &amp; Education</p>
-        <h2 class="text-2xl md:text-3xl font-bold font-grotesk">Where I've <span class="gradient-text">Worked</span></h2>
-      </div>
-
-      <!-- Step counter (top-right) -->
-      <div class="absolute top-8 right-20 sm:right-24 z-20 text-right">
-        <span class="text-emerald font-grotesk text-sm font-bold" id="exp-counter">01</span>
-        <span class="text-gray-600 font-grotesk text-sm"> / 04</span>
-      </div>
-
-      <!-- Internal scroll area -->
-      <div class="exp-scroll-area" id="exp-scroll-area">
-        <!-- Display layer (sticky) -->
-        <div class="exp-display" id="exp-display">
-
-          <!-- Big background step number -->
-          <div class="exp-step-number" id="exp-big-number">01</div>
-
-          <!-- Frame 0: PRACSYS Lab -->
-          <div class="exp-frame active" data-frame="0">
-            <div class="max-w-4xl mx-auto px-6 sm:px-10 lg:px-16 w-full">
-              <div class="exp-content-inner">
-                <div class="flex items-center gap-4 mb-2">
-                  <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-accentgreen to-emerald flex items-center justify-center shadow-lg shadow-emerald/20 flex-shrink-0">
-                    <i class="fas fa-flask text-xl text-black"></i>
-                  </div>
-                  <div>
-                    <p class="text-emerald font-grotesk text-xs tracking-wider uppercase">Apr 2025 &mdash; Sep 2025</p>
-                    <h3 class="text-2xl sm:text-3xl md:text-4xl font-bold font-grotesk leading-tight">Software Engineering Intern</h3>
-                  </div>
-                </div>
-                <p class="text-gray-400 font-light text-lg mb-8 ml-[4.5rem]">PRACSYS Lab: Physical AI &bull; Rutgers University</p>
-
-                <div class="space-y-3 mb-8 ml-2">
-                  <div class="flex gap-3 items-start">
-                    <span class="text-emerald mt-1.5 text-xs">&#9654;</span>
-                    <p class="text-gray-300 leading-relaxed">Designed AI robotic motion systems in <span class="text-white font-medium">Python/ROS</span>, implementing frameworks under the GELLO imitation-learning architecture</p>
-                  </div>
-                  <div class="flex gap-3 items-start">
-                    <span class="text-emerald mt-1.5 text-xs">&#9654;</span>
-                    <p class="text-gray-300 leading-relaxed">Deployed supervised learning pipelines for 6-DOF robotic arm, improving <span class="text-white font-medium">training efficiency by 35%</span></p>
-                  </div>
-                  <div class="flex gap-3 items-start">
-                    <span class="text-emerald mt-1.5 text-xs">&#9654;</span>
-                    <p class="text-gray-300 leading-relaxed">Engineered reinforcement, diffusion, and flow-matching models in <span class="text-white font-medium">PyTorch</span> for noisy environments</p>
-                  </div>
-                  <div class="flex gap-3 items-start">
-                    <span class="text-emerald mt-1.5 text-xs">&#9654;</span>
-                    <p class="text-gray-300 leading-relaxed">Conducted joint-state noise experiments improving <span class="text-white font-medium">path stability by 22%</span></p>
-                  </div>
-                  <div class="flex gap-3 items-start">
-                    <span class="text-emerald mt-1.5 text-xs">&#9654;</span>
-                    <p class="text-gray-300 leading-relaxed">Built <span class="text-white font-medium">MuJoCo simulations</span> and benchmarking tools for real-time debugging</p>
-                  </div>
-                </div>
-              </div>
-              <div class="exp-tags-inner flex flex-wrap gap-2 ml-2">
-                <span class="text-xs bg-accentgreen/10 text-emerald px-3 py-1.5 rounded-lg font-grotesk border border-accentgreen/20">Python/ROS</span>
-                <span class="text-xs bg-accentgreen/10 text-emerald px-3 py-1.5 rounded-lg font-grotesk border border-accentgreen/20">PyTorch</span>
-                <span class="text-xs bg-accentgreen/10 text-emerald px-3 py-1.5 rounded-lg font-grotesk border border-accentgreen/20">MuJoCo</span>
-                <span class="text-xs bg-accentgreen/10 text-emerald px-3 py-1.5 rounded-lg font-grotesk border border-accentgreen/20">Imitation Learning</span>
-              </div>
+        <div class="exp-inner">
+          <header class="flex items-end justify-between gap-6">
+            <div>
+              <p class="eyebrow">Experience</p>
+              <h1 class="exp-title mt-2">Where I've <span class="text-emerald">built things</span></h1>
             </div>
-          </div>
+            <div class="exp-counter-wrap font-grotesk text-sm text-gray-500 whitespace-nowrap pb-1"><span id="exp-counter" class="text-emerald font-bold">01</span> / 04</div>
+          </header>
 
-          <!-- Frame 1: Atyeti -->
-          <div class="exp-frame" data-frame="1">
-            <div class="max-w-4xl mx-auto px-6 sm:px-10 lg:px-16 w-full">
-              <div class="exp-content-inner">
-                <div class="flex items-center gap-4 mb-2">
-                  <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-accentgreen to-emerald flex items-center justify-center shadow-lg shadow-emerald/20 flex-shrink-0">
-                    <i class="fas fa-briefcase text-xl text-black"></i>
+          <div class="exp-grid">
+            <!-- Logo rail -->
+            <nav class="rail" aria-label="Companies">
+              <div class="rail-line"><div class="rail-fill" id="rail-fill"></div></div>
+              <button class="rail-item is-active" data-go="0" aria-label="Applied Materials" style="--brand:#569BBE"><svg class="am-logo" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 178.791 45.092" >
+<path fill="currentColor" d="M29.242,6.267L9.271,6.25L6.182,9.372l23.06,0.012c3.525,0,6.373,2.796,6.373,6.241v29.239h3.197
+	l0.01-29.239C38.822,10.456,34.532,6.267,29.242,6.267z M45.215,44.864l-0.003-29.239c0-8.612-7.151-15.623-15.971-15.623L15.448,0
+	L12.36,3.122l16.882,0.004c7.054,0,12.772,5.608,12.772,12.499v29.239H45.215z M29.242,12.505L3.098,12.499L0,15.619h0.042L0,15.625
+	l0.001,13.621c0,7.944,6.054,14.521,13.924,15.5l2.951-2.997l-0.903-0.005c-7.057,0-12.777-5.61-12.777-12.498V15.62h3.202
+	L6.39,29.246c0,5.164,4.29,9.355,9.583,9.355h4.012l3.084-3.119h-7.096c-3.527,0-6.374-2.794-6.374-6.236V15.62h3.169l0.003,13.626
+	c0.01,1.722,1.436,3.113,3.201,3.113h10.179l3.08-3.11l-13.259-0.003V15.622l13.269,0.003v29.239h3.203l-0.001-29.239
+	C32.433,13.9,31.006,12.505,29.242,12.505z"/>
+<path fill="currentColor" d="M136.111,23.418v-6.101h10.09h0.276v-0.272v-1.954v-0.274h-0.276h-10.09V8.88h11.313h0.274V8.606V6.65V6.377
+	h-0.274h-13.731h-0.275V6.65v18.997v0.271h0.275h13.866h0.274v-0.271v-1.955v-0.274h-0.274H136.111z M67.86,30.171h-0.146
+	l-0.08,0.122l-4.936,7.392l-4.935-7.392l-0.081-0.122h-0.146h-1.62h-0.273v0.274v14.17v0.274h0.273h1.56h0.274v-0.274V34.046
+	l4.661,6.838l0.081,0.118h0.146h0.082h0.144l0.081-0.118l4.662-6.855v10.587v0.274h0.274h1.599h0.274v-0.274v-14.17v-0.274H69.48
+	H67.86z M150.291,42.864V30.445v-0.274h-0.272h-1.599h-0.273v0.274v14.17v0.274h0.273h7.188h0.275v-0.274v-1.477v-0.274h-0.275
+	H150.291z M57.346,25.919l0.073-0.16l2.179-4.858h9.984l2.153,4.857l0.071,0.161h0.18h2.305h0.425l-0.176-0.385L65.885,6.403
+	l-0.071-0.161h-0.178h-2.008h-0.178l-0.072,0.161l-8.657,19.131l-0.176,0.385h0.427h2.197H57.346z M64.605,9.683l3.894,8.743h-7.813
+	L64.605,9.683z M79.638,25.919h0.272v-0.271v-6.43h4.341c3.851,0,7.736-2.006,7.736-6.488v-0.055c0-3.825-2.898-6.298-7.385-6.298
+	h-7.108H77.22V6.65v18.997v0.271h0.274H79.638z M79.911,8.905h4.53c3.068,0,4.828,1.404,4.828,3.852v0.055
+	c0,2.371-1.938,3.904-4.938,3.904h-4.421V8.905z M129.206,25.919v-0.271V6.65V6.377h-0.272h-2.145h-0.275V6.65v18.997v0.271h0.275
+	h2.145H129.206z M163.66,36.492c-3.07-0.658-3.632-1.353-3.632-2.484v-0.04c0-1.186,1.128-2.014,2.743-2.014
+	c1.437,0,2.681,0.47,3.916,1.477l0.22,0.181l0.174-0.228l0.93-1.234l0.16-0.212l-0.208-0.167c-1.571-1.263-3.111-1.802-5.15-1.802
+	c-2.855,0-4.931,1.742-4.931,4.142v0.04c0,2.72,1.988,3.708,4.974,4.356c2.932,0.617,3.469,1.302,3.469,2.424v0.04
+	c0,1.277-1.159,2.136-2.885,2.136c-1.801,0-3.155-0.56-4.675-1.934l-0.211-0.188l-0.184,0.215l-0.991,1.176l-0.17,0.202l0.198,0.179
+	c1.785,1.593,3.683,2.336,5.973,2.336c3.009,0,5.111-1.76,5.111-4.281v-0.042C168.491,38.511,167.046,37.232,163.66,36.492z
+	 M158.01,25.919c6.01,0,10.369-4.106,10.369-9.771v-0.054c0-5.631-4.359-9.718-10.369-9.718h-6.593h-0.274V6.65v18.997v0.271h0.274
+	H158.01z M153.835,8.905h4.175c4.473,0,7.598,2.979,7.598,7.243v0.055c0,4.232-3.125,7.188-7.598,7.188h-4.175V8.905z
+	 M80.319,30.231l-0.074-0.161h-0.176h-1.5h-0.176l-0.073,0.161l-6.458,14.271l-0.174,0.387h0.425h1.639h0.177l0.074-0.162
+	l1.605-3.583h7.359l1.586,3.582l0.073,0.163h0.177h1.722h0.425l-0.176-0.387L80.319,30.231z M76.483,39.159l2.813-6.281l2.799,6.281
+	H76.483z M123.459,25.919v-0.271v-1.981v-0.274h-0.272h-8.314V6.65V6.377h-0.273h-2.145h-0.274V6.65v18.997v0.271h0.274h10.732
+	H123.459z M120.216,38.99c2.288-0.563,3.653-2.136,3.653-4.294v-0.04c0-1.171-0.417-2.231-1.174-2.987
+	c-0.965-0.966-2.465-1.498-4.223-1.498h-6.094h-0.272v0.274v14.17v0.274h0.272h1.601h0.272v-0.274v-5.232h3.637l4.03,5.396
+	l0.082,0.11h0.137h1.964h0.549l-0.331-0.439L120.216,38.99z M114.252,37.397v-5.199h4.1c2.13,0,3.351,0.917,3.351,2.52v0.04
+	c0,1.604-1.322,2.64-3.37,2.64H114.252z M100.669,42.885v-4.411h7.457h0.276v-0.275v-1.457v-0.275h-0.276h-7.457v-4.288h8.368h0.275
+	v-0.275v-1.457v-0.274h-0.275H98.796h-0.274v0.274v14.17v0.274h0.274h10.345h0.273v-0.274v-1.457v-0.273h-0.273H100.669z
+	 M127.076,30.171H126.8v0.274v14.17v0.274h0.275h1.598h0.275v-0.274v-14.17v-0.274h-0.275H127.076z M109.507,12.729v-0.055
+	c0-3.825-2.898-6.298-7.384-6.298h-7.108H94.74V6.65v18.997v0.271h0.275h2.143h0.274v-0.271v-6.43h4.339
+	C105.622,19.218,109.507,17.212,109.507,12.729z M97.432,8.905h4.528c3.067,0,4.828,1.404,4.828,3.852v0.055
+	c0,2.371-1.938,3.904-4.937,3.904h-4.42V8.905z M84.927,30.171h-0.272v0.274v1.477v0.276h0.272h4.483v12.417v0.274h0.273h1.624
+	h0.276v-0.274V32.198h4.482h0.273v-0.276v-1.477v-0.274h-0.273H84.927z M139.579,30.231l-0.074-0.161h-0.174h-1.499h-0.177
+	l-0.071,0.161l-6.458,14.271l-0.176,0.387h0.426h1.638h0.176l0.075-0.162l1.605-3.583h7.359l1.588,3.582l0.071,0.163h0.179h1.721
+	h0.425l-0.176-0.387L139.579,30.231z M135.745,39.159l2.813-6.281l2.799,6.281H135.745z"/>
+<g>
+	<path fill="currentColor" d="M171.924,41.662v-0.021c0-1.867,1.517-3.43,3.443-3.43c1.923,0,3.423,1.544,3.423,3.414v0.016
+		c0,1.869-1.519,3.437-3.442,3.437C173.423,45.077,171.924,43.532,171.924,41.662z M178.478,41.641v-0.016
+		c0-1.718-1.338-3.12-3.11-3.12c-1.784,0-3.132,1.421-3.132,3.136v0.021c0,1.715,1.338,3.117,3.112,3.117
+		C177.129,44.779,178.478,43.358,178.478,41.641z M174.01,39.784h1.575c0.445,0,0.813,0.142,1.042,0.37
+		c0.172,0.16,0.284,0.399,0.284,0.68v0.021c0,0.569-0.381,0.908-0.908,1.032l1.09,1.415h-0.646l-1.014-1.328h-0.019h-0.884v1.328
+		h-0.521V39.784z M175.536,41.508c0.495,0,0.839-0.225,0.839-0.624v-0.018c0-0.371-0.305-0.61-0.807-0.61h-1.036v1.252H175.536z"/>
+</g>
+</svg></button>
+              <button class="rail-item" data-go="1" aria-label="PRACSYS Lab"><img src="assets/logos/pracsys.png" alt=""></button>
+              <button class="rail-item" data-go="2" aria-label="Atyeti"><img class="logo-base" src="assets/logos/atyeti-white.png" alt=""><img class="logo-brand" src="assets/logos/atyeti.png" alt=""></button>
+              <button class="rail-item" data-go="3" aria-label="Team Tranquil"><img src="assets/logos/teamtranquil-white.png" alt=""></button>
+            </nav>
+
+            <!-- Chapters -->
+            <div class="exp-card glass" id="exp-card">
+
+              <!-- 0: Applied Materials -->
+              <article class="exp-chapter" data-chapter="0">
+                <div class="exp-chead">
+                  <div class="exp-clogo" style="--brand:#569BBE"><svg class="am-logo" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 178.791 45.092" >
+<path fill="currentColor" d="M29.242,6.267L9.271,6.25L6.182,9.372l23.06,0.012c3.525,0,6.373,2.796,6.373,6.241v29.239h3.197
+	l0.01-29.239C38.822,10.456,34.532,6.267,29.242,6.267z M45.215,44.864l-0.003-29.239c0-8.612-7.151-15.623-15.971-15.623L15.448,0
+	L12.36,3.122l16.882,0.004c7.054,0,12.772,5.608,12.772,12.499v29.239H45.215z M29.242,12.505L3.098,12.499L0,15.619h0.042L0,15.625
+	l0.001,13.621c0,7.944,6.054,14.521,13.924,15.5l2.951-2.997l-0.903-0.005c-7.057,0-12.777-5.61-12.777-12.498V15.62h3.202
+	L6.39,29.246c0,5.164,4.29,9.355,9.583,9.355h4.012l3.084-3.119h-7.096c-3.527,0-6.374-2.794-6.374-6.236V15.62h3.169l0.003,13.626
+	c0.01,1.722,1.436,3.113,3.201,3.113h10.179l3.08-3.11l-13.259-0.003V15.622l13.269,0.003v29.239h3.203l-0.001-29.239
+	C32.433,13.9,31.006,12.505,29.242,12.505z"/>
+<path fill="currentColor" d="M136.111,23.418v-6.101h10.09h0.276v-0.272v-1.954v-0.274h-0.276h-10.09V8.88h11.313h0.274V8.606V6.65V6.377
+	h-0.274h-13.731h-0.275V6.65v18.997v0.271h0.275h13.866h0.274v-0.271v-1.955v-0.274h-0.274H136.111z M67.86,30.171h-0.146
+	l-0.08,0.122l-4.936,7.392l-4.935-7.392l-0.081-0.122h-0.146h-1.62h-0.273v0.274v14.17v0.274h0.273h1.56h0.274v-0.274V34.046
+	l4.661,6.838l0.081,0.118h0.146h0.082h0.144l0.081-0.118l4.662-6.855v10.587v0.274h0.274h1.599h0.274v-0.274v-14.17v-0.274H69.48
+	H67.86z M150.291,42.864V30.445v-0.274h-0.272h-1.599h-0.273v0.274v14.17v0.274h0.273h7.188h0.275v-0.274v-1.477v-0.274h-0.275
+	H150.291z M57.346,25.919l0.073-0.16l2.179-4.858h9.984l2.153,4.857l0.071,0.161h0.18h2.305h0.425l-0.176-0.385L65.885,6.403
+	l-0.071-0.161h-0.178h-2.008h-0.178l-0.072,0.161l-8.657,19.131l-0.176,0.385h0.427h2.197H57.346z M64.605,9.683l3.894,8.743h-7.813
+	L64.605,9.683z M79.638,25.919h0.272v-0.271v-6.43h4.341c3.851,0,7.736-2.006,7.736-6.488v-0.055c0-3.825-2.898-6.298-7.385-6.298
+	h-7.108H77.22V6.65v18.997v0.271h0.274H79.638z M79.911,8.905h4.53c3.068,0,4.828,1.404,4.828,3.852v0.055
+	c0,2.371-1.938,3.904-4.938,3.904h-4.421V8.905z M129.206,25.919v-0.271V6.65V6.377h-0.272h-2.145h-0.275V6.65v18.997v0.271h0.275
+	h2.145H129.206z M163.66,36.492c-3.07-0.658-3.632-1.353-3.632-2.484v-0.04c0-1.186,1.128-2.014,2.743-2.014
+	c1.437,0,2.681,0.47,3.916,1.477l0.22,0.181l0.174-0.228l0.93-1.234l0.16-0.212l-0.208-0.167c-1.571-1.263-3.111-1.802-5.15-1.802
+	c-2.855,0-4.931,1.742-4.931,4.142v0.04c0,2.72,1.988,3.708,4.974,4.356c2.932,0.617,3.469,1.302,3.469,2.424v0.04
+	c0,1.277-1.159,2.136-2.885,2.136c-1.801,0-3.155-0.56-4.675-1.934l-0.211-0.188l-0.184,0.215l-0.991,1.176l-0.17,0.202l0.198,0.179
+	c1.785,1.593,3.683,2.336,5.973,2.336c3.009,0,5.111-1.76,5.111-4.281v-0.042C168.491,38.511,167.046,37.232,163.66,36.492z
+	 M158.01,25.919c6.01,0,10.369-4.106,10.369-9.771v-0.054c0-5.631-4.359-9.718-10.369-9.718h-6.593h-0.274V6.65v18.997v0.271h0.274
+	H158.01z M153.835,8.905h4.175c4.473,0,7.598,2.979,7.598,7.243v0.055c0,4.232-3.125,7.188-7.598,7.188h-4.175V8.905z
+	 M80.319,30.231l-0.074-0.161h-0.176h-1.5h-0.176l-0.073,0.161l-6.458,14.271l-0.174,0.387h0.425h1.639h0.177l0.074-0.162
+	l1.605-3.583h7.359l1.586,3.582l0.073,0.163h0.177h1.722h0.425l-0.176-0.387L80.319,30.231z M76.483,39.159l2.813-6.281l2.799,6.281
+	H76.483z M123.459,25.919v-0.271v-1.981v-0.274h-0.272h-8.314V6.65V6.377h-0.273h-2.145h-0.274V6.65v18.997v0.271h0.274h10.732
+	H123.459z M120.216,38.99c2.288-0.563,3.653-2.136,3.653-4.294v-0.04c0-1.171-0.417-2.231-1.174-2.987
+	c-0.965-0.966-2.465-1.498-4.223-1.498h-6.094h-0.272v0.274v14.17v0.274h0.272h1.601h0.272v-0.274v-5.232h3.637l4.03,5.396
+	l0.082,0.11h0.137h1.964h0.549l-0.331-0.439L120.216,38.99z M114.252,37.397v-5.199h4.1c2.13,0,3.351,0.917,3.351,2.52v0.04
+	c0,1.604-1.322,2.64-3.37,2.64H114.252z M100.669,42.885v-4.411h7.457h0.276v-0.275v-1.457v-0.275h-0.276h-7.457v-4.288h8.368h0.275
+	v-0.275v-1.457v-0.274h-0.275H98.796h-0.274v0.274v14.17v0.274h0.274h10.345h0.273v-0.274v-1.457v-0.273h-0.273H100.669z
+	 M127.076,30.171H126.8v0.274v14.17v0.274h0.275h1.598h0.275v-0.274v-14.17v-0.274h-0.275H127.076z M109.507,12.729v-0.055
+	c0-3.825-2.898-6.298-7.384-6.298h-7.108H94.74V6.65v18.997v0.271h0.275h2.143h0.274v-0.271v-6.43h4.339
+	C105.622,19.218,109.507,17.212,109.507,12.729z M97.432,8.905h4.528c3.067,0,4.828,1.404,4.828,3.852v0.055
+	c0,2.371-1.938,3.904-4.937,3.904h-4.42V8.905z M84.927,30.171h-0.272v0.274v1.477v0.276h0.272h4.483v12.417v0.274h0.273h1.624
+	h0.276v-0.274V32.198h4.482h0.273v-0.276v-1.477v-0.274h-0.273H84.927z M139.579,30.231l-0.074-0.161h-0.174h-1.499h-0.177
+	l-0.071,0.161l-6.458,14.271l-0.176,0.387h0.426h1.638h0.176l0.075-0.162l1.605-3.583h7.359l1.588,3.582l0.071,0.163h0.179h1.721
+	h0.425l-0.176-0.387L139.579,30.231z M135.745,39.159l2.813-6.281l2.799,6.281H135.745z"/>
+<g>
+	<path fill="currentColor" d="M171.924,41.662v-0.021c0-1.867,1.517-3.43,3.443-3.43c1.923,0,3.423,1.544,3.423,3.414v0.016
+		c0,1.869-1.519,3.437-3.442,3.437C173.423,45.077,171.924,43.532,171.924,41.662z M178.478,41.641v-0.016
+		c0-1.718-1.338-3.12-3.11-3.12c-1.784,0-3.132,1.421-3.132,3.136v0.021c0,1.715,1.338,3.117,3.112,3.117
+		C177.129,44.779,178.478,43.358,178.478,41.641z M174.01,39.784h1.575c0.445,0,0.813,0.142,1.042,0.37
+		c0.172,0.16,0.284,0.399,0.284,0.68v0.021c0,0.569-0.381,0.908-0.908,1.032l1.09,1.415h-0.646l-1.014-1.328h-0.019h-0.884v1.328
+		h-0.521V39.784z M175.536,41.508c0.495,0,0.839-0.225,0.839-0.624v-0.018c0-0.371-0.305-0.61-0.807-0.61h-1.036v1.252H175.536z"/>
+</g>
+</svg></div>
+                  <p class="eyebrow">May 2026 to Aug 2026 · Santa Clara, CA</p>
+                  <h2 class="exp-role">Software Engineering Intern</h2>
+                  <p class="exp-company">Applied Materials</p>
+                  <div class="exp-metric-inline"><span class="num">60%</span><span class="cap">faster defect reviews</span></div>
+                </div>
+                <div class="exp-beats">
+                  <div class="exp-beat">
+                    <p class="exp-beat-label">Product</p>
+                    <p class="exp-headline">Shipped a production semiconductor chip-inspection platform used by leading manufacturers to catch defects before costly production.</p>
+                    <ul class="exp-callouts">
+                      <li class="callout"><i>›</i><span>Modernized review tooling with an interactive <b>3D chip model</b> (React Three), replacing legacy data tables and cutting review time by <b>60%</b></span></li>
+                      <li class="callout"><i>›</i><span>Designed a <b>multi-chip comparison tool</b>: highlights differences, supports data tuning, and cuts user error by <b>40%</b> with zero server calls</span></li>
+                      <li class="callout"><i>›</i><span>Reverse-engineered an undocumented <b>auth and locking system</b> from decompiled source, delivering the first write path into a locked service</span></li>
+                    </ul>
                   </div>
-                  <div>
-                    <p class="text-emerald font-grotesk text-xs tracking-wider uppercase">May 2024 &mdash; Aug 2024</p>
-                    <h3 class="text-2xl sm:text-3xl md:text-4xl font-bold font-grotesk leading-tight">Software Engineering Intern</h3>
+                  <div class="exp-beat">
+                    <p class="exp-beat-label">Backend &amp; infra</p>
+                    <p class="exp-headline">Built the backend and the delivery pipeline behind it.</p>
+                    <ul class="exp-callouts">
+                      <li class="callout"><i>›</i><span>Built a <b>Java / Spring Boot</b> backend aggregating multi-service <b>gRPC</b> data, swappable between data sources with zero code changes</span></li>
+                      <li class="callout"><i>›</i><span>Deployed <b>Docker images</b> to a <b>Kubernetes</b> cluster with isolated instances, automated rollouts, config management, and instant rollback</span></li>
+                      <li class="callout"><i>›</i><span>Engineered a <b>config-driven tier system</b> gating features and data access per customer, opening a paid tier projected to lift account value <b>~15%</b></span></li>
+                    </ul>
+                  </div>
+                  <div class="exp-beat">
+                    <p class="exp-beat-label">AI assistant</p>
+                    <p class="exp-headline">Put an AI assistant inside the app.</p>
+                    <ul class="exp-callouts">
+                      <li class="callout"><i>›</i><span>Integrated an <b>agentic voice AI assistant</b> (LLM + speech-to-text) letting engineers query and operate the app hands-free in plain language</span></li>
+                      <li class="callout"><i>›</i><span>Deployed a <b>self-hosted, on-prem LLM</b> (vLLM) with a custom tool-calling layer grounded in live app state over secure JWT streaming</span></li>
+                    </ul>
                   </div>
                 </div>
-                <p class="text-gray-400 font-light text-lg mb-8 ml-[4.5rem]">Atyeti Inc. &bull; Princeton, NJ</p>
+                <div class="exp-tags"><span class="chip">React Three</span><span class="chip">Java · Spring Boot</span><span class="chip">gRPC</span><span class="chip">Docker · Kubernetes</span><span class="chip">vLLM</span><span class="chip">Agentic AI</span></div>
+              </article>
 
-                <div class="space-y-3 mb-8 ml-2">
-                  <div class="flex gap-3 items-start">
-                    <span class="text-emerald mt-1.5 text-xs">&#9654;</span>
-                    <p class="text-gray-300 leading-relaxed">Transformed <span class="text-white font-medium">Python/PyTorch</span> data workflows for financial clients, automating large-scale dataset cleaning</p>
-                  </div>
-                  <div class="flex gap-3 items-start">
-                    <span class="text-emerald mt-1.5 text-xs">&#9654;</span>
-                    <p class="text-gray-300 leading-relaxed">Trained CNN and ViT models achieving <span class="text-white font-medium">98% accuracy</span> on MNIST through optimized transfer learning</p>
-                  </div>
-                  <div class="flex gap-3 items-start">
-                    <span class="text-emerald mt-1.5 text-xs">&#9654;</span>
-                    <p class="text-gray-300 leading-relaxed">Deployed inference logic as <span class="text-white font-medium">containerized microservices</span> using Docker for production</p>
-                  </div>
-                  <div class="flex gap-3 items-start">
-                    <span class="text-emerald mt-1.5 text-xs">&#9654;</span>
-                    <p class="text-gray-300 leading-relaxed">Automated Excel/CSV validation, reducing manual reformatting by <span class="text-white font-medium">18 hrs/project</span> (97% accuracy)</p>
-                  </div>
-                  <div class="flex gap-3 items-start">
-                    <span class="text-emerald mt-1.5 text-xs">&#9654;</span>
-                    <p class="text-gray-300 leading-relaxed">Implemented <span class="text-white font-medium">CI/CD deployment automation</span> with Agile/Scrum workflow using JIRA</p>
+              <!-- 1: PRACSYS -->
+              <article class="exp-chapter" data-chapter="1">
+                <div class="exp-chead">
+                  <div class="exp-clogo"><img src="assets/logos/pracsys.png" alt="PRACSYS Lab"></div>
+                  <p class="eyebrow">Apr 2025 to Sep 2025 · New Brunswick, NJ</p>
+                  <h2 class="exp-role">Software Engineering Intern</h2>
+                  <p class="exp-company">PRACSYS Lab: Physical AI · Rutgers University</p>
+                  <div class="exp-metric-inline"><span class="num">35%</span><span class="cap">training efficiency gain</span></div>
+                </div>
+                <div class="exp-beats">
+                  <div class="exp-beat">
+                    <p class="exp-headline">Taught a 6-DOF robot arm to move from human demonstrations.</p>
+                    <ul class="exp-callouts">
+                      <li class="callout"><i>›</i><span>Designed AI robotic motion systems in <b>Python/ROS</b>, implementing frameworks under the GELLO imitation-learning architecture</span></li>
+                      <li class="callout"><i>›</i><span>Deployed supervised learning pipelines for 6-DOF robotic arm, improving <b>training efficiency by 35%</b></span></li>
+                      <li class="callout"><i>›</i><span>Engineered reinforcement, diffusion, and flow-matching models in <b>PyTorch</b> for noisy environments</span></li>
+                      <li class="callout"><i>›</i><span>Conducted joint-state noise experiments improving <b>path stability by 22%</b></span></li>
+                      <li class="callout"><i>›</i><span>Built <b>MuJoCo simulations</b> and benchmarking tools for real-time debugging</span></li>
+                    </ul>
                   </div>
                 </div>
-              </div>
-              <div class="exp-tags-inner flex flex-wrap gap-2 ml-2">
-                <span class="text-xs bg-accentgreen/10 text-emerald px-3 py-1.5 rounded-lg font-grotesk border border-accentgreen/20">PyTorch</span>
-                <span class="text-xs bg-accentgreen/10 text-emerald px-3 py-1.5 rounded-lg font-grotesk border border-accentgreen/20">Docker</span>
-                <span class="text-xs bg-accentgreen/10 text-emerald px-3 py-1.5 rounded-lg font-grotesk border border-accentgreen/20">CI/CD</span>
-                <span class="text-xs bg-accentgreen/10 text-emerald px-3 py-1.5 rounded-lg font-grotesk border border-accentgreen/20">98% Accuracy</span>
-              </div>
+                <div class="exp-tags"><span class="chip">Python/ROS</span><span class="chip">PyTorch</span><span class="chip">MuJoCo</span><span class="chip">Imitation Learning</span></div>
+              </article>
+
+              <!-- 2: Atyeti -->
+              <article class="exp-chapter" data-chapter="2">
+                <div class="exp-chead">
+                  <div class="exp-clogo"><img src="assets/logos/atyeti-white.png" alt="Atyeti"></div>
+                  <p class="eyebrow">May 2024 to Aug 2024 · Princeton, NJ</p>
+                  <h2 class="exp-role">Software Engineering Intern</h2>
+                  <p class="exp-company">Atyeti Inc.</p>
+                  <div class="exp-metric-inline"><span class="num">18 hrs</span><span class="cap">saved per project</span></div>
+                </div>
+                <div class="exp-beats">
+                  <div class="exp-beat">
+                    <p class="exp-headline">Automated financial data pipelines and shipped them as microservices.</p>
+                    <ul class="exp-callouts">
+                      <li class="callout"><i>›</i><span>Transformed <b>Python/PyTorch</b> data workflows for financial clients, automating large-scale dataset cleaning</span></li>
+                      <li class="callout"><i>›</i><span>Trained CNN and ViT models achieving <b>98% accuracy</b> on MNIST through optimized transfer learning</span></li>
+                      <li class="callout"><i>›</i><span>Deployed inference logic as <b>containerized microservices</b> using Docker for production</span></li>
+                      <li class="callout"><i>›</i><span>Automated Excel/CSV validation, reducing manual reformatting by <b>18 hrs/project</b> (97% accuracy)</span></li>
+                      <li class="callout"><i>›</i><span>Implemented <b>CI/CD deployment automation</b> with Agile/Scrum workflow using JIRA</span></li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="exp-tags"><span class="chip">PyTorch</span><span class="chip">Docker</span><span class="chip">CI/CD</span><span class="chip">98% Accuracy</span></div>
+              </article>
+
+              <!-- 3: Team Tranquil -->
+              <article class="exp-chapter" data-chapter="3">
+                <div class="exp-chead">
+                  <div class="exp-clogo"><img src="assets/logos/teamtranquil-white.png" alt="Team Tranquil"></div>
+                  <p class="eyebrow">Jul 2023 to Sep 2023 · Fairfield, NJ</p>
+                  <h2 class="exp-role">Software Engineering Intern</h2>
+                  <p class="exp-company">Team Tranquil Inc.</p>
+                  <div class="exp-metric-inline"><span class="num">50%</span><span class="cap">faster page loads</span></div>
+                </div>
+                <div class="exp-beats">
+                  <div class="exp-beat">
+                    <p class="exp-headline">Built and sped up full-stack features for a production platform.</p>
+                    <ul class="exp-callouts">
+                      <li class="callout"><i>›</i><span>Built <b>full-stack web solutions</b> improving platform reliability, scalability, and UX</span></li>
+                      <li class="callout"><i>›</i><span>Delivered production features using <b>HTML, CSS, JavaScript, C#, and SQL</b> in Agile sprints</span></li>
+                      <li class="callout"><i>›</i><span>Redesigned SQL-backed image management, improving <b>reliability by 33%</b> and <b>load time by 50%</b></span></li>
+                      <li class="callout"><i>›</i><span>Built reusable <b>API endpoints</b> and front-end modules for interactive dashboards</span></li>
+                      <li class="callout"><i>›</i><span>Collaborated on UI and cross-browser testing with <b>Chrome DevTools and Bootstrap</b></span></li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="exp-tags"><span class="chip">C# / ASP.NET</span><span class="chip">SQL</span><span class="chip">Bootstrap</span><span class="chip">+50% Speed</span></div>
+              </article>
             </div>
+
+            <!-- Metric aside (desktop) -->
+            <aside class="exp-aside" aria-hidden="true">
+              <div class="metric-block" data-chapter="0">
+                <div class="metric-num" data-target="60" data-suffix="%">0%</div>
+                <p class="metric-cap">faster defect reviews</p>
+                <ul class="beat-list"><li>Product</li><li>Backend &amp; infra</li><li>AI assistant</li></ul>
+              </div>
+              <div class="metric-block" data-chapter="1">
+                <div class="metric-num" data-target="35" data-suffix="%">0%</div>
+                <p class="metric-cap">training efficiency gain</p>
+              </div>
+              <div class="metric-block" data-chapter="2">
+                <div class="metric-num" data-target="18" data-suffix=" hrs">0 hrs</div>
+                <p class="metric-cap">saved per project</p>
+              </div>
+              <div class="metric-block" data-chapter="3">
+                <div class="metric-num" data-target="50" data-suffix="%">0%</div>
+                <p class="metric-cap">faster page loads</p>
+              </div>
+            </aside>
           </div>
-
-          <!-- Frame 2: Team Tranquil -->
-          <div class="exp-frame" data-frame="2">
-            <div class="max-w-4xl mx-auto px-6 sm:px-10 lg:px-16 w-full">
-              <div class="exp-content-inner">
-                <div class="flex items-center gap-4 mb-2">
-                  <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-accentgreen to-emerald flex items-center justify-center shadow-lg shadow-emerald/20 flex-shrink-0">
-                    <i class="fas fa-laptop-code text-xl text-black"></i>
-                  </div>
-                  <div>
-                    <p class="text-emerald font-grotesk text-xs tracking-wider uppercase">Jul 2023 &mdash; Sep 2023</p>
-                    <h3 class="text-2xl sm:text-3xl md:text-4xl font-bold font-grotesk leading-tight">Software Engineering Intern</h3>
-                  </div>
-                </div>
-                <p class="text-gray-400 font-light text-lg mb-8 ml-[4.5rem]">Team Tranquil Inc. &bull; Fairfield, NJ</p>
-
-                <div class="space-y-3 mb-8 ml-2">
-                  <div class="flex gap-3 items-start">
-                    <span class="text-emerald mt-1.5 text-xs">&#9654;</span>
-                    <p class="text-gray-300 leading-relaxed">Built <span class="text-white font-medium">full-stack web solutions</span> improving platform reliability, scalability, and UX</p>
-                  </div>
-                  <div class="flex gap-3 items-start">
-                    <span class="text-emerald mt-1.5 text-xs">&#9654;</span>
-                    <p class="text-gray-300 leading-relaxed">Delivered production features using <span class="text-white font-medium">HTML, CSS, JavaScript, C#, and SQL</span> in Agile sprints</p>
-                  </div>
-                  <div class="flex gap-3 items-start">
-                    <span class="text-emerald mt-1.5 text-xs">&#9654;</span>
-                    <p class="text-gray-300 leading-relaxed">Redesigned SQL-backed image management, improving <span class="text-white font-medium">reliability by 33%</span> and <span class="text-white font-medium">load time by 50%</span></p>
-                  </div>
-                  <div class="flex gap-3 items-start">
-                    <span class="text-emerald mt-1.5 text-xs">&#9654;</span>
-                    <p class="text-gray-300 leading-relaxed">Built reusable <span class="text-white font-medium">API endpoints</span> and front-end modules for interactive dashboards</p>
-                  </div>
-                  <div class="flex gap-3 items-start">
-                    <span class="text-emerald mt-1.5 text-xs">&#9654;</span>
-                    <p class="text-gray-300 leading-relaxed">Collaborated on UI and cross-browser testing with <span class="text-white font-medium">Chrome DevTools and Bootstrap</span></p>
-                  </div>
-                </div>
-              </div>
-              <div class="exp-tags-inner flex flex-wrap gap-2 ml-2">
-                <span class="text-xs bg-accentgreen/10 text-emerald px-3 py-1.5 rounded-lg font-grotesk border border-accentgreen/20">C# / ASP.NET</span>
-                <span class="text-xs bg-accentgreen/10 text-emerald px-3 py-1.5 rounded-lg font-grotesk border border-accentgreen/20">SQL</span>
-                <span class="text-xs bg-accentgreen/10 text-emerald px-3 py-1.5 rounded-lg font-grotesk border border-accentgreen/20">Bootstrap</span>
-                <span class="text-xs bg-accentgreen/10 text-emerald px-3 py-1.5 rounded-lg font-grotesk border border-accentgreen/20">+50% Speed</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Frame 3: Education -->
-          <div class="exp-frame" data-frame="3">
-            <div class="max-w-4xl mx-auto px-6 sm:px-10 lg:px-16 w-full">
-              <div class="exp-content-inner">
-                <div class="flex items-center gap-4 mb-2">
-                  <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-accentgreen to-emerald flex items-center justify-center shadow-lg shadow-emerald/20 flex-shrink-0">
-                    <i class="fas fa-graduation-cap text-xl text-black"></i>
-                  </div>
-                  <div>
-                    <p class="text-emerald font-grotesk text-xs tracking-wider uppercase">2022 &mdash; Dec 2026</p>
-                    <h3 class="text-2xl sm:text-3xl md:text-4xl font-bold font-grotesk leading-tight">B.S. Computer Science &amp; Data Science</h3>
-                  </div>
-                </div>
-                <p class="text-gray-400 font-light text-lg mb-8 ml-[4.5rem]">Rutgers University &bull; GPA 3.96 &bull; Dean's List</p>
-
-                <div class="space-y-3 mb-8 ml-2">
-                  <div class="flex gap-3 items-start">
-                    <span class="text-emerald mt-1.5 text-xs">&#9654;</span>
-                    <p class="text-gray-300 leading-relaxed"><span class="text-white font-medium">Robotics Team Captain</span> &mdash; leading competitive VEX robotics</p>
-                  </div>
-                  <div class="flex gap-3 items-start">
-                    <span class="text-emerald mt-1.5 text-xs">&#9654;</span>
-                    <p class="text-gray-300 leading-relaxed"><span class="text-white font-medium">Competitive Programming Team</span> member</p>
-                  </div>
-                  <div class="flex gap-3 items-start">
-                    <span class="text-emerald mt-1.5 text-xs">&#9654;</span>
-                    <p class="text-gray-300 leading-relaxed"><span class="text-white font-medium">AI Club &amp; Data Science Club</span></p>
-                  </div>
-                  <div class="flex gap-3 items-start">
-                    <span class="text-emerald mt-1.5 text-xs">&#9654;</span>
-                    <p class="text-gray-300 leading-relaxed"><span class="text-white font-medium">Aresty RAD Research Program</span></p>
-                  </div>
-                </div>
-              </div>
-              <div class="exp-tags-inner flex flex-wrap gap-2 ml-2">
-                <span class="text-xs bg-accentgreen/10 text-emerald px-3 py-1.5 rounded-lg font-grotesk border border-accentgreen/20">AI/ML</span>
-                <span class="text-xs bg-accentgreen/10 text-emerald px-3 py-1.5 rounded-lg font-grotesk border border-accentgreen/20">Robotics</span>
-                <span class="text-xs bg-accentgreen/10 text-emerald px-3 py-1.5 rounded-lg font-grotesk border border-accentgreen/20">Research</span>
-                <span class="text-xs bg-accentgreen/10 text-emerald px-3 py-1.5 rounded-lg font-grotesk border border-accentgreen/20">Dean's List</span>
-              </div>
-            </div>
-          </div>
-
-        </div><!-- end exp-display -->
-
-        <!-- Scroll spacer -->
-        <div class="exp-scroll-spacer" id="exp-scroll-spacer"></div>
-      </div><!-- end exp-scroll-area -->
-
-      <!-- Side navigation dots -->
-      <div class="exp-nav-dots" id="exp-nav-dots">
-        <div class="exp-dot active" data-index="0" data-label="PRACSYS Lab"></div>
-        <div class="exp-dot" data-index="1" data-label="Atyeti Inc."></div>
-        <div class="exp-dot" data-index="2" data-label="Team Tranquil"></div>
-        <div class="exp-dot" data-index="3" data-label="Education"></div>
+        </div>
+        <div class="exp-progress"><div id="exp-progress-fill"></div></div>
       </div>
-
     </section>
 
-    <!-- ───── PROJECTS — Infinite Carousel ───── -->
-    <section id="projects" class="py-28 bg-black relative">
-      <div class="absolute inset-0 bg-gradient-to-b from-darkgreen/10 via-transparent to-transparent pointer-events-none"></div>
-      <div class="max-w-7xl mx-auto px-4 relative">
-        <div class="text-center mb-16 reveal">
-          <p class="text-emerald font-grotesk text-sm tracking-widest uppercase mb-3">Portfolio</p>
-          <h2 class="text-4xl md:text-5xl font-bold font-grotesk">My Projects</h2>
-        </div>
-
-        <div class="carousel-viewport py-8" id="carousel-viewport">
-          <div class="carousel-belt" id="carousel-belt">
-            <!-- Filled by JS for infinite loop -->
+    <!-- ───── EDUCATION ───── -->
+    <section id="education" class="relative overflow-hidden" style="background:#070907" aria-label="Education">
+      <div class="aurora"><i class="a1" style="opacity:.5"></i><i class="a2" style="top:auto;bottom:-250px;opacity:.35"></i></div>
+      <div class="relative z-[2] max-w-[1440px] mx-auto px-6 lg:px-16 py-16 lg:py-20">
+        <div class="glass edu-band reveal grid lg:grid-cols-[1.15fr_1fr] gap-10 lg:gap-14 items-center" style="border-radius:32px">
+          <div>
+            <div style="--brand:#CC0033"><svg class="edu-logo" role="img" aria-label="Rutgers University, New Brunswick" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+	 viewBox="0 0 500 122.898">
+<path fill-rule="evenodd" clip-rule="evenodd" class="ru-a" d="M110.375,69.622c-1.239-1.241-1.951-2.487-3.282-2.484
+	c-1.24,0-8.604,5.593-20.409,5.593c-18.37,0-19.879-10.569-19.879-22.643V26.639c0-10.835,0-11.279-3.459-11.633l-3.196-0.267
+	v-1.909h21.566v1.909l-3.194,0.267c-3.461,0.354-3.461,0.797-3.461,11.633v22.025c0,12.699,2.13,21.136,15.883,21.136
+	c9.23,0,14.733-5.505,16.063-7.104V26.639c0-10.834,0-11.278-3.464-11.633l-3.191-0.267v-1.909h21.563v1.909l-3.196,0.267
+	c-3.459,0.355-3.459,0.799-3.459,11.633v44.76l-2.662,0.799L110.375,69.622z M136.368,71.399h24.582v-1.914l-3.197-0.262
+	c-4.968-0.355-4.968-0.798-4.968-11.633V15.315h4.613c12.513,0,12.689,1.333,14.642,11.633h2.129c0-0.355-0.442-12.164-0.797-14.115
+	h-49.428c-0.357,1.952-0.798,13.76-0.798,14.115h2.128c1.95-10.3,2.127-11.633,14.643-11.633h4.615V57.59
+	c0,10.835,0,11.278-4.88,11.633l-3.284,0.262V71.399z M228.8,59.717c0-8.638,0-9.081,1.686-9.438l3.195-0.269v-1.907h-22.542v1.907
+	l3.197,0.269c6.208,0.357,6.208,0.799,6.208,11.667v6.7c-3.105,0.797-7.184,1.152-10.38,1.152
+	c-17.391,0-25.111-14.059-25.111-29.192c0-16.593,9.14-26.178,23.688-26.178c15.177,0,16.33,10.826,17.22,14.376l2.395-0.532
+	c-0.392-4.377-0.859-9.349-1.421-13.134c-2.307-1.418-9.049-3.641-18.1-3.641c-14.024,0-33.1,7.102-33.1,30.795
+	c0,22.614,15.971,30.437,33.81,30.437c9.493,0,16.284-2.553,19.425-3.539C228.97,69.191,228.8,62.39,228.8,59.717 M239.135,71.399
+	h40.644c1.161-4.802,2.148-9.229,2.927-14.733l-2.216-0.355c-1.778,7.281-2.663,12.603-16.797,12.603
+	c-3.185,0-6.46-0.53-9.647-1.152V42.203h7.878c6.904,0,8.501,0.088,9.03,3.729l0.448,3.013h2.341V32.976h-2.341l-0.448,3.016
+	c-0.529,3.639-2.126,3.726-9.03,3.726h-7.878V15.315h7.347c12.527,0,12.704,1.331,14.661,10.829l2.129-0.357
+	c0-0.799-0.445-11.002-0.801-12.954h-38.247v1.907l3.196,0.265c3.459,0.355,3.459,0.801,3.459,11.645v30.92
+	c0,10.854,0,11.298-3.459,11.653l-3.196,0.262V71.399z M289.659,69.487l3.196-0.266c3.46-0.355,3.46-0.797,3.46-11.643V26.647
+	c0-10.842,0-11.286-3.46-11.641l-3.196-0.267v-1.909h23.163c8.42,0,20.312,1.215,20.312,14.706c0,8.265-7.365,13.155-12.249,15.462
+	c1.333,2.484,4.266,8.177,6.665,12.444c3.722,6.67,7.629,11.913,9.845,13.161c0.89,0.532,2.484,0.883,4.438,0.883v1.912h-6.833
+	c-5.855,0-9.935-3.956-12.6-8.841l-3.548-6.847c-2.308-4.358-4.341-7.736-5.496-8.714c-1.425-1.158-3.639-1.158-5.502-1.158h-3.281
+	v11.738c0,10.846,0,11.288,3.366,11.643l3.197,0.266v1.912h-21.477V69.487z M304.572,43.356h5.055c7.452,0,14.19-3.994,14.19-14.019
+	c0-10.383-6.824-13.578-13.746-13.578c-1.86,0-3.726,0.355-5.499,0.709V43.356z M361.17,35.013
+	c-4.793-2.834-8.608-5.676-8.608-10.913c0-5.944,4.521-9.671,9.674-9.671c10.023,0,11.445,7.723,12.327,12.156h2.223
+	c-0.209-2.583-0.429-9.089-0.89-12.247c-2.307-1.417-6.741-2.84-12.241-2.84c-9.408,0-18.46,4.53-18.46,15.355
+	c0,6.651,4.704,12.152,9.759,14.906l5.681,3.106c6.926,3.101,12.338,7.542,12.338,14.021c0,6.92-4.53,10.912-10.651,10.912
+	c-12.158,0-15.439-10.555-16.416-16.948l-2.839,0.711c1.004,6.084,1.995,12.267,2.839,15.618c2.75,1.688,7.007,3.551,13.933,3.551
+	c9.402,0,20.491-4.618,20.491-16.593c0-10.654-7.267-14.377-14.285-18.37L361.17,35.013z M39.75,37.588c0,0-0.079-0.409-0.107-0.756
+	c7.139-3.508,12.979-9.102,12.979-17.694c0-21.229-20.375-19.076-35.47-19.079L0,0.057v1.675L3.611,2.03
+	C5.75,2.252,7.045,2.514,7.644,4.607c0.75,2.621,0.546,9.399,0.546,12.094v38.036c0,2.703,0.203,9.479-0.546,12.101
+	c-0.598,2.092-1.894,2.357-4.033,2.577L0,69.711v1.676h25.156v-1.676l-3.609-0.297c-2.091-0.22-3.352-0.492-3.934-2.577
+	c-0.738-2.646-0.531-9.381-0.531-12.101l0.006-14.784c1.756,0,5.134-0.01,6.27,0c1.958,0,4.326-0.014,6.142,0.947
+	c1.179,0.719,2.234,1.865,3.068,3.666c3.365,6.968,7.139,14.734,11.033,21.426c9.574,16.449,26.028,36.963,44.445,36.244
+	l2.284-0.077l0.015-2.059l-1.501-0.007c-13.033,0.819-30.444-24.534-37.242-37.071C48.596,57.655,40.759,43.212,39.75,37.588
+	 M17.102,3.894c2.344-0.467,4.708-0.931,7.11-0.931c11.642,0,18.156,7.007,18.156,18.427c0,10.499-6.42,16.136-16.926,16.136
+	c-2.72,0-5.636,0.22-8.354,0.079L17.102,3.894z"/>
+<path class="ru-b" d="M123.187,106.917v2.705c0,1.004,0.041,1.988,0.041,2.991c0,3.564-1.661,5.47-5.388,5.47
+	c-2.419,0-4.714-0.881-5.411-3.401c-0.205-0.735-0.205-1.515-0.205-2.273c0-2.992,0.041-5.983-0.062-8.954l0.124-0.144
+	c0.779-0.021,1.538-0.021,2.316-0.062l0.103,0.144c-0.103,2.603-0.083,5.203-0.083,7.806c0,1.538-0.184,3.729,1.352,4.651
+	c0.595,0.349,1.292,0.514,1.969,0.514c0.818,0,1.658-0.205,2.273-0.739c1.229-1.086,1.064-2.971,1.064-4.468
+	c0-2.561,0-5.142-0.144-7.702l0.103-0.144c0.636-0.021,1.25-0.021,1.886-0.062l0.123,0.144
+	C123.208,104.561,123.187,105.748,123.187,106.917 M141.882,117.632c-0.041-1.741-0.062-3.483-0.062-5.245
+	c0-2.991,0.062-5.982,0.062-8.994l-0.124-0.144c-0.656,0.04-1.292,0.063-1.945,0.063l-0.124,0.144
+	c0.205,3.952,0.246,7.928,0.349,11.883c-2.253-3.976-4.528-7.931-6.7-11.945l-0.226-0.144c-0.881,0.04-1.763,0.04-2.643,0.063
+	l-0.103,0.144c0.143,1.986,0.123,4.117,0.123,6.126c0,2.704,0.02,5.408-0.103,8.112l0.123,0.144
+	c0.657-0.041,1.333-0.062,1.987-0.062l0.103-0.144c-0.082-1.72-0.144-3.422-0.185-5.142l-0.205-7.028l3.237,5.777
+	c1.209,2.151,2.458,4.282,3.648,6.454l0.164,0.144c0.841-0.041,1.679-0.062,2.52-0.062L141.882,117.632z M151.563,117.632
+	c-0.144-2.581-0.185-5.142-0.185-7.725c0-2.172,0.062-4.344,0.103-6.515l-0.124-0.163c-0.756,0.06-1.515,0.06-2.273,0.082
+	l-0.123,0.144c0.123,2.58,0.165,5.142,0.165,7.722v2.274c0,1.415-0.021,2.829-0.103,4.242l0.123,0.144
+	c0.756-0.041,1.516-0.062,2.274-0.062L151.563,117.632z M166.895,110.522c0.758-2.376,1.415-4.772,2.212-7.13l-0.103-0.144
+	c-0.677,0.041-1.372,0.041-2.048,0.062l-0.124,0.144c-0.615,2.13-1.148,4.304-1.761,6.433l-1.825,6.435
+	c-1.189-4.302-2.397-8.604-3.504-12.929l-0.144-0.144c-0.779,0.041-1.577,0.041-2.356,0.062l-0.123,0.144
+	c0.963,3.053,1.907,6.126,2.828,9.199c0.328,1.087,0.656,2.151,0.963,3.238c0.185,0.594,0.326,1.209,0.512,1.803l0.144,0.144
+	c0.982-0.04,1.987-0.062,2.971-0.062l0.121-0.144C165.336,115.235,166.156,112.9,166.895,110.522 M183.479,117.632
+	c0.021-0.512,0.041-1.026,0.083-1.536l-0.103-0.144c-1.741,0.062-3.504,0.104-5.265,0.104h-1.128c0-0.678-0.021-1.333-0.021-2.011
+	c0-0.963,0.021-1.925,0.042-2.888h1.148c1.515,0,3.011,0.02,4.506,0.062l0.124-0.144c0.02-0.533,0.062-1.064,0.123-1.598
+	l-0.123-0.144c-1.209,0.041-2.438,0.062-3.648,0.062h-2.129c0-1.455,0.02-2.909,0.041-4.364c2.048,0,4.077,0.04,6.126,0.102
+	l0.144-0.144c0.021-0.532,0.062-1.064,0.123-1.597l-0.102-0.144c-2.869,0.021-5.737,0.04-8.605,0.063l-0.144,0.144
+	c0.123,1.781,0.144,3.564,0.144,5.347c0,2.949,0.02,5.921-0.103,8.892l0.103,0.144c2.848-0.041,5.675-0.062,8.522-0.062
+	L183.479,117.632 M200.635,117.59c-1.576-2.068-3.011-4.221-4.506-6.331c1.986-0.53,3.483-1.863,3.483-4.035
+	c0-3.523-2.992-3.954-5.8-3.954h-1.25c-0.861,0-1.699,0.042-2.56,0.042l-0.125,0.144c0.166,2.744,0.207,5.49,0.207,8.234
+	c0,2.009-0.021,3.997-0.082,6.004l0.123,0.144c0.756-0.041,1.495-0.062,2.253-0.062l0.124-0.144
+	c-0.103-2.007-0.165-3.995-0.165-6.003c0.492,0,1.004-0.021,1.495-0.021c0.676,0.923,1.271,1.865,1.907,2.828
+	c0.737,1.107,1.474,2.193,2.13,3.36l0.144,0.081c0.84-0.062,1.681-0.081,2.519-0.081L200.635,117.59z M196.722,105.75
+	c0.412,0.45,0.616,1.065,0.616,1.658c0,2.255-2.397,2.563-4.118,2.563c-0.308,0-0.595-0.021-0.902-0.021
+	c-0.021-0.554-0.021-1.086-0.021-1.64v-1.762c0-0.513,0-1.046,0.021-1.578c0.431-0.021,0.881-0.042,1.31-0.042
+	C194.694,104.928,195.945,104.908,196.722,105.75 M209.866,118.083c2.663,0,5.306-1.353,5.306-4.362
+	c0-4.918-7.131-3.955-7.131-6.947c0-1.496,1.518-2.007,2.766-2.007c1.271,0,2.274,0.348,3.381,0.961l0.185-0.102
+	c0.041-0.594,0.083-1.209,0.164-1.802l-0.124-0.144c-1.209-0.452-2.375-0.677-3.667-0.677c-2.5,0-4.958,1.147-4.958,3.955
+	c0,4.773,6.967,3.829,6.967,6.987c0,1.72-1.537,2.313-3.032,2.313c-1.374,0-2.479-0.349-3.566-1.188l-0.225,0.082
+	c-0.041,0.635-0.082,1.249-0.144,1.885l0.062,0.144C206.996,117.796,208.574,118.083,209.866,118.083 M224.175,117.632
+	c-0.144-2.581-0.184-5.142-0.184-7.725c0-2.172,0.061-4.344,0.102-6.515l-0.123-0.163c-0.758,0.06-1.518,0.06-2.276,0.082
+	l-0.123,0.144c0.123,2.58,0.164,5.142,0.164,7.722v2.274c0,1.415-0.02,2.829-0.103,4.242l0.125,0.144
+	c0.757-0.041,1.515-0.062,2.274-0.062L224.175,117.632z M239.937,104.928c0.02-0.512,0.041-1.024,0.102-1.535l-0.102-0.144
+	c-3.34,0.063-6.701,0.063-10.041,0.063l-0.123,0.144c0,0.51-0.021,1.002-0.062,1.515l0.124,0.144
+	c1.271-0.042,2.54-0.063,3.812-0.103c0.041,1.354,0.061,2.725,0.061,4.078c0,2.867,0,5.735-0.123,8.604l0.103,0.144
+	c0.779-0.041,1.576-0.062,2.355-0.062l0.124-0.144c-0.124-2.212-0.144-4.424-0.144-6.638c0-1.987-0.021-3.975,0.041-5.963
+	c1.25,0,2.52,0,3.77,0.04L239.937,104.928 M251.664,111.669c1.392-2.808,2.991-5.531,4.55-8.256l-0.125-0.164
+	c-0.675,0.04-1.331,0.061-2.007,0.061l-0.165,0.123c-1.022,2.15-2.109,4.283-3.257,6.373c-0.451-0.984-0.984-1.927-1.454-2.89
+	c-0.595-1.209-1.148-2.438-1.764-3.646l-0.144-0.104c-0.797,0.083-1.576,0.104-2.375,0.144l-0.103,0.205
+	c1.577,2.746,3.052,5.512,4.508,8.318v2.089c0,1.251-0.02,2.502-0.061,3.75l0.103,0.144c0.758-0.02,1.515-0.04,2.273-0.04
+	l0.103-0.144c-0.103-1.475-0.103-2.951-0.103-4.426C251.643,112.694,251.643,112.182,251.664,111.669 M270.28,122.898h1.661v-20.449
+	h-1.661V122.898z M300.656,117.632c-0.041-1.741-0.062-3.483-0.062-5.245c0-2.991,0.062-5.982,0.062-8.994l-0.123-0.144
+	c-0.655,0.04-1.291,0.063-1.948,0.063l-0.122,0.144c0.207,3.952,0.248,7.928,0.351,11.883c-2.256-3.976-4.53-7.931-6.7-11.945
+	l-0.229-0.144c-0.879,0.04-1.76,0.04-2.64,0.063l-0.104,0.144c0.144,1.986,0.123,4.117,0.123,6.126c0,2.704,0.021,5.408-0.102,8.112
+	l0.122,0.144c0.655-0.041,1.333-0.062,1.988-0.062l0.102-0.144c-0.082-1.72-0.144-3.422-0.184-5.142l-0.205-7.028l3.238,5.777
+	c1.208,2.151,2.457,4.282,3.646,6.454l0.164,0.144c0.839-0.041,1.678-0.062,2.519-0.062L300.656,117.632z M316.544,117.632
+	c0.021-0.512,0.042-1.026,0.083-1.536l-0.102-0.144c-1.743,0.062-3.503,0.104-5.269,0.104h-1.124c0-0.678-0.021-1.333-0.021-2.011
+	c0-0.963,0.021-1.925,0.04-2.888h1.148c1.515,0,3.01,0.02,4.508,0.062l0.123-0.144c0.021-0.533,0.061-1.064,0.122-1.598
+	l-0.122-0.144c-1.211,0.041-2.439,0.062-3.648,0.062h-2.131c0-1.455,0.021-2.909,0.042-4.364c2.047,0,4.076,0.04,6.126,0.102
+	l0.144-0.144c0.021-0.532,0.062-1.064,0.122-1.597l-0.102-0.144c-2.868,0.021-5.737,0.04-8.607,0.063l-0.142,0.144
+	c0.123,1.781,0.142,3.564,0.142,5.347c0,2.949,0.021,5.921-0.1,8.892l0.1,0.144c2.85-0.041,5.678-0.062,8.523-0.062L316.544,117.632
+	 M337.8,110.051c0.49-2.233,0.921-4.468,1.618-6.659l-0.102-0.144c-0.676,0.041-1.333,0.041-2.01,0.062l-0.121,0.144
+	c-0.246,1.618-0.554,3.216-0.881,4.836l-1.598,8.094l-1.622-8.626c-0.264-1.456-0.528-2.909-0.737-4.365l-0.12-0.144
+	c-1.088,0.041-2.17,0.041-3.26,0.062l-0.122,0.144c-0.759,4.304-1.6,8.587-2.396,12.888c-0.821-4.301-1.702-8.625-2.438-12.949
+	l-0.125-0.144c-0.778,0.041-1.556,0.041-2.336,0.062l-0.099,0.144c0.572,2.335,1.103,4.692,1.616,7.049
+	c0.531,2.397,1.087,4.794,1.556,7.191l0.144,0.144c0.983-0.04,1.988-0.063,2.973-0.063l0.123-0.144
+	c0.84-4.301,1.7-8.604,2.579-12.905l1.662,8.83c0.267,1.371,0.53,2.746,0.757,4.139l0.144,0.144c0.984-0.04,1.968-0.063,2.95-0.063
+	l0.144-0.144c0.144-0.674,0.288-1.371,0.432-2.047C336.919,113.74,337.392,111.897,337.8,110.051 M364.578,116.158
+	c0.592-0.699,0.899-1.62,0.899-2.521c0-2.316-1.662-3.402-3.829-3.482c0.386-0.125,0.756-0.205,1.123-0.39
+	c1.188-0.595,1.925-1.742,1.925-3.073c0-0.8-0.243-1.537-0.775-2.133c-1.086-1.229-2.788-1.31-4.324-1.31
+	c-1.457,0-2.91,0.04-4.366,0.063l-0.1,0.144c0.08,1.186,0.125,2.375,0.125,3.564v7.602c0,1.022-0.025,2.048-0.086,3.072l0.104,0.144
+	l3.609-0.021h0.55C361.316,117.816,363.242,117.694,364.578,116.158 M362.159,105.955c0.182,0.286,0.287,0.717,0.287,1.042
+	c0,0.492-0.164,0.984-0.451,1.375c-0.862,1.146-2.563,1.128-3.855,1.128h-0.653v-4.571c0.634-0.021,1.291-0.06,1.925-0.06
+	C360.438,104.869,361.563,104.99,362.159,105.955 M359.517,111.158c1.616,0,3.563,0.369,3.563,2.377
+	c0,0.553-0.122,1.045-0.452,1.495c-0.815,1.147-2.538,1.106-3.809,1.106h-0.861c-0.125,0-0.269-0.021-0.389-0.021
+	c-0.063-1.638-0.083-3.257-0.083-4.896C358.165,111.198,358.838,111.158,359.517,111.158 M382.739,117.59
+	c-1.578-2.068-3.01-4.221-4.508-6.331c1.988-0.53,3.483-1.863,3.483-4.035c0-3.523-2.989-3.954-5.801-3.954h-1.246
+	c-0.862,0-1.701,0.042-2.563,0.042l-0.123,0.144c0.161,2.744,0.206,5.49,0.206,8.234c0,2.009-0.021,3.997-0.083,6.004l0.122,0.144
+	c0.759-0.041,1.494-0.062,2.257-0.062l0.12-0.144c-0.102-2.007-0.165-3.995-0.165-6.003c0.494,0,1.004-0.021,1.498-0.021
+	c0.676,0.923,1.268,1.865,1.905,2.828c0.739,1.107,1.477,2.193,2.129,3.36l0.144,0.081c0.842-0.062,1.684-0.081,2.519-0.081
+	L382.739,117.59z M378.825,105.75c0.411,0.45,0.617,1.065,0.617,1.658c0,2.255-2.398,2.563-4.12,2.563
+	c-0.309,0-0.596-0.021-0.902-0.021c-0.019-0.554-0.019-1.086-0.019-1.64v-1.762c0-0.513,0-1.046,0.019-1.578
+	c0.43-0.021,0.881-0.042,1.311-0.042C376.795,104.928,378.046,104.908,378.825,105.75 M399.509,106.917
+	c0-1.169,0.021-2.355,0.059-3.524l-0.122-0.144c-0.634,0.041-1.249,0.041-1.887,0.062l-0.098,0.144
+	c0.143,2.561,0.143,5.142,0.143,7.702c0,1.497,0.162,3.382-1.067,4.468c-0.615,0.534-1.456,0.739-2.272,0.739
+	c-0.679,0-1.374-0.165-1.97-0.514c-1.533-0.923-1.352-3.113-1.352-4.651c0-2.603-0.019-5.203,0.08-7.806l-0.099-0.144
+	c-0.78,0.041-1.54,0.041-2.317,0.062l-0.121,0.144c0.102,2.971,0.058,5.962,0.058,8.954c0,0.759,0,1.538,0.207,2.273
+	c0.697,2.521,2.99,3.401,5.409,3.401c3.731,0,5.389-1.905,5.389-5.47c0-1.003-0.039-1.987-0.039-2.991V106.917 M418.203,117.632
+	c-0.039-1.741-0.061-3.483-0.061-5.245c0-2.991,0.061-5.982,0.061-8.994l-0.124-0.144c-0.654,0.04-1.291,0.063-1.945,0.063
+	l-0.123,0.144c0.203,3.952,0.248,7.928,0.347,11.883c-2.25-3.976-4.526-7.931-6.7-11.945l-0.222-0.144
+	c-0.881,0.04-1.764,0.04-2.643,0.063l-0.105,0.144c0.144,1.986,0.124,4.117,0.124,6.126c0,2.704,0.02,5.408-0.102,8.112l0.121,0.144
+	c0.656-0.041,1.332-0.062,1.989-0.062l0.102-0.144c-0.08-1.72-0.144-3.422-0.186-5.142l-0.203-7.028l3.238,5.777
+	c1.208,2.151,2.457,4.282,3.646,6.454l0.163,0.144c0.841-0.041,1.684-0.062,2.521-0.062L418.203,117.632z M428.788,118.083
+	c2.661,0,5.304-1.353,5.304-4.362c0-4.918-7.131-3.955-7.131-6.947c0-1.496,1.521-2.007,2.767-2.007
+	c1.272,0,2.275,0.348,3.385,0.961l0.182-0.102c0.042-0.594,0.08-1.209,0.164-1.802l-0.122-0.144
+	c-1.208-0.452-2.377-0.677-3.669-0.677c-2.499,0-4.956,1.147-4.956,3.955c0,4.773,6.965,3.829,6.965,6.987
+	c0,1.72-1.536,2.313-3.031,2.313c-1.371,0-2.48-0.349-3.566-1.188l-0.224,0.082c-0.042,0.635-0.085,1.249-0.144,1.885l0.059,0.144
+	C425.919,117.796,427.497,118.083,428.788,118.083 M455.348,110.051c0.494-2.233,0.924-4.468,1.618-6.659l-0.102-0.144
+	c-0.676,0.041-1.33,0.041-2.009,0.062l-0.123,0.144c-0.246,1.618-0.553,3.216-0.88,4.836l-1.598,8.094l-1.618-8.626
+	c-0.27-1.456-0.536-2.909-0.739-4.365l-0.122-0.144c-1.086,0.041-2.174,0.041-3.257,0.062l-0.125,0.144
+	c-0.756,4.304-1.597,8.587-2.398,12.888c-0.817-4.301-1.697-8.625-2.437-12.949l-0.121-0.144c-0.781,0.041-1.559,0.041-2.336,0.062
+	l-0.105,0.144c0.574,2.335,1.109,4.692,1.619,7.049c0.535,2.397,1.087,4.794,1.56,7.191l0.144,0.144
+	c0.984-0.04,1.988-0.063,2.97-0.063l0.121-0.144c0.841-4.301,1.702-8.604,2.585-12.905l1.658,8.83
+	c0.267,1.371,0.532,2.746,0.757,4.139l0.144,0.144c0.982-0.04,1.967-0.063,2.951-0.063l0.144-0.144
+	c0.144-0.674,0.287-1.371,0.431-2.047C454.467,113.74,454.938,111.897,455.348,110.051 M465.132,117.632
+	c-0.144-2.581-0.182-5.142-0.182-7.725c0-2.172,0.061-4.344,0.102-6.515l-0.121-0.163c-0.758,0.06-1.521,0.06-2.275,0.082
+	l-0.124,0.144c0.124,2.58,0.162,5.142,0.162,7.722v2.274c0,1.415-0.019,2.829-0.099,4.242l0.123,0.144
+	c0.756-0.041,1.516-0.062,2.271-0.062L465.132,117.632z M482.84,117.039c0.06-0.678,0.083-1.354,0.165-2.03l-0.144-0.08
+	c-1.293,0.797-2.214,1.249-3.771,1.249c-3.399,0-4.939-2.521-4.939-5.695c0-3.196,1.6-5.676,5.041-5.676
+	c1.253,0,2.232,0.287,3.277,0.921l0.167-0.081c0.06-0.614,0.102-1.208,0.185-1.824l-0.065-0.163
+	c-1.246-0.45-2.415-0.655-3.746-0.655c-0.944,0-1.904,0.081-2.786,0.389c-3.095,1.046-4.488,4.017-4.488,7.13
+	c0,4.426,2.541,7.561,7.131,7.561c1.411,0,2.622-0.285,3.872-0.9L482.84,117.039 M500,117.55c-0.266-0.309-0.532-0.635-0.801-0.964
+	c-1.8-2.232-3.521-4.506-5.224-6.8c1.722-2.152,3.483-4.284,5.266-6.373l-0.12-0.164c-0.781,0.04-1.561,0.04-2.338,0.063
+	c-0.043,0.04-0.123,0.081-0.165,0.12c-0.245,0.269-0.615,0.86-0.857,1.189c-0.516,0.677-1.05,1.333-1.578,1.986
+	c-0.883,1.108-1.762,2.234-2.668,3.322c0-2.174,0.023-4.366,0.105-6.537l-0.105-0.144c-0.757,0.04-1.533,0.04-2.29,0.063
+	l-0.125,0.144c0.125,1.638,0.163,3.296,0.163,4.937c0,3.095,0.04,6.207-0.083,9.302l0.104,0.144
+	c0.756-0.041,1.517-0.062,2.275-0.062l0.122-0.144c-0.104-2.459-0.167-4.916-0.167-7.376c1.887,2.46,3.73,4.938,5.534,7.458
+	l0.186,0.123c0.882-0.041,1.762-0.062,2.644-0.062L500,117.55z"/>
+</svg></div>
+            <h2 class="font-grotesk font-bold text-2xl md:text-3xl mt-6">B.S. Computer Science &amp; Data Science</h2>
+            <p class="text-gray-400 mt-2 font-light">School of Arts and Sciences · New Brunswick, NJ · 2022 to December 2026</p>
+            <div class="flex flex-wrap gap-2 mt-5">
+              <span class="chip">Robotics Team Captain</span><span class="chip">Competitive Programming Team</span><span class="chip">AI Club</span><span class="chip">Data Science Club</span><span class="chip">Aresty RAD Research</span>
+            </div>
           </div>
-
-          <button id="car-prev" class="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-black/60 backdrop-blur-sm border border-accentgreen/20 rounded-full flex items-center justify-center text-white hover:bg-accentgreen/20 hover:border-emerald/40 transition-all z-10"><i class="fas fa-chevron-left"></i></button>
-          <button id="car-next" class="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-black/60 backdrop-blur-sm border border-accentgreen/20 rounded-full flex items-center justify-center text-white hover:bg-accentgreen/20 hover:border-emerald/40 transition-all z-10"><i class="fas fa-chevron-right"></i></button>
+          <div class="grid grid-cols-2 gap-3.5">
+            <div class="edu-tile"><div class="v">3.89</div><div class="l">GPA</div></div>
+            <div class="edu-tile"><div class="v">Dec '26</div><div class="l">Graduation</div></div>
+            <div class="edu-tile"><div class="v" style="font-size:clamp(1.3rem,1.8vw,1.75rem);padding-top:.3rem">Dean's List</div><div class="l">Honors</div></div>
+            <div class="edu-tile"><div class="v" style="font-size:clamp(1.3rem,1.8vw,1.75rem);padding-top:.3rem">Captain</div><div class="l">Robotics Team</div></div>
+          </div>
         </div>
-        <div class="flex justify-center gap-3 mt-8" id="car-dots"></div>
+      </div>
+    </section>
+
+    <!-- ───── PROJECTS — pinned horizontal gallery ───── -->
+    <section id="projects" class="proj-section" aria-label="Projects">
+      <div class="proj-stage" id="proj-stage">
+        <div class="aurora"><i class="a1" style="left:auto;right:-300px;top:-200px"></i><i class="a2" style="right:auto;left:-150px;top:auto;bottom:-200px;opacity:.4"></i><i class="a3" style="left:55%;top:65%;opacity:.09"></i></div>
+        <div class="proj-inner">
+          <header class="proj-head flex items-end justify-between gap-6">
+            <div>
+              <p class="eyebrow">Projects</p>
+              <h2 class="section-title mt-2">Things I've <span class="text-emerald">shipped</span></h2>
+            </div>
+            <div class="flex items-center gap-4">
+              <div class="font-grotesk text-sm text-gray-500 whitespace-nowrap"><span id="proj-counter" class="text-emerald font-bold">01</span> / <span id="proj-total">09</span></div>
+              <button class="icon-btn" id="proj-prev" aria-label="Previous project"><i class="fas fa-chevron-left text-sm"></i></button>
+              <button class="icon-btn" id="proj-next" aria-label="Next project"><i class="fas fa-chevron-right text-sm"></i></button>
+            </div>
+          </header>
+          <div class="proj-viewport" id="proj-viewport">
+            <ul class="proj-track" id="proj-track"></ul>
+          </div>
+          <div class="proj-progress" id="proj-progress" aria-hidden="true"></div>
+        </div>
+      </div>
+
+      <div class="proj-archive">
+        <div class="reveal flex items-end justify-between gap-6 mb-4">
+          <div>
+            <p class="eyebrow">More projects</p>
+            <h3 class="font-grotesk font-bold text-2xl md:text-3xl mt-2">Earlier builds and coursework</h3>
+          </div>
+        </div>
+        <div id="proj-archive" class="reveal"></div>
       </div>
     </section>
 
     <!-- ───── SKILLS ───── -->
-    <section id="skills" class="py-28 bg-gradient-to-b from-black via-darkgreen/15 to-black relative">
-      <div class="max-w-6xl mx-auto px-6">
-        <div class="text-center mb-16 reveal">
-          <p class="text-emerald font-grotesk text-sm tracking-widest uppercase mb-3">Tech Stack</p>
-          <h2 class="text-4xl md:text-5xl font-bold font-grotesk">Tools I Work With</h2>
+    <section id="skills" class="relative overflow-hidden" aria-label="Skills">
+      <div class="aurora"><i class="a1" style="top:200px;opacity:.55"></i><i class="a2" style="top:-150px;opacity:.4"></i></div>
+      <div class="relative z-[2] max-w-[1440px] mx-auto px-6 lg:px-16 py-20 lg:py-24">
+        <div class="text-center reveal">
+          <p class="eyebrow">Tech stack</p>
+          <h2 class="section-title mt-2">Tools I <span class="text-emerald">work with</span></h2>
         </div>
 
-        <!-- Languages -->
-        <div class="mb-12">
-          <h3 class="text-lg font-grotesk text-gray-400 mb-6 reveal">Languages</h3>
-          <div class="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 gap-5">
-            <div class="skill-icon reveal flex flex-col items-center gap-2"><div class="w-14 h-14 rounded-xl bg-accentgreen/10 border border-accentgreen/10 flex items-center justify-center hover:border-emerald/30 transition-all"><i class="fab fa-python text-xl text-emerald"></i></div><span class="text-[10px] text-gray-500 font-grotesk">Python</span></div>
-            <div class="skill-icon reveal flex flex-col items-center gap-2"><div class="w-14 h-14 rounded-xl bg-accentgreen/10 border border-accentgreen/10 flex items-center justify-center hover:border-emerald/30 transition-all"><i class="fab fa-java text-xl text-emerald"></i></div><span class="text-[10px] text-gray-500 font-grotesk">Java</span></div>
-            <div class="skill-icon reveal flex flex-col items-center gap-2"><div class="w-14 h-14 rounded-xl bg-accentgreen/10 border border-accentgreen/10 flex items-center justify-center hover:border-emerald/30 transition-all"><i class="fas fa-code text-xl text-emerald"></i></div><span class="text-[10px] text-gray-500 font-grotesk">C++</span></div>
-            <div class="skill-icon reveal flex flex-col items-center gap-2"><div class="w-14 h-14 rounded-xl bg-accentgreen/10 border border-accentgreen/10 flex items-center justify-center hover:border-emerald/30 transition-all"><i class="fas fa-c text-xl text-emerald"></i></div><span class="text-[10px] text-gray-500 font-grotesk">C / C#</span></div>
-            <div class="skill-icon reveal flex flex-col items-center gap-2"><div class="w-14 h-14 rounded-xl bg-accentgreen/10 border border-accentgreen/10 flex items-center justify-center hover:border-emerald/30 transition-all"><i class="fab fa-js text-xl text-emerald"></i></div><span class="text-[10px] text-gray-500 font-grotesk">JavaScript</span></div>
-            <div class="skill-icon reveal flex flex-col items-center gap-2"><div class="w-14 h-14 rounded-xl bg-accentgreen/10 border border-accentgreen/10 flex items-center justify-center hover:border-emerald/30 transition-all"><i class="fas fa-code text-xl text-emerald"></i></div><span class="text-[10px] text-gray-500 font-grotesk">TypeScript</span></div>
-            <div class="skill-icon reveal flex flex-col items-center gap-2"><div class="w-14 h-14 rounded-xl bg-accentgreen/10 border border-accentgreen/10 flex items-center justify-center hover:border-emerald/30 transition-all"><i class="fas fa-database text-xl text-emerald"></i></div><span class="text-[10px] text-gray-500 font-grotesk">SQL</span></div>
-            <div class="skill-icon reveal flex flex-col items-center gap-2"><div class="w-14 h-14 rounded-xl bg-accentgreen/10 border border-accentgreen/10 flex items-center justify-center hover:border-emerald/30 transition-all"><i class="fab fa-html5 text-xl text-emerald"></i></div><span class="text-[10px] text-gray-500 font-grotesk">HTML/CSS</span></div>
-            <div class="skill-icon reveal flex flex-col items-center gap-2"><div class="w-14 h-14 rounded-xl bg-accentgreen/10 border border-accentgreen/10 flex items-center justify-center hover:border-emerald/30 transition-all"><i class="fas fa-chart-line text-xl text-emerald"></i></div><span class="text-[10px] text-gray-500 font-grotesk">R</span></div>
-            <div class="skill-icon reveal flex flex-col items-center gap-2"><div class="w-14 h-14 rounded-xl bg-accentgreen/10 border border-accentgreen/10 flex items-center justify-center hover:border-emerald/30 transition-all"><i class="fab fa-swift text-xl text-emerald"></i></div><span class="text-[10px] text-gray-500 font-grotesk">Swift</span></div>
-            <div class="skill-icon reveal flex flex-col items-center gap-2"><div class="w-14 h-14 rounded-xl bg-accentgreen/10 border border-accentgreen/10 flex items-center justify-center hover:border-emerald/30 transition-all"><i class="fas fa-terminal text-xl text-emerald"></i></div><span class="text-[10px] text-gray-500 font-grotesk">Bash/Shell</span></div>
-          </div>
+        <div class="marquee mt-10 reveal" aria-hidden="true">
+          <div class="marquee-track" id="marquee-track"></div>
         </div>
 
-        <!-- Frameworks -->
-        <div class="mb-12">
-          <h3 class="text-lg font-grotesk text-gray-400 mb-6 reveal">Frameworks & Libraries</h3>
-          <div class="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 gap-5">
-            <div class="skill-icon reveal flex flex-col items-center gap-2"><div class="w-14 h-14 rounded-xl bg-accentgreen/10 border border-accentgreen/10 flex items-center justify-center hover:border-emerald/30 transition-all"><i class="fab fa-react text-xl text-emerald"></i></div><span class="text-[10px] text-gray-500 font-grotesk">React/Next</span></div>
-            <div class="skill-icon reveal flex flex-col items-center gap-2"><div class="w-14 h-14 rounded-xl bg-accentgreen/10 border border-accentgreen/10 flex items-center justify-center hover:border-emerald/30 transition-all"><i class="fab fa-node-js text-xl text-emerald"></i></div><span class="text-[10px] text-gray-500 font-grotesk">Node.js</span></div>
-            <div class="skill-icon reveal flex flex-col items-center gap-2"><div class="w-14 h-14 rounded-xl bg-accentgreen/10 border border-accentgreen/10 flex items-center justify-center hover:border-emerald/30 transition-all"><i class="fas fa-bolt text-xl text-emerald"></i></div><span class="text-[10px] text-gray-500 font-grotesk">FastAPI</span></div>
-            <div class="skill-icon reveal flex flex-col items-center gap-2"><div class="w-14 h-14 rounded-xl bg-accentgreen/10 border border-accentgreen/10 flex items-center justify-center hover:border-emerald/30 transition-all"><i class="fas fa-fire text-xl text-emerald"></i></div><span class="text-[10px] text-gray-500 font-grotesk">PyTorch</span></div>
-            <div class="skill-icon reveal flex flex-col items-center gap-2"><div class="w-14 h-14 rounded-xl bg-accentgreen/10 border border-accentgreen/10 flex items-center justify-center hover:border-emerald/30 transition-all"><i class="fas fa-eye text-xl text-emerald"></i></div><span class="text-[10px] text-gray-500 font-grotesk">OpenCV</span></div>
-            <div class="skill-icon reveal flex flex-col items-center gap-2"><div class="w-14 h-14 rounded-xl bg-accentgreen/10 border border-accentgreen/10 flex items-center justify-center hover:border-emerald/30 transition-all"><i class="fas fa-fire-flame-curved text-xl text-emerald"></i></div><span class="text-[10px] text-gray-500 font-grotesk">Firebase</span></div>
-            <div class="skill-icon reveal flex flex-col items-center gap-2"><div class="w-14 h-14 rounded-xl bg-accentgreen/10 border border-accentgreen/10 flex items-center justify-center hover:border-emerald/30 transition-all"><i class="fas fa-wind text-xl text-emerald"></i></div><span class="text-[10px] text-gray-500 font-grotesk">Tailwind</span></div>
-            <div class="skill-icon reveal flex flex-col items-center gap-2"><div class="w-14 h-14 rounded-xl bg-accentgreen/10 border border-accentgreen/10 flex items-center justify-center hover:border-emerald/30 transition-all"><i class="fas fa-flask text-xl text-emerald"></i></div><span class="text-[10px] text-gray-500 font-grotesk">Flask</span></div>
-            <div class="skill-icon reveal flex flex-col items-center gap-2"><div class="w-14 h-14 rounded-xl bg-accentgreen/10 border border-accentgreen/10 flex items-center justify-center hover:border-emerald/30 transition-all"><i class="fab fa-bootstrap text-xl text-emerald"></i></div><span class="text-[10px] text-gray-500 font-grotesk">Bootstrap</span></div>
-            <div class="skill-icon reveal flex flex-col items-center gap-2"><div class="w-14 h-14 rounded-xl bg-accentgreen/10 border border-accentgreen/10 flex items-center justify-center hover:border-emerald/30 transition-all"><i class="fas fa-map text-xl text-emerald"></i></div><span class="text-[10px] text-gray-500 font-grotesk">Leaflet</span></div>
-            <div class="skill-icon reveal flex flex-col items-center gap-2"><div class="w-14 h-14 rounded-xl bg-accentgreen/10 border border-accentgreen/10 flex items-center justify-center hover:border-emerald/30 transition-all"><i class="fas fa-wand-magic-sparkles text-xl text-emerald"></i></div><span class="text-[10px] text-gray-500 font-grotesk">Framer Motion</span></div>
-            <div class="skill-icon reveal flex flex-col items-center gap-2"><div class="w-14 h-14 rounded-xl bg-accentgreen/10 border border-accentgreen/10 flex items-center justify-center hover:border-emerald/30 transition-all"><i class="fas fa-cube text-xl text-emerald"></i></div><span class="text-[10px] text-gray-500 font-grotesk">ASP.NET</span></div>
+        <div class="bento mt-10">
+          <div class="bento-tile glass reveal">
+            <h4>Languages</h4>
+            <div class="skill" style="--c:#3776AB"><svg><use href="#si-python"/></svg>Python</div>
+            <div class="skill" style="--c:#00599C"><svg><use href="#si-cplusplus"/></svg>C++ and C</div>
+            <div class="skill" style="--c:#3178C6"><svg><use href="#si-typescript"/></svg>TypeScript and JavaScript</div>
+            <div class="skill" style="--c:#ED8B00"><svg><use href="#si-java"/></svg>Java</div>
+            <div class="skill" style="--c:#512BD4"><svg><use href="#si-csharp"/></svg>C#</div>
+            <div class="skill" style="--c:#F05138"><svg><use href="#si-swift"/></svg>Swift</div>
+            <div class="skill" style="--c:#4479A1"><svg><use href="#si-sql"/></svg>SQL</div>
+            <div class="skill" style="--c:#E34F26"><svg><use href="#si-html5"/></svg>HTML and CSS</div>
+            <div class="skill" style="--c:#276DC3"><svg><use href="#si-r"/></svg>R</div>
+            <div class="skill" style="--c:#4EAA25"><svg><use href="#si-gnubash"/></svg>Bash and Shell</div>
+            <div class="skill" style="--c:#008080"><svg><use href="#si-latex"/></svg>LaTeX</div>
+          </div>
+          <div class="bento-tile glass reveal">
+            <h4>AI and machine learning</h4>
+            <div class="skill" style="--c:#EE4C2C"><svg><use href="#si-pytorch"/></svg>PyTorch</div>
+            <div class="skill" style="--c:#5C3EE8"><svg><use href="#si-opencv"/></svg>OpenCV</div>
+            <div class="skill" style="--c:#0097A7"><svg><use href="#si-mediapipe"/></svg>MediaPipe</div>
+            <div class="skill" style="--c:#F7931E"><svg><use href="#si-scikitlearn"/></svg>scikit-learn</div>
+            <div class="skill" style="--c:#189AD3"><svg><use href="#si-xgboost"/></svg>XGBoost</div>
+            <div class="skill" style="--c:#ffffff"><svg><use href="#si-vllm"/></svg>vLLM</div>
+            <div class="skill" style="--c:#ffffff"><svg><use href="#si-anthropic"/></svg>Claude API</div>
+            <div class="skill" style="--c:#8E75B2"><svg><use href="#si-googlegemini"/></svg>Gemini API</div>
+            <div class="skill" style="--c:#ffffff"><svg><use href="#si-openai"/></svg>OpenAI API and Whisper</div>
+            <div class="skill" style="--c:#8a7ad6"><svg><use href="#si-pandas"/></svg>pandas and NumPy</div>
+          </div>
+          <div class="bento-tile glass reveal">
+            <h4>Full-stack</h4>
+            <div class="skill" style="--c:#61DAFB"><svg><use href="#si-react"/></svg>React and Next.js</div>
+            <div class="skill" style="--c:#5FA04E"><svg><use href="#si-nodedotjs"/></svg>Node.js</div>
+            <div class="skill" style="--c:#009688"><svg><use href="#si-fastapi"/></svg>FastAPI and Flask</div>
+            <div class="skill" style="--c:#6DB33F"><svg><use href="#si-springboot"/></svg>Spring Boot</div>
+            <div class="skill" style="--c:#512BD4"><svg><use href="#si-dotnet"/></svg>ASP.NET Core</div>
+            <div class="skill" style="--c:#4169E1"><svg><use href="#si-postgresql"/></svg>PostgreSQL</div>
+            <div class="skill" style="--c:#DD2C00"><svg><use href="#si-firebase"/></svg>Firebase</div>
+            <div class="skill" style="--c:#06B6D4"><svg><use href="#si-tailwindcss"/></svg>Tailwind and Bootstrap</div>
+            <div class="skill" style="--c:#199900"><svg><use href="#si-leaflet"/></svg>Leaflet</div>
+            <div class="skill" style="--c:#ffffff"><svg><use href="#si-framer"/></svg>Framer Motion</div>
+            <div class="skill" style="--c:#4ade80"><svg><use href="#si-rest"/></svg>REST APIs and NextAuth</div>
+          </div>
+          <div class="bento-tile glass reveal">
+            <h4>Infra and cloud</h4>
+            <div class="skill" style="--c:#2496ED"><svg><use href="#si-docker"/></svg>Docker</div>
+            <div class="skill" style="--c:#326CE5"><svg><use href="#si-kubernetes"/></svg>Kubernetes</div>
+            <div class="skill" style="--c:#4ade80"><svg><use href="#si-grpc"/></svg>gRPC</div>
+            <div class="skill" style="--c:#FF9900"><svg><use href="#si-aws"/></svg>AWS S3</div>
+            <div class="skill" style="--c:#ffffff"><svg><use href="#si-vercel"/></svg>Vercel and Render</div>
+            <div class="skill" style="--c:#F05032"><svg><use href="#si-git"/></svg>Git and GitHub</div>
+            <div class="skill" style="--c:#FCC624"><svg><use href="#si-linux"/></svg>Linux</div>
+            <div class="skill" style="--c:#4ade80"><svg><use href="#si-cicd"/></svg>CI/CD</div>
+          </div>
+          <div class="bento-tile glass reveal">
+            <h4>Robotics and simulation</h4>
+            <div class="skill" style="--c:#7c9ad9"><svg><use href="#si-ros"/></svg>ROS</div>
+            <div class="skill" style="--c:#4ade80"><svg><use href="#si-mujoco"/></svg>MuJoCo</div>
+            <div class="skill" style="--c:#ffffff"><svg><use href="#si-unity"/></svg>Unity 3D</div>
+            <div class="skill" style="--c:#ffffff"><svg><use href="#si-threedotjs"/></svg>React Three Fiber</div>
+            <div class="skill" style="--c:#00C805"><svg><use href="#si-robinhood"/></svg>Robinhood MCP</div>
+            <div class="skill" style="--c:#4ade80"><svg><use href="#si-polymarket"/></svg>Polymarket API</div>
+            <div class="skill" style="--c:#4ade80"><svg><use href="#si-mcp"/></svg>Agentic tool calling</div>
+          </div>
+          <div class="bento-tile glass reveal is-featured">
+            <h4>Used at Applied Materials</h4>
+            <div class="skill" style="--c:#ffffff"><svg><use href="#si-threedotjs"/></svg>React Three</div>
+            <div class="skill" style="--c:#6DB33F"><svg><use href="#si-springboot"/></svg>Java and Spring Boot</div>
+            <div class="skill" style="--c:#4ade80"><svg><use href="#si-grpc"/></svg>gRPC aggregation</div>
+            <div class="skill" style="--c:#326CE5"><svg><use href="#si-kubernetes"/></svg>Docker and Kubernetes</div>
+            <div class="skill" style="--c:#ffffff"><svg><use href="#si-vllm"/></svg>vLLM tool calling</div>
+            <div class="skill" style="--c:#ffffff"><svg><use href="#si-openai"/></svg>Voice AI assistant</div>
           </div>
         </div>
+      </div>
+    </section>
 
-        <!-- Technologies -->
-        <div>
-          <h3 class="text-lg font-grotesk text-gray-400 mb-6 reveal">Technologies & Tools</h3>
-          <div class="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 gap-5">
-            <div class="skill-icon reveal flex flex-col items-center gap-2"><div class="w-14 h-14 rounded-xl bg-accentgreen/10 border border-accentgreen/10 flex items-center justify-center hover:border-emerald/30 transition-all"><i class="fab fa-docker text-xl text-emerald"></i></div><span class="text-[10px] text-gray-500 font-grotesk">Docker</span></div>
-            <div class="skill-icon reveal flex flex-col items-center gap-2"><div class="w-14 h-14 rounded-xl bg-accentgreen/10 border border-accentgreen/10 flex items-center justify-center hover:border-emerald/30 transition-all"><i class="fab fa-aws text-xl text-emerald"></i></div><span class="text-[10px] text-gray-500 font-grotesk">AWS S3</span></div>
-            <div class="skill-icon reveal flex flex-col items-center gap-2"><div class="w-14 h-14 rounded-xl bg-accentgreen/10 border border-accentgreen/10 flex items-center justify-center hover:border-emerald/30 transition-all"><i class="fas fa-database text-xl text-emerald"></i></div><span class="text-[10px] text-gray-500 font-grotesk">PostgreSQL</span></div>
-            <div class="skill-icon reveal flex flex-col items-center gap-2"><div class="w-14 h-14 rounded-xl bg-accentgreen/10 border border-accentgreen/10 flex items-center justify-center hover:border-emerald/30 transition-all"><i class="fas fa-robot text-xl text-emerald"></i></div><span class="text-[10px] text-gray-500 font-grotesk">Gemini API</span></div>
-            <div class="skill-icon reveal flex flex-col items-center gap-2"><div class="w-14 h-14 rounded-xl bg-accentgreen/10 border border-accentgreen/10 flex items-center justify-center hover:border-emerald/30 transition-all"><i class="fas fa-brain text-xl text-emerald"></i></div><span class="text-[10px] text-gray-500 font-grotesk">OpenAI API</span></div>
-            <div class="skill-icon reveal flex flex-col items-center gap-2"><div class="w-14 h-14 rounded-xl bg-accentgreen/10 border border-accentgreen/10 flex items-center justify-center hover:border-emerald/30 transition-all"><i class="fas fa-microphone text-xl text-emerald"></i></div><span class="text-[10px] text-gray-500 font-grotesk">Whisper</span></div>
-            <div class="skill-icon reveal flex flex-col items-center gap-2"><div class="w-14 h-14 rounded-xl bg-accentgreen/10 border border-accentgreen/10 flex items-center justify-center hover:border-emerald/30 transition-all"><i class="fas fa-dharmachakra text-xl text-emerald"></i></div><span class="text-[10px] text-gray-500 font-grotesk">Kubernetes</span></div>
-            <div class="skill-icon reveal flex flex-col items-center gap-2"><div class="w-14 h-14 rounded-xl bg-accentgreen/10 border border-accentgreen/10 flex items-center justify-center hover:border-emerald/30 transition-all"><i class="fab fa-git-alt text-xl text-emerald"></i></div><span class="text-[10px] text-gray-500 font-grotesk">Git</span></div>
-            <div class="skill-icon reveal flex flex-col items-center gap-2"><div class="w-14 h-14 rounded-xl bg-accentgreen/10 border border-accentgreen/10 flex items-center justify-center hover:border-emerald/30 transition-all"><i class="fas fa-infinity text-xl text-emerald"></i></div><span class="text-[10px] text-gray-500 font-grotesk">CI/CD</span></div>
-            <div class="skill-icon reveal flex flex-col items-center gap-2"><div class="w-14 h-14 rounded-xl bg-accentgreen/10 border border-accentgreen/10 flex items-center justify-center hover:border-emerald/30 transition-all"><i class="fab fa-linux text-xl text-emerald"></i></div><span class="text-[10px] text-gray-500 font-grotesk">Linux</span></div>
-            <div class="skill-icon reveal flex flex-col items-center gap-2"><div class="w-14 h-14 rounded-xl bg-accentgreen/10 border border-accentgreen/10 flex items-center justify-center hover:border-emerald/30 transition-all"><i class="fas fa-lock text-xl text-emerald"></i></div><span class="text-[10px] text-gray-500 font-grotesk">NextAuth</span></div>
-            <div class="skill-icon reveal flex flex-col items-center gap-2"><div class="w-14 h-14 rounded-xl bg-accentgreen/10 border border-accentgreen/10 flex items-center justify-center hover:border-emerald/30 transition-all"><i class="fas fa-plug text-xl text-emerald"></i></div><span class="text-[10px] text-gray-500 font-grotesk">REST APIs</span></div>
-            <div class="skill-icon reveal flex flex-col items-center gap-2"><div class="w-14 h-14 rounded-xl bg-accentgreen/10 border border-accentgreen/10 flex items-center justify-center hover:border-emerald/30 transition-all"><i class="fas fa-brain text-xl text-emerald"></i></div><span class="text-[10px] text-gray-500 font-grotesk">scikit-learn</span></div>
-            <div class="skill-icon reveal flex flex-col items-center gap-2"><div class="w-14 h-14 rounded-xl bg-accentgreen/10 border border-accentgreen/10 flex items-center justify-center hover:border-emerald/30 transition-all"><i class="fas fa-hand text-xl text-emerald"></i></div><span class="text-[10px] text-gray-500 font-grotesk">MediaPipe</span></div>
-          </div>
+    <!-- ───── CLOSING ───── -->
+    <section id="contact" class="closing" style="background:#070907" aria-label="Contact">
+      <div class="aurora"><i class="a2" style="left:50%;top:-350px;right:auto;transform:translateX(-50%);opacity:.45"></i></div>
+      <div class="relative z-[2] reveal">
+        <h2>Let's build <span class="text-emerald">something.</span></h2>
+        <p class="text-gray-400 mt-4 font-light text-base md:text-lg">Graduating December 2026. Open to 2027 software engineering roles.</p>
+        <div class="flex flex-wrap justify-center gap-3 mt-8">
+          <a href="mailto:Vishal.Nagamalla@gmail.com" class="btn btn-pri">Email me</a>
+          <a href="https://www.linkedin.com/in/vishalnag" target="_blank" rel="noopener" class="btn btn-gh">LinkedIn</a>
+          <a href="https://github.com/Vishal-Nagamalla" target="_blank" rel="noopener" class="btn btn-gh">GitHub</a>
+          <a href="/resume/Vishal_Nagamalla_Resume.pdf" target="_blank" rel="noopener" class="btn btn-gh">Résumé <i class="fas fa-arrow-down text-xs"></i></a>
         </div>
       </div>
     </section>
   </main>
 
-  <footer class="bg-black border-t border-white/5 py-8">
+  <footer class="bg-[#050505] border-t border-white/5 py-8">
     <div class="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
       <p class="text-gray-600 text-sm font-grotesk">&copy; <script>document.write(new Date().getFullYear())</script> Vishal Nagamalla</p>
       <div class="flex items-center gap-6">
-        <a href="mailto:Vishal.Nagamalla@gmail.com" class="text-gray-600 hover:text-emerald transition-colors"><i class="fas fa-envelope"></i></a>
-        <a href="https://github.com/Vishal-Nagamalla" target="_blank" class="text-gray-600 hover:text-emerald transition-colors"><i class="fab fa-github"></i></a>
-        <a href="https://www.linkedin.com/in/vishalnag" target="_blank" class="text-gray-600 hover:text-emerald transition-colors"><i class="fab fa-linkedin"></i></a>
+        <a href="mailto:Vishal.Nagamalla@gmail.com" class="text-gray-600 hover:text-emerald transition-colors" aria-label="Email"><i class="fas fa-envelope"></i></a>
+        <a href="https://github.com/Vishal-Nagamalla" target="_blank" class="text-gray-600 hover:text-emerald transition-colors" aria-label="GitHub"><i class="fab fa-github"></i></a>
+        <a href="https://www.linkedin.com/in/vishalnag" target="_blank" class="text-gray-600 hover:text-emerald transition-colors" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
       </div>
     </div>
   </footer>
 
+  <!-- Project details sheet -->
+  <dialog id="proj-sheet" class="sheet" aria-label="Project details">
+    <div class="sheet-panel glass" id="sheet-panel"></div>
+  </dialog>
+
   <script>
-    gsap.registerPlugin(ScrollTrigger);
+  (() => {
+    'use strict';
+    gsap.registerPlugin(ScrollTrigger, Observer);
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+    const pad = n => String(n + 1).padStart(2, '0');
 
-    // Navbar
+    /* ── Icon sprite: inlined so <use href="#id"> works in every browser ── */
+    fetch('assets/icons/sprite.svg').then(r => r.text()).then(t => {
+      const d = document.createElement('div'); d.setAttribute('aria-hidden', 'true'); d.style.display = 'none'; d.innerHTML = t; document.body.prepend(d);
+    }).catch(() => {});
+
+    /* ── Lenis smooth scroll (same wiring as the home page) ── */
+    let lenis = null;
+    if (!reduceMotion) {
+      lenis = new Lenis({ duration: 1.2, easing: t => Math.min(1, 1.001 - Math.pow(2, -10 * t)), smoothWheel: true });
+      lenis.on('scroll', ScrollTrigger.update);
+      gsap.ticker.add(t => lenis.raf(t * 1000));
+      gsap.ticker.lagSmoothing(0);
+    }
+    window.lenis = lenis;
+    const scrollToY = (y, opts = {}) => { if (lenis) lenis.scrollTo(y, opts); else window.scrollTo({ top: y, behavior: opts.immediate ? 'auto' : 'smooth' }); };
+
+    /* ── Navbar ── */
     const navbar = document.getElementById('navbar');
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 60) { navbar.style.background='rgba(0,0,0,.85)'; navbar.style.backdropFilter='blur(20px)'; navbar.style.borderBottom='1px solid rgba(58,92,58,.15)'; }
-      else { navbar.style.background='transparent'; navbar.style.backdropFilter='none'; navbar.style.borderBottom='none'; }
-    });
+    const setNav = () => {
+      const on = window.scrollY > 60;
+      navbar.style.background = on ? 'rgba(5,5,5,.78)' : 'transparent';
+      navbar.style.backdropFilter = navbar.style.webkitBackdropFilter = on ? 'blur(20px)' : 'none';
+      navbar.style.borderBottom = on ? '1px solid rgba(255,255,255,.06)' : 'none';
+    };
+    window.addEventListener('scroll', setNav, { passive: true }); setNav();
 
-    // ── Apple-esque Experience: Internal Scroll ──
-    (() => {
-      const scrollArea = document.getElementById('exp-scroll-area');
-      const spacer = document.getElementById('exp-scroll-spacer');
-      const frames = document.querySelectorAll('.exp-frame');
-      const dots = document.querySelectorAll('.exp-dot');
-      const counter = document.getElementById('exp-counter');
-      const bigNumber = document.getElementById('exp-big-number');
-      const scrollHint = document.getElementById('scroll-hint');
-      const totalFrames = frames.length;
-      let currentFrame = 0;
-
-      // Set spacer height to create scroll distance
-      // Each frame gets 100vh of scroll distance
-      spacer.style.height = (totalFrames * 100) + 'vh';
-
-      function setFrame(index) {
-        if (index === currentFrame) return;
-        if (index < 0 || index >= totalFrames) return;
-
-        currentFrame = index;
-
-        // Update frames
-        frames.forEach((f, i) => {
-          f.classList.toggle('active', i === index);
-        });
-
-        // Update dots
-        dots.forEach((d, i) => {
-          d.classList.toggle('active', i === index);
-        });
-
-        // Update counter
-        counter.textContent = String(index + 1).padStart(2, '0');
-
-        // Update big number
-        bigNumber.textContent = String(index + 1).padStart(2, '0');
-
-        // Hide scroll hint after first scroll
-        if (index > 0) {
-          scrollHint.style.opacity = '0';
-          scrollHint.style.transition = 'opacity 0.5s ease';
-        }
-      }
-
-      // Listen to internal scroll
-      scrollArea.addEventListener('scroll', () => {
-        const scrollTop = scrollArea.scrollTop;
-        const maxScroll = scrollArea.scrollHeight - scrollArea.clientHeight;
-        const progress = scrollTop / maxScroll;
-
-        // Map progress to frame index
-        const frameIndex = Math.min(
-          totalFrames - 1,
-          Math.floor(progress * totalFrames)
-        );
-
-        setFrame(frameIndex);
-      }, { passive: true });
-
-      // Dot click navigation
-      dots.forEach((dot) => {
-        dot.addEventListener('click', () => {
-          const index = parseInt(dot.dataset.index);
-          const maxScroll = scrollArea.scrollHeight - scrollArea.clientHeight;
-          const targetScroll = (index / totalFrames) * maxScroll + 1;
-          scrollArea.scrollTo({ top: targetScroll, behavior: 'smooth' });
-        });
-      });
-
-      // Also handle wheel events on the experience container to redirect to internal scroll
-      const container = document.querySelector('.exp-container');
-      container.addEventListener('wheel', (e) => {
-        // Check if scroll area is at bounds
-        const atTop = scrollArea.scrollTop <= 0 && e.deltaY < 0;
-        const atBottom = scrollArea.scrollTop >= (scrollArea.scrollHeight - scrollArea.clientHeight - 2) && e.deltaY > 0;
-
-        if (!atTop && !atBottom) {
-          // Redirect wheel to internal scroll area
-          e.preventDefault();
-          scrollArea.scrollTop += e.deltaY;
-        }
-        // If at bounds, let the window scroll naturally
-      }, { passive: false });
-    })();
-
-    // ── Infinite Carousel ──
-    (() => {
-      const projects = [
-        {
-          title: 'RealEstatePro',
-          tag: 'Full-Stack',
-          desc: 'Production realtor portfolio with listings, Leaflet maps, admin CMS, NextAuth, S3 uploads, and Neon Postgres.',
-          tech: ['Next.js', 'React', 'PostgreSQL', 'AWS S3'],
-          img: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=800',
-          links: [{ url: 'https://real-estate-pro-iota.vercel.app', icon: 'fas fa-external-link-alt' }, { url: 'https://github.com/Vishal-Nagamalla', icon: 'fab fa-github' }],
-          detail: 'Built production-grade listings UX with type filtering, Favorites, and Leaflet maps powered by geocoded pins. Developed a secure Admin CMS using NextAuth with allowlist for end-to-end CRUD. Implemented address-to-coordinates geocoding with Photon and direct-to-S3 uploads via presigned URLs with CORS hardening. Deployed on Vercel with Neon Postgres.'
-        },
-        {
-          title: 'AirNote',
-          tag: 'AI / Full-Stack',
-          desc: 'AI note management platform with Gemini integration, AR glasses support, and real-time Firebase backend.',
-          tech: ['Python', 'React', 'Firebase', 'Gemini API'],
-          img: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=800',
-          links: [{ url: 'https://github.com/Vishal-Nagamalla', icon: 'fab fa-github' }],
-          detail: 'Built a scalable AI note management platform using Gemini, Firebase, and React for automated labels, summaries, and categorization. Integrated AR glasses with OpenCV and an AI voice assistant for gesture-based note-taking. Developed a FastAPI backend for real-time ingestion and classification. Automated AI embedding and clustering workflows for semantic analysis.'
-        },
-        {
-          title: 'HoloBrain',
-          tag: 'MLH Winner',
-          desc: 'AI-powered 3D MRI hologram with real-time hand-gesture controls for brain-scan diagnosis.',
-          tech: ['PyTorch', 'OpenCV', 'Unity 3D', 'C#'],
-          img: 'https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=800',
-          links: [{ url: 'https://devpost.com/software/holobrain', icon: 'fas fa-external-link-alt' }, { url: 'https://github.com/Vishal-Nagamalla', icon: 'fab fa-github' }],
-          detail: 'CNN model with 97% accuracy classifying healthy vs. unhealthy MRI scans. Dynamic hand gesture tracking using OpenCV and MediaPipe to manipulate 3D holograms. Python-to-Unity socket integration keeps classification overlays in sync at 30 fps, cutting review time by 40%.'
-        },
-        {
-          title: 'VEX Robotics',
-          tag: 'Robotics',
-          desc: 'C++ control stack for competitive VEX robot: autonomous navigation, PID control, and sensor fusion.',
-          tech: ['C++', 'PID Control', 'Sensor Fusion'],
-          img: 'https://images.unsplash.com/photo-1561557944-6e7860d1a7eb?auto=format&fit=crop&w=800',
-          links: [{ url: 'https://github.com/Vishal-Nagamalla', icon: 'fab fa-github' }],
-          detail: 'Full autonomous and driver control software stack in C++ for VEX competition robots. Implemented PID-based motion planning, multi-sensor fusion, and a modular architecture enabling rapid iteration between competition runs. As team captain, leading both engineering and software development.'
-        },
-        {
-          title: 'Digit Recognition',
-          tag: 'ML Research',
-          desc: 'CNN vs Vision Transformer comparison on MNIST, achieving 98% accuracy with architectural analysis.',
-          tech: ['PyTorch', 'ViT', 'CNN', 'MNIST'],
-          img: 'https://images.unsplash.com/photo-1555949963-aa79dcee981c?auto=format&fit=crop&w=800',
-          links: [{ url: 'https://github.com/Vishal-Nagamalla', icon: 'fab fa-github' }],
-          detail: 'Comprehensive study comparing CNN and Vision Transformer architectures on digit classification. Both models achieved 98% accuracy. Analysis revealed key trade-offs in computational efficiency, attention patterns, and generalization capabilities.'
-        },
-        {
-          title: 'Indian Cuisine',
-          tag: 'Full-Stack',
-          desc: 'Restaurant web app with SQL backend, Bootstrap UI, and reusable image management system.',
-          tech: ['ASP.NET Core', 'C#', 'SQL Server', 'Bootstrap'],
-          img: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=800',
-          links: [{ url: 'https://github.com/Vishal-Nagamalla', icon: 'fab fa-github' }],
-          detail: 'Full-stack restaurant website built with ASP.NET Core and Bootstrap. Features include an SQL-backed image management system, interactive menus, and optimized SQL queries yielding 33% faster page loads. Delivered through Agile sprints with cross-browser compatibility.'
-        },
-        {
-          title: 'Data Processing',
-          tag: 'Automation',
-          desc: 'Python-Excel ETL toolkit for automated data cleaning with Pandas and Excel interop.',
-          tech: ['Python', 'Pandas', 'Excel Interop', 'ETL'],
-          img: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800',
-          links: [{ url: 'https://github.com/Vishal-Nagamalla', icon: 'fab fa-github' }],
-          detail: 'Python-based ETL toolkit that automates large-scale data cleaning and validation for Excel and CSV datasets. Reduced manual reformatting by 18 hours per project while maintaining 97% dataset accuracy. Built for enterprise-scale financial data workflows.'
-        },
-        {
-          title: 'ArbFinder',
-          tag: 'Full-Stack',
-          desc: 'Real-time arbitrage detection engine scanning 11 marketplaces across 3 market types with push notifications.',
-          tech: ['Next.js', 'FastAPI', 'PostgreSQL', 'Python'],
-          img: 'https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=800',
-          links: [{ url: 'https://github.com/Vishal-Nagamalla', icon: 'fab fa-github' }],
-          detail: 'Autonomous system processing 1,500+ daily listings across 11 platforms, detecting pricing inefficiencies with sub-1% margins in under 3 seconds. Built multi-key API rotation with automatic failover and dead-key detection. Designed weighted budget optimization factoring ROI, risk ratings, and usage frequency. Deployed as a cross-platform PWA on Neon Postgres, Render, and Vercel with real-time push notifications.'
-        },
-        {
-          title: 'DevenAI',
-          tag: 'AI / Native',
-          desc: 'Native macOS AI overlay assistant with real-time audio capture, voice commands, and screen context awareness.',
-          tech: ['Swift', 'Python', 'OpenAI API', 'ScreenCaptureKit'],
-          img: 'https://images.unsplash.com/photo-1531297484001-80022131f5a1?auto=format&fit=crop&w=800',
-          links: [{ url: 'https://github.com/Vishal-Nagamalla', icon: 'fab fa-github' }],
-          detail: 'Native macOS overlay app providing instant AI answers from any screen context. Engineered real-time audio pipeline using ScreenCaptureKit feeding into OpenAI Whisper for live transcription. Built intelligent auto-solve with silence detection and filler phrase filtering. Features active window capture for multi-monitor setups, tabbed Q&A history with Markdown export, wake word detection, and OTA updates via Sparkle with EdDSA verification.'
-        },
-        {
-          title: 'VEXAI Planner',
-          tag: 'AI / Robotics',
-          desc: 'Monte-Carlo Tree Search strategy planner for autonomous robotics path planning.',
-          tech: ['Python', 'MCTS', 'RL', 'Simulation'],
-          img: 'https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=800',
-          links: [{ url: 'https://github.com/Vishal-Nagamalla', icon: 'fab fa-github' }],
-          detail: 'Monte-Carlo Tree Search implementation for VEX robotics autonomous strategy. Uses reinforcement learning principles to evaluate and optimize robot path planning in real-time competitive environments. Simulates thousands of game scenarios to determine optimal movement strategies.'
-        }
-      ];
-
-      const belt = document.getElementById('carousel-belt');
-      const viewport = document.getElementById('carousel-viewport');
-      const dotsContainer = document.getElementById('car-dots');
-      const prevBtn = document.getElementById('car-prev');
-      const nextBtn = document.getElementById('car-next');
-      const N = projects.length;
-      let currentIndex = 0;
-      let cellsPerView = 3;
-      let isTransitioning = false;
-
-      function getCellsPerView() {
-        if (window.innerWidth < 768) return 1;
-        if (window.innerWidth < 1024) return 2;
-        return 3;
-      }
-
-      function buildCard(p) {
-        return `
-          <div class="project-card flip-card">
-            <div class="flip-card-inner">
-              <div class="flip-card-front">
-                <div class="bg-darkgreen/10 rounded-2xl overflow-hidden border border-accentgreen/15 hover:border-accentgreen/40 transition-all duration-300">
-                  <div class="h-48 overflow-hidden"><img src="${p.img}" alt="${p.title}" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110"></div>
-                  <div class="p-6">
-                    <div class="flex justify-between items-start mb-3">
-                      <h3 class="text-xl font-semibold font-grotesk">${p.title}</h3>
-                      <span class="bg-emerald/10 text-emerald text-xs px-3 py-1 rounded-lg font-grotesk whitespace-nowrap">${p.tag}</span>
-                    </div>
-                    <p class="text-gray-400 mb-4 text-sm leading-relaxed">${p.desc}</p>
-                    <div class="flex flex-wrap gap-2 mb-4">${p.tech.map(t => `<span class="text-xs bg-black/50 text-accentgreen px-2 py-1 rounded-lg">${t}</span>`).join('')}</div>
-                    <div class="flex gap-3">${p.links.map(l => `<a href="${l.url}" target="_blank" class="text-gray-500 hover:text-emerald transition-colors" data-link><i class="${l.icon}"></i></a>`).join('')}</div>
-                  </div>
-                </div>
-              </div>
-              <div class="flip-card-back rounded-2xl bg-gradient-to-br from-darkgreen to-black border border-accentgreen/20">
-                <h3 class="text-xl font-semibold font-grotesk mb-4">Deep Dive</h3>
-                <p class="text-gray-300 text-sm leading-relaxed mb-4">${p.detail}</p>
-                <div class="flex flex-wrap gap-2">${p.tech.map(t => `<span class="text-xs bg-black/50 text-emerald px-2 py-1 rounded-lg">${t}</span>`).join('')}</div>
-              </div>
-            </div>
-          </div>`;
-      }
-
-      function buildBelt() {
-        cellsPerView = getCellsPerView();
-        const cloneBefore = projects.slice(-cellsPerView);
-        const cloneAfter = projects.slice(0, cellsPerView);
-        const allItems = [...cloneBefore, ...projects, ...cloneAfter];
-
-        belt.innerHTML = allItems.map(p => `<div class="carousel-cell">${buildCard(p)}</div>`).join('');
-        currentIndex = 0;
-        jumpToIndex(currentIndex, true);
-        updateClasses();
-        buildDots();
-      }
-
-      function getOffset(index) {
-        const realIndex = index + cellsPerView;
-        const cellWidth = 100 / cellsPerView;
-        const centerOffset = cellsPerView > 1 ? Math.floor(cellsPerView / 2) : 0;
-        return -(realIndex - centerOffset) * cellWidth;
-      }
-
-      function jumpToIndex(index, instant) {
-        if (instant) belt.style.transition = 'none';
-        belt.style.transform = `translateX(${getOffset(index)}%)`;
-        if (instant) { belt.offsetHeight; belt.style.transition = ''; }
-      }
-
-      function goTo(index) {
-        if (isTransitioning) return;
-        isTransitioning = true;
-        currentIndex = index;
-        belt.style.transform = `translateX(${getOffset(index)}%)`;
-        updateClasses();
-        updateDots();
-
-        setTimeout(() => {
-          if (currentIndex >= N) {
-            currentIndex = 0;
-            jumpToIndex(currentIndex, true);
-          } else if (currentIndex < 0) {
-            currentIndex = N - 1;
-            jumpToIndex(currentIndex, true);
-          }
-          updateClasses();
-          updateDots();
-          isTransitioning = false;
-        }, 550);
-      }
-
-      function updateClasses() {
-        const cells = belt.querySelectorAll('.carousel-cell');
-        const realCenter = currentIndex + cellsPerView;
-        cells.forEach((c, i) => {
-          c.classList.remove('center', 'adjacent');
-          if (i === realCenter) c.classList.add('center');
-          else if (i === realCenter - 1 || i === realCenter + 1) c.classList.add('adjacent');
-        });
-      }
-
-      function buildDots() {
-        dotsContainer.innerHTML = '';
-        for (let i = 0; i < N; i++) {
-          const dot = document.createElement('button');
-          dot.className = `h-3 rounded-full transition-all duration-300 ${i === currentIndex ? 'bg-emerald w-8' : 'bg-accentgreen/30 w-3'}`;
-          dot.addEventListener('click', () => goTo(i));
-          dotsContainer.appendChild(dot);
-        }
-      }
-
-      function updateDots() {
-        const realIdx = ((currentIndex % N) + N) % N;
-        dotsContainer.querySelectorAll('button').forEach((d, i) => {
-          d.classList.toggle('bg-emerald', i === realIdx);
-          d.classList.toggle('w-8', i === realIdx);
-          d.classList.toggle('bg-accentgreen/30', i !== realIdx);
-          d.classList.toggle('w-3', i !== realIdx);
-        });
-      }
-
-      prevBtn.addEventListener('click', () => goTo(currentIndex - 1));
-      nextBtn.addEventListener('click', () => goTo(currentIndex + 1));
-
-      // Flip on center click
-      belt.addEventListener('click', (e) => {
-        const cell = e.target.closest('.carousel-cell');
-        if (!cell || !cell.classList.contains('center')) return;
-        if (e.target.closest('[data-link]')) return;
-        cell.querySelector('.flip-card').classList.toggle('flipped');
-      });
-
-      // Touch swipe
-      let touchStartX = 0;
-      viewport.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
-      viewport.addEventListener('touchend', e => {
-        const diff = touchStartX - e.changedTouches[0].clientX;
-        if (Math.abs(diff) > 50) goTo(currentIndex + (diff > 0 ? 1 : -1));
-      }, { passive: true });
-
-      window.addEventListener('resize', buildBelt);
-      buildBelt();
-    })();
-
-    // Scroll reveals
-    gsap.utils.toArray('.reveal').forEach((el, i) => {
-      gsap.to(el, {
-        scrollTrigger: { trigger: el, start: 'top 85%', toggleActions: 'play none none none' },
-        opacity: 1, y: 0, duration: 0.8, ease: 'power3.out', delay: i * 0.03,
-      });
-    });
-
-    // Mobile nav
-    const mToggle = document.getElementById('mobile-nav-toggle');
-    const mNav = document.getElementById('mobile-nav');
+    /* ── Mobile nav (fullscreen overlay) ── */
+    const mToggle = document.getElementById('mobile-nav-toggle'), mNav = document.getElementById('mobile-nav'), mBackdrop = document.getElementById('mobile-nav-backdrop'), mPanel = document.getElementById('mobile-nav-panel'), mItems = document.querySelectorAll('.mobile-nav-item');
     let navOpen = false;
-    mToggle.addEventListener('click', () => {
-      navOpen = !navOpen;
-      mNav.style.transform = navOpen ? 'translateX(0)' : 'translateX(100%)';
-      mToggle.innerHTML = navOpen ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
-    });
-    document.getElementById('mobile-contact').addEventListener('click', () => {
-      document.getElementById('mobile-contact-links').classList.toggle('hidden');
-    });
-    mNav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
-      navOpen = false; mNav.style.transform = 'translateX(100%)'; mToggle.innerHTML = '<i class="fas fa-bars"></i>';
-    }));
+    function openMobileNav() {
+      navOpen = true; mNav.classList.remove('pointer-events-none'); mNav.classList.add('pointer-events-auto');
+      mBackdrop.style.background = 'rgba(0,0,0,.92)'; mBackdrop.style.backdropFilter = 'blur(30px)';
+      mPanel.style.opacity = '1'; mPanel.style.transform = 'translateY(0)';
+      mToggle.innerHTML = '<i class="fas fa-times"></i>';
+      mItems.forEach((item, i) => { item.style.transition = `opacity .4s ease ${i * .07}s, transform .4s ease ${i * .07}s`; item.style.opacity = '1'; item.style.transform = 'translateY(0)'; });
+      document.body.style.overflow = 'hidden'; lenis && lenis.stop();
+    }
+    function closeMobileNav() {
+      navOpen = false; mBackdrop.style.background = 'rgba(0,0,0,0)'; mBackdrop.style.backdropFilter = 'blur(0px)';
+      mPanel.style.opacity = '0'; mPanel.style.transform = 'translateY(8px)'; mToggle.innerHTML = '<i class="fas fa-bars"></i>';
+      mItems.forEach(item => { item.style.opacity = '0'; item.style.transform = 'translateY(20px)'; });
+      document.body.style.overflow = ''; lenis && lenis.start();
+      setTimeout(() => { if (!navOpen) { mNav.classList.add('pointer-events-none'); mNav.classList.remove('pointer-events-auto'); } }, 500);
+    }
+    mToggle.addEventListener('click', () => navOpen ? closeMobileNav() : openMobileNav());
+    mBackdrop.addEventListener('click', closeMobileNav);
+    mNav.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMobileNav));
 
-    // Contact dropdown
+    /* ── Contact dropdown ── */
     (() => {
-      const btn = document.querySelector('.group > button.nav-link');
-      const menu = document.getElementById('contact-menu');
+      const btn = document.querySelector('.group > button.nav-link'), menu = document.getElementById('contact-menu');
       if (!btn || !menu) return;
-      btn.addEventListener('click', e => {
-        e.stopPropagation();
-        menu.classList.toggle('opacity-0'); menu.classList.toggle('invisible'); menu.classList.toggle('-translate-y-2');
-        menu.classList.toggle('opacity-100'); menu.classList.toggle('visible'); menu.classList.toggle('translate-y-0');
+      btn.addEventListener('click', e => { e.stopPropagation(); ['opacity-0','invisible','-translate-y-2','opacity-100','visible','translate-y-0'].forEach(c => menu.classList.toggle(c)); });
+      document.addEventListener('click', e => { if (!menu.contains(e.target) && !btn.contains(e.target)) { menu.classList.add('opacity-0','invisible','-translate-y-2'); menu.classList.remove('opacity-100','visible','translate-y-0'); } });
+    })();
+
+    /* ── Reveals + drifting light ── */
+    if (!reduceMotion) {
+      gsap.utils.toArray('.reveal').forEach((el, i) => {
+        gsap.to(el, { scrollTrigger: { trigger: el, start: 'top 88%', toggleActions: 'play none none none' }, opacity: 1, y: 0, duration: .9, ease: 'power3.out', delay: (i % 3) * .06 });
       });
-      document.addEventListener('click', e => {
-        if (!menu.contains(e.target) && !btn.contains(e.target)) {
-          menu.classList.add('opacity-0','invisible','-translate-y-2');
-          menu.classList.remove('opacity-100','visible','translate-y-0');
+      document.querySelectorAll('.aurora').forEach(a => {
+        const blobs = a.querySelectorAll('i');
+        blobs.forEach((b, i) => gsap.to(b, { xPercent: i % 2 ? 6 : -6, yPercent: i % 2 ? -5 : 5, duration: 14 + i * 4, yoyo: true, repeat: -1, ease: 'sine.inOut' }));
+        gsap.to(blobs, { y: i => -70 - i * 40, ease: 'none', scrollTrigger: { trigger: a.parentElement, start: 'top bottom', end: 'bottom top', scrub: true } });
+      });
+    }
+
+    /* ── Settle-then-snap: waits for Lenis to finish, then eases to the nearest target via Lenis itself ── */
+    function makeSnapper(st, getTargets, delay = 170) {
+      let timer = null, snapping = false, release = null;
+      const onUpdate = () => {
+        if (snapping) return;
+        clearTimeout(timer);
+        timer = setTimeout(() => {
+          if (!st.isActive) return;
+          const p = st.progress; if (p <= .001 || p >= .999) return;
+          const targets = getTargets(); let best = targets[0];
+          for (const t of targets) if (Math.abs(t - p) < Math.abs(best - p)) best = t;
+          if (Math.abs(best - p) < .002) return;
+          snapping = true; clearTimeout(release); release = setTimeout(() => { snapping = false; }, 1000);
+          scrollToY(st.start + best * (st.end - st.start), { duration: gsap.utils.clamp(.3, .75, Math.abs(best - p) * 3), onComplete: () => { snapping = false; clearTimeout(release); } });
+        }, delay);
+      };
+      return { onUpdate, kill: () => { clearTimeout(timer); clearTimeout(release); } };
+    }
+
+    /* ══════════════ EXPERIENCE ══════════════ */
+    const expSection = document.getElementById('experience'), expStage = document.getElementById('exp-stage'), expCard = document.getElementById('exp-card');
+    const chapters = gsap.utils.toArray('.exp-chapter'), railItems = gsap.utils.toArray('.rail-item'), metricBlocks = gsap.utils.toArray('.metric-block'), wmItems = gsap.utils.toArray('#exp-watermark > *');
+    const expCounter = document.getElementById('exp-counter'), expFill = document.getElementById('exp-progress-fill'), railFill = document.getElementById('rail-fill');
+
+    function setupStackedExperience() {
+      expSection.classList.remove('exp-pinned');
+      expCounter.textContent = '01';
+      if (!reduceMotion) chapters.forEach(ch => gsap.from(ch, { y: 36, autoAlpha: 0, duration: .8, ease: 'power3.out', scrollTrigger: { trigger: ch, start: 'top 85%' } }));
+      return () => {};
+    }
+
+    function setupPinnedExperience() {
+      expSection.classList.add('exp-pinned');
+      const ac = new AbortController(); const { signal } = ac;
+      const beats = chapters.map(ch => gsap.utils.toArray(ch.querySelectorAll('.exp-beat')));
+      const expGrid = expSection.querySelector('.exp-grid');
+      const measure = () => {
+        chapters.forEach((ch, c) => { const wrap = ch.querySelector('.exp-beats'); wrap.style.height = ''; let h = 0; beats[c].forEach(b => { h = Math.max(h, b.offsetHeight); }); wrap.style.height = h + 'px'; });
+        expCard.style.height = ''; let h = 0; chapters.forEach(c => { h = Math.max(h, c.offsetHeight); }); expCard.style.height = h + 'px';
+      };
+      // Shrink type until the whole stage fits the viewport (short laptops)
+      const layout = () => {
+        let fs = 1, guard = 0; expSection.style.setProperty('--fs', '1'); measure();
+        while (expGrid.offsetTop + expGrid.offsetHeight + 72 > window.innerHeight && fs > .66 && guard++ < 10) { fs -= .05; expSection.style.setProperty('--fs', fs.toFixed(2)); measure(); }
+      };
+      layout();
+      ScrollTrigger.addEventListener('refreshInit', layout);
+
+      // Initial states
+      chapters.forEach((ch, c) => {
+        gsap.set(ch, { autoAlpha: c === 0 ? 1 : 0, y: 0 });
+        beats[c].forEach((b, i) => gsap.set(b, { autoAlpha: i === 0 ? 1 : 0, y: 0 }));
+        gsap.set(ch.querySelectorAll('.callout'), { autoAlpha: 0, y: 14 });
+        gsap.set(metricBlocks[c], { autoAlpha: c === 0 ? 1 : 0, y: 0 });
+        gsap.set(wmItems[c], { autoAlpha: c === 0 ? .045 : 0, scale: 1 });
+        gsap.set(railItems[c], { opacity: c === 0 ? 1 : .38 });
+      });
+
+      // Master timeline: chapter → beats → callouts, with holds
+      const tl = gsap.timeline({ defaults: { ease: 'power2.out' }, paused: true });
+      const chapterStart = [], beatLabelTime = []; let k = 0;
+      tl.addLabel('start', 0);
+      chapters.forEach((ch, c) => {
+        const metric = metricBlocks[c], beatItems = metric.querySelectorAll('.beat-list li');
+        chapterStart.push(tl.duration());
+        if (c > 0) {
+          tl.to(chapters[c - 1], { autoAlpha: 0, y: -30, duration: .45 })
+            .to(metricBlocks[c - 1], { autoAlpha: 0, y: -20, duration: .35 }, '<')
+            .to(wmItems[c - 1], { autoAlpha: 0, scale: 1.05, duration: .5 }, '<')
+            .to(railItems[c - 1], { opacity: .38, duration: .3 }, '<')
+            .fromTo(ch, { autoAlpha: 0, y: 40 }, { autoAlpha: 1, y: 0, duration: .55 }, '<0.2')
+            .fromTo(metric, { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: .45 }, '<0.1')
+            .fromTo(wmItems[c], { autoAlpha: 0, scale: .95 }, { autoAlpha: .045, scale: 1, duration: .6 }, '<')
+            .to(railItems[c], { opacity: 1, duration: .3 }, '<');
+        }
+        const num = metric.querySelector('.metric-num'), target = +num.dataset.target, suffix = num.dataset.suffix || '', proxy = { v: 0 };
+        if (c > 0) tl.to(proxy, { v: target, duration: 1.2, ease: 'power1.out', onUpdate: () => { num.textContent = Math.round(proxy.v) + suffix; } }, '<');
+        beats[c].forEach((beat, b) => {
+          const callouts = beat.querySelectorAll('.callout');
+          if (b > 0) {
+            tl.to(beats[c][b - 1], { autoAlpha: 0, y: -16, duration: .35 })
+              .fromTo(beat, { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: .45 }, '<0.15');
+            if (beatItems.length) tl.to(beatItems[b - 1], { opacity: .45, duration: .3 }, '<').to(beatItems[b], { opacity: 1, duration: .3 }, '<');
+          }
+          if (c === 0 && b === 0) { tl.addLabel('beat0', 0); }
+          else { tl.fromTo(callouts, { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: .4, stagger: .38 }, '<0.25'); tl.addLabel('beat' + k); }
+          beatLabelTime.push(tl.labels['beat' + k]); k++;
+          tl.to({}, { duration: .9 });
+        });
+      });
+      tl.addLabel('end');
+      const totalBeats = k; let current = 0;
+      // Intro: reveal the first beat on load so the stage is complete before any scrolling
+      const firstNum = metricBlocks[0].querySelector('.metric-num'), firstProxy = { v: 0 };
+      gsap.timeline({ delay: .35, defaults: { ease: 'power3.out' } })
+        .fromTo(beats[0][0].querySelectorAll('.callout'), { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: .6, stagger: .16 })
+        .to(firstProxy, { v: +firstNum.dataset.target, duration: 1.1, ease: 'power1.out', onUpdate: () => { firstNum.textContent = Math.round(firstProxy.v) + (firstNum.dataset.suffix || ''); } }, '<');
+
+      let snapper = null;
+      const st = ScrollTrigger.create({
+        trigger: expStage, start: 'top top', end: () => '+=' + Math.round(totalBeats * window.innerHeight * .85),
+        pin: true, anticipatePin: 1, scrub: .6, animation: tl,
+        onUpdate: self => {
+          snapper && snapper.onUpdate();
+          const p = (self.progress * 100).toFixed(2) + '%'; expFill.style.width = p; railFill.style.height = p;
+          const t = self.progress * tl.duration(); let c = 0; for (let i = 1; i < chapterStart.length; i++) if (t >= chapterStart[i] + .3) c = i;
+          if (c !== current) { current = c; expCounter.textContent = pad(c); railItems.forEach((r, i) => r.classList.toggle('is-active', i === c)); }
         }
       });
-    })();
+
+      snapper = makeSnapper(st, () => beatLabelTime.map(t => t / tl.duration()).concat([1]));
+      window.__dbg = Object.assign(window.__dbg || {}, { expTl: tl, expSt: st, chapterStart, beatLabelTime });
+      railItems.forEach((btn, c) => btn.addEventListener('click', () => {
+        const first = beats.slice(0, c).reduce((n, b) => n + b.length, 0);
+        scrollToY(st.start + (beatLabelTime[first] / tl.duration()) * (st.end - st.start), { duration: 1.4 });
+      }, { signal }));
+
+      if (finePointer) {
+        const wm = document.getElementById('exp-watermark');
+        const wx = gsap.quickTo(wm, 'x', { duration: 1.2, ease: 'power3' }), wy = gsap.quickTo(wm, 'y', { duration: 1.2, ease: 'power3' });
+        const cx = gsap.quickTo(expCard, 'x', { duration: 1.4, ease: 'power3' }), cy = gsap.quickTo(expCard, 'y', { duration: 1.4, ease: 'power3' });
+        expStage.addEventListener('pointermove', e => { const px = e.clientX / window.innerWidth - .5, py = e.clientY / window.innerHeight - .5; wx(px * -40); wy(py * -30); cx(px * 8); cy(py * 6); }, { signal });
+      }
+
+      return () => {
+        expSection.classList.remove('exp-pinned'); ac.abort(); snapper && snapper.kill(); ScrollTrigger.removeEventListener('refreshInit', layout);
+        expCard.style.height = ''; expSection.style.removeProperty('--fs'); chapters.forEach(ch => { ch.querySelector('.exp-beats').style.height = ''; });
+        railItems.forEach((r, i) => r.classList.toggle('is-active', i === 0)); expCounter.textContent = '01';
+      };
+    }
+
+    /* ══════════════ PROJECTS ══════════════ */
+    const projects = [
+      { id: 'autotrader', name: 'AutoTrader', sub: 'AI prediction-market trader', tag: 'AI · Trading', year: '2026',
+        blurb: 'A bot that finds mispriced Polymarket bets, reads the news, sizes each wager, and executes under strict risk limits.',
+        stats: [['6', 'cooperating agents'], ['5 min', 'scan cadence'], ['¼ Kelly', 'position sizing']],
+        tech: ['Python', 'FastAPI', 'Claude API', 'XGBoost', 'React'], image: 'assets/covers/autotrader.svg',
+        code: 'https://github.com/Vishal-Nagamalla/AutoTrader',
+        highlights: [['Multi-agent', 'scan → research → predict → risk → execute'], ['Claude', 'research and post-mortems'], ['XGBoost', 'probability model'], ['Risk gate', 'daily and weekly loss limits']],
+        rows: [['What it does', 'Scans Polymarket every few minutes, pulls news from Reddit, Google News, RSS, and X, estimates the true probability of each market, and only bets when the edge clears a threshold, sized with fractional Kelly.'],
+               ['Stack', ['Python 3.11, FastAPI, SQLAlchemy, APScheduler, websockets', 'Anthropic API, XGBoost, scikit-learn', 'Polymarket CLOB client', 'React 19, Vite, Tailwind 4, Recharts dashboard']],
+               ['Highlights', ['Six cooperating agents connected by an event bus', 'Risk gate with loss limits and a cap on open positions', 'Post-mortem orchestrator reviews every closed trade', 'Paper-trading mode by default']],
+               ['Role', 'Solo · 2026']] },
+      { id: 'arbfinder', name: 'ArbFinder', sub: 'Sports betting arbitrage scanner', tag: 'Full-stack · Trading', year: '2026',
+        blurb: 'Watches odds at 11 sportsbooks and flags games where betting both sides locks in a profit, then pings your phone.',
+        stats: [['11', 'sportsbooks'], ['3', 'markets scanned'], ['< 3 s', 'to detect an arb']],
+        tech: ['Next.js', 'FastAPI', 'Neon Postgres', 'PWA'], image: 'assets/covers/arbfinder.svg',
+        code: 'https://github.com/Vishal-Nagamalla/Arb-Finder---Arbitrage-Betting-Engine',
+        highlights: [['1,500+', 'listings processed daily'], ['9', 'smart scans per day'], ['6 keys', 'API rotation with failover'], ['PWA', 'installable on iPhone']],
+        rows: [['What it does', 'Compares moneyline, spread, and totals odds across books, finds pairs whose implied probabilities sum under 100%, computes the stake split, and sends a push notification.'],
+               ['Stack', ['Python, FastAPI, httpx, Pydantic', 'Next.js 14, React, TypeScript, Tailwind', 'Neon Postgres', 'Render and Vercel', 'ntfy push notifications']],
+               ['Highlights', ['Multi-key API rotation with dead-key detection', 'Scheduler picks sports by time of day to save credits', 'Budget optimizer weighs ROI, book risk, and usage', 'Settings and bet history persist across deploys']],
+               ['Role', 'Solo · 2026']] },
+      { id: 'devenai', name: 'DevenAI', sub: 'On-screen AI assistant for Mac', tag: 'AI · Native macOS', year: '2026',
+        blurb: 'A floating overlay that hears what is happening on screen and answers questions instantly, hands-free.',
+        stats: [['Live', 'transcription'], ['Wake word', 'activation'], ['OTA', 'signed updates']],
+        tech: ['Swift', 'ScreenCaptureKit', 'OpenAI', 'Whisper'], image: 'assets/covers/devenai.svg',
+        code: null,
+        highlights: [['Whisper', 'real-time speech to text'], ['ScreenCaptureKit', 'audio and window capture'], ['Sparkle', 'EdDSA-verified updates'], ['Markdown', 'exportable Q&A history']],
+        rows: [['What it does', 'Captures system audio and the active window, transcribes it live, detects when a question was asked, and answers in an always-on-top overlay with tabbed history.'],
+               ['Stack', ['Swift and AppKit', 'ScreenCaptureKit', 'Python helper process', 'OpenAI Whisper and chat APIs', 'Sparkle updater']],
+               ['Highlights', ['Auto-solve with silence detection and filler-phrase filtering', 'Active-window capture across multiple monitors', 'Wake-word activation', 'Tabbed Q&A history with Markdown export']],
+               ['Role', 'Solo · 2026']] },
+      { id: 'lattice', name: 'Lattice', sub: 'Self-driving warehouse simulator', tag: 'Robotics · Simulation', year: '2026',
+        blurb: 'A simulated warehouse where a robot fleet drives itself and an AI agent steps in only when something goes wrong.',
+        stats: [['MuJoCo', 'physics engine'], ['Classical', 'fleet control'], ['Agent', 'on exception']],
+        tech: ['Python', 'MuJoCo', 'NumPy'], image: 'assets/covers/lattice.svg',
+        code: 'https://github.com/Vishal-Nagamalla/Lattice',
+        highlights: [['MuJoCo 3', 'hand-built warehouse scene'], ['Planar drive', 'robots with heading control'], ['Exceptions', 'routed to an LLM orchestrator'], ['Strict', 'typing, linting, tests']],
+        rows: [['What it does', 'Robots navigate a physics-simulated warehouse under classical control. When a robot stalls or a task fails, an agentic orchestrator diagnoses the situation and re-plans, keeping the LLM out of the hot loop.'],
+               ['Stack', ['Python 3.11, MuJoCo, NumPy', 'uv, ruff, mypy strict, pytest, pre-commit']],
+               ['Highlights', ['Custom MuJoCo scene with walls, shelving, and planar-drive robots', 'Classical planner as the default path', 'Agent-on-exception design', 'CI-style checks from the first commit']],
+               ['Role', 'Solo · 2026']] },
+      { id: 'robinhood', name: 'Robinhood Claude Agent', sub: 'Automated dip-buying journal', tag: 'AI · Investing', year: '2026',
+        blurb: 'A Claude agent that checks a Robinhood account three times a day, buys the dips it is allowed to, and writes up what happened.',
+        stats: [['3×', 'daily runs'], ['DCA on red', 'strategy'], ['Journal', 'every session']],
+        tech: ['Claude', 'Robinhood MCP', 'Python'], image: 'assets/covers/robinhood.svg',
+        code: null,
+        highlights: [['Open · midday · close', 'scheduled sessions'], ['Watchlist', 'ranked by dip and liquidity'], ['Paper engine', 'deterministic strategy'], ['T+1', 'settlement aware']],
+        rows: [['What it does', 'Scheduled Claude sessions read the account and watchlist through the Robinhood connector, rank the day\'s dips, explain the catalysts with sources, and log holdings and decisions to a dated Markdown journal.'],
+               ['Stack', ['Claude scheduled tasks', 'Robinhood MCP connector', 'Web research with citations', 'Python paper-trading engine with JSON state']],
+               ['Highlights', ['Liquidity, spread, and falling-knife filters', 'Take-profit and stop-loss rules in a deterministic engine', 'Broker-agnostic design', 'Daily research notes with cited sources']],
+               ['Role', 'Solo · 2026 · private']] },
+      { id: 'quantum', name: 'Quantum Market Signals', sub: 'Quantum features for stock prediction', tag: 'Quantum · Hackathon', year: '2026',
+        blurb: 'Tests whether quantum-computed features predict stock returns better than classical ones, with honest rolling-window evaluation.',
+        stats: [['S&P 500', 'real-market task'], ['Braket', 'quantum hardware'], ['Rolling', 'walk-forward windows']],
+        tech: ['Python', 'Amazon Braket', 'scikit-learn', 'Next.js'], image: 'assets/projects/qat.jpg',
+        live: 'https://qat-state-street.vercel.app', code: 'https://github.com/sidp24/QAT---AWS-x-State-Street-Challenge',
+        highlights: [['IQP', 'quantum encoders'], ['QKVM', 'kernel-style features'], ['Aquila', 'window embeddings'], ['Ridge · NN', 'classical baselines']],
+        rows: [['What it does', 'Compares classical and quantum-derived feature maps on a synthetic regime-switching benchmark and on next-5-day S&P 500 excess returns, tracking overfitting, stability, and resource usage.'],
+               ['Stack', ['Python, NumPy, scikit-learn', 'Amazon Braket with Aquila and Ankaa-3', 'Next.js results dashboard on Vercel']],
+               ['Highlights', ['Strict train/test separation and rolling windows', 'Negative results treated as valid outcomes', 'Synthetic and real-market benchmarks', 'YQuantum 2026, AWS x State Street challenge']],
+               ['Role', 'Team · 2026']] },
+      { id: 'realestatepro', name: 'RealEstatePro', sub: 'Realtor listings website', tag: 'Full-stack · Live', year: '2026',
+        blurb: 'A production website for a San Francisco realtor: property listings, interactive maps, and a private admin dashboard.',
+        stats: [['Live', 'in production'], ['CMS', 'secure admin'], ['S3', 'direct uploads']],
+        tech: ['Next.js', 'React', 'Neon Postgres', 'AWS S3'], image: 'assets/projects/realestatepro.jpg',
+        live: 'https://real-estate-pro-iota.vercel.app', code: 'https://github.com/Vishal-Nagamalla/RealEstatePro',
+        highlights: [['Vercel', 'deployed on'], ['Postgres', 'Neon, transactional writes'], ['NextAuth', 'allowlisted admin'], ['Photon', 'address geocoding']],
+        rows: [['What it does', 'Lets buyers browse and favorite listings on a live map, and lets the realtor manage every listing, photo, and detail from a private dashboard.'],
+               ['Stack', ['Next.js 14, React, Tailwind, Leaflet', 'Next.js API routes with server-side validation', 'Neon Postgres', 'AWS S3 presigned uploads', 'Vercel']],
+               ['Highlights', ['Type filtering, favorites, and geocoded map pins', 'Admin CMS with end-to-end CRUD and photo ordering', 'Direct-to-S3 uploads with CORS hardening', 'Re-geocodes on edit so search and maps stay in sync']],
+               ['Role', 'Solo, design to deployment · January 2026']] },
+      { id: 'holobrain', name: 'HoloBrain', sub: 'Gesture-controlled MRI holograms', tag: 'AI · MLH winner', year: '2024',
+        blurb: 'Classifies brain scans with a neural network and lets doctors spin a 3D hologram with hand gestures.',
+        stats: [['97%', 'classification accuracy'], ['30 fps', 'Python to Unity sync'], ['1st', 'place, MLH hackathon']],
+        tech: ['PyTorch', 'OpenCV', 'MediaPipe', 'Unity', 'C#'], image: 'assets/covers/holobrain.svg',
+        code: 'https://github.com/Vishal-Nagamalla/HoloBrain', extra: ['Devpost', 'https://devpost.com/software/holobrain'],
+        highlights: [['CNN', 'healthy vs. unhealthy scans'], ['MediaPipe', 'hand-gesture tracking'], ['Sockets', 'Python to Unity bridge'], ['40%', 'faster scan review']],
+        rows: [['What it does', 'A CNN flags problematic MRI scans, then a Unity hologram lets doctors rotate and zoom the brain with their hands while classification overlays stay in sync.'],
+               ['Stack', ['Python, PyTorch', 'OpenCV and MediaPipe', 'Unity 3D and C#', 'Socket bridge at 30 fps']],
+               ['Highlights', ['97% accuracy classifying healthy vs. unhealthy scans', 'Dynamic hand-gesture tracking for hologram control', 'Real-time overlay sync between Python and Unity', 'First place, Major League Hacking at Rutgers']],
+               ['Role', 'Team of two · October 2024']] },
+      { id: 'airnote', name: 'AirNote', sub: 'AI notes with AR glasses', tag: 'AI · Full-stack', year: '2025',
+        blurb: 'Notes that label, summarize, and link themselves, captured by voice or gesture through AR glasses.',
+        stats: [['Gemini', 'labels and summaries'], ['AR', 'glasses input'], ['Realtime', 'Firebase backend']],
+        tech: ['Python', 'React', 'Firebase', 'Gemini API', 'OpenCV'], image: 'assets/covers/airnote.svg',
+        code: 'https://github.com/sidp24/AirNote',
+        highlights: [['Gemini', 'automated labels and summaries'], ['FastAPI', 'real-time ingestion'], ['Embeddings', 'semantic clustering'], ['OpenCV', 'gesture capture']],
+        rows: [['What it does', 'Captures notes by voice or gesture, then automatically labels, summarizes, and links them so related ideas surface together.'],
+               ['Stack', ['React and Tailwind', 'FastAPI backend', 'Firebase Cloud', 'Gemini API', 'OpenCV with AR glasses']],
+               ['Highlights', ['Automated labels, summaries, and categorization', 'AI voice assistant for gesture-based note-taking', 'Embedding and clustering workflows for semantic links', 'Live previews with integrated testing']],
+               ['Role', 'Team · October 2025']] }
+    ];
+    const archive = [
+      { name: 'NYC Crash Hotspot Predictor', sub: 'Data science', desc: 'Postgres pipeline joining NYC crash and weather data, hotspot SQL, and severity models.', year: '2025', tags: ['PostgreSQL', 'scikit-learn'], code: 'https://github.com/Vishal-Nagamalla/Traffic-Accident-Hotspot-Detection-and-Severity-Prediction' },
+      { name: 'Handwriting Recognition', sub: 'ML research', desc: 'CNN vs. Vision Transformer on digits and letters, both reaching 98% accuracy.', year: '2024', tags: ['PyTorch', 'ViT'], code: 'https://github.com/Vishal-Nagamalla/Handwriting-Recognition' },
+      { name: 'Excel Data-Cleaning Toolkit', sub: 'Automation', desc: 'Python ETL for Excel and CSV validation that cut manual reformatting by 18 hours per project.', year: '2024', tags: ['Python', 'pandas'], code: 'https://github.com/Vishal-Nagamalla/DataCleaning' },
+      { name: 'Indian Restaurant Website', sub: 'Full-stack', desc: 'ASP.NET Core and SQL Server site with a reusable image manager and 33% faster pages.', year: '2023', tags: ['ASP.NET', 'SQL Server'], code: 'https://github.com/Vishal-Nagamalla/IndianCuisine' },
+      { name: 'VEX Competition Robot Code', sub: 'Robotics', desc: 'C++ autonomous and driver control with PID motion and multi-sensor fusion, as team captain.', year: '2025', tags: ['C++', 'PID'], code: 'https://github.com/Vishal-Nagamalla' },
+      { name: 'VEX AI Strategy Planner', sub: 'AI · Robotics', desc: 'Monte-Carlo tree search that simulates thousands of matches to pick robot strategies.', year: '2025', tags: ['Python', 'MCTS'], code: 'https://github.com/Vishal-Nagamalla/VEXAI' }
+    ];
+
+    const projSection = document.getElementById('projects'), projStage = document.getElementById('proj-stage'), viewport = document.getElementById('proj-viewport'), track = document.getElementById('proj-track');
+    const progressEl = document.getElementById('proj-progress'), projCounter = document.getElementById('proj-counter'), prevBtn = document.getElementById('proj-prev'), nextBtn = document.getElementById('proj-next');
+    const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;');
+    const linkRow = (p, full) => [
+      p.live ? `<a class="btn btn-pri" href="${p.live}" target="_blank" rel="noopener">Live site <i class="fas fa-arrow-up-right-from-square text-xs"></i></a>` : '',
+      p.code ? `<a class="btn btn-gh" href="${p.code}" target="_blank" rel="noopener"><i class="fab fa-github"></i> ${full ? 'GitHub' : 'Code'}</a>` : (full ? '' : `<span class="btn btn-gh opacity-60 cursor-default" title="Private repository"><i class="fas fa-lock text-xs"></i> Private</span>`),
+      full && p.extra ? `<a class="btn btn-gh" href="${p.extra[1]}" target="_blank" rel="noopener">${p.extra[0]} <i class="fas fa-arrow-up-right-from-square text-xs"></i></a>` : ''
+    ].join('');
+
+    track.innerHTML = projects.map((p, i) => `
+      <li class="proj-card glass" data-index="${i}">
+        <div class="proj-text">
+          <p class="proj-sub">${esc(p.sub)}</p>
+          <h3 class="proj-name">${esc(p.name)}</h3>
+          <p class="proj-blurb">${esc(p.blurb)}</p>
+          <div class="proj-stats">${p.stats.map(s => `<div><div class="v">${esc(s[0])}</div><div class="l">${esc(s[1])}</div></div>`).join('')}</div>
+          <div class="proj-tech">${p.tech.map(t => `<span class="chip">${esc(t)}</span>`).join('')}</div>
+          <div class="proj-actions">${linkRow(p, false)}<button class="btn btn-gh" data-details="${i}">Details <i class="fas fa-chevron-down text-xs"></i></button></div>
+        </div>
+        <div class="proj-media">
+          <div class="device"><div class="device-tilt">
+            <div class="device-win"><div class="device-bar"><i></i><i></i><i></i></div><div class="device-shot"><img src="${p.image}" alt="${esc(p.name)} preview" loading="lazy" decoding="async"></div></div>
+            <div class="device-refl" aria-hidden="true"><img src="${p.image}" alt="" loading="lazy" decoding="async"></div>
+          </div></div>
+        </div>
+      </li>`).join('');
+    progressEl.innerHTML = projects.map(() => '<i></i>').join('');
+    document.getElementById('proj-total').textContent = String(projects.length).padStart(2, '0');
+    document.getElementById('proj-archive').innerHTML = archive.map(a => `
+      <div class="archive-row">
+        <div><div class="archive-name">${esc(a.name)}</div><div class="text-emerald font-grotesk text-[.68rem] tracking-[.18em] uppercase mt-1">${esc(a.sub)}</div></div>
+        <div class="archive-desc">${esc(a.desc)}</div>
+        <div class="archive-meta"><span>${a.year}</span>${a.tags.map(t => `<span class="chip">${esc(t)}</span>`).join('')}${a.code ? `<a href="${a.code}" target="_blank" rel="noopener" aria-label="${esc(a.name)} on GitHub"><i class="fab fa-github text-base"></i></a>` : ''}</div>
+      </div>`).join('');
+
+    const segs = Array.from(progressEl.children); let currentIdx = -1, dragged = false;
+    function updateUI(i) { if (i === currentIdx) return; currentIdx = i; projCounter.textContent = pad(i); segs.forEach((s, k) => { s.classList.toggle('is-active', k === i); s.classList.toggle('is-past', k < i); }); }
+
+    function setupPinnedGallery() {
+      projSection.classList.add('proj-pinned');
+      const ac = new AbortController(); const { signal } = ac;
+      const cards = gsap.utils.toArray('.proj-card'), N = cards.length;
+      const shots = cards.map(c => c.querySelector('.device-shot img')), devices = cards.map(c => c.querySelector('.device'));
+      const step = () => (cards[1].offsetLeft - cards[0].offsetLeft) || 1, distance = () => step() * (N - 1);
+      const fitGallery = () => {
+        let s = 1, guard = 0; projSection.style.setProperty('--pfs', '1');
+        while (progressEl.offsetTop + progressEl.offsetHeight + 40 > window.innerHeight && s > .62 && guard++ < 12) { s -= .05; projSection.style.setProperty('--pfs', s.toFixed(2)); }
+      };
+      fitGallery(); ScrollTrigger.addEventListener('refreshInit', fitGallery);
+      const tween = gsap.to(track, { x: () => -distance(), ease: 'none' });
+      const parallax = () => {
+        const vw = window.innerWidth, mid = vw / 2;
+        cards.forEach((c, i) => {
+          const r = c.getBoundingClientRect(); if (r.right < -300 || r.left > vw + 300) return;
+          const d = (r.left + r.width / 2 - mid) / vw;
+          gsap.set(shots[i], { xPercent: gsap.utils.clamp(-3.5, 3.5, d * -5) });
+          gsap.set(devices[i], { rotateY: -12 + gsap.utils.clamp(-8, 8, d * 12), rotateX: 3 });
+        });
+      };
+      let snapper = null;
+      const st = ScrollTrigger.create({
+        trigger: projStage, start: 'top top', end: () => '+=' + Math.round(distance() + window.innerHeight * .25),
+        pin: true, anticipatePin: 1, scrub: .8, animation: tween, invalidateOnRefresh: true,
+        onUpdate: self => { updateUI(Math.round(self.progress * (N - 1))); parallax(); snapper && snapper.onUpdate(); },
+        onRefresh: parallax
+      });
+      snapper = makeSnapper(st, () => Array.from({ length: N }, (_, i) => i / (N - 1)), 150);
+      updateUI(0); parallax();
+      window.__dbg = Object.assign(window.__dbg || {}, { projSt: st });
+      const goTo = i => { i = gsap.utils.clamp(0, N - 1, i); scrollToY(st.start + (i / (N - 1)) * (st.end - st.start), { duration: 1 }); };
+      prevBtn.addEventListener('click', () => goTo(currentIdx - 1), { signal });
+      nextBtn.addEventListener('click', () => goTo(currentIdx + 1), { signal });
+      window.addEventListener('keydown', e => {
+        if (!st.isActive || document.getElementById('proj-sheet').open) return;
+        if (e.key === 'ArrowRight') { e.preventDefault(); goTo(currentIdx + 1); } else if (e.key === 'ArrowLeft') { e.preventDefault(); goTo(currentIdx - 1); }
+      }, { signal });
+      const factor = () => (st.end - st.start) / distance();
+      let dragY = 0;
+      const drag = Observer.create({
+        target: viewport, type: 'pointer', dragMinimum: 6, ignore: 'a, button, [data-details]',
+        onPress: () => { dragY = window.scrollY; },
+        onDragStart: () => { dragged = true; viewport.classList.add('is-dragging'); },
+        onDrag: self => { dragY = gsap.utils.clamp(st.start, st.end, dragY - self.deltaX * factor()); scrollToY(dragY, { immediate: true }); },
+        onDragEnd: () => { viewport.classList.remove('is-dragging'); setTimeout(() => { dragged = false; }, 80); }
+      });
+      const wheel = Observer.create({
+        target: viewport, type: 'wheel',
+        onChangeX: self => { if (!st.isActive || Math.abs(self.deltaX) <= Math.abs(self.deltaY)) return; scrollToY(gsap.utils.clamp(st.start, st.end, window.scrollY + self.deltaX * factor()), { immediate: true }); }
+      });
+      if (finePointer) cards.forEach(card => {
+        const tilt = card.querySelector('.device-tilt');
+        const rx = gsap.quickTo(tilt, 'rotateX', { duration: .6, ease: 'power3' }), ry = gsap.quickTo(tilt, 'rotateY', { duration: .6, ease: 'power3' });
+        card.addEventListener('pointermove', e => { const r = card.getBoundingClientRect(); ry(((e.clientX - r.left) / r.width - .5) * 12); rx(-((e.clientY - r.top) / r.height - .5) * 8); }, { signal });
+        card.addEventListener('pointerleave', () => { ry(0); rx(0); }, { signal });
+      });
+      return () => { projSection.classList.remove('proj-pinned'); ac.abort(); drag.kill(); wheel.kill(); snapper && snapper.kill(); ScrollTrigger.removeEventListener('refreshInit', fitGallery); projSection.style.removeProperty('--pfs'); currentIdx = -1; gsap.set([track, ...shots, ...devices, ...cards.map(c => c.querySelector('.device-tilt'))], { clearProps: 'all' }); };
+    }
+
+    function setupScrollGallery() {
+      const ac = new AbortController(); const { signal } = ac;
+      const cards = gsap.utils.toArray('.proj-card'), N = cards.length;
+      const step = () => (cards[1].offsetLeft - cards[0].offsetLeft) || 1;
+      const onScroll = () => updateUI(gsap.utils.clamp(0, N - 1, Math.round(viewport.scrollLeft / step())));
+      viewport.addEventListener('scroll', onScroll, { passive: true, signal });
+      prevBtn.addEventListener('click', () => viewport.scrollBy({ left: -step(), behavior: 'smooth' }), { signal });
+      nextBtn.addEventListener('click', () => viewport.scrollBy({ left: step(), behavior: 'smooth' }), { signal });
+      currentIdx = -1; onScroll();
+      return () => { ac.abort(); currentIdx = -1; };
+    }
+
+    /* ── Details sheet ── */
+    const dialog = document.getElementById('proj-sheet'), panel = document.getElementById('sheet-panel');
+    function renderSheet(p) {
+      return `<button class="icon-btn sheet-close" aria-label="Close details"><i class="fas fa-times"></i></button>
+        <div class="pr-14"><p class="eyebrow">${esc(p.tag)} · ${esc(p.year)}</p><h3 class="font-grotesk font-bold text-3xl md:text-4xl mt-2">${esc(p.name)}</h3><p class="text-gray-400 mt-2 font-light max-w-2xl">${esc(p.sub)}. ${esc(p.blurb)}</p></div>
+        <div class="flex flex-wrap gap-2.5 mt-5">${linkRow(p, true)}</div>
+        <div class="hl-grid">${p.highlights.map(h => `<div class="hl-tile"><div class="v">${esc(h[0])}</div><div class="l">${esc(h[1])}</div></div>`).join('')}</div>
+        <div class="spec">${p.rows.map(r => `<div class="spec-row"><div class="k">${esc(r[0])}</div><div class="val">${Array.isArray(r[1]) ? r[1].map(x => `<span>${esc(x)}</span>`).join('') : esc(r[1])}</div></div>`).join('')}</div>`;
+    }
+    function openSheet(p) {
+      panel.innerHTML = renderSheet(p);
+      document.documentElement.classList.add('sheet-open'); lenis && lenis.stop();
+      dialog.showModal(); panel.scrollTop = 0;
+      gsap.fromTo(panel, { y: 28, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: .45, ease: 'power3.out' });
+      const closeBtn = panel.querySelector('.sheet-close'); closeBtn.addEventListener('click', closeSheet); closeBtn.focus({ preventScroll: true });
+    }
+    function closeSheet() {
+      if (!dialog.open) return;
+      gsap.to(panel, { y: 20, autoAlpha: 0, duration: .22, ease: 'power2.in', onComplete: () => { dialog.close(); document.documentElement.classList.remove('sheet-open'); lenis && lenis.start(); } });
+    }
+    dialog.addEventListener('click', e => { if (e.target === dialog) closeSheet(); });
+    dialog.addEventListener('cancel', e => { e.preventDefault(); closeSheet(); });
+    track.addEventListener('click', e => { const b = e.target.closest('[data-details]'); if (!b || dragged) return; openSheet(projects[+b.dataset.details]); });
+
+    /* ── Skills marquee ── */
+    const marqueeIcons = [['python','#3776AB'],['cplusplus','#00599C'],['typescript','#3178C6'],['swift','#F05138'],['pytorch','#EE4C2C'],['react','#61DAFB'],['nextdotjs','#fff'],['fastapi','#009688'],['springboot','#6DB33F'],['docker','#2496ED'],['kubernetes','#326CE5'],['postgresql','#4169E1'],['ros','#7c9ad9'],['opencv','#5C3EE8'],['firebase','#DD2C00'],['tailwindcss','#06B6D4'],['unity','#fff'],['git','#F05032'],['linux','#FCC624'],['vercel','#fff']];
+    const row = marqueeIcons.map(([s, c]) => `<svg style="--c:${c}" role="img" aria-label="${s}"><use href="#si-${s}"/></svg>`).join('');
+    document.getElementById('marquee-track').innerHTML = row + row;
+
+    /* ── Mode switching (desktop pinned vs. stacked / reduced motion) ── */
+    const mm = gsap.matchMedia();
+    mm.add({ desktop: '(min-width: 1024px)', mobile: '(max-width: 1023px)', reduce: '(prefers-reduced-motion: reduce)' }, ctx => {
+      const { desktop, reduce } = ctx.conditions;
+      const cleanups = (desktop && !reduce) ? [setupPinnedExperience(), setupPinnedGallery()] : [setupStackedExperience(), setupScrollGallery()];
+      return () => cleanups.forEach(fn => fn && fn());
+    });
+    window.addEventListener('load', () => ScrollTrigger.refresh());
+  })();
   </script>
 </body>
 </html>

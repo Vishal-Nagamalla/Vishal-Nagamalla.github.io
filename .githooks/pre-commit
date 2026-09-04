@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+# Keeps resume/Vishal_Nagamalla_Resume.pdf in sync with the résumé folder on every commit.
+exec "$(git rev-parse --show-toplevel)/scripts/sync-resume.sh"

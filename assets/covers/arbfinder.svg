@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" font-family="Space Grotesk, Poppins, Helvetica, Arial, sans-serif">
+  <defs><pattern id="g" width="80" height="80" patternUnits="userSpaceOnUse"><path d="M80 0H0V80" fill="none" stroke="#4ade80" stroke-opacity=".07"/></pattern></defs>
+  <rect width="1600" height="1000" fill="#0b120b"/><rect width="1600" height="1000" fill="url(#g)"/>
+  <polyline points="100,700 300,640 500,680 700,520 900,560 1100,400 1300,440 1500,360" fill="none" stroke="#6b7280" stroke-width="4"/>
+  <polyline points="100,300 300,380 500,340 700,470 900,430 1100,560 1300,520 1500,640" fill="none" stroke="#4ade80" stroke-width="6" stroke-linejoin="round"/>
+  <circle cx="800" cy="495" r="16" fill="#4ade80"/><circle cx="800" cy="495" r="40" fill="none" stroke="#4ade80" stroke-opacity=".4" stroke-width="4"/><circle cx="800" cy="495" r="70" fill="none" stroke="#4ade80" stroke-opacity=".15" stroke-width="3"/>
+  <g font-size="30" font-weight="700">
+    <rect x="150" y="90" width="360" height="72" rx="36" fill="#111811" stroke="#4ade80" stroke-width="3"/><text x="190" y="138" fill="#4ade80">BetMGM   +155</text>
+    <rect x="490" y="90" width="400" height="72" rx="36" fill="#111811" stroke="#2a3a2a" stroke-width="3"/><text x="530" y="138" fill="#fff">DraftKings   −143</text>
+  </g>
+  <rect x="1000" y="780" width="500" height="110" rx="26" fill="#111811" stroke="#4ade80" stroke-width="3"/>
+  <circle cx="1060" cy="835" r="22" fill="#4ade80"/><text x="1050" y="846" fill="#052e16" font-size="30" font-weight="700">!</text>
+  <text x="1105" y="825" fill="#fff" font-size="28" font-weight="700">Arb found · 2.0%</text>
+  <text x="1105" y="866" fill="#9ca3af" font-size="24">stake $200 / $300 · locked profit $10</text>
+  <text x="150" y="930" fill="#9ca3af" font-size="26" letter-spacing="6">11 SPORTSBOOKS · 3 MARKETS</text>
+</svg>

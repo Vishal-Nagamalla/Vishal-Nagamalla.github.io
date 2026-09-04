@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" font-family="Space Grotesk, Poppins, Helvetica, Arial, sans-serif">
+  <defs><pattern id="g" width="80" height="80" patternUnits="userSpaceOnUse"><path d="M80 0H0V80" fill="none" stroke="#4ade80" stroke-opacity=".07"/></pattern></defs>
+  <rect width="1600" height="1000" fill="#0b120b"/><rect width="1600" height="1000" fill="url(#g)"/>
+  <polyline points="120,420 260,380 400,400 540,330 680,350 820,290 960,300 1100,250 1240,270 1380,210 1480,230" fill="none" stroke="#6b7280" stroke-width="3"/>
+  <polyline points="120,360 260,340 400,300 540,320 680,260 820,280 960,220 1100,240 1240,190 1380,200 1480,160" fill="none" stroke="#4ade80" stroke-width="5" stroke-linejoin="round"/>
+  <circle cx="960" cy="220" r="14" fill="#4ade80"/><circle cx="960" cy="220" r="30" fill="none" stroke="#4ade80" stroke-opacity=".35" stroke-width="3"/>
+  <rect x="1000" y="150" width="330" height="64" rx="32" fill="#0f1a0f" stroke="#4ade80" stroke-opacity=".5" stroke-width="2"/>
+  <text x="1030" y="192" fill="#4ade80" font-size="30" font-weight="700">YES 0.62 · edge +11%</text>
+  <g font-size="26" font-weight="700" fill="#fff" text-anchor="middle">
+    <rect x="120" y="560" width="220" height="96" rx="24" fill="#111811" stroke="#2a3a2a" stroke-width="2"/><text x="230" y="618">SCAN</text>
+    <rect x="410" y="560" width="220" height="96" rx="24" fill="#111811" stroke="#2a3a2a" stroke-width="2"/><text x="520" y="618">RESEARCH</text>
+    <rect x="700" y="560" width="220" height="96" rx="24" fill="#111811" stroke="#2a3a2a" stroke-width="2"/><text x="810" y="618">PREDICT</text>
+    <rect x="990" y="560" width="220" height="96" rx="24" fill="#111811" stroke="#4ade80" stroke-width="3"/><text x="1100" y="618" fill="#4ade80">RISK GATE</text>
+    <rect x="1280" y="560" width="220" height="96" rx="24" fill="#111811" stroke="#2a3a2a" stroke-width="2"/><text x="1390" y="618">EXECUTE</text>
+  </g>
+  <g stroke="#4ade80" stroke-width="3" stroke-dasharray="10 10"><line x1="340" y1="608" x2="410" y2="608"/><line x1="630" y1="608" x2="700" y2="608"/><line x1="920" y1="608" x2="990" y2="608"/><line x1="1210" y1="608" x2="1280" y2="608"/></g>
+  <g fill="#4ade80"><circle cx="375" cy="608" r="6"/><circle cx="665" cy="608" r="6"/><circle cx="955" cy="608" r="6"/><circle cx="1245" cy="608" r="6"/></g>
+  <g fill="#111811" stroke="#2a3a2a" stroke-width="2"><rect x="120" y="740" width="400" height="140" rx="20"/><rect x="560" y="740" width="400" height="140" rx="20"/><rect x="1000" y="740" width="500" height="140" rx="20"/></g>
+  <g fill="#2a3a2a"><rect x="150" y="775" width="230" height="14" rx="7"/><rect x="150" y="805" width="330" height="14" rx="7"/><rect x="150" y="835" width="180" height="14" rx="7"/><rect x="590" y="775" width="260" height="14" rx="7"/><rect x="590" y="805" width="300" height="14" rx="7"/><rect x="590" y="835" width="200" height="14" rx="7"/><rect x="1030" y="775" width="300" height="14" rx="7"/><rect x="1030" y="805" width="420" height="14" rx="7"/></g>
+  <text x="1030" y="850" fill="#4ade80" font-size="24" font-weight="700">Kelly ¼ · max $25 · daily stop $100</text>
+  <text x="150" y="120" fill="#9ca3af" font-size="26" letter-spacing="6">POLYMARKET · MULTI-AGENT</text>
+</svg>
