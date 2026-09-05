@@ -1,17 +1,28 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" font-family="Space Grotesk, Poppins, Helvetica, Arial, sans-serif">
-  <defs><pattern id="g" width="80" height="80" patternUnits="userSpaceOnUse"><path d="M80 0H0V80" fill="none" stroke="#4ade80" stroke-opacity=".07"/></pattern></defs>
-  <rect width="1600" height="1000" fill="#0b120b"/><rect width="1600" height="1000" fill="url(#g)"/>
+  <defs><pattern id="rh-grid" width="80" height="80" patternUnits="userSpaceOnUse"><path d="M80 0H0V80" fill="none" stroke="#4ade80" stroke-opacity=".07"/></pattern></defs>
+  <rect width="1600" height="1000" fill="#0b120b"/><rect width="1600" height="1000" fill="url(#rh-grid)"/>
   <g stroke-width="4">
-    <g stroke="#4ade80" fill="#4ade80"><line x1="150" y1="420" x2="150" y2="620"/><rect x="132" y="470" width="36" height="110"/><line x1="330" y1="380" x2="330" y2="560"/><rect x="312" y="410" width="36" height="120"/><line x1="510" y1="470" x2="510" y2="700"/><rect x="492" y="520" width="36" height="140"/><line x1="870" y1="500" x2="870" y2="720"/><rect x="852" y="560" width="36" height="120"/><line x1="1050" y1="360" x2="1050" y2="560"/><rect x="1032" y="400" width="36" height="130"/></g>
-    <g stroke="#6b7280" fill="#6b7280"><line x1="240" y1="400" x2="240" y2="620"/><rect x="222" y="430" width="36" height="150"/><line x1="420" y1="350" x2="420" y2="560"/><rect x="402" y="380" width="36" height="140"/><line x1="600" y1="520" x2="600" y2="760"/><rect x="582" y="560" width="36" height="150"/><line x1="690" y1="600" x2="690" y2="800"/><rect x="672" y="640" width="36" height="120"/><line x1="780" y1="620" x2="780" y2="780"/><rect x="762" y="660" width="36" height="90"/><line x1="960" y1="420" x2="960" y2="640"/><rect x="942" y="450" width="36" height="150"/></g>
+    <g class="rh-c" style="--i:0" stroke="#4ade80" fill="#4ade80"><line x1="150" y1="420" x2="150" y2="620"/><rect x="132" y="470" width="36" height="110"/></g>
+    <g class="rh-c" style="--i:1" stroke="#6b7280" fill="#6b7280"><line x1="240" y1="400" x2="240" y2="620"/><rect x="222" y="430" width="36" height="150"/></g>
+    <g class="rh-c" style="--i:2" stroke="#4ade80" fill="#4ade80"><line x1="330" y1="380" x2="330" y2="560"/><rect x="312" y="410" width="36" height="120"/></g>
+    <g class="rh-c" style="--i:3" stroke="#6b7280" fill="#6b7280"><line x1="420" y1="350" x2="420" y2="560"/><rect x="402" y="380" width="36" height="140"/></g>
+    <g class="rh-c" style="--i:4" stroke="#4ade80" fill="#4ade80"><line x1="510" y1="470" x2="510" y2="700"/><rect x="492" y="520" width="36" height="140"/></g>
+    <g class="rh-c" style="--i:5" stroke="#6b7280" fill="#6b7280"><line x1="600" y1="520" x2="600" y2="760"/><rect x="582" y="560" width="36" height="150"/></g>
+    <g class="rh-c" style="--i:6" stroke="#6b7280" fill="#6b7280"><line x1="690" y1="600" x2="690" y2="800"/><rect x="672" y="640" width="36" height="120"/></g>
+    <g class="rh-c" style="--i:7" stroke="#6b7280" fill="#6b7280"><line x1="780" y1="620" x2="780" y2="780"/><rect x="762" y="660" width="36" height="90"/></g>
+    <g class="rh-c" style="--i:8" stroke="#4ade80" fill="#4ade80"><line x1="870" y1="500" x2="870" y2="720"/><rect x="852" y="560" width="36" height="120"/></g>
+    <g class="rh-c" style="--i:9" stroke="#6b7280" fill="#6b7280"><line x1="960" y1="420" x2="960" y2="640"/><rect x="942" y="450" width="36" height="150"/></g>
+    <g class="rh-c" style="--i:10" stroke="#4ade80" fill="#4ade80"><line x1="1050" y1="360" x2="1050" y2="560"/><rect x="1032" y="400" width="36" height="130"/></g>
   </g>
-  <circle cx="690" cy="760" r="46" fill="none" stroke="#4ade80" stroke-width="4"/><circle cx="690" cy="760" r="12" fill="#4ade80"/>
-  <rect x="560" y="820" width="420" height="72" rx="36" fill="#111811" stroke="#4ade80" stroke-width="3"/>
-  <text x="600" y="866" fill="#4ade80" font-size="28" font-weight="700">BUY GIS $15 · −3.7% today</text>
+  <g class="rh-dip"><circle class="rh-ring" cx="690" cy="760" r="46" fill="none" stroke="#4ade80" stroke-width="4"/><circle cx="690" cy="760" r="12" fill="#4ade80"/></g>
+  <g class="rh-buy">
+    <rect x="560" y="820" width="420" height="72" rx="36" fill="#111811" stroke="#4ade80" stroke-width="3"/>
+    <text x="600" y="866" fill="#4ade80" font-size="28" font-weight="700">BUY GIS $15 · −3.7% today</text>
+  </g>
   <rect x="1140" y="140" width="360" height="720" rx="28" fill="#111811" stroke="#2a3a2a" stroke-width="3"/>
-  <text x="1180" y="205" fill="#fff" font-size="26" font-weight="700">2026-08-24 · midday</text>
+  <text class="rh-date" x="1180" y="205" fill="#fff" font-size="26" font-weight="700">2026-08-24 · midday</text>
   <text x="1180" y="245" fill="#4ade80" font-size="20" letter-spacing="3">CLAUDE AGENT</text>
-  <g fill="#2a3a2a"><rect x="1180" y="290" width="280" height="14" rx="7"/><rect x="1180" y="324" width="240" height="14" rx="7"/><rect x="1180" y="358" width="290" height="14" rx="7"/><rect x="1180" y="420" width="200" height="14" rx="7"/><rect x="1180" y="454" width="280" height="14" rx="7"/><rect x="1180" y="488" width="260" height="14" rx="7"/><rect x="1180" y="550" width="230" height="14" rx="7"/><rect x="1180" y="584" width="290" height="14" rx="7"/><rect x="1180" y="618" width="180" height="14" rx="7"/></g>
-  <rect x="1180" y="700" width="280" height="14" rx="7" fill="#4ade80" fill-opacity=".5"/><rect x="1180" y="734" width="200" height="14" rx="7" fill="#4ade80" fill-opacity=".5"/>
+  <g fill="#2a3a2a"><rect class="rh-jl" style="--i:0" x="1180" y="290" width="280" height="14" rx="7"/><rect class="rh-jl" style="--i:1" x="1180" y="324" width="240" height="14" rx="7"/><rect class="rh-jl" style="--i:2" x="1180" y="358" width="290" height="14" rx="7"/><rect class="rh-jl" style="--i:3" x="1180" y="420" width="200" height="14" rx="7"/><rect class="rh-jl" style="--i:4" x="1180" y="454" width="280" height="14" rx="7"/><rect class="rh-jl" style="--i:5" x="1180" y="488" width="260" height="14" rx="7"/><rect class="rh-jl" style="--i:6" x="1180" y="550" width="230" height="14" rx="7"/><rect class="rh-jl" style="--i:7" x="1180" y="584" width="290" height="14" rx="7"/><rect class="rh-jl" style="--i:8" x="1180" y="618" width="180" height="14" rx="7"/></g>
+  <rect class="rh-jl" style="--i:9" x="1180" y="700" width="280" height="14" rx="7" fill="#4ade80" fill-opacity=".5"/><rect class="rh-jl" style="--i:10" x="1180" y="734" width="200" height="14" rx="7" fill="#4ade80" fill-opacity=".5"/>
   <text x="150" y="160" fill="#9ca3af" font-size="26" letter-spacing="6">DCA ON RED · 3× DAILY</text>
 </svg>

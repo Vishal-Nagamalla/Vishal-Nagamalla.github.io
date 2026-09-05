@@ -67,6 +67,7 @@
   <link rel="preload" href="/fonts/V8mDoQDjQSkFtoMM3T6r8E7mDbNyDNs1.woff2" as="font" type="font/woff2" crossorigin>
   <link href="/fonts/fonts.css" rel="stylesheet">
   <link href="/assets/site.css" rel="stylesheet">
+  <link rel="expect" href="#contact" blocking="render">
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 
   <!-- Favicon -->
@@ -100,6 +101,15 @@
     .sitenav { transition:transform .5s cubic-bezier(.2,.8,.2,1), opacity .35s; }
     .sitenav.away { transform:translateY(-110%); opacity:0; }
     .sitenav.away .group { pointer-events:none; }
+    /* ── Page transitions: same-origin navigations crossfade, the nav holds still ── */
+    @view-transition { navigation: auto; }
+    .sitenav { view-transition-name: sitenav; }
+    .tabbar { view-transition-name: tabbar; }
+    ::view-transition-old(root) { animation: .24s ease-out both vt-out; }
+    ::view-transition-new(root) { animation: .46s cubic-bezier(.2,.8,.2,1) both vt-in; }
+    @keyframes vt-out { to { opacity:0; transform:translateY(-10px); } }
+    @keyframes vt-in { from { opacity:0; transform:translateY(14px); } }
+    @media (prefers-reduced-motion: reduce) { ::view-transition-group(*), ::view-transition-old(*), ::view-transition-new(*) { animation:none !important; } }
     .sitenav .group { position:relative; display:flex; gap:2.6rem; padding:.55rem 1.8rem 1rem; pointer-events:auto; }
     .sitenav .group::after { content:''; position:absolute; left:0; right:0; bottom:0; height:1px; background:linear-gradient(90deg, transparent, rgba(255,255,255,.42) 22%, rgba(255,255,255,.42) 78%, transparent); }
     .sitenav .item { position:relative; }
